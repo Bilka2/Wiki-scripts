@@ -555,3 +555,94 @@ function getAll() {
 		techs.forEach(updateTechnologyInfobox);
 	}
 }
+
+$("#TechDataUpdate").click(function(){
+    getTechData();
+});
+
+function getTechData() {
+	getUserGroup();
+		if (userGroup.some(isBot) == false) {
+		return;
+	}
+	var techInput = prompt("Please enter the technology internal-names");
+	if (techInput != null) {
+		getToken();
+		var techs = techInput.split(/\s\s/g);
+		console.log(techs.length + " techs detected");
+		techs.forEach(updateTechnologyDataInfobox);
+	}
+}
+
+function updateTechnologyDataInfobox(tech) {
+	var techNameEnd = tech.search("\\|");
+	var techName = tech.slice(0, techNameEnd);
+	techName = techName.trim();
+	
+	var internalName = getInputPara(tech, "\\|internal-name = ", 17, "internal-name", techName);
+	internalName = internalName.trim();
+	var prototypeType = "technology";
+	
+	//get page content of the tech -> oldContent
+	var oldContent = "";
+	$.ajax({
+		url: 'https://wiki.factorio.com/api.php',
+		data: {
+			format: 'json',
+			action: 'query',
+			titles: techName + ' (research)/infobox',
+			prop: 'revisions',
+			rvprop: 'content'
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var pages = data.query.pages;
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
+			oldContent = revisions[Object.keys(revisions)[2]];
+			var title = pages[Object.keys(pages)[0]].title;
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+			oldContent = "";
+		}
+	});
+	if (oldContent.length = 0) {
+		console.log("No " + techName + " page found.");
+		return;
+	}
+	
+	var pageInternalNameStart = oldContent.search(/(\s|\|)internal-name/) + 14;
+	var pageInternalName = getOldPara(oldContent, pageInternalNameStart, 14, "internal-name", techName);
+	
+	var pagePrototypeTypeStart = oldContent.search(/(\s|\|)prototype-type/) + 15;
+	var pagePrototypeType = getOldPara(oldContent, pagePrototypeTypeStart, 15, "prototype-type", techName);
+	
+	pageInternalName = pageInternalName.trim();
+	pagePrototypeType = pagePrototypeType.trim();
+	
+	summary = "";
+	newContent = "";
+	if ((pageInternalName == internalName) && (pagePrototypeType == prototypeType)) {
+		console.log(techName + " page was not changed.")
+	} else {
+		if (pageInternalName != internalName) {
+			newContent = oldContent;
+			var newInternalNameStart = newContent.search(/(\s|\|)internal-name/) + 14;
+			updatePara(newContent, internalName, pageInternalName, "internal-name", newInternalNameStart, 14, techName);
+		}
+		if (pagePrototypeType != prototypeType) {
+			if (newContent.length == 0) {
+				newContent = oldContent;
+			}
+			var newPrototypeTypeStart = newContent.search(/(\s|\|)prototype-type/) + 15;
+			updatePara(newContent, prototypeType, pagePrototypeType, "prototype-type", newPrototypeTypeStart, 15, techName);
+		}
+	}
+	
+	//alright, newContent should be defined, change page:
+	if (newContent.length > 0) {
+		editPage(techName + " (research)/infobox", techName);
+	}
+}
