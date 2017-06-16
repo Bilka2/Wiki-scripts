@@ -646,3 +646,75 @@ function updateTechnologyDataInfobox(tech) {
 		editPage(techName + " (research)/infobox", techName);
 	}
 }
+
+$("#InternalItemNameUpdate").click(function(){
+    getInternalItemNames();
+});
+
+function getInternalItemNames() {
+	getUserGroup();
+		if (userGroup.some(isBot) == false) {
+		return;
+	}
+	var nameInput = prompt("Please enter the item and recipe internal-names");
+	if (nameInput != null) {
+		getToken();
+		var names = nameInput.split(/\s\s/g);
+		console.log(names.length + " names detected");
+		names.forEach(updateInternalItemNameInInfobox);
+	}
+}
+
+function updateInternalItemNameInInfobox(name) {
+	var itemNameEnd = name.search("\\|");
+	var itemName = name.slice(0, itemNameEnd).trim();
+	
+	var internalName = getInputPara(name, "\\|internal-name = ", 17, "internal-name", itemName).trim();
+	
+	//get page content of the item -> oldContent
+	var oldContent = "";
+	$.ajax({
+		url: 'https://wiki.factorio.com/api.php',
+		data: {
+			format: 'json',
+			action: 'query',
+			titles: itemName + '/infobox',
+			prop: 'revisions',
+			rvprop: 'content'
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var pages = data.query.pages;
+			if (pages[Object.keys(pages)[0]].revisions[0]) {
+				var revisions = pages[Object.keys(pages)[0]].revisions[0];
+				oldContent = revisions[Object.keys(revisions)[2]];
+				var title = pages[Object.keys(pages)[0]].title;
+			} else {
+				console.log("No " + itemName + " page found.");
+				return; 
+			}
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+		}
+	});
+	if (oldContent.length = 0) {
+		//console.log("No " + itemName + " page found.");
+		return;
+	}
+	
+	var pageInternalNameStart = oldContent.search(/(\s|\|)internal-name/) + 14;
+	var pageInternalName = getOldPara(oldContent, pageInternalNameStart, 14, "internal-name", itemName).trim();
+
+	summary = "";
+	newContent = "";
+	if (pageInternalName == internalName) {
+		console.log(itemName + " page was not changed.")
+	} else {
+		var newInternalNameStart = oldContent.search(/(\s|\|)internal-name/) + 14;
+		updatePara(oldContent, internalName, pageInternalName, "internal-name", newInternalNameStart, 14, itemName);
+		editPage(itemName + "/infobox", itemName);
+	}
+}
