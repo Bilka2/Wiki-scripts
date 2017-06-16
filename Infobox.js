@@ -669,6 +669,15 @@ function updateInternalItemNameInInfobox(name) {
 	var itemNameEnd = name.search("\\|");
 	var itemName = name.slice(0, itemNameEnd).trim();
 	
+	//Remove items that don't have Infoboxes on the wiki
+	noInfobox.forEach(function(infoboxName) {
+		if (itemName == infoboxName) {
+			console.log("Removed " + itemName + " from output.");
+			itemName = "";
+		}
+	})
+	if (itemName.length == 0) return;
+	
 	var internalName = getInputPara(name, "\\|internal-name = ", 17, "internal-name", itemName).trim();
 	
 	//get page content of the item -> oldContent
@@ -687,21 +696,16 @@ function updateInternalItemNameInInfobox(name) {
 		type: 'GET',
 		success: function( data ) {
 			var pages = data.query.pages;
-			if (pages[Object.keys(pages)[0]].revisions[0]) {
-				var revisions = pages[Object.keys(pages)[0]].revisions[0];
-				oldContent = revisions[Object.keys(revisions)[2]];
-				var title = pages[Object.keys(pages)[0]].title;
-			} else {
-				console.log("No " + itemName + " page found.");
-				return; 
-			}
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
+			oldContent = revisions[Object.keys(revisions)[2]];
+			var title = pages[Object.keys(pages)[0]].title;
 		},
 		error: function( xhr ) {
 			alert( 'Error: Request failed.' );
 		}
 	});
 	if (oldContent.length = 0) {
-		//console.log("No " + itemName + " page found.");
+		console.log("No " + itemName + " page found.");
 		return;
 	}
 	
