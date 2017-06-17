@@ -565,7 +565,7 @@ function getTechData() {
 		if (userGroup.some(isBot) == false) {
 		return;
 	}
-	var techInput = prompt("Please enter the technology internal-names");
+	var techInput = prompt("Please enter the technology internal-names.");
 	if (techInput != null) {
 		getToken();
 		var techs = techInput.split(/\s\s/g);
@@ -656,7 +656,7 @@ function getInternalItemNames() {
 		if (userGroup.some(isBot) == false) {
 		return;
 	}
-	var nameInput = prompt("Please enter the item and recipe internal-names");
+	var nameInput = prompt("Please enter the item and recipe internal-names.");
 	if (nameInput != null) {
 		getToken();
 		var names = nameInput.split(/\s\s/g);
@@ -719,6 +719,85 @@ function updateInternalItemNameInInfobox(name) {
 	} else {
 		var newInternalNameStart = oldContent.search(/(\s|\|)internal-name/) + 14;
 		updatePara(oldContent, internalName, pageInternalName, "internal-name", newInternalNameStart, 14, itemName);
+		editPage(itemName + "/infobox", itemName);
+	}
+}
+$("#ProtypeTypeUpdate").click(function(){
+    getProtypeTypes();
+});
+
+function getProtypeTypes() {
+	getUserGroup();
+		if (userGroup.some(isBot) == false) {
+		return;
+	}
+	var typeInput = prompt("Please enter the prototype-types of everything except technologies.");
+	if (typeInput != null) {
+		getToken();
+		var types = typeInput.split(/\s\s/g);
+		console.log(types.length + " types detected");
+		types.forEach(updateProtypeTypeInInfobox);
+	}
+}
+
+function updateProtypeTypeInInfobox(type) {
+	var itemNameEnd = type.search("\\|");
+	var itemName = type.slice(0, itemNameEnd).trim();
+	
+	//Remove items that don't have Infoboxes on the wiki
+	if (itemName == "Raw fish") {
+		console.log("Removed Raw fish from output.");
+		return;
+	}
+	noInfobox.forEach(function(infoboxName) {
+		if (itemName == infoboxName) {
+			console.log("Removed " + itemName + " from output.");
+			itemName = "";
+		}
+	})
+	if (itemName.length == 0) return;
+	
+	var prototypeType = getInputPara(type, "\\|prototype-type = ", 18, "prototype-type", itemName).trim();
+	
+	//get page content of the item -> oldContent
+	var oldContent = "";
+	$.ajax({
+		url: 'https://wiki.factorio.com/api.php',
+		data: {
+			format: 'json',
+			action: 'query',
+			titles: itemName + '/infobox',
+			prop: 'revisions',
+			rvprop: 'content'
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var pages = data.query.pages;
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
+			oldContent = revisions[Object.keys(revisions)[2]];
+			var title = pages[Object.keys(pages)[0]].title;
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+		}
+	});
+	if (oldContent.length = 0) {
+		console.log("No " + itemName + " page found.");
+		return;
+	}
+	
+	var pagePrototypeTypeStart = oldContent.search(/(\s|\|)prototype-type/) + 15;
+	var pagePrototypeType = getOldPara(oldContent, pagePrototypeTypeStart, 15, "prototype-type", itemName).trim();
+
+	summary = "";
+	newContent = "";
+	if (pagePrototypeType == prototypeType) {
+		console.log(itemName + " page was not changed.")
+	} else {
+		var newPrototypeTypeStart = oldContent.search(/(\s|\|)prototype-type/) + 15;
+		updatePara(oldContent, prototypeType, pagePrototypeType, "prototype-type", newPrototypeTypeStart, 15, itemName);
 		editPage(itemName + "/infobox", itemName);
 	}
 }
