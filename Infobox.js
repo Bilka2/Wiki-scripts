@@ -1,4 +1,4 @@
-/* Infobox updating */
+/* Infobox updating, can be found on User:BilkaBot/Infobox.js */
 
 var noInfobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
 var version = "0.15.12";
