@@ -4,26 +4,26 @@ $(document).ready(getNumberOfActiveUsers);
 /* show correct number of active users on the main page */
 
 function getNumberOfActiveUsers() {
-	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
-		data: {
-			format: 'json',
-			action: 'query',
-			list: 'allusers',
-			aulimit: 500,
-			auactiveusers: true
-		},
-		dataType: 'json',
-		type: 'GET',
-		success: function(data) {
-			var numberOfActiveUsers = data.query.allusers.length;
-			document.getElementById("active-users").innerHTML = numberOfActiveUsers.toString();
-			console.log(numberOfActiveUsers)
-		},
-		error: function(xhr) {
-			console.log( 'Error: Request failed.' );
-		}
-	});
+	if (document.getElementById("active-users")) {
+		$.ajax({
+			url: 'https://wiki.factorio.com/api.php',
+			data: {
+				format: 'json',
+				action: 'query',
+				list: 'allusers',
+				aulimit: 500,
+				auactiveusers: true
+			},
+			dataType: 'json',
+			type: 'GET',
+			success: function(data) {
+				document.getElementById("active-users").innerHTML = data.query.allusers.length.toString();
+			},
+			error: function(xhr) {
+				console.log( 'Error: Request failed.' );
+			}
+		});
+	}
 };
 
 /* get the number of users who ever made an edit, for conveniece */
