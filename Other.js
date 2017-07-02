@@ -1,3 +1,5 @@
+/* on MediaWiki:Common.js */
+
 /* Script in here will be executed when the page is "ready" */
 $(document).ready(getNumberOfActiveUsers);
 
@@ -24,40 +26,6 @@ function getNumberOfActiveUsers() {
 			}
 		});
 	}
-};
-
-/* get the number of users who ever made an edit, for conveniece */
-
-$("#GetEditingUsers").click(function(){
-    getNumberOfUsersWhoMadeEdits();
-});
-
-function getNumberOfUsersWhoMadeEdits() {
-	getUserGroup();
-    if (userGroup.some(isBot) == false) {
-       return;
-    }
-	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
-		data: {
-			format: 'json',
-			action: 'query',
-			list: 'allusers',
-			aulimit: 5000,
-                        auwitheditsonly: true
-		},
-		async: false,
-		dataType: 'json',
-		type: 'GET',
-		success: function( data ) {
-			var allusers = data.query.allusers;
-			var numberOfUsersWhoMadeEdits = data.query.allusers.length;
-			console.log(numberOfUsersWhoMadeEdits)
-		},
-		error: function( xhr ) {
-			alert( 'Error: Request failed.' );
-		}
-	});
 };
 
 /* Infobox more info in header */
@@ -95,3 +63,40 @@ $(".tab-head-4").click(function() {
 	$(".tab").hide();
 	$(".tab-4").show();
 });
+
+
+/* on User:BilkaBot/Other.js */
+
+/* get the number of users who ever made an edit, for conveniece */
+
+$("#GetEditingUsers").click(function(){
+    getNumberOfUsersWhoMadeEdits();
+});
+
+function getNumberOfUsersWhoMadeEdits() {
+	getUserGroup();
+    if (userGroup.some(isBot) == false) {
+       return;
+    }
+	$.ajax({
+		url: 'https://wiki.factorio.com/api.php',
+		data: {
+			format: 'json',
+			action: 'query',
+			list: 'allusers',
+			aulimit: 5000,
+                        auwitheditsonly: true
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var allusers = data.query.allusers;
+			var numberOfUsersWhoMadeEdits = data.query.allusers.length;
+			console.log(numberOfUsersWhoMadeEdits)
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+		}
+	});
+};
