@@ -648,7 +648,7 @@ function getProtypeTypesAndItemInternalNames() {
 	var typeAndNameInput = prompt("Please enter the prototype-type and internal-name of everything except technologies.");
 	if (typeAndNameInput != null) {
 		getToken();
-		var typesAndNames = typeAndNameInputInput.split(/\s\s/g);
+		var typesAndNames = typeAndNameInput.split(/\s\s/g);
 		console.log(typesAndNames.length + " types and names detected");
 		typesAndNames.forEach(updateProtypeTypeAndInternalNameInItemInfobox);
 	}
