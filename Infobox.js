@@ -594,7 +594,8 @@ function updateTechnologyDataInfobox(tech) {
 		dataType: 'json',
 		type: 'GET',
 		success: function( data ) {
-			var revisions = data.query.pages[Object.keys(pages)[0]].revisions[0];
+			var pages = data.query.pages;
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
 			oldContent = revisions[Object.keys(revisions)[2]];
 		},
 		error: function( xhr ) {
@@ -668,7 +669,7 @@ function updateProtypeTypeAndInternalNameInItemInfobox(typeAndName) {
 	if (itemName.length == 0) return;
 	
 	var prototypeType = getInputPara(typeAndName, "\\|prototype-type = ", 18, "prototype-type", itemName).trim();
-	var internalName = getInputPara(name, "\\|internal-name = ", 17, "internal-name", itemName).trim();
+	var internalName = getInputPara(typeAndName, "\\|internal-name = ", 17, "internal-name", itemName).trim();
 	
 	//get page content of the item -> oldContent
 	var oldContent = "";
@@ -685,7 +686,8 @@ function updateProtypeTypeAndInternalNameInItemInfobox(typeAndName) {
 		dataType: 'json',
 		type: 'GET',
 		success: function( data ) {
-			var revisions = data.query.pages[Object.keys(pages)[0]].revisions[0];
+			var pages = data.query.pages;
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
 			oldContent = revisions[Object.keys(revisions)[2]];
 		},
 		error: function( xhr ) {
