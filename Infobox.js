@@ -188,8 +188,10 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 	
 	
 	//find recipes in page (oldContent)
-	var pageRecipeStart = oldContent.search(/(\s|\|)recipe/) + 7;
-	var pageRecipe = getOldPara(oldContent, pageRecipeStart, 7, "recipe", itemName);
+	var match = oldContent.match(/\|\s*recipe/);
+	var recipeLength = match == null ? 0 : match.toString().length; //var value = *condition* ? *true* : *false*;
+	var pageRecipeStart = oldContent.search(/\|\s*recipe/) + recipeLength; //so that it doesn't find "|prototype-type = recipe"
+	var pageRecipe = getOldPara(oldContent, pageRecipeStart, recipeLength, "recipe", itemName);
 
 	var pageTotalRawStart = oldContent.search(/(\s|\|)total-raw/) + 10;
 	var pageTotalRaw = getOldPara(oldContent, pageTotalRawStart, 10, "total-raw", itemName);
