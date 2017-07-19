@@ -17,7 +17,7 @@ function getInfoboxPages() {
 			cmtitle: 'Category:Infobox_page',
 			cmlimit: 400,
 			cmprop: 'title',
-			cmcontinue: 'page|4143544956452050524f56494445522043484553542f494e464f424f58|38711' //skip accumulator
+			cmcontinue: 'page|4348454d495354525920285245534541524348292f494e464f424f58|38720' //skip the pages that I botched (up to chemical plant)
 		},
 		async: false,
 		dataType: 'json',
@@ -50,8 +50,13 @@ function getPagesUsingInfobox(categorymembers, infoboxPage) {
 		type: 'GET',
 		success: function( data ) {
 			var embeddedin = data.query.embeddedin;
-			console.log(embeddedin.length + ' pages transclude ' + infoboxPage + '.');
-			setTimeout(function(){changePageUsingInfobox(infoboxPage, embeddedin, embeddedin[0].title, categorymembers)}, 500);
+			if (embeddedin.length == 0) {
+				console.log('No pages transclude ' + infoboxPage);
+				setTimeout(function(){moveInfoboxPage(infoboxPage, categorymembers)}, 500);
+			} else {
+				console.log(embeddedin.length + ' pages transclude ' + infoboxPage + '.');
+				setTimeout(function(){changePageUsingInfobox(infoboxPage, embeddedin, embeddedin[0].title, categorymembers)}, 500);
+			}
 		},
 		error: function( xhr ) {
 			alert( 'Error: Request failed.' );
@@ -117,11 +122,13 @@ function editPageUsingInfobox(infoboxPage, embeddedin, pageUsingInfobox, content
 	ind++;
 	if (ind + 1 > embeddedin.length) {
 		console.log("Changed all pages that transclude " + infoboxPage + ".");
+		ind = 0;
 		setTimeout(function(){moveInfoboxPage(infoboxPage, categorymembers)}, 500);
 	} else {
 		setTimeout(function(){changePageUsingInfobox(infoboxPage, embeddedin, embeddedin[ind].title, categorymembers)}, 500);
 	}
 }
+
 function moveInfoboxPage(infoboxPage, categorymembers) {
 	var posi = infoboxPage.search("/infobox");
 	var newInfoboxPage = infoboxPage.slice(0,posi);
@@ -153,6 +160,7 @@ function moveInfoboxPage(infoboxPage, categorymembers) {
 	i++;
 	if (i + 1 > categorymembers.length) {
 		console.log("Job's done!");
+		i = 0;
 		return;
 	} else {
 		setTimeout(function(){getPagesUsingInfobox(categorymembers, categorymembers[i].title)}, 500);
