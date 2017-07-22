@@ -1,7 +1,7 @@
-/* Infobox updating, can be found on User:BilkaBot/Infobox.js */
+/* Infobox updating */
 
 var noInfobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
-var version = "0.15.12";
+var version = "0.15.30";
 
 
 var para = "";
@@ -13,11 +13,7 @@ function getInputPara(item, search, length, name, itemName) {
 	} else {
 		var paraCut = item.slice(paraStart);  //lets the string begin after the parameter name
 		var paraEnd = paraCut.search(/\||}}/); //finds the end of the parameter definition
-		if (paraEnd < 1) { //para ends at para-end if it exists
-			para = paraCut;
-		} else {
-			para = paraCut.slice(0, paraEnd);
-		}
+		para = paraEnd < 1 ? paraCut : paraCut.slice(0, paraEnd); //para ends at para-end if it exists
 	}
 	return para;
 };
@@ -33,11 +29,7 @@ function getOldPara(content, pageParaStart, length, name, itemName) {
 		pageParaStart = pageParaCut.search(/\w/);
 		pageParaCut = pageParaCut.slice(pageParaStart); //removes anything before the parameter that does not belong there, like = and \s
 		var pageParaEnd = pageParaCut.search(/\||}}/); //finds the end of the parameter definition
-		if (pageParaEnd < 1) { //para ends at para-end if it exists
-			pagePara = pageParaCut;
-		} else {
-			pagePara = pageParaCut.slice(0, pageParaEnd);
-		}
+		pagePara = pageParaEnd < 1 ? pageParaCut : pageParaCut.slice(0, pageParaEnd); //pagePara ends at para-end if it exists
 	}
 	return pagePara;
 };
@@ -83,7 +75,7 @@ function editPage(title, itemName) { //also uses summary, globalToken, newConten
 		dataType: 'json',
 		type: 'POST',
 		success: function( data ) {
-		   console.log("Updated " + itemName);
+			console.log("Updated " + itemName);
 		},
 		error: function( xhr ) {
 			console.log("Failed to update " + itemName);
@@ -98,22 +90,20 @@ $("#RecipeUpdate").click(function(){
 
 function getRecipes() {
 	getUserGroup();
-	if (userGroup.some(isBot) == true) {
-		var recipeInput = prompt("Please enter the recipes");
-		if (recipeInput != null) {
-			getToken();
-			var items = recipeInput.split(/\s\s/g);
-			console.log(items.length + " items detected");
-			items.forEach(removeDuplicateRecipesAndUpdateInfobox);
-		}
+	if (userGroup.some(isBot) == false) return;
+	var recipeInput = prompt("Please enter the recipes");
+	if (recipeInput != null) {
+		getToken();
+		var items = recipeInput.split(/\s\s/g);
+		console.log(items.length + " items detected");
+		items.forEach(removeDuplicateRecipesAndUpdateInfobox);
 	}
 };
 
 
 function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 	var itemNameEnd = recipes.search("\\|");
-	var itemName = recipes.slice(0, itemNameEnd);
-	itemName = itemName.trim();
+	var itemName = recipes.slice(0, itemNameEnd).trim();
 	
 	//Remove Itemnames if the item does not have a page on the wiki, so that the item is removed from the output
 	noInfobox.forEach(function(infoboxName) {
@@ -126,17 +116,10 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 		return;
 	}
 	
-	var recipe = getInputPara(recipes, "\\|recipe = ", 10, "recipe", itemName);
-	var totalRaw = getInputPara(recipes, "\\|total-raw = ", 13, "total-raw", itemName);
-	var expRecipe = getInputPara(recipes, "\\|expensive-recipe = ", 20, "expensive-recipe", itemName);
-	var expTotalRaw = getInputPara(recipes, "\\|expensive-total-raw = ", 23, "expensive-total-raw", itemName);
-	
-	//remove whitespace
-	recipe = recipe.trim();
-	totalRaw = totalRaw.trim();
-	expRecipe = expRecipe.trim();
-	expTotalRaw = expTotalRaw.trim();	
-	
+	var recipe = getInputPara(recipes, "\\|recipe = ", 10, "recipe", itemName).trim();
+	var totalRaw = getInputPara(recipes, "\\|total-raw = ", 13, "total-raw", itemName).trim();
+	var expRecipe = getInputPara(recipes, "\\|expensive-recipe = ", 20, "expensive-recipe", itemName).trim();
+	var expTotalRaw = getInputPara(recipes, "\\|expensive-total-raw = ", 23, "expensive-total-raw", itemName).trim();	
 	
 	//remove duplicate recipes, but only if the recipe actually exists
 	if ((expTotalRaw == expRecipe) && (expTotalRaw.length > 0)) {
@@ -174,7 +157,6 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 			var pages = data.query.pages;
 			var revisions = pages[Object.keys(pages)[0]].revisions[0];
 			oldContent = revisions[Object.keys(revisions)[2]];
-			var title = pages[Object.keys(pages)[0]].title;
 		},
 		error: function( xhr ) {
 			alert( 'Error: Request failed.' );
@@ -191,23 +173,16 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 	var match = oldContent.match(/\|\s*recipe/);
 	var recipeLength = match == null ? 0 : match.toString().length; //var value = *condition* ? *true* : *false*;
 	var pageRecipeStart = oldContent.search(/\|\s*recipe/) + recipeLength; //so that it doesn't find "|prototype-type = recipe"
-	var pageRecipe = getOldPara(oldContent, pageRecipeStart, recipeLength, "recipe", itemName);
+	var pageRecipe = getOldPara(oldContent, pageRecipeStart, recipeLength, "recipe", itemName).trim();
 
 	var pageTotalRawStart = oldContent.search(/(\s|\|)total-raw/) + 10;
-	var pageTotalRaw = getOldPara(oldContent, pageTotalRawStart, 10, "total-raw", itemName);
+	var pageTotalRaw = getOldPara(oldContent, pageTotalRawStart, 10, "total-raw", itemName).trim();
 	
 	var pageExpRecipeStart = oldContent.search(/(\s|\|)expensive-recipe/) + 17;
-	var pageExpRecipe = getOldPara(oldContent, pageExpRecipeStart, 17, "expensive-recipe", itemName);
+	var pageExpRecipe = getOldPara(oldContent, pageExpRecipeStart, 17, "expensive-recipe", itemName).trim();
 
 	var pageExpTotalRawStart = oldContent.search(/(\s|\|)expensive-total-raw/) + 20;
-	var pageExpTotalRaw = getOldPara(oldContent, pageExpTotalRawStart, 20, "expensive-total-raw", itemName);
-
-	
-	//remove whitespace
-	pageRecipe = pageRecipe.trim();
-	pageTotalRaw = pageTotalRaw.trim();
-	pageExpRecipe = pageExpRecipe.trim();
-	pageExpTotalRaw = pageExpTotalRaw.trim();
+	var pageExpTotalRaw = getOldPara(oldContent, pageExpTotalRawStart, 20, "expensive-total-raw", itemName).trim();
 	
 	summary = "";
 	
@@ -222,31 +197,23 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 			updatePara(newContent, recipe, pageRecipe, "recipe", newPageRecipeStart, 7, itemName);
 		}
 		if (pageTotalRaw != totalRaw) {
-			if (newContent.length == 0) {
-				newContent = oldContent
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageTotalRawStart = newContent.search(/(\s|\|)total-raw/) + 10;
 			updatePara(newContent, totalRaw, pageTotalRaw, "total-raw", newPageTotalRawStart, 10, itemName);
 		}
 		if (pageExpRecipe != expRecipe) {
-			if (newContent.length == 0) {
-				newContent = oldContent
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageExpRecipeStart = newContent.search(/(\s|\|)expensive-recipe/) + 17;
 			updatePara(newContent, expRecipe, pageExpRecipe, "expensive-recipe", newPageExpRecipeStart, 17, itemName);
 		}
 		if (pageExpTotalRaw != expTotalRaw) {
-			if (newContent.length == 0) {
-				newContent = oldContent
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageExpTotalRawStart = newContent.search(/(\s|\|)expensive-total-raw/) + 20;
 			updatePara(newContent, expTotalRaw, pageExpTotalRaw, "expensive-total-raw", newPageExpTotalRawStart, 20, itemName);
 		}
 	}
 	//alright, newContent should be defined, change page:
-	if (newContent.length > 0) {
-		editPage("Infobox:" + itemName, itemName);
-	}	
+	if (newContent.length > 0) editPage("Infobox:" + itemName, itemName);	
 }
 
 $("#ItemUpdate").click(function(){
@@ -255,9 +222,7 @@ $("#ItemUpdate").click(function(){
 
 function getItems() {
 	getUserGroup();
-	if (userGroup.some(isBot) == false) {
-		return;
-	}
+	if (userGroup.some(isBot) == false) return;
 	var itemInput = prompt("Please enter the consumers, stack-sizes and required-technologies");
 	if (itemInput != null) {
 		getToken();
@@ -269,8 +234,7 @@ function getItems() {
 
 function updateItemInfoboxes(item) {
 	var itemNameEnd = item.search("\\|");
-	var itemName = item.slice(0, itemNameEnd);
-	itemName = itemName.trim();
+	var itemName = item.slice(0, itemNameEnd).trim();
 	
 	//Remove items that don't have Infoboxes on the wiki
 	noInfobox.forEach(function(infoboxName) {
@@ -279,18 +243,11 @@ function updateItemInfoboxes(item) {
 		itemName = "";
 	}
 	})
-	if (itemName.length == 0) {
-		return;
-	}
-	var consumers = getInputPara(item, "\\|consumers = ", 13, "consumers", itemName);
-	var stackSize = getInputPara(item, "\\|stack-size = ", 14, "stack-size", itemName);
-	var reqTech = getInputPara(item, "\\|required-technologies = ", 25, "required-technologies", itemName);
+	if (itemName.length == 0) return;
 	
-
-	consumers = consumers.trim();
-	stackSize = stackSize.trim();
-	reqTech = reqTech.trim();
-	
+	var consumers = getInputPara(item, "\\|consumers = ", 13, "consumers", itemName).trim();
+	var stackSize = getInputPara(item, "\\|stack-size = ", 14, "stack-size", itemName).trim();
+	var reqTech = getInputPara(item, "\\|required-technologies = ", 25, "required-technologies", itemName).trim();	
 	
 	//get page content of the item -> oldContent
 	var oldContent = "";
@@ -310,7 +267,6 @@ function updateItemInfoboxes(item) {
 			var pages = data.query.pages;
 			var revisions = pages[Object.keys(pages)[0]].revisions[0];
 			oldContent = revisions[Object.keys(revisions)[2]];
-			var title = pages[Object.keys(pages)[0]].title;
 		},
 		error: function( xhr ) {
 			alert( 'Error: Request failed.' );
@@ -324,18 +280,13 @@ function updateItemInfoboxes(item) {
 	
 	//find recipes in page (oldContent)
 	var pageConsumersStart = oldContent.search(/(\s|\|)consumers/) + 10;
-	var pageConsumers = getOldPara(oldContent, pageConsumersStart, 10, "consumers", itemName);
+	var pageConsumers = getOldPara(oldContent, pageConsumersStart, 10, "consumers", itemName).trim();
 	
 	var pageStackSizeStart = oldContent.search(/(\s|\|)stack-size/) + 11;
-	var pageStackSize = getOldPara(oldContent, pageStackSizeStart, 11, "stack-size", itemName);
+	var pageStackSize = getOldPara(oldContent, pageStackSizeStart, 11, "stack-size", itemName).trim();
 	
 	var pageReqTechStart = oldContent.search(/(\s|\|)required-technologies/) + 22;
-	var pageReqTech = getOldPara(oldContent, pageReqTechStart, 22, "required-technologies", itemName);
-	
-	
-	pageConsumers = pageConsumers.trim();
-	pageStackSize = pageStackSize.trim();
-	pageReqTech = pageReqTech.trim();	
+	var pageReqTech = getOldPara(oldContent, pageReqTechStart, 22, "required-technologies", itemName).trim();
 	
 	
 	summary = "";
@@ -349,25 +300,19 @@ function updateItemInfoboxes(item) {
 			updatePara(newContent, consumers, pageConsumers, "consumers", newPageConsumersStart, 10, itemName);
 		}
 		if (pageStackSize != stackSize) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageStackSizeStart = newContent.search(/(\s|\|)stack-size/) + 11;
 			updatePara(newContent, stackSize, pageStackSize, "stack-size", newPageStackSizeStart, 11, itemName);
 		}
 		if (pageReqTech != reqTech) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageReqTechStart = newContent.search(/(\s|\|)required-technologies/) + 22;
 			updatePara(newContent, reqTech, pageReqTech, "required-technologies", newPageReqTechStart, 22, itemName);
 		}
 	}
 	
 	//alright, newContent should be defined, change page:
-	if (newContent.length > 0) {
-		editPage("Infobox:" + itemName, itemName);
-	}
+	if (newContent.length > 0) editPage("Infobox:" + itemName, itemName);
 }
 
 $("#TechUpdate").click(function(){
@@ -376,9 +321,7 @@ $("#TechUpdate").click(function(){
 
 function getTechnologies() {
 	getUserGroup();
-		if (userGroup.some(isBot) == false) {
-		return;
-	}
+	if (userGroup.some(isBot) == false) return;
 	var techInput = prompt("Please enter the technologies");
 	if (techInput != null) {
 		getToken();
@@ -390,24 +333,15 @@ function getTechnologies() {
 
 function updateTechnologyInfobox(tech) {
 	var techNameEnd = tech.search("\\|");
-	var techName = tech.slice(0, techNameEnd);
-	techName = techName.trim();
+	var techName = tech.slice(0, techNameEnd).trim();
 	
 	
-	var cost = getInputPara(tech, "\\|cost = ", 8, "cost", techName);
-	var costMulti = getInputPara(tech, "\\|cost-multiplier = ", 19, "cost-multiplier", techName);
-	var expCostMulti = getInputPara(tech, "\\|expensive-cost-multiplier = ", 29, "expensive-cost-multiplier", techName);
-	var reqTech = getInputPara(tech, "\\|required-technologies = ", 25, "required-technologies", techName);
-	var allows = getInputPara(tech, "\\|allows = ", 10, "allows", techName);
-	var effects = getInputPara(tech, "\\|effects = ", 11, "effects", techName);
-
-	
-	cost = cost.trim();
-	costMulti = costMulti.trim();
-	expCostMulti = expCostMulti.trim();
-	reqTech = reqTech.trim();
-	allows = allows.trim();
-	effects = effects.trim();
+	var cost = getInputPara(tech, "\\|cost = ", 8, "cost", techName).trim();
+	var costMulti = getInputPara(tech, "\\|cost-multiplier = ", 19, "cost-multiplier", techName).trim();
+	var expCostMulti = getInputPara(tech, "\\|expensive-cost-multiplier = ", 29, "expensive-cost-multiplier", techName).trim();
+	var reqTech = getInputPara(tech, "\\|required-technologies = ", 25, "required-technologies", techName).trim();
+	var allows = getInputPara(tech, "\\|allows = ", 10, "allows", techName).trim();
+	var effects = getInputPara(tech, "\\|effects = ", 11, "effects", techName).trim();
 	
 	
 	//get page content of the tech -> oldContent
@@ -428,7 +362,6 @@ function updateTechnologyInfobox(tech) {
 			var pages = data.query.pages;
 			var revisions = pages[Object.keys(pages)[0]].revisions[0];
 			oldContent = revisions[Object.keys(revisions)[2]];
-			var title = pages[Object.keys(pages)[0]].title;
 		},
 		error: function( xhr ) {
 			alert( 'Error: Request failed.' );
@@ -443,30 +376,22 @@ function updateTechnologyInfobox(tech) {
 	
 	//find costs etc in page (oldContent)
 	var pageCostStart = oldContent.search(/(\s|\|)cost(\s|=)/) + 6;
-	var pageCost = getOldPara(oldContent, pageCostStart, 6, "cost", techName);
+	var pageCost = getOldPara(oldContent, pageCostStart, 6, "cost", techName).trim();
 	
 	var pageCostMultiStart = oldContent.search(/(\s|\|)cost-multiplier/) + 16;
-	var pageCostMulti = getOldPara(oldContent, pageCostMultiStart, 16, "cost-multiplier", techName);
+	var pageCostMulti = getOldPara(oldContent, pageCostMultiStart, 16, "cost-multiplier", techName).trim();
 	
 	var pageExpCostMultiStart = oldContent.search(/(\s|\|)expensive-cost-multiplier/) + 26;
-	var pageExpCostMulti = getOldPara(oldContent, pageExpCostMultiStart, 26, "expensive-cost-multiplier", techName);
+	var pageExpCostMulti = getOldPara(oldContent, pageExpCostMultiStart, 26, "expensive-cost-multiplier", techName).trim();
 	
 	var pageReqTechStart = oldContent.search(/(\s|\|)required-technologies/) + 22;
-	var pageReqTech = getOldPara(oldContent, pageReqTechStart, 22, "required-technologies", techName);
+	var pageReqTech = getOldPara(oldContent, pageReqTechStart, 22, "required-technologies", techName).trim();
 	
 	var pageAllowsStart = oldContent.search(/(\s|\|)allows/) + 7;
-	var pageAllows = getOldPara(oldContent, pageAllowsStart, 7, "allows", techName);
+	var pageAllows = getOldPara(oldContent, pageAllowsStart, 7, "allows", techName).trim();
 	
 	var pageEffectsStart = oldContent.search(/(\s|\|)effects/) + 8;
-	var pageEffects = getOldPara(oldContent, pageEffectsStart, 8, "effects", techName);
-
-	
-	pageCost = pageCost.trim();
-	pageCostMulti = pageCostMulti.trim();
-	pageExpCostMulti = pageExpCostMulti.trim();
-	pageReqTech = pageReqTech.trim();
-	pageAllows = pageAllows.trim();
-	pageEffects = pageEffects.trim();
+	var pageEffects = getOldPara(oldContent, pageEffectsStart, 8, "effects", techName).trim();
 	
 	
 	summary = "";
@@ -482,45 +407,33 @@ function updateTechnologyInfobox(tech) {
 			updatePara(newContent, cost, pageCost, "cost", newPageCostStart, 6, techName);
 		}
 		if (pageCostMulti != costMulti) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageCostMultiStart = newContent.search(/(\s|\|)cost-multiplier/) + 16;
 			updatePara(newContent, costMulti, pageCostMulti, "cost-multiplier", newPageCostMultiStart, 16, techName);
 		}
 		if (pageExpCostMulti != expCostMulti) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageExpCostMultiStart = newContent.search(/(\s|\|)expensive-cost-multiplier/) + 26;
 			updatePara(newContent, expCostMulti, pageExpCostMulti, "expensive-cost-multiplier", newPageExpCostMultiStart, 26, techName);
 		}
 		if (pageReqTech != reqTech) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageReqTechStart = newContent.search(/(\s|\|)required-technologies/) + 22;
 			updatePara(newContent, reqTech, pageReqTech, "required-technologies", newPageReqTechStart, 22, techName);
 		}
 		if (pageAllows != allows) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageAllowsStart = newContent.search(/(\s|\|)allows/) + 7;
 			updatePara(newContent, allows, pageAllows, "allows", newPageAllowsStart, 7, techName);
 		}
 		if (pageEffects != effects) {
-			if (newContent.length == 0) {
-				newContent = oldContent;
-			}
+			if (newContent.length == 0) newContent = oldContent;
 			var newPageEffectsStart = newContent.search(/(\s|\|)effects/) + 8;
 			updatePara(newContent, effects, pageEffects, "effects", newPageEffectsStart, 8, techName);
 		}	
 	}
 	//alright, newContent should be defined, change page:
-	if (newContent.length > 0) {
-		editPage("Infobox:" + techName + " (research)", techName);
-	}	
+	if (newContent.length > 0) editPage("Infobox:" + techName + " (research)", techName);	
 }
 
 $("#AllUpdate").click(function(){
@@ -529,14 +442,10 @@ $("#AllUpdate").click(function(){
 
 function getAll() {
 	getUserGroup();
-		if (userGroup.some(isBot) == false) {
-		return;
-	}
+	if (userGroup.some(isBot) == false) return;
 	getToken();
 	newVersion = prompt("Please enter the new version.");
-	if (newVersion != null) {
-		version = newVersion.trim();
-	}
+	if (newVersion != null) version = newVersion.trim();
 	var recipeInput = prompt("Please enter the recipes.");
 	var itemInput = prompt("Please enter the consumers, stack-sizes and required-technologies.");
 	var techInput = prompt("Please enter the technologies.");
