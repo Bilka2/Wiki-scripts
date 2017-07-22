@@ -163,7 +163,7 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 		data: {
 			format: 'json',
 			action: 'query',
-			titles: itemName + '/infobox',
+			titles: 'Infobox:' + itemName,
 			prop: 'revisions',
 			rvprop: 'content'
 		},
@@ -245,7 +245,7 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 	}
 	//alright, newContent should be defined, change page:
 	if (newContent.length > 0) {
-		editPage(itemName + "/infobox", itemName);
+		editPage("Infobox:" + itemName, itemName);
 	}	
 }
 
@@ -299,7 +299,7 @@ function updateItemInfoboxes(item) {
 		data: {
 			format: 'json',
 			action: 'query',
-			titles: itemName + '/infobox',
+			titles: 'Infobox:' + itemName,
 			prop: 'revisions',
 			rvprop: 'content'
 		},
@@ -366,7 +366,7 @@ function updateItemInfoboxes(item) {
 	
 	//alright, newContent should be defined, change page:
 	if (newContent.length > 0) {
-		editPage(itemName + "/infobox", itemName);
+		editPage("Infobox:" + itemName, itemName);
 	}
 }
 
@@ -417,7 +417,7 @@ function updateTechnologyInfobox(tech) {
 		data: {
 			format: 'json',
 			action: 'query',
-			titles: techName + ' (research)/infobox',
+			titles: 'Infobox:' + techName + ' (research)',
 			prop: 'revisions',
 			rvprop: 'content'
 		},
@@ -519,7 +519,7 @@ function updateTechnologyInfobox(tech) {
 	}
 	//alright, newContent should be defined, change page:
 	if (newContent.length > 0) {
-		editPage(techName + " (research)/infobox", techName);
+		editPage("Infobox:" + techName + " (research)", techName);
 	}	
 }
 
@@ -588,7 +588,7 @@ function updateTechnologyDataInfobox(tech) {
 		data: {
 			format: 'json',
 			action: 'query',
-			titles: techName + ' (research)/infobox',
+			titles: 'Infobox:' + techName + ' (research)',
 			prop: 'revisions',
 			rvprop: 'content'
 		},
@@ -637,7 +637,7 @@ function updateTechnologyDataInfobox(tech) {
 	
 	//alright, newContent should be defined, change page:
 	if (newContent.length > 0) {
-		editPage(techName + " (research)/infobox", techName);
+		editPage("Infobox:" + techName + " (research)", techName);
 	}
 }
 
@@ -680,7 +680,7 @@ function updateProtypeTypeAndInternalNameInItemInfobox(typeAndName) {
 		data: {
 			format: 'json',
 			action: 'query',
-			titles: itemName + '/infobox',
+			titles: 'Infobox:' + itemName,
 			prop: 'revisions',
 			rvprop: 'content'
 		},
@@ -724,5 +724,5 @@ function updateProtypeTypeAndInternalNameInItemInfobox(typeAndName) {
 			updatePara(newContent, prototypeType, pagePrototypeType, "prototype-type", newPrototypeTypeStart, 15, itemName);
 		}
 	}
-	if (newContent.length > 0) editPage(itemName + "/infobox", itemName);
+	if (newContent.length > 0) editPage("Infobox:" + itemName, itemName);
 }
