@@ -7,7 +7,6 @@ function getInfoboxPages() {
 	getUserGroup();
 	if (userGroup.some(isBot) == false) return;
 	getToken();
-	var infoboxPages = [];
 	$.ajax({
 		url: 'https://wiki.factorio.com/api.php',
 		data: {
@@ -34,7 +33,6 @@ function getInfoboxPages() {
 }
 
 function getPagesUsingInfobox(categorymembers, infoboxPage) {
-	console.log("Getting pages that transclude " + infoboxPage);
 	$.ajax({
 		url: 'https://wiki.factorio.com/api.php',
 		data: {
@@ -112,21 +110,20 @@ function editPageUsingInfobox(infoboxPage, embeddedin, pageUsingInfobox, content
 		dataType: 'json',
 		type: 'POST',
 		success: function( data ) {
-			console.log('Changed ' + pageUsingInfobox);
+			console.log('Changed ' + pageUsingInfobox);	
+			ind++;
+			if (ind + 1 > embeddedin.length) {
+				console.log("Changed all pages that transclude " + infoboxPage + ".");
+				ind = 0;
+				setTimeout(function(){moveInfoboxPage(infoboxPage, categorymembers)}, 500);
+			} else {
+				setTimeout(function(){changePageUsingInfobox(infoboxPage, embeddedin, embeddedin[ind].title, categorymembers)}, 500);
+			}
 		},
 		error: function( xhr ) {
-			console.log('Failed to change ' + pageUsingInfobox);
+			alert('Failed to change ' + pageUsingInfobox);
 		}
 	});
-		
-	ind++;
-	if (ind + 1 > embeddedin.length) {
-		console.log("Changed all pages that transclude " + infoboxPage + ".");
-		ind = 0;
-		setTimeout(function(){moveInfoboxPage(infoboxPage, categorymembers)}, 500);
-	} else {
-		setTimeout(function(){changePageUsingInfobox(infoboxPage, embeddedin, embeddedin[ind].title, categorymembers)}, 500);
-	}
 }
 
 function moveInfoboxPage(infoboxPage, categorymembers) {
@@ -151,18 +148,17 @@ function moveInfoboxPage(infoboxPage, categorymembers) {
 		type: 'POST',
 		success: function(data) {
 			console.log('Moved ' + infoboxPage + ' to Infobox:' + newInfoboxPage + '.');
+			i++;
+			if (i + 1 > categorymembers.length) {
+				console.log("Job's done!");
+				i = 0;
+				return;
+			} else {
+				setTimeout(function(){getPagesUsingInfobox(categorymembers, categorymembers[i].title)}, 500);
+			}
 		},
 		error: function(xhr) {
-			console.log( 'Error: Request failed. Could not move ' + infoboxPage + '.');
+			alert( 'Error: Request failed. Could not move ' + infoboxPage + '.');
 		}
 	});
-	
-	i++;
-	if (i + 1 > categorymembers.length) {
-		console.log("Job's done!");
-		i = 0;
-		return;
-	} else {
-		setTimeout(function(){getPagesUsingInfobox(categorymembers, categorymembers[i].title)}, 500);
-	}
 }
