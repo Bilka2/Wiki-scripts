@@ -635,3 +635,69 @@ function updateProtypeTypeAndInternalNameInItemInfobox(typeAndName) {
 	}
 	if (newContent.length > 0) editPage("Infobox:" + itemName, itemName);
 }
+
+$("#EntityHealthUpdate").click(function(){
+    getEntityHealth();
+});
+
+function getEntityHealth() {
+	getUserGroup();
+	if (userGroup.some(isBot) == false) return;
+	var entityInput = prompt("Please enter the entity healths.");
+	if (entityInput != null) {
+		getToken();
+		var entities = entityInput.split(/\s\s/g);
+		console.log(entities.length + " entities detected");
+		entities.forEach(updateEntityHealthInInfobox);
+	}
+}
+
+function updateEntityHealthInInfobox(entity) {
+	var entityNameEnd = entity.search("\\|");
+	var entityName = entity.slice(0, entityNameEnd).trim();
+	
+	var entityHealth = getInputPara(entity, "\\|health = ", 10, "health", entityName).trim();
+	
+	//get page content of the tech -> oldContent
+	var oldContent = "";
+	$.ajax({
+		url: 'https://wiki.factorio.com/api.php',
+		data: {
+			format: 'json',
+			action: 'query',
+			titles: 'Infobox:' + entityName,
+			prop: 'revisions',
+			rvprop: 'content'
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var pages = data.query.pages;
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
+			oldContent = revisions[Object.keys(revisions)[2]];
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+			oldContent = "";
+		}
+	});
+	if (oldContent.length = 0) {
+		console.log("No " + entityName + " page found.");
+		return;
+	}
+	
+	var pageEntityHealthStart = oldContent.search(/(\s|\|)health/) + 7;
+	var pageEntityHealth = getOldPara(oldContent, pageEntityHealthStart, 7, "health", entityName).trim();
+	
+	summary = "";
+	newContent = "";
+	if (pageEntityHealth == entityHealth) {
+		console.log(entityName + " page was not changed.")
+	} else {
+		newContent = oldContent;
+		var newEntityHealthStart = newContent.search(/(\s|\|)health/) + 7;
+		updatePara(newContent, entityHealth, pageEntityHealth, "health", newEntityHealthStart, 7, entityName);
+		editPage("Infobox:" + entityName, entityName);
+	}
+}
