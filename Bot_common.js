@@ -1,7 +1,7 @@
 /* Infobox updating */
 
 var noInfobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
-var version = "0.15.30";
+var version = "0.15.37";
 
 
 var para = "";
@@ -61,7 +61,7 @@ function updatePara(content, para, pagePara, name, newPageParaStart, length, ite
 
 function editPage(title, itemName) { //also uses summary, globalToken, newContent
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'edit',
@@ -142,7 +142,7 @@ function removeDuplicateRecipesAndUpdateInfobox(recipes) {
 	//get page content of the item -> oldContent
 	var oldContent = "";
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
@@ -252,7 +252,7 @@ function updateItemInfoboxes(item) {
 	//get page content of the item -> oldContent
 	var oldContent = "";
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
@@ -347,7 +347,7 @@ function updateTechnologyInfobox(tech) {
 	//get page content of the tech -> oldContent
 	var oldContent = "";
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
@@ -493,7 +493,7 @@ function updateTechnologyDataInfobox(tech) {
 	//get page content of the tech -> oldContent
 	var oldContent = "";
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
@@ -585,7 +585,7 @@ function updateProtypeTypeAndInternalNameInItemInfobox(typeAndName) {
 	//get page content of the item -> oldContent
 	var oldContent = "";
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
@@ -661,7 +661,7 @@ function updateEntityHealthInInfobox(entity) {
 	//get page content of the tech -> oldContent
 	var oldContent = "";
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
@@ -701,3 +701,38 @@ function updateEntityHealthInInfobox(entity) {
 		editPage("Infobox:" + entityName, entityName);
 	}
 }
+
+
+/* get the number of users who ever made an edit, for conveniece */
+
+$("#GetEditingUsers").click(function(){
+    getNumberOfUsersWhoMadeEdits();
+});
+
+function getNumberOfUsersWhoMadeEdits() {
+	getUserGroup();
+	if (userGroup.some(isBot) == false) {
+		return;
+	}
+	$.ajax({
+		url: 'https://wiki.factorio.com/api.php',
+		data: {
+			format: 'json',
+			action: 'query',
+			list: 'allusers',
+			aulimit: 5000,
+            auwitheditsonly: true
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var allusers = data.query.allusers;
+			var numberOfUsersWhoMadeEdits = data.query.allusers.length;
+			console.log(numberOfUsersWhoMadeEdits)
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+		}
+	});
+};
