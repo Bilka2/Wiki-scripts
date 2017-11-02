@@ -785,7 +785,7 @@ function getRedirects() {
 function createRedirectsPage(loc, redirects) {
 	var formattedRedirects = "{|class=wikitable\n!#\n!Redirect\n!Links to this redirect";
 	for (var i = 0; i < redirects.length; i++) {    
-		formattedRedirects = formattedRedirects.concat("\n|-\n|" + (i + 1) + "\n|[https://wiki.factorio.com/index.php?title=" + encodeURI(redirects[i].title) + "&redirect=no " + redirects[i].title + "]\n|[https://wiki.factorio.com/index.php?title=Special:WhatLinksHere/" + encodeURI(redirects[i].title) + " " + redirects[i].value + "]");
+		formattedRedirects = formattedRedirects.concat("\n|-\n|" + (i + 1) + "\n|[" + mw.config.get('wgServer') + "/index.php?title=" + encodeURI(redirects[i].title) + "&redirect=no " + redirects[i].title + "]\n|[" + mw.config.get('wgServer') + "/index.php?title=Special:WhatLinksHere/" + encodeURI(redirects[i].title) + " " + redirects[i].value + "]");
 	}
 	formattedRedirects = formattedRedirects.concat("\n|}");
 	createPage(loc, formattedRedirects, "Updated the list of redirects.");
@@ -961,13 +961,13 @@ function getNumberOfUsersWhoMadeEdits() {
 		return;
 	}
 	$.ajax({
-		url: 'https://wiki.factorio.com/api.php',
+		url: apiUrl,
 		data: {
 			format: 'json',
 			action: 'query',
 			list: 'allusers',
 			aulimit: 5000,
-            auwitheditsonly: true
+			auwitheditsonly: true
 		},
 		async: false,
 		dataType: 'json',

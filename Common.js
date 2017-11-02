@@ -353,12 +353,12 @@ function createWantedPagesPage(location, wantedPages, language) {
 					}
 				});
 			}
-			formattedWantedPages = formattedWantedPages.concat("\n|-\n|" + (i + 1) + "\n|[https://wiki.factorio.com/index.php?title=" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].title + "]\n|[https://wiki.factorio.com/index.php?title=Special:WhatLinksHere/" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].value + "]\n|[https://wiki.factorio.com/index.php?title=" + encodeURI(enPageTitle) + " " + length + "]");
+			formattedWantedPages = formattedWantedPages.concat("\n|-\n|" + (i + 1) + "\n|[" + mw.config.get('wgServer') + "/index.php?title=" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].title + "]\n|[" + mw.config.get('wgServer') + "/index.php?title=Special:WhatLinksHere/" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].value + "]\n|[" + mw.config.get('wgServer') + "/index.php?title=" + encodeURI(enPageTitle) + " " + length + "]");
 		}
 	} else {
 		var formattedWantedPages = "Number of wanted pages in " + language + ": " + wantedPages.length + "\n{|class=wikitable\n!#\n!Page\n!Links to this page";
 		for (var i = 0; i < wantedPages.length; i++) {    
-			formattedWantedPages = formattedWantedPages.concat("\n|-\n|" + (i + 1) + "\n|[https://wiki.factorio.com/index.php?title=" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].title + "]\n|[https://wiki.factorio.com/index.php?title=Special:WhatLinksHere/" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].value + "]");
+			formattedWantedPages = formattedWantedPages.concat("\n|-\n|" + (i + 1) + "\n|[" + mw.config.get('wgServer') + "/index.php?title=" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].title + "]\n|[" + mw.config.get('wgServer') + "/index.php?title=Special:WhatLinksHere/" + encodeURI(wantedPages[i].title) + " " + wantedPages[i].value + "]");
 		}
 	}
 	formattedWantedPages = formattedWantedPages.concat("\n|}");
