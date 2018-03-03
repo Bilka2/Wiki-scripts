@@ -37,6 +37,17 @@ $(".more-button").click(function() {
   $(".more-content").toggle("fast");
 });
 
+/* Template:BlueprintString */
+
+$(".bps-box").click(function(event) {
+	var copyTarget = document.createElement("input");
+	copyTarget.setAttribute("value", $( event.target ).children("p").html());
+	document.body.appendChild(copyTarget);
+	copyTarget.select();
+	document.execCommand("copy");
+	document.body.removeChild(copyTarget);
+});
+
 /* Template:Inventory */
 
 $(".tab-head-1").click(function() {
@@ -137,6 +148,7 @@ function createWantedPagesLists() {
     getUserGroup();
     if (userGroup.some(isBot) == false) return;
     enPageLength = {};
+	console.log("Getting wantedPages...");
     var wantedPages = getWantedPages();
     console.log("Got wantedPages.");
     //wantedPages = filterWantedPages(wantedPages); //takes a lot of api requests, not worth it atm 
@@ -186,7 +198,7 @@ function getWantedPages() {
 			list: 'querypage',
 			qppage: 'Wantedpages',
 			qplimit: '5000',
-			qpoffset: '3000',
+			qpoffset: '4000',
 		},
 		async: false,
 		dataType: 'json',
@@ -204,7 +216,37 @@ function getWantedPages() {
 			}
 		},
 		error: function( xhr ) {
-			alert( 'Error: Request failed. Wantedpages' );
+		alert( 'Error: Request failed. Wantedpages' );
+		}
+	});
+	
+	$.ajax({
+		url: apiUrl,
+		data: {
+			format: 'json',
+			action: 'query',
+			list: 'querypage',
+			qppage: 'Wantedpages',
+			qplimit: '5000',
+			qpoffset: '8000',
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var results = data.query.querypage.results;
+			iloop3: for (var i = 0; i < results.length; i++) {
+				var pageObject = new WantedPage(results[i].title, results[i].value);
+				for (var j = 0; j < wantedPages.length; j++) {
+					if (wantedPages[j].title == pageObject.title) {
+						continue iloop3; //don't put page into array
+					}
+				}
+				wantedPages.push(pageObject);
+			}
+		},
+		error: function( xhr ) {
+		alert( 'Error: Request failed. Wantedpages' );
 		}
 	});
 	return wantedPages;
@@ -257,13 +299,14 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 	var turkishWantedPages = [];
 	var koreanWantedPages = [];
 	var malayanWantedPages = [];
+	var danishWantedPages = [];
 	var wantedFiles = [];
 	var wantedFileTalk = [];
 	var wantedTemplates = [];
 	var otherWantedPages = [];
 
 	for (var i = 0; i < wantedPages.length; i++) {
-		switch (wantedPages[i].title.slice(-3)) {//"/cs", "/de", "/es", "/fr", "/it", "/ja", "/nl", "/pl", "/-br", "/ru", "/sv", "/uk", "/zh", "/tr", "/ko", "/ms"
+		switch (wantedPages[i].title.slice(-3)) {//"/cs", "/de", "/es", "/fr", "/it", "/ja", "/nl", "/pl", "/-br", "/ru", "/sv", "/uk", "/zh", "/tr", "/ko", "/ms", "/da"
 			case "/cs": czechWantedPages.push(wantedPages[i]); break;
 			case "/de": germanWantedPages.push(wantedPages[i]); break;
 			case "/es": spanishWantedPages.push(wantedPages[i]); break;
@@ -280,6 +323,7 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 			case "/tr": turkishWantedPages.push(wantedPages[i]); break;
 			case "/ko": koreanWantedPages.push(wantedPages[i]); break;
 			case "/ms": malayanWantedPages.push(wantedPages[i]); break;
+			case "/da": danishWantedPages.push(wantedPages[i]); break;
 			default: if (wantedPages[i].title.slice(0, 5) == "File:") {wantedFiles.push(wantedPages[i])} else if (wantedPages[i].title.slice(0, 9) == "Template:") {wantedTemplates.push(wantedPages[i])} else if (wantedPages[i].title.slice(0, 10) == "File talk:") {wantedFileTalk.push(wantedPages[i])} else {otherWantedPages.push(wantedPages[i])}; break;
 		}
 	}
@@ -303,6 +347,7 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 	createWantedPagesPage("tr", turkishWantedPages, "Turkish");
 	createWantedPagesPage("ko", koreanWantedPages, "Korean");
 	createWantedPagesPage("ms", malayanWantedPages, "Malay");
+	createWantedPagesPage("da", danishWantedPages, "Danish");
 
 	createWantedPagesPage("file", wantedFiles, "Files");
 	createWantedPagesPage("file_talk", wantedFileTalk, "File talk");
@@ -311,15 +356,17 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 }
 
 function createWantedPagesPage(location, wantedPages, language) {
-	var languageSuffixes = ["cs", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-br", "ru", "sv", "uk", "zh", "tr", "ko", "ms"]
+	var languageSuffixes = ["cs", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-br", "ru", "sv", "uk", "zh", "tr", "ko", "ms", "da"]
 	if (languageSuffixes.indexOf(location) > -1) {
 		var formattedWantedPages = "Number of wanted pages in " + language + ": " + wantedPages.length + "\n{|class=wikitable\n!#\n!Page\n!Links to this page\n!Length of the corresponding English page in bytes";
 		for (var i = 0; i < wantedPages.length; i++) {
 			//I don't dare to make this into a function because I don't want this to be async so lets put a whole api request in here lul
 			var enPageTitle = wantedPages[i].title.slice(0, - location.length - 1)
 			var length = 0;
-			if (enPageLength[enPageTitle]) {
-				length = enPageLength[enPageTitle]
+			if (enPageTitle == "") {
+				length = '---';
+			} else if (enPageLength[enPageTitle]) {
+				length = enPageLength[enPageTitle];
 			} else {
 				$.ajax({
 					url: apiUrl,
