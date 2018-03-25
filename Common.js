@@ -30,11 +30,30 @@ function getNumberOfActiveUsers() {
 	}
 };
 
+/* Template:Inventory tooltips */
 
-/* Infobox more info in header */
+var lastTouchTime = 0;
+document.addEventListener('touchstart', updateLastTouchTime, true);
+function updateLastTouchTime() {
+  lastTouchTime = new Date();
+}
 
-$(".more-button").click(function() {
-  $(".more-content").toggle("fast");
+$(".tab-head").mousemove(function(e) {
+  if (e.buttons > 0) return;
+  if (new Date() - lastTouchTime < 500) return;
+  var countCssRules = document.styleSheets[0].cssRules.length;
+  var newRule = '.tab-head:hover:after{display: block; left: ' + (e.offsetX + 20) + 'px; top: ' + (e.offsetY + 20) + 'px;}';
+  document.styleSheets[0].insertRule(newRule, countCssRules);
+});
+
+$(".tab .factorio-icon").mousemove(function(e) {
+  if (e.buttons > 0) return;
+  if (new Date() - lastTouchTime < 500) return;
+  var countCssRules = document.styleSheets[0].cssRules.length;
+  $(e.currentTarget).children("a").attr("title", "");
+  var text = $(e.currentTarget).children("a").children("img").attr("alt");
+  var newRule = '.tab .factorio-icon:hover:after{display: block; ' + "content: '" + text + "'}";
+  document.styleSheets[0].insertRule(newRule, countCssRules);
 });
 
 /* Template:BlueprintString */
@@ -300,13 +319,14 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 	var koreanWantedPages = [];
 	var malayanWantedPages = [];
 	var danishWantedPages = [];
+	var hungarianWantedPages = [];
 	var wantedFiles = [];
 	var wantedFileTalk = [];
 	var wantedTemplates = [];
 	var otherWantedPages = [];
 
 	for (var i = 0; i < wantedPages.length; i++) {
-		switch (wantedPages[i].title.slice(-3)) {//"/cs", "/de", "/es", "/fr", "/it", "/ja", "/nl", "/pl", "/-br", "/ru", "/sv", "/uk", "/zh", "/tr", "/ko", "/ms", "/da"
+		switch (wantedPages[i].title.slice(-3)) {//"/cs", "/de", "/es", "/fr", "/it", "/ja", "/nl", "/pl", "/-br", "/ru", "/sv", "/uk", "/zh", "/tr", "/ko", "/ms", "/da", "/hu"
 			case "/cs": czechWantedPages.push(wantedPages[i]); break;
 			case "/de": germanWantedPages.push(wantedPages[i]); break;
 			case "/es": spanishWantedPages.push(wantedPages[i]); break;
@@ -324,6 +344,7 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 			case "/ko": koreanWantedPages.push(wantedPages[i]); break;
 			case "/ms": malayanWantedPages.push(wantedPages[i]); break;
 			case "/da": danishWantedPages.push(wantedPages[i]); break;
+			case "/hu": hungarianWantedPages.push(wantedPages[i]); break;
 			default: if (wantedPages[i].title.slice(0, 5) == "File:") {wantedFiles.push(wantedPages[i])} else if (wantedPages[i].title.slice(0, 9) == "Template:") {wantedTemplates.push(wantedPages[i])} else if (wantedPages[i].title.slice(0, 10) == "File talk:") {wantedFileTalk.push(wantedPages[i])} else {otherWantedPages.push(wantedPages[i])}; break;
 		}
 	}
@@ -348,6 +369,7 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 	createWantedPagesPage("ko", koreanWantedPages, "Korean");
 	createWantedPagesPage("ms", malayanWantedPages, "Malay");
 	createWantedPagesPage("da", danishWantedPages, "Danish");
+	createWantedPagesPage("hu", hungarianWantedPages, "Hungarian");
 
 	createWantedPagesPage("file", wantedFiles, "Files");
 	createWantedPagesPage("file_talk", wantedFileTalk, "File talk");
@@ -356,7 +378,7 @@ function splitWantedPagesIntoDifferentLanguages(wantedPages) {
 }
 
 function createWantedPagesPage(location, wantedPages, language) {
-	var languageSuffixes = ["cs", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-br", "ru", "sv", "uk", "zh", "tr", "ko", "ms", "da"]
+	var languageSuffixes = ["cs", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-br", "ru", "sv", "uk", "zh", "tr", "ko", "ms", "da", "hu"]
 	if (languageSuffixes.indexOf(location) > -1) {
 		var formattedWantedPages = "Number of wanted pages in " + language + ": " + wantedPages.length + "\n{|class=wikitable\n!#\n!Page\n!Links to this page\n!Length of the corresponding English page in bytes";
 		for (var i = 0; i < wantedPages.length; i++) {
@@ -429,6 +451,7 @@ function WantedPage(pageTitle, pageValue) {
 	this.title = pageTitle;
 	this.value = pageValue;
 }
+
 
 //* General/generic functions *//
 
