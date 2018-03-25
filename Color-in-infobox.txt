@@ -1,0 +1,85 @@
+This is a test wiki. Things may break at any time. Don't use this, use [https://wiki.factorio.com wiki.factorio.com] instead. kthxbye
+
+body { transform: rotate(-0.7deg);}
+
+
+<div style="background-color:#{{{1}}}; height:16px; width:16px;display: inline-block; margin-right: 2px; margin-bottom: -3px;"></div>
+<noinclude>{{Color|ffff00}}</noinclude>
+
+
+{{Infobox/row  |Map color                    |{{{map-color|}}}                    |{{Color|{{{map-color|}}}}} }}
+
+* <span id="EntityMapColorUpdate" style="cursor: pointer;">Update entity map colors (wiki-entities-mapcolor-0.x.x.txt)</span>
+
+
+$("#EntityMapColorUpdate").click(function(){
+    getEntityMapColor();
+});
+
+function getEntityMapColor() {
+	getUserGroup();
+	if (userGroup.some(isBot) == false) return;
+	var entityInput = prompt("Please enter the entity map colors.");
+	if (entityInput != null) {
+		getToken();
+		var entities = entityInput.split(/\s\s/g);
+		console.log(entities.length + " entities detected");
+		entities.forEach(updateEntityMapColorInInfobox);
+	}
+}
+
+function updateEntityMapColorInInfobox(entity) {
+	var entityNameEnd = entity.search("\\|");
+	var entityName = entity.slice(0, entityNameEnd).trim();
+	
+	var para = getInputPara(entity, "\\|map-color = ", 13, "map-color", entityName).trim();
+	
+	//get page content of the tech -> oldContent
+	var oldContent = "";
+	$.ajax({
+		url: apiUrl,
+		data: {
+			format: 'json',
+			action: 'query',
+			titles: 'Infobox:' + entityName,
+			prop: 'revisions',
+			rvprop: 'content'
+		},
+		async: false,
+		dataType: 'json',
+		type: 'GET',
+		success: function( data ) {
+			var pages = data.query.pages;
+			if (!pages[Object.keys(pages)[0]].revisions) {
+				console.log("No " + entityName + " page found.");
+				oldContent = "";
+				return;
+			}
+			var revisions = pages[Object.keys(pages)[0]].revisions[0];
+			oldContent = revisions[Object.keys(revisions)[2]];
+		},
+		error: function( xhr ) {
+			alert( 'Error: Request failed.' );
+			oldContent = "";
+		}
+	});
+	if (oldContent.length = 0) {
+		console.log("No " + entityName + " page found.");
+		return;
+	}
+	
+	var pageParaStart = oldContent.search(/(\s|\|)map-color/) + 10;
+	var pagePara = getOldPara(oldContent, pageParaStart, 10, "map-color", entityName).trim();
+	
+	summary = "";
+	newContent = "";
+	if (pagePara == para) {
+		console.log(entityName + " page was not changed.")
+	} else {
+		newContent = oldContent;
+		var newEntityHealthStart = newContent.search(/(\s|\|)map-color/) + 10;
+		updatePara(newContent, para, pagePara, "map-color", newEntityHealthStart, 10, entityName);
+		editPage("Infobox:" + entityName, entityName);
+	}
+}
+
