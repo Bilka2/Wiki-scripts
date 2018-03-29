@@ -20,26 +20,24 @@ var languages = [
 ];
 
 function main(languages) {
-	var englishPages = getCategorymembers('Category:English page');
-	var englishPagesRevisions = getPageRevisions(englishPages, false);
+	var englishPagesRevisions = getPageRevisions(getCategorymembers('Category:English page'), false);
 	var langPages = {};
-	for (var i = 0; i < languages.length; i++) {
-		var pages = getCategorymembers('Category:' + languages[i].name + ' page');
-		var pagesRevisions = getPageRevisions(langPages, true);
-		langPages[languages[i].suffix] = {pages: pages, pagesRevisions: pagesRevisions, name: languages[i].name};
+	for (var i = 0; i < /*languages.length*/ 1 ; i++) {
+		var pagesRevisions = getPageRevisions(getCategorymembers('Category:' + languages[i].name + ' page'), true);
+		langPages[languages[i].suffix] = {pagesRevisions: pagesRevisions, name: languages[i].name};
 	}
-	for (var key in langPages) {
-		if (!langPages.hasOwnProperty(key)) continue;
-		var value = langPages[key];
-		//here
+	for (var suffix in langPages) {
+		if (!langPages.hasOwnProperty(suffix)) continue;
+		var value = langPages[suffix];
+		var langPageRevisionsList = value.pagesRevisions;
+		for (var langPageName in langPageRevisionsList) {
+			if (!langPageRevisionsList.hasOwnProperty(langPageName)) continue;
+			var langPageRevisions = langPageRevisionsList[langPageName];
+			isLangPageOutdated(langPageRevisions, suffix, englishPagesRevisions);
+			//put in array/object
+			//print outdated pages
+		}
 	}
-};
-
-function test() {
-	var englishPages = getCategorymembers('Category:English page');
-	var englishPagesRevisions = getPageRevisions(englishPages, false);
-	console.log(englishPages);
-	console.log(englishPagesRevisions);
 };
 
 function getCategorymembers(category) {
@@ -72,11 +70,16 @@ function getCategorymembers(category) {
 };
 
 function getPageRevisions(array, removeRevisionsByBilka) {
-	var pageRevisions = staggerGetPageRevisionsByPages(array); //We timeout or something if we query too many pages
+	var pageRevisionsList = staggerGetPageRevisionsByPages(array); //We timeout or something if we query too many pages
 	if (removeRevisionsByBilka) {
-		for (var i = 0; i < pageRevisions.length; i++) pageRevisions[i] = getLatestRevisionNotByBilka(pageRevisions[i]);
+		for (var i = 0; i < pageRevisionsList.length; i++) pageRevisionsList[i] = getLatestRevisionNotByBilka(pageRevisionsList[i]);
 	}
-	return pageRevisions;
+	//turn array into object indexed by page name to make it easier to find the properties of a page
+	var pageRevisionsObject = {};
+	pageRevisionsList.forEach(function(pageRevisions) {
+		pageRevisionsObject[pageRevisions.title] = pageRevisions;
+	});
+	return pageRevisionsObject;
 };
 
 function staggerGetPageRevisionsByPages(array) {
@@ -129,6 +132,7 @@ function getLatestRevisionNotByBilka(pageRevisions) {
 };
 
 function getPageRevisionsByRevID(revid) {
+	var pageRevisions;
 	$.ajax({
 		url: apiUrl,
 		data: {
@@ -144,13 +148,35 @@ function getPageRevisionsByRevID(revid) {
 		success: function( data ) {
 			var pages = data.query.pages;
 			var pageInfo = pages[Object.keys(pages)[0]];
-			var pageRevisions = pageRevisionsFromAPIResponse(pageInfo);
-			return pageRevisions;
+			pageRevisions = pageRevisionsFromAPIResponse(pageInfo);
 		},
 		error: function( xhr ) {
 			alert( 'Error: Request failed.' );
 		}
 	});
+	return pageRevisions;
+};
+
+function isLangPageOutdated(langPageRevisions, suffix, englishPagesRevisions) {
+	var langTimestamp = langPageRevisions.timestamp;
+	var en = getEnglishPageRevisions(langPageRevisions.title, suffix, englishPagesRevisions);
+	if (!en) {
+		console.log('No page ' + getEnglishPageName(langPageRevisions.title, suffix))
+		return true; // Outdated	
+	}
+	/*console.log('en: ' + en.timestamp + ', ' + suffix + ': ' + langTimestamp);
+	if (en.timestamp < langTimestamp) console.log('en.timestamp < langTimestamp ' + langPageRevisions.title);
+	if (en.timestamp > langTimestamp) console.log('en.timestamp > langTimestamp ' + langPageRevisions.title);*/
+	if (en.timestamp > langTimestamp) return true;
+	return false;
+};
+
+function getEnglishPageRevisions(langPageName, suffix, englishPagesRevisions) {
+	return englishPagesRevisions[getEnglishPageName(langPageName, suffix)];
+};
+
+function getEnglishPageName(langPageName, suffix) {
+	return langPageName.slice(0, - suffix.length - 1);
 };
 
 function pageRevisionsFromAPIResponse(page) {
