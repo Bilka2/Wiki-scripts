@@ -20,6 +20,7 @@ var languages = [
 ];
 
 function main(languages) {
+	// Gets all revision data
 	var englishPagesRevisions = getPageRevisions(getCategorymembers('Category:English page'), false);
 	var langPages = {};
 	for (var i = 0; i < languages.length ; i++) {
@@ -27,6 +28,7 @@ function main(languages) {
 		var pagesRevisions = getPageRevisions(pages, true);
 		langPages[languages[i].suffix] = {pagesRevisions: pagesRevisions, name: languages[i].name, overallPages: pages};
 	}
+	// Gets what's outdated
 	for (var suffix in langPages) {
 		if (!langPages.hasOwnProperty(suffix)) continue;
 		var value = langPages[suffix];
@@ -40,6 +42,7 @@ function main(languages) {
 		}
 		langPages[suffix].outdatedPages = outdatedPages;
 	}
+	// Outputs it
 	var output = '';
 	for (var suffix in langPages) {
 		if (!langPages.hasOwnProperty(suffix)) continue;
@@ -91,11 +94,11 @@ function getCategorymembers(category) {
 };
 
 function getPageRevisions(array, removeRevisionsByBilka) {
-	var pageRevisionsList = staggerGetPageRevisionsByPages(array); //We timeout or something if we query too many pages
-	if (removeRevisionsByBilka)
+	var pageRevisionsList = staggerGetPageRevisionsByPages(array);
+	if (removeRevisionsByBilka)  // Ignore revisons by Bilka/BilakBot (on translated pages)
 		for (var i = 0; i < pageRevisionsList.length; i++)
 			pageRevisionsList[i] = getLatestRevisionNotByBilka(pageRevisionsList[i]);
-	//turn array into object indexed by page name to make it easier to find the properties of a page
+	// Turn array into object indexed by page name to make it easier to find the properties of a page
 	var pageRevisionsObject = {};
 	pageRevisionsList.forEach(function(pageRevisions) {
 		pageRevisionsObject[pageRevisions.title] = pageRevisions;
@@ -103,6 +106,7 @@ function getPageRevisions(array, removeRevisionsByBilka) {
 	return pageRevisionsObject;
 };
 
+ // We timeout or something if we query too many pages at once
 function staggerGetPageRevisionsByPages(array) {
 	var resultArray = [];
 	for (var i = 0; i < array.length; i += 100) {
@@ -144,6 +148,7 @@ function getPageRevisionsByPages(pages) {
 	return array;
 };
 
+// Return first revison found not by Bilka/BilkaBot, if none found return the revision that created the page, regardless of user 
 function getLatestRevisionNotByBilka(pageRevisions) {
 	var revisions = pageRevisions;
 	while (revisions.user.includes("Bilka") && revisions.parentid != 0) {
@@ -178,15 +183,13 @@ function getPageRevisionsByRevID(revid) {
 	return pageRevisions;
 };
 
+// Translated page edited after English page was edited
 function isLangPageOutdated(langPageRevisions, suffix, englishPagesRevisions) {
 	var langTimestamp = langPageRevisions.timestamp;
 	var en = getEnglishPageRevisions(langPageRevisions.title, suffix, englishPagesRevisions);
-	if (!en) return true; // Outdated	
-	/*console.log('en: ' + en.timestamp + ', ' + suffix + ': ' + langTimestamp);
-	if (en.timestamp < langTimestamp) console.log('en.timestamp < langTimestamp ' + langPageRevisions.title);
-	if (en.timestamp > langTimestamp) console.log('en.timestamp > langTimestamp ' + langPageRevisions.title);*/
-	if (en.timestamp > langTimestamp) return true;
-	return false;
+	if (!en) return true; // No English page -> outdated
+	if (en.timestamp > langTimestamp) return true; // Outdated
+	return false; // Up to date
 };
 
 function getEnglishPageRevisions(langPageName, suffix, englishPagesRevisions) {
@@ -217,11 +220,11 @@ function readableDate(datestring) {
 	return date.toLocaleTimeString('en-us', options);
 };
 
-function comparePageRevisions(a,b) {
+function comparePageRevisions(a,b) { // Oldest first
 	if (parseInt(a.timestamp) > parseInt(b.timestamp))
-		return -1;
-	if (parseInt(a.timestamp) < parseInt(b.timestamp))
 		return 1;
+	if (parseInt(a.timestamp) < parseInt(b.timestamp))
+		return -1;
 	if (a.title < b.title)
 		return -1;
 	if (a.title > b.title)
