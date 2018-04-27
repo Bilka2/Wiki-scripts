@@ -48,7 +48,7 @@ with open(file_name, newline='') as csvfile:
 	reader = csv.reader(csvfile)
 	rows = list(reader)
 	#page header
-	content += 'Total number of views in the last week: ' + rows[total_views_row][1] + ' (' + rows[total_views_row][2] + ' unique)\n{|class=wikitable\n!#\n!Page\n!Number of views(unique)'
+	content += 'Total number of views in the last week: ' + rows[total_views_row][1] + ' (' + rows[total_views_row][2] + ' unique)\n{|class=wikitable\n!#\n!Page\n!Number of views (unique)'
 	#add together the two main pages ('/' and 'Main_Page')
 	main_views = 0
 	main_uniques = 0
