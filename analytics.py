@@ -41,12 +41,14 @@ edit_token = session.get(api_url, params={
 
 #read csv file
 page_data_start = 7
-number_of_pages = 20
+number_of_pages = 25
+total_views_row = page_data_start + number_of_pages
+wanted_number_of_pages = 20 #has to be < number_of_pages
 with open(file_name, newline='') as csvfile:
 	reader = csv.reader(csvfile)
 	rows = list(reader)
 	#page header
-	content += 'Total number of views: ' + rows[107][1] + ' (' + rows[107][2] + ' unique)\n{|class=wikitable\n!#\n!Page\n!Number of views(unique)'
+	content += 'Total number of views in the last week: ' + rows[total_views_row][1] + ' (' + rows[total_views_row][2] + ' unique)\n{|class=wikitable\n!#\n!Page\n!Number of views(unique)'
 	#add together the two main pages ('/' and 'Main_Page')
 	main_views = 0
 	main_uniques = 0
@@ -65,18 +67,19 @@ with open(file_name, newline='') as csvfile:
 	for row in rows[page_data_start:(number_of_pages + page_data_start)]:
 		row[1] = int(row[1].replace(',', ''))
 	sorted_rows = sorted(rows[page_data_start:(number_of_pages + page_data_start)], key=itemgetter(1), reverse=True)
+	#only use the wanted number of pages
+	sorted_rows = sorted_rows[0:wanted_number_of_pages]
 	#turn into wikitable
 	n = 1
-	for i in range(0, number_of_pages):
-		title = sorted_rows[i][0].replace('/', '', 1)
-		views = str(sorted_rows[i][1]).replace(',', '')
-		uniques = sorted_rows[i][2].replace(',', '')
+	for row in sorted_rows:
+		title = row[0].replace('/', '', 1)
+		views = str(row[1])
+		uniques = row[2].replace(',', '')
 		if title == '':
 			continue
 		content += '\n|-\n|' + str(n) + '\n|[[' + title + ']]\n|' + views + ' (' + uniques + ')'
 		n += 1
 	content += '\n|}'
-csvfile.closed
 
 #edit page
 edit_response = session.post(api_url, data={
