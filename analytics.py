@@ -6,8 +6,8 @@ from operator import itemgetter, attrgetter
 file_name = 'analytics.csv'
 username = 'BilkaBot'
 password = getpass('Password for ' + username)
-api_url = 'https://testing-wiki.factorio.com/api.php'
-page = 'User:Bilka/Top_pages'
+api_url = 'https://wiki.factorio.com/api.php'
+page = 'Factorio:Top_pages'
 content = ''
 
 session = requests.Session()
@@ -43,7 +43,7 @@ edit_token = session.get(api_url, params={
 page_data_start = 7
 number_of_pages = 25
 total_views_row = page_data_start + number_of_pages
-wanted_number_of_pages = 20 #has to be < number_of_pages
+wanted_number_of_pages = 21 #has to be < number_of_pages
 with open(file_name, newline='') as csvfile:
 	reader = csv.reader(csvfile)
 	rows = list(reader)
@@ -89,6 +89,7 @@ edit_response = session.post(api_url, data={
     'text': content,
     'summary': 'Updated top pages',
     'title': page,
+	'bot': True,
     'token': edit_token.json()['query']['tokens']['csrftoken'],
 })
 
