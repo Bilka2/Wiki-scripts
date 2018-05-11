@@ -1,48 +1,16 @@
 import requests
 import csv
-import json
-import base64
 from operator import itemgetter, attrgetter
 import os.path
+from util import get_edit_token, api_url
+
+page = 'Factorio:Top_pages'
+file_name = 'analytics.csv'
 
 def main():
-  with open(os.path.dirname(__file__) + '/bot-credentials.json', 'r') as f:
-    credentials = json.load(f)
-  
-  file_name = 'analytics.csv'
-  username = credentials['username']
-  password = base64.b64decode(credentials['password']).decode('utf-8')
-  api_url = 'https://wiki.factorio.com/api.php'
-  page = 'Factorio:Top_pages'
-  
+  #log into wiki, get token
   session = requests.Session()
-  
-  #get login token
-  login_token = session.get(api_url, params={
-    'format': 'json',
-    'action': 'query',
-    'meta': 'tokens',
-    'type': 'login',
-  })
-  login_token.raise_for_status()
-  
-  #log in
-  login = session.post(api_url, data={
-    'format': 'json',
-    'action': 'login',
-    'lgname': username,
-    'lgpassword': password,
-    'lgtoken': login_token.json()['query']['tokens']['logintoken'],
-  })
-  if login.json()['login']['result'] != 'Success':
-    raise RuntimeError(login.json()['login']['reason'])
-  
-  #get edit token
-  edit_token = session.get(api_url, params={
-    'format': 'json',
-    'action': 'query',
-    'meta': 'tokens',
-  })
+  edit_token = get_edit_token(session)
   
   #read csv file
   with open(os.path.dirname(__file__) + '/' + file_name, newline='') as csvfile:
@@ -99,7 +67,7 @@ def main():
     'summary': 'Updated top pages',
     'title': page,
     'bot': True,
-    'token': edit_token.json()['query']['tokens']['csrftoken'],
+    'token': edit_token,
   })
   
   return edit_response.text
