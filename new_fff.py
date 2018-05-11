@@ -36,7 +36,14 @@ def main():
   edit_token = get_edit_token(session)
   
   #get target page
-  page_info = session.get(api_url, params={    'format': 'json',    'action': 'query',    'assert': 'user',    'titles': page_name,    'prop': 'revisions',    'rvprop': 'content'  })
+  page_info = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'titles': page_name,
+    'prop': 'revisions',
+    'rvprop': 'content'
+  })
   page = page_info.json()['query']['pages']
   revisions = list(page.values())[0]['revisions'][0]
   content = list(revisions.values())[2]
