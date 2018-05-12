@@ -87,7 +87,7 @@ def main():
   #everything back into orig array
   for section in sections:
     if section['title'] == 'Latest':
-      section['content'] = latest_news
+      section['content'] = new_news
     elif section['title'] == 'Archive':
       section['content'] = archive_joined
   
