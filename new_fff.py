@@ -25,18 +25,16 @@ def turn_page_into_sections(content, depth):
   return sections
 
 def main():
-  #fff info
   feed = feedparser.parse('https://www.factorio.com/blog/rss')
   title = feed.entries[0].title.replace(re.search('Friday Facts #\d+ - ', feed.entries[0].title).group(), '') #without {Friday Facts #241 - } etc
   number = re.search('#\d+', feed.entries[0].title).group().replace('#', '') #string
   release_time = time.strftime("%b %d", feed.entries[0].updated_parsed) #string
+  news_line = '* {0} FFF #{1}: [https://www.factorio.com/blog/post/fff-{1} {2}]\n'.format(release_time, number, title) #line that ends up on page
 
-  #log into wiki, get token
   session = requests.Session()
   edit_token = get_edit_token(session)
   
-  #get target page
-  page_info = session.get(api_url, params={
+  page_info = session.get(api_url, params={ #target page
     'format': 'json',
     'action': 'query',
     'assert': 'user',
@@ -48,6 +46,9 @@ def main():
   revisions = list(page.values())[0]['revisions'][0]
   content = list(revisions.values())[2]
   
+  if content.find(news_line) > -1:
+    return 'FFF already found on page. Aborting.'
+  
   sections = turn_page_into_sections(content, 2)
   
   for section in sections:
@@ -58,7 +59,6 @@ def main():
   
   #add new fff
   news_list_start = re.search('<div style=\"column-count:2;-moz-column-count:2;-webkit-column-count:2\">\n\* \w\w\w', latest_news).end() - 5
-  news_line = '* {0} FFF #{1}: [https://www.factorio.com/blog/post/fff-{1} {2}]\n'.format(release_time, number, title)
   new_news = latest_news[:news_list_start] + news_line + latest_news[news_list_start:]
   
   #remove oldest fff
@@ -67,7 +67,6 @@ def main():
   
   #add oldest fff to archive_section
   old_month = month_abbr_to_month_name(re.search('\* \w\w\w', old_fff).group().replace('* ', ''))
-  
   found_section = False
   for section in archive_sections:
     if section['title'] == old_month:
@@ -77,26 +76,22 @@ def main():
   
   if found_section == False:
     archive_sections[0]['content'] += '\n==== ' + old_month + ' ====\n\n' + old_fff + '\n'
-    
-  #join everything back into one
-  #archive sections first
+  
+  #final content
   archive_joined = ''
   for section in archive_sections:
     archive_joined += section['content']
   
-  #everything back into orig array
   for section in sections:
     if section['title'] == 'Latest':
       section['content'] = new_news
     elif section['title'] == 'Archive':
       section['content'] = archive_joined
   
-  #and join that
   end_content = ''
   for section in sections:
     end_content += section['content']
   
-  #edit page
   edit_response = session.post(api_url, data={
     'format': 'json',
     'action': 'edit',

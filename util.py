@@ -11,7 +11,6 @@ password = base64.b64decode(credentials['password']).decode('utf-8')
 api_url = 'https://wiki.factorio.com/api.php'
 
 def get_edit_token(session):
-  #get login token
   login_token = session.get(api_url, params={
     'format': 'json',
     'action': 'query',
@@ -20,7 +19,6 @@ def get_edit_token(session):
   })
   login_token.raise_for_status()
   
-  #log in
   login = session.post(api_url, data={
     'format': 'json',
     'action': 'login',
@@ -31,7 +29,6 @@ def get_edit_token(session):
   if login.json()['login']['result'] != 'Success':
     raise RuntimeError(login.json()['login']['reason'])
   
-  #get edit token
   edit_token = session.get(api_url, params={
     'format': 'json',
     'action': 'query',

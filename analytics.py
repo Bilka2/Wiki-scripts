@@ -8,11 +8,9 @@ page = 'Factorio:Top_pages'
 file_name = 'analytics.csv'
 
 def main():
-  #log into wiki, get token
   session = requests.Session()
   edit_token = get_edit_token(session)
   
-  #read csv file
   with open(os.path.dirname(__file__) + '/' + file_name, newline='') as csvfile:
     reader = csv.reader(csvfile)
     rows = list(reader)
@@ -23,7 +21,6 @@ def main():
   total_views_row = page_data_start + number_of_pages
   wanted_number_of_pages = 21 #has to be < number_of_pages
   
-  #page header
   content = 'Total number of views in the last week: ' + rows[total_views_row][1] + ' (' + rows[total_views_row][2] + ' unique)\n{|class=wikitable\n!#\n!Page\n!Number of views (unique)'
   #add together the two main pages ('/' and 'Main_Page')
   main_views = 0
@@ -39,14 +36,12 @@ def main():
       rows[y][1] = str(int(rows[y][1].replace(',', '')) + main_views)
       rows[y][2] = str(int(rows[y][2].replace(',', '')) + main_uniques)
   
-  #sort
-  for row in rows[page_data_start:(number_of_pages + page_data_start)]:
+  for row in rows[page_data_start:(number_of_pages + page_data_start)]: #make sortable
     row[1] = int(row[1].replace(',', ''))
   sorted_rows = sorted(rows[page_data_start:(number_of_pages + page_data_start)], key=itemgetter(1), reverse=True)
-  #only use the wanted number of pages
+
   sorted_rows = sorted_rows[0:wanted_number_of_pages]
   
-  #turn into wikitable
   n = 1
   for row in sorted_rows:
     title = row[0].replace('/', '', 1)
@@ -54,11 +49,10 @@ def main():
     uniques = row[2].replace(',', '')
     if title == '':
       continue
-    content += '\n|-\n|' + str(n) + '\n|[[' + title + ']]\n|' + views + ' (' + uniques + ')'
+    content += '\n|-\n|' + str(n) + '\n|[[' + title + ']]\n|' + views + ' (' + uniques + ')'  #wikitable row
     n += 1
   content += '\n|}'
   
-  #edit page
   edit_response = session.post(api_url, data={
     'format': 'json',
     'action': 'edit',
