@@ -1,0 +1,8 @@
+Sprite pipeStraightVerticalSingle, pipeStraightVertical, pipeStraightVerticalWindow, pipeStraightHorizontal, pipeStraightHorizontalWindow;
+Sprite pipeCornerUpRight, pipeCornerUpLeft, pipeCornerDownRight, pipeCornerDownLeft;
+Sprite pipeTUp, pipeTDown, pipeTRight, pipeTLeft;
+Sprite pipeCross;
+Sprite pipeEndingUp, pipeEndingDown, pipeEndingRight, pipeEndingLeft;
+Sprite horizontalWindowBackground, verticalWindowBackground, fluidBackground;
+Sprite lowTemperatureFlow, middleTemperatureFlow, highTemperatureFlow;
+Animation gasFlow;
