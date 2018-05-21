@@ -46,7 +46,7 @@ def main():
   revisions = list(page.values())[0]['revisions'][0]
   content = list(revisions.values())[2]
   
-  if content.find(news_line) > -1:
+  if news_line in content:
     return 'FFF already found on page. Aborting.'
   
   sections = turn_page_into_sections(content, 2)
