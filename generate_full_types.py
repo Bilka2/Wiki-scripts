@@ -1,12 +1,13 @@
 import re
 
+path_to_source = 'C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\'
+path_to_prototypes = 'src\\Entity\\'
 prototype_name = input('prototype_name ')
 
-with open('C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\src\\Entity\\' + prototype_name + 'Prototype.hpp', 'r') as f:
+with open(path_to_source + path_to_prototypes + prototype_name + 'Prototype.hpp', 'r', encoding="utf8") as f:
   hpp = list(f)
 
 name_to_type = {}
-
 for line in hpp:
   type = re.search('^(\s\s)?\S+\s', line)
   if not type:
@@ -18,7 +19,7 @@ for line in hpp:
   for name in name_list:
     name_to_type[name] = type
 
-with open('C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\src\\Entity\\' + prototype_name + 'Prototype.cpp', 'r') as f:
+with open(path_to_source + path_to_prototypes + prototype_name + 'Prototype.cpp', 'r', encoding="utf8") as f:
   cpp = list(f)
 
 parent = ''
@@ -65,11 +66,22 @@ for i in range(beginning, end):
     property_name = property
   description_addition = ''
   better_type = type.replace('*', '').replace('&', '').replace('_t', '')
-  if better_type == 'ElectricEnergy':
+  if better_type == 'std:string':
+    better_type = 'string'
+  elif better_type == 'RenderLayer::Enum':
+    better_type = 'RenderLayer'
+  elif better_type == 'ElectricEnergy':
     better_type = 'Energy'
-  if better_type == 'ElectricEnergySourcePrototype':
+  elif better_type == 'FluidBoxPrototype':
+    better_type = 'FluidBox'
+  elif better_type == 'ElectricEnergySourcePrototype':
     better_type = 'EnergySource'
     description_addition = 'Must be an electric energy source.'
+  elif better_type == 'BurnerPrototype':
+    better_type = 'EnergySource'
+    description_addition = 'Must be a burner energy source.'
+  elif 'IDConnector<' in better_type:
+    better_type = 'string'
   optional = False
   if ('default' in property or 'optional' in property or 'Default' in property or 'Optional' in property) or re.search('input, "\w+"', property):
     optional = True  
@@ -88,7 +100,12 @@ for i in range(beginning, end):
       out += '\n\'\'\'Default\'\'\': ' + default + '\n'
     
     if description != '':
-      out += '\n' + description + '\n'
+      if description_addition != '':
+        out += '\n' + description + ' ' + description_addition + '\n'
+      else:
+        out += '\n' + description + '\n'
+    elif description_addition != '':
+      out += '\n' + description_addition + '\n'
       
     if optional:
       optional_properties.append(out)
@@ -122,7 +139,7 @@ for i in range(beginning, end):
 
 out = '== Basics ==\n'
 if parent != '':
-  out += 'Based on [[Prototype/{0}]].\n'.format(parent)
+  out += 'Extends [[Prototype/{0}]].\n'.format(parent)
 out += '\n'
 out += '\n'.join(mandatory_properties)
 
