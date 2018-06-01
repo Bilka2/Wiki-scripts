@@ -1,5 +1,5 @@
-// Deleting redirects. Get array of full page names -> delete all pages in array. Is run manually by pasting the array and the loop into the console //
-function deleteRedirect(title) {
+// Deleting pages. Get array of full page names -> delete all pages in array. Is run manually by pasting the array and the loop into the console //
+function deletePage(title) {
 	$.ajax({
 		url: apiUrl,
 		data: {
@@ -23,5 +23,5 @@ function deleteRedirect(title) {
 var array = ["File:Tanks.png", "File:Toolbelt.png"]; //this is an example
 
 for (var i = 0; i < array.length; i++) {
-	deleteRedirect(array[i])
+	deletePage(array[i])
 }

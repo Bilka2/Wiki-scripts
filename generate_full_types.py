@@ -15,6 +15,7 @@ for line in hpp:
   else:
     type = type.group().strip()
   names = re.sub('^(\s\s)?\S+\s', '', line).replace(';', '').strip()
+  names = re.sub('=.*$', '', names).strip()
   name_list = re.split(',\s', names)
   for name in name_list:
     name_to_type[name] = type
@@ -70,6 +71,8 @@ for i in range(beginning, end):
     better_type = 'string'
   elif better_type == 'RenderLayer::Enum':
     better_type = 'RenderLayer'
+  elif better_type == 'Vector':
+    better_type = 'vector'
   elif better_type == 'ElectricEnergy':
     better_type = 'Energy'
   elif better_type == 'FluidBoxPrototype':
@@ -80,11 +83,13 @@ for i in range(beginning, end):
   elif better_type == 'BurnerPrototype':
     better_type = 'EnergySource'
     description_addition = 'Must be a burner energy source.'
+  elif better_type == 'EnergySourcePrototype':
+    better_type = 'EnergySource'
   elif 'IDConnector<' in better_type:
     better_type = 'string'
   optional = False
   if ('default' in property or 'optional' in property or 'Default' in property or 'Optional' in property) or re.search('input, "\w+"', property):
-    optional = True  
+    optional = True
   print('----- best guess -----')
   print(property_name)
   print(better_type)
@@ -139,7 +144,7 @@ for i in range(beginning, end):
 
 out = '== Basics ==\n'
 if parent != '':
-  out += 'Extends [[Prototype/{0}]].\n'.format(parent)
+  out += 'Extends [[Prototype/{}]].\n'.format(parent)
 out += '\n'
 out += '\n'.join(mandatory_properties)
 
