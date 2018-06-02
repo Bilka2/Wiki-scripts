@@ -8,13 +8,14 @@ with open(path_to_source + path_to_prototypes + prototype_name + 'Prototype.hpp'
   hpp = list(f)
 
 name_to_type = {}
+type_matcher = '^\s\s\S+?(<.*>)*\s'
 for line in hpp:
-  type = re.search('^(\s\s)?\S+\s', line)
+  type = re.search(type_matcher, line)
   if not type:
     continue
   else:
     type = type.group().strip()
-  names = re.sub('^(\s\s)?\S+\s', '', line).replace(';', '').strip()
+  names = re.sub(type_matcher, '', line).replace(';', '').strip()
   names = re.sub('=.*$', '', names).strip()
   name_list = re.split(',\s', names)
   for name in name_list:
@@ -49,13 +50,18 @@ for i in range(beginning, len(cpp)):
 
 for i in range(beginning, end):
   line = cpp[i]
-  name = re.search('^\s\s,\s\w+', line)
+  name_matcher = '^\s\s,\s\w+'
+  name = re.search(name_matcher, line)
   if not name:
     continue
   else:
     name = name.group().replace(',', '').strip()
-  property = re.sub('^\s\s,\s\w+\(', '', line)
-  type = name_to_type[name]
+  property = re.sub(name_matcher + '\(', '', line)
+  if name in name_to_type:
+    type = name_to_type[name]
+  else:
+    print(f'Could not find "{name}" in type list. Skipping property.')
+    continue
   print('--- in files ---')
   print(type + ' ' + name)
   print(property)
@@ -88,7 +94,7 @@ for i in range(beginning, end):
   elif 'IDConnector<' in better_type:
     better_type = 'string'
   optional = False
-  if ('default' in property or 'optional' in property or 'Default' in property or 'Optional' in property) or re.search('input, "\w+"', property):
+  if ('default' in property or 'optional' in property or 'Default' in property or 'Optional' in property) or (re.search('input, "\w+"', property) and better_type != 'Sound'):
     optional = True
   print('----- best guess -----')
   print(property_name)
