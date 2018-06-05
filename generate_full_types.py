@@ -107,15 +107,15 @@ for i in range(beginning, end):
     default = input('default ')
     description = input('description ')
     
-    if default != '':
+    if default:
       out += '\n\'\'\'Default\'\'\': ' + default + '\n'
     
-    if description != '':
-      if description_addition != '':
+    if description:
+      if description_addition:
         out += '\n' + description + ' ' + description_addition + '\n'
       else:
         out += '\n' + description + '\n'
-    elif description_addition != '':
+    elif description_addition:
       out += '\n' + description_addition + '\n'
       
     if optional:
@@ -124,22 +124,22 @@ for i in range(beginning, end):
       mandatory_properties.append(out)
   else:
     property_name = input('property name ')
-    if property_name == '':
+    if not property_name:
       continue
     better_type = input('type ')
     out = '=== ' + property_name + ' ===\n\'\'\'Type\'\'\': [[Types/' + better_type + ']]\n'
     default = input('default ')
     description = input('description ')
     
-    if default != '':
+    if default:
       out += '\n\'\'\'Default\'\'\': ' + default + '\n'
     
-    if description != '':
-      if description_addition != '':
+    if description:
+      if description_addition:
         out += '\n' + description + ' ' + description_addition + '\n'
       else:
         out += '\n' + description + '\n'
-    elif description_addition != '':
+    elif description_addition:
       out += '\n' + description_addition + '\n'
     
     mandatory = input('mandatory t/f ')
@@ -149,7 +149,7 @@ for i in range(beginning, end):
       mandatory_properties.append(out)
 
 out = '== Basics ==\n'
-if parent != '':
+if parent:
   out += 'Extends [[Prototype/{}]].\n'.format(parent)
 out += '\n'
 out += '\n'.join(mandatory_properties)
