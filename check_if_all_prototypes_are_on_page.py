@@ -1,5 +1,5 @@
 import requests
-from util import get_edit_token
+from util import get_edit_token, get_page
 
 api_url = 'https://wiki.factorio.com/api.php'
 
@@ -9,19 +9,8 @@ with open('C:\\Users\\Erik\\Documents\\Factorio\\prototype_types_the_game_will_r
 session = requests.Session()
 edit_token = get_edit_token(session, api_url)
 
-page_info = session.get(api_url, params={ #target page
-  'format': 'json',
-  'action': 'query',
-  'assert': 'user',
-  'titles': 'Prototype definitions',
-  'prop': 'revisions',
-  'rvprop': 'content'
-})
-page = page_info.json()['query']['pages']
-revisions = list(page.values())[0]['revisions'][0]
-content = list(revisions.values())[2]
+content = get_page(session, api_url, 'Prototype definitions')
 
 for line in data:
   if not ('\'\'\'' + line.strip() + '\'\'\'' in content):
     print(line.strip())
-

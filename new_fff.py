@@ -2,7 +2,7 @@ import requests
 import re #regex
 import feedparser
 import time
-from util import get_edit_token
+from util import get_edit_token, get_page, edit_page
 import calendar
 
 api_url = 'https://wiki.factorio.com/api.php'
@@ -35,17 +35,7 @@ def main():
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
   
-  page_info = session.get(api_url, params={ #target page
-    'format': 'json',
-    'action': 'query',
-    'assert': 'user',
-    'titles': page_name,
-    'prop': 'revisions',
-    'rvprop': 'content'
-  })
-  page = page_info.json()['query']['pages']
-  revisions = list(page.values())[0]['revisions'][0]
-  content = list(revisions.values())[2]
+  content = get_page(session, api_url, page_name)
   
   if news_line in content:
     return 'FFF already found on page. Aborting.'
@@ -93,16 +83,7 @@ def main():
   for section in sections:
     end_content += section['content']
   
-  edit_response = session.post(api_url, data={
-    'format': 'json',
-    'action': 'edit',
-    'assert': 'user',
-    'text': end_content,
-    'summary': 'New FFF',
-    'title': page_name,
-    'bot': True,
-    'token': edit_token,
-  })
+  edit_response = edit_page(session, api_url, edit_token, page_name, end_content, 'New FFF')
   
   return edit_response.text
 

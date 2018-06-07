@@ -2,7 +2,7 @@ import requests
 import csv
 from operator import itemgetter, attrgetter
 import os.path
-from util import get_edit_token
+from util import get_edit_token, edit_page
 
 api_url = 'https://wiki.factorio.com/api.php'
 page = 'Factorio:Top_pages'
@@ -54,16 +54,7 @@ def main():
     n += 1
   content += '\n|}'
   
-  edit_response = session.post(api_url, data={
-    'format': 'json',
-    'action': 'edit',
-    'assert': 'user',
-    'text': content,
-    'summary': 'Updated top pages',
-    'title': page,
-    'bot': True,
-    'token': edit_token,
-  })
+  edit_response = edit_page(session, api_url, edit_token, page, content, 'Updated top pages')
   
   return edit_response.text
 

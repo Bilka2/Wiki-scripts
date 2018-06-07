@@ -35,3 +35,30 @@ def get_edit_token(session, api_url):
   })
   
   return edit_token.json()['query']['tokens']['csrftoken']
+
+def get_page(session, api_url, title):
+  page_info = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'titles': title,
+    'prop': 'revisions',
+    'rvprop': 'content'
+  })
+  page = page_info.json()['query']['pages']
+  revisions = list(page.values())[0]['revisions'][0]
+  content = list(revisions.values())[2]
+  return content
+  
+def edit_page(session, api_url, edit_token, title, text, summary):
+  edit_response = session.post(api_url, data={
+    'format': 'json',
+    'action': 'edit',
+    'assert': 'user',
+    'text': text,
+    'summary': summary,
+    'title': title,
+    'bot': True,
+    'token': edit_token,
+  })
+  return edit_response

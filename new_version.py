@@ -1,6 +1,6 @@
 import requests
 import re
-from util import get_edit_token
+from util import get_edit_token, get_page, edit_page
 
 api_url = 'https://wiki.factorio.com/api.php'
 
@@ -25,33 +25,6 @@ def main(forum_post_number, version):
   edit_response_version_nav_page = edit_page(session, api_url, edit_token, version_nav_page_name, new_version_nav_page, f'{version}')
   
   return edit_response_latest_version_page.text + '\n' + edit_response_latest_version_page.text
-
-def get_page(session, api_url, title):
-  page_info = session.get(api_url, params={
-    'format': 'json',
-    'action': 'query',
-    'assert': 'user',
-    'titles': title,
-    'prop': 'revisions',
-    'rvprop': 'content'
-  })
-  page = page_info.json()['query']['pages']
-  revisions = list(page.values())[0]['revisions'][0]
-  content = list(revisions.values())[2]
-  return content
-  
-def edit_page(session, api_url, edit_token, title, text, summary):
-  edit_response = session.post(api_url, data={
-    'format': 'json',
-    'action': 'edit',
-    'assert': 'user',
-    'text': text,
-    'summary': summary,
-    'title': title,
-    'bot': True,
-    'token': edit_token,
-  })
-  return edit_response
 
 if __name__ == '__main__':
   print (main('12345', '0.16.99'))
