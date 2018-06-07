@@ -1,3 +1,5 @@
+bp string to json: json.loads(zlib.decompress(base64.b64decode(rawbpstring[1:])).decode('utf8'))
+
 This is a test wiki. Things may break at any time. Don't use this, use [https://wiki.factorio.com wiki.factorio.com] instead. kthxbye
 
 body { transform: rotate(-0.7deg);}
