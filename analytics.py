@@ -2,14 +2,15 @@ import requests
 import csv
 from operator import itemgetter, attrgetter
 import os.path
-from util import get_edit_token, api_url
+from util import get_edit_token
 
+api_url = 'https://wiki.factorio.com/api.php'
 page = 'Factorio:Top_pages'
 file_name = 'analytics.csv'
 
 def main():
   session = requests.Session()
-  edit_token = get_edit_token(session)
+  edit_token = get_edit_token(session, api_url)
   
   with open(os.path.dirname(__file__) + '/' + file_name, newline='') as csvfile:
     reader = csv.reader(csvfile)

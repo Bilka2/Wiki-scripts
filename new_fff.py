@@ -2,9 +2,10 @@ import requests
 import re #regex
 import feedparser
 import time
-from util import get_edit_token, api_url
+from util import get_edit_token
 import calendar
 
+api_url = 'https://wiki.factorio.com/api.php'
 page_name = 'News'
 
 def month_abbr_to_month_name(month):
@@ -32,7 +33,7 @@ def main():
   news_line = '* {0} FFF #{1}: [https://www.factorio.com/blog/post/fff-{1} {2}]\n'.format(release_time, number, title) #line that ends up on page
 
   session = requests.Session()
-  edit_token = get_edit_token(session)
+  edit_token = get_edit_token(session, api_url)
   
   page_info = session.get(api_url, params={ #target page
     'format': 'json',

@@ -1,10 +1,12 @@
 import requests
 import re
-from util import get_edit_token, api_url
+from util import get_edit_token
+
+api_url = 'https://wiki.factorio.com/api.php'
 
 def main(forum_post_number, version):
   session = requests.Session()
-  edit_token = get_edit_token(session)
+  edit_token = get_edit_token(session, api_url)
   latest_version_page_name = 'Main_Page/Latest_versions'
   version_nav_page_name = 'Template:VersionNav'
   

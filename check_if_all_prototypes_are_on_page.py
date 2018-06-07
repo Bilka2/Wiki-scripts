@@ -1,11 +1,13 @@
 import requests
-from util import get_edit_token, api_url
+from util import get_edit_token
+
+api_url = 'https://wiki.factorio.com/api.php'
 
 with open('C:\\Users\\Erik\\Documents\\Factorio\\prototype_types_the_game_will_respond_to.txt', 'r') as f:
    data = list(f)
 
 session = requests.Session()
-edit_token = get_edit_token(session)
+edit_token = get_edit_token(session, api_url)
 
 page_info = session.get(api_url, params={ #target page
   'format': 'json',

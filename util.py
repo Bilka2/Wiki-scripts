@@ -8,9 +8,8 @@ with open(os.path.dirname(__file__) + '/bot-credentials.json', 'r') as f:
 
 username = credentials['username']
 password = base64.b64decode(credentials['password']).decode('utf-8')
-api_url = 'https://wiki.factorio.com/api.php'
 
-def get_edit_token(session):
+def get_edit_token(session, api_url):
   login_token = session.get(api_url, params={
     'format': 'json',
     'action': 'query',
