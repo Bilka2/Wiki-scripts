@@ -73,10 +73,6 @@ def get_allpages(session, api_url, aplimit = '5000', apfilterredir = 'all', apna
     'apfilterredir': apfilterredir,
     'apnamespace' : apnamespace
   })
-  try:
-    allpages.raise_for_status()
-  except requests.exceptions.HTTPError as err:
-    error_log(err)
   return allpages.json()['query']['allpages']
 
 def get_backlinks(session, api_url, bltitle, bllimit = '1000', blfilterredir = 'all'):
@@ -89,10 +85,6 @@ def get_backlinks(session, api_url, bltitle, bllimit = '1000', blfilterredir = '
     'bllimit': bllimit,
     'blfilterredir' : blfilterredir
   })
-  try:
-    backlinks.raise_for_status()
-  except requests.exceptions.HTTPError as err:
-    error_log(err)
   return backlinks.json()['query']['backlinks']
 
 def get_imageusage(session, api_url, iutitle, iulimit = '1000', iufilterredir = 'all'):
@@ -105,8 +97,4 @@ def get_imageusage(session, api_url, iutitle, iulimit = '1000', iufilterredir = 
     'iulimit': iulimit,
     'iufilterredir' : iufilterredir
   })
-  try:
-    imageusage.raise_for_status()
-  except requests.exceptions.HTTPError as err:
-    error_log(err)
   return imageusage.json()['query']['imageusage']
