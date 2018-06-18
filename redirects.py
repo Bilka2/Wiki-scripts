@@ -15,22 +15,15 @@ class Redirect:
     self.eval_links_here()
     
   def eval_links_here(self):
-    backlinks = get_backlinks(session, api_url, self.title)
+    backlinks = [page['title'] for page in get_backlinks(session, api_url, self.title)]
+    self.links_here = len(backlinks)
     if not re.search('^File:', self.title, re.IGNORECASE):
-      self.links_here = len(backlinks)
       return
     
-    def title_in_page_list(title, list):
-      for page in list:
-        if page['title'] == title:
-          return True
-      return False
-    
-    imageusage = get_imageusage(session, api_url, self.title)
-    for page in imageusage:
-      if not title_in_page_list(page['title'], backlinks):
-        backlinks.append(page)
-    self.links_here = len(backlinks)
+    imageusage = [page['title'] for page in get_imageusage(session, api_url, self.title)]
+    for title in imageusage:
+      if not title in backlinks:
+        self.links_here += 1
     
   def __lt__(self, other):
     return (self.links_here, other.title) > (other.links_here, self.title) #inf-0 (descending) for links_here, a-z (ascending) for title
@@ -42,8 +35,7 @@ def main():
   edit_token = get_edit_token(session, api_url)
   redirects = get_allpages(session, api_url, apfilterredir = 'redirects')
   redirects.extend(get_allpages(session, api_url, apfilterredir = 'redirects', apnamespace = '6'))
-  for i, page in enumerate(redirects):
-    redirects[i] = Redirect(page['title'])
+  redirects = [Redirect(page['title']) for page in redirects]
   redirects.sort()
   
   content = '{|class=wikitable\n!#\n!Redirect\n!Links to this redirect'
