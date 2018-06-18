@@ -62,3 +62,51 @@ def edit_page(session, api_url, edit_token, title, text, summary):
     'token': edit_token,
   })
   return edit_response
+
+def get_allpages(session, api_url, aplimit = '5000', apfilterredir = 'all', apnamespace = '0'):
+  allpages = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'list': 'allpages',
+    'aplimit': aplimit,
+    'apfilterredir': apfilterredir,
+    'apnamespace' : apnamespace
+  })
+  try:
+    allpages.raise_for_status()
+  except requests.exceptions.HTTPError as err:
+    error_log(err)
+  return allpages.json()['query']['allpages']
+
+def get_backlinks(session, api_url, bltitle, bllimit = '1000', blfilterredir = 'all'):
+  backlinks = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'list': 'backlinks',
+    'bltitle': bltitle,
+    'bllimit': bllimit,
+    'blfilterredir' : blfilterredir
+  })
+  try:
+    backlinks.raise_for_status()
+  except requests.exceptions.HTTPError as err:
+    error_log(err)
+  return backlinks.json()['query']['backlinks']
+
+def get_imageusage(session, api_url, iutitle, iulimit = '1000', iufilterredir = 'all'):
+  imageusage = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'list': 'imageusage',
+    'iutitle': iutitle,
+    'iulimit': iulimit,
+    'iufilterredir' : iufilterredir
+  })
+  try:
+    imageusage.raise_for_status()
+  except requests.exceptions.HTTPError as err:
+    error_log(err)
+  return imageusage.json()['query']['imageusage']
