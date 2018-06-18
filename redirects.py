@@ -22,7 +22,7 @@ class Redirect:
     
     imageusage = [page['title'] for page in get_imageusage(session, api_url, self.title)]
     for title in imageusage:
-      if not title in backlinks:
+      if title not in backlinks:
         self.links_here += 1
     
   def __lt__(self, other):

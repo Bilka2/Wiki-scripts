@@ -65,7 +65,7 @@ def main():
       archive_list_start = re.search('=\n\n*', section['content']).end()
       section['content'] =  section['content'][:archive_list_start] + old_fff + '\n' + section['content'][archive_list_start:]
   
-  if found_section == False:
+  if not found_section:
     archive_sections[0]['content'] += '\n==== ' + old_month + ' ====\n\n' + old_fff + '\n'
   
   #final content
