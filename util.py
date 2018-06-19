@@ -98,3 +98,39 @@ def get_imageusage(session, api_url, iutitle, iulimit = '1000', iufilterredir = 
     'iufilterredir' : iufilterredir
   })
   return imageusage.json()['query']['imageusage']
+
+def get_wantedpages(session, api_url, qpoffset = '0', qplimit = '5000'):
+  wantedpages = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'list': 'querypage',
+    'qppage': 'Wantedpages',
+    'qplimit': qplimit,
+    'qpoffset': qpoffset
+  })
+  return wantedpages.json()['query']['querypage']['results']
+
+def get_page_info(session, api_url, title):
+  response = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'titles': title,
+    'prop': 'info'
+  })
+  pages = response.json()['query']['pages']
+  page_info = list(pages.values())[0]
+  return page_info
+
+def get_categorymembers(session, api_url, cmtitle, cmlimit = '400'):
+  categorymembers = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'list': 'categorymembers',
+    'cmtitle': cmtitle,
+    'cmlimit': cmlimit,
+    'cmprop' : 'title'
+  })
+  return categorymembers.json()['query']['categorymembers']
