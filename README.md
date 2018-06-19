@@ -33,7 +33,7 @@ new_version.py - If provided the forum post number and version number it will pu
 
 redirects.py - Generates a list of redirects, including how many pages link to them. Puts the list on a page.
 
-wanted_pages.py - Generates a list of wanted pages (redl links), including how many pages link to them and for language pages some info about the English page. Puts the list on a page.
+wanted_pages.py - Generates a list of wanted pages (red links), including how many pages link to them and for wanted language pages some info about the English page. Puts the list on a page.
 
 generate_type.py - Easily format a property for a prototype page.
 
