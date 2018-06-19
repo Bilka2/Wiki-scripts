@@ -17,6 +17,7 @@ class WantedPage:
   archived = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Archived')]
   disambigs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Disambiguations')]
   valid_lang_suffixes = ['cs', 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-br', 'ru', 'sv', 'uk', 'zh', 'tr', 'ko', 'ms', 'da', 'hu']
+  enPageCache = defaultdict(str)
   #possible_locations = ['template', 'file', 'other'].extend(self.valid_lang_suffixes)
   
   
@@ -49,13 +50,18 @@ class WantedPage:
     if self.location not in self.valid_lang_suffixes:
       return
     self.en_page_title = self.title[: -len(self.location)-1]
+    if self.enPageCache[self.en_page_title]:
+      self.en_page_info = self.enPageCache[self.en_page_title]
+      return
     page_info = get_page_info(session, api_url, self.en_page_title)
     if 'missing' in page_info:
       self.en_page_info = '---'
+      self.enPageCache[self.en_page_title] = self.en_page_info
       return
     self.en_page_info = str(page_info['length'])
     if 'redirect' in page_info:
       self.en_page_info += ' (Redirect)'
+      self.enPageCache[self.en_page_title] = self.en_page_info
       return
     if self.en_page_title in self.stubs:
       self.en_page_info += ' (Stub)'
@@ -63,7 +69,7 @@ class WantedPage:
       self.en_page_info += ' (Disambiguation)'
     if self.en_page_title in self.archived:
       self.en_page_info += ' (Archived)'
-  
+    self.enPageCache[self.en_page_title] = self.en_page_info
   
   def __lt__(self, other):
     return (self.links_here, other.title) > (other.links_here, self.title) #inf-0 (descending) for links_here, a-z (ascending) for title

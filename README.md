@@ -29,6 +29,12 @@ analytics.py - Put the top pages pulled from google analytics onto the wiki. Nee
 
 new_fff.py - Get the latest FFF and put it on a page if it isn't already on there.
 
+new_version.py - If provided the forum post number and version number it will put it on a page if it isn't already on there.
+
+redirects.py - Generates a list of redirects, including how many pages link to them. Puts the list on a page.
+
+wanted_pages.py - Generates a list of wanted pages (redl links), including how many pages link to them and for language pages some info about the English page. Puts the list on a page.
+
 generate_type.py - Easily format a property for a prototype page.
 
 generate_full_types.py - Read the Factorio source files to semi-automatically generate the documentation for a given prototype.
