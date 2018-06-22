@@ -1,6 +1,6 @@
 import re
 
-path_to_source = 'C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\'
+path_to_source = 'C:\\Users\\wube win 10\\Documents\\Factorio\\'
 path_to_prototypes = 'src\\Entity\\'
 prototype_name = input('prototype_name ')
 
@@ -39,7 +39,7 @@ optional_properties.append('== Optional properties ==\n')
 beginning = 0
 for i in range(len(cpp)):
   if prototype_name + 'Prototype::' + prototype_name + 'Prototype(const PropertyTree& input)' in cpp[i]:
-    beginning = i + 1
+    beginning = i
     break
 
 end = 0
@@ -50,6 +50,8 @@ for i in range(beginning, len(cpp)):
 
 for i in range(beginning, end):
   line = cpp[i]
+  if ': super(input)' in line:
+    continue
   name_matcher = '^\s\s,\s\w+'
   name = re.search(name_matcher, line)
   if not name:
