@@ -4,6 +4,7 @@ from util import get_edit_token, get_page, edit_page
 
 api_url = 'https://wiki.factorio.com/api.php'
 
+
 def main(forum_post_number, version):
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
@@ -26,6 +27,7 @@ def main(forum_post_number, version):
   edit_response_version_nav_page = edit_page(session, api_url, edit_token, version_nav_page_name, new_version_nav_page, f'{version}')
   
   return edit_response_latest_version_page.text + '\n' + edit_response_version_nav_page.text
+
 
 if __name__ == '__main__':
   print (main('12345', '0.16.99'))

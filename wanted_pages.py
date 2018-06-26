@@ -4,7 +4,6 @@ import requests
 import urllib.parse
 from util import get_edit_token, get_categorymembers, get_wantedpages, get_page_info, edit_page
 
-
 base_url = 'https://wiki.factorio.com'
 api_url = base_url + '/api.php'
 session = requests.Session()
@@ -70,6 +69,7 @@ class WantedPage:
     if self.en_page_title in self.archived:
       self.en_page_info += ' (Archived)'
     self.enPageCache[self.en_page_title] = self.en_page_info
+  
   
   def __lt__(self, other):
     return (self.links_here, other.title) > (other.links_here, self.title) #inf-0 (descending) for links_here, a-z (ascending) for title

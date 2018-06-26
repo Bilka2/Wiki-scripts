@@ -8,8 +8,10 @@ import calendar
 api_url = 'https://wiki.factorio.com/api.php'
 page_name = 'News'
 
+
 def month_abbr_to_month_name(month):
   return calendar.month_name[list(calendar.month_abbr).index(month)] #first to number, then to long name
+
 
 def turn_page_into_sections(content, depth):
   header_edge = '=' * depth
@@ -24,6 +26,7 @@ def turn_page_into_sections(content, depth):
     sections.append(section)
   
   return sections
+
 
 def main():
   feed = feedparser.parse('https://www.factorio.com/blog/rss')
@@ -86,6 +89,7 @@ def main():
   edit_response = edit_page(session, api_url, edit_token, page_name, end_content, 'New FFF')
   
   return edit_response.text
+
 
 #wont execute if file is imported instead of run
 if __name__ == '__main__':

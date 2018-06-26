@@ -29,7 +29,7 @@ if ': super(input)' in '\n'.join(cpp) and 'using super = ' in '\n'.join(hpp):
   parent = re.search('  using super = (\w+);', '\n'.join(hpp)).group(1).replace('Prototype', '')
 
 mandatory_properties = []
-if parent != '':
+if parent:
   mandatory_properties.append('== Mandatory properties ==\nThis prototype inherits all the properties from [[Prototype/{0}]].\n'.format(parent))
 else:
   mandatory_properties.append('== Mandatory properties ==\n')

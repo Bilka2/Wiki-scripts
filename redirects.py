@@ -7,6 +7,7 @@ base_url = 'https://wiki.factorio.com'
 api_url = base_url + '/api.php'
 session = requests.Session()
 
+
 class Redirect:
   def __init__(self, title):
     self.title = title
@@ -31,6 +32,7 @@ class Redirect:
   def __str__(self):
     return f'\n|[{base_url}/index.php?title={self.urlencoded_title}&redirect=no {self.title}]\n|[{base_url}/index.php?title=Special:WhatLinksHere/{self.urlencoded_title} {self.links_here}]'
 
+
 def main():
   edit_token = get_edit_token(session, api_url)
   redirects = get_allpages(session, api_url, apfilterredir = 'redirects')
@@ -45,6 +47,7 @@ def main():
   
   edit_response = edit_page(session, api_url, edit_token, 'Factorio:Redirects', content, 'Updated the list of redirects.')
   return edit_response.text
+
 
 if __name__ == '__main__':
   print(main())
