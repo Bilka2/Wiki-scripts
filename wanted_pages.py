@@ -15,7 +15,7 @@ class WantedPage:
   stubs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Stubs')]
   archived = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Archived')]
   disambigs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Disambiguations')]
-  valid_lang_suffixes = ['cs', 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-br', 'ru', 'sv', 'uk', 'zh', 'tr', 'ko', 'ms', 'da', 'hu', 'vi']
+  valid_lang_suffixes = ['cs', 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-br', 'ru', 'sv', 'uk', 'zh', 'tr', 'ko', 'ms', 'da', 'hu', 'vi', 'pt-pt']
   enPageCache = defaultdict(str)
   #possible_locations = ['template', 'file', 'other'].extend(self.valid_lang_suffixes)
   
