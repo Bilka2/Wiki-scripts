@@ -98,7 +98,7 @@ def main(testing):
     wanted_pages_by_location[page.location].append(page)
   
   print('Generating output and editing pages')
-  edit_responses = ''
+  edit_responses = []
   for location, pages in wanted_pages_by_location.items():
     output_array = [f'\n|-\n|{i+1}{page}' for i, page in enumerate(pages)]
     
@@ -108,13 +108,13 @@ def main(testing):
       output = 'Number of wanted pages: ' + str(len(output_array)) + '\n{|class=wikitable\n!#\n!Page\n!Links to this page' + ''.join(output_array) + '\n|}'
     
     if testing:
-      edit_responses += '\n' + output
+      edit_responses.append(output)
     else:
-      edit_responses += '\n' + edit_page(session, api_url, edit_token, 'Factorio:Wanted pages/' + location, output, 'Updated the list of wanted pages').text
+      edit_responses.append(edit_page(session, api_url, edit_token, 'Factorio:Wanted pages/' + location, output, 'Updated the list of wanted pages').text)
     
   return edit_responses
 
   
 if __name__ == '__main__':
-  print(main(testing = False))
+  print('\n'.join(main(testing = False)))
   
