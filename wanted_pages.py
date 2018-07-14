@@ -6,15 +6,13 @@ from util import get_edit_token, get_categorymembers, get_wantedpages, get_page_
 
 base_url = 'https://wiki.factorio.com'
 api_url = base_url + '/api.php'
-session = requests.Session()
-edit_token = get_edit_token(session, api_url)
 
 
 class WantedPage:
 
-  stubs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Stubs')]
-  archived = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Archived')]
-  disambigs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Disambiguations')]
+  stubs = []
+  archived = []
+  disambigs = []
   valid_lang_suffixes = ['cs', 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-br', 'ru', 'sv', 'uk', 'zh', 'tr', 'ko', 'ms', 'da', 'hu', 'vi', 'pt-pt']
   enPageCache = defaultdict(str)
   #possible_locations = ['template', 'file', 'other'].extend(self.valid_lang_suffixes)
@@ -52,7 +50,7 @@ class WantedPage:
     if self.enPageCache[self.en_page_title]:
       self.en_page_info = self.enPageCache[self.en_page_title]
       return
-    page_info = get_page_info(session, api_url, self.en_page_title)
+    page_info = get_page_info(self.session, api_url, self.en_page_title)
     if 'missing' in page_info:
       self.en_page_info = '---'
       self.enPageCache[self.en_page_title] = self.en_page_info
@@ -83,11 +81,21 @@ class WantedPage:
 
 def main(testing):
   print('Getting wanted pages')
+  
+  session = requests.Session()
+  edit_token = get_edit_token(session, api_url)
+  
   wanted_pages = get_wantedpages(session, api_url, qpoffset = '0')
   wanted_pages.extend(get_wantedpages(session, api_url, qpoffset = '5000'))
   #TODO: Automatically check if this is needed:
   #wanted_pages.extend(get_wantedpages(session, api_url, qpoffset = '10000'))
   print('Converting wanted pages')
+  
+  WantedPage.stubs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Stubs')]
+  WantedPage.archived = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Archived')]
+  WantedPage.disambigs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Disambiguations')]
+  WantedPage.session = session
+  
   wanted_pages = [WantedPage(page['title'], page['value']) for page in wanted_pages]
   print('Sorting wanted pages')
   wanted_pages.sort()

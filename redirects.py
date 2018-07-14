@@ -5,7 +5,6 @@ from util import get_edit_token, get_allpages, get_backlinks, get_imageusage, ed
 
 base_url = 'https://wiki.factorio.com'
 api_url = base_url + '/api.php'
-session = requests.Session()
 
 
 class Redirect:
@@ -16,12 +15,12 @@ class Redirect:
     self.eval_links_here()
     
   def eval_links_here(self):
-    backlinks = [page['title'] for page in get_backlinks(session, api_url, self.title)]
+    backlinks = [page['title'] for page in get_backlinks(self.session, api_url, self.title)]
     self.links_here = len(backlinks)
     if not re.search('^File:', self.title, re.IGNORECASE):
       return
     
-    imageusage = [page['title'] for page in get_imageusage(session, api_url, self.title)]
+    imageusage = [page['title'] for page in get_imageusage(self.session, api_url, self.title)]
     for title in imageusage:
       if title not in backlinks:
         self.links_here += 1
@@ -34,9 +33,13 @@ class Redirect:
 
 
 def main():
+  session = requests.Session()
   edit_token = get_edit_token(session, api_url)
+  
   redirects = get_allpages(session, api_url, apfilterredir = 'redirects')
   redirects.extend(get_allpages(session, api_url, apfilterredir = 'redirects', apnamespace = '6'))
+  
+  Redirect.session = session
   redirects = [Redirect(page['title']) for page in redirects]
   redirects.sort()
   
