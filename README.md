@@ -41,6 +41,8 @@ generate_full_types.py - Read the Factorio source files to semi-automatically ge
 
 check_if_all_prototypes_are_on_page.py - Check if all the prototype types listed in a file are also present on a wiki page.
 
+infobox-category-change.py - Change category in infoboxes in a list of pages.
+
 Dependencies:
 
 * feedparser
