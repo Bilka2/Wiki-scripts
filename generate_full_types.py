@@ -1,6 +1,6 @@
 import re
 
-path_to_source = 'C:\\Users\\wube win 10\\Documents\\Factorio\\'
+path_to_source = 'C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\'
 path_to_prototypes = 'src\\Entity\\'
 prototype_name = input('prototype_name ')
 
@@ -70,6 +70,8 @@ for i in range(beginning, end):
   
   property_name = re.search('"\w+"', property)
   if property_name:
+    #if "pictures" in property_name.group(): # Hack for wall
+    #  property_name = re.search('"\w+"', property[property_name.end():])
     property_name = property_name.group().replace('"', '')
   else:
     property_name = property
