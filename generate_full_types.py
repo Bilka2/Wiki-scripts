@@ -1,16 +1,26 @@
+import argparse
 import re
 
-path_to_source = 'C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\'
-path_to_prototypes = 'src\\Entity\\'
+class_suffix = 'Prototype'
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--not-prototype', action='store_true')
+parser.add_argument('--path-to-source', default='C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\')
+parser.add_argument('--path-to-prototype', default='src\\Entity\\')
+args = parser.parse_args()
+
+if args.not_prototype:
+  class_suffix = ''
+path_to_source = args.path_to_source
+path_to_prototype = args.path_to_prototype
 
 def main(prototype_name):
-  with open(path_to_source + path_to_prototypes + prototype_name + 'Prototype.hpp', 'r', encoding="utf8") as f:
+  with open(path_to_source + path_to_prototype + prototype_name + class_suffix + '.hpp', 'r', encoding="utf8") as f:
     hpp_file = list(f)
-  
+
   name_to_type = get_name_to_type_mapping(hpp_file)
   
-  with open(path_to_source + path_to_prototypes + prototype_name + 'Prototype.cpp', 'r', encoding="utf8") as f:
+  with open(path_to_source + path_to_prototype + prototype_name + class_suffix + '.cpp', 'r', encoding="utf8") as f:
     cpp_file = list(f)
   
   parent = get_parent(hpp_file, cpp_file)
@@ -37,6 +47,7 @@ def main(prototype_name):
     else:
       print(f'Could not find "{name}" in type list. Skipping property.')
       continue
+
     print('--- in files ---')
     print(type + ' ' + name)
     print(property_arguments)
@@ -50,10 +61,7 @@ def main(prototype_name):
     correct = input('nothing if guess is correct, anything else if incorrect: ')
     
     if correct == '':
-      current_property.default = input('default ')
-      desc_input = input('description ')
-      if desc_input:
-        current_property.description.insert(0, desc_input)
+      current_property.get_default_and_description()
 
       if current_property.optional:
         optional_properties.append(str(current_property)) #is this str() needed?
@@ -66,10 +74,7 @@ def main(prototype_name):
       current_property.name = property_name
       current_property.type = input('type ')
 
-      current_property.default = input('default ')
-      desc_input = input('description ')
-      if desc_input:
-        current_property.description.insert(0, desc_input)
+      current_property.get_default_and_description()
 
       optional_input = input('optional t/f ')
       current_property.optional = False
@@ -103,15 +108,15 @@ def get_name_to_type_mapping(hpp_file):
 
 def get_parent(hpp_file, cpp_file):
   parent = ''
-  if ': super(input)' in '\n'.join(cpp_file) and 'using super = ' in '\n'.join(hpp_file):
-    parent = re.search('  using super = (\w+);', '\n'.join(hpp_file)).group(1).replace('Prototype', '')
+  if ': super(input)' in ''.join(cpp_file) and 'using super = ' in ''.join(hpp_file):
+    parent = re.search('  using super = (\w+);', ''.join(hpp_file)).group(1).replace('Prototype', '')
   return parent
 
 
 def get_lines_of_constructor(prototype_name, cpp_file):
   beginning = 0
   for i in range(len(cpp_file)):
-    if prototype_name + 'Prototype::' + prototype_name + 'Prototype(const PropertyTree& input)' in cpp_file[i]:
+    if prototype_name + class_suffix + '::' + prototype_name + class_suffix + '(const PropertyTree& input)' in cpp_file[i]:
       beginning = i
       break
   
@@ -178,6 +183,13 @@ class Property:
     if ('default' in property_arguments or 'optional' in property_arguments or 'Default' in property_arguments or 'Optional' in property_arguments) or (re.search('input, "\w+"', property_arguments) and self.type != 'Sound'):
       optional = True
     return optional
+
+
+  def get_default_and_description(self):
+    self.default = input('default ')
+    desc_input = input('description ')
+    if desc_input:
+      self.description.insert(0, desc_input)
 
 
   def __str__(self):
