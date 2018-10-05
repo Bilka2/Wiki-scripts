@@ -57,11 +57,13 @@ def main(prototype_name):
     print('----- best guess -----')
     print(current_property.name)
     print(current_property.type)
+    if current_property.default:
+      print('Default: ' + current_property.default)
     print('optional' if current_property.optional else 'mandatory')
     correct = input('nothing if guess is correct, anything else if incorrect: ')
     
     if correct == '':
-      current_property.get_default_and_description()
+      current_property.get_description()
 
       if current_property.optional:
         optional_properties.append(str(current_property)) #is this str() needed?
@@ -73,8 +75,9 @@ def main(prototype_name):
         continue
       current_property.name = property_name
       current_property.type = input('type ')
+      current_property.type = input('default ')
 
-      current_property.get_default_and_description()
+      current_property.get_description()
 
       optional_input = input('optional t/f ')
       current_property.optional = False
@@ -134,6 +137,7 @@ class Property:
     self.name = self.get_property_name(property_arguments)
     self.type, description_addition = self.sanitize_type(type)
     self.optional = self.is_optional(property_arguments)
+    self.default = self.get_default(property_arguments)
     self.description = []
     if description_addition:
       self.description.append(description_addition)
@@ -185,8 +189,14 @@ class Property:
     return optional
 
 
-  def get_default_and_description(self):
-    self.default = input('default ')
+  def get_default(self, property_arguments):
+    if self.optional and 'getDefault' in property_arguments:
+      default = re.search(',([^\),]+)\)+$', property_arguments)
+      if default:
+        return default.group(1).strip()
+    return ''
+
+  def get_description(self):
     desc_input = input('description ')
     if desc_input:
       self.description.insert(0, desc_input)
