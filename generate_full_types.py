@@ -5,6 +5,7 @@ class_suffix = 'Prototype'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--not-prototype', action='store_true')
+parser.add_argument('--file-name', help='Used to specify a file name if it differs from the prototype name')
 parser.add_argument('--path-to-source', default='C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\')
 parser.add_argument('--path-to-prototype', default='src\\Entity\\')
 args = parser.parse_args()
@@ -15,12 +16,14 @@ path_to_source = args.path_to_source
 path_to_prototype = args.path_to_prototype
 
 def main(prototype_name):
-  with open(path_to_source + path_to_prototype + prototype_name + class_suffix + '.hpp', 'r', encoding="utf8") as f:
+  file_name = args.file_name if args.file_name else prototype_name
+
+  with open(path_to_source + path_to_prototype + file_name + class_suffix + '.hpp', 'r', encoding="utf8") as f:
     hpp_file = list(f)
 
   name_to_type = get_name_to_type_mapping(hpp_file)
   
-  with open(path_to_source + path_to_prototype + prototype_name + class_suffix + '.cpp', 'r', encoding="utf8") as f:
+  with open(path_to_source + path_to_prototype + file_name + class_suffix + '.cpp', 'r', encoding="utf8") as f:
     cpp_file = list(f)
   
   parent = get_parent(hpp_file, cpp_file)
@@ -63,7 +66,7 @@ def main(prototype_name):
     correct = input('nothing if guess is correct, anything else if incorrect: ')
     
     if correct == '':
-      current_property.get_description()
+      current_property.set_description()
 
       if current_property.optional:
         optional_properties.append(str(current_property)) #is this str() needed?
@@ -77,7 +80,7 @@ def main(prototype_name):
       current_property.type = input('type ')
       current_property.type = input('default ')
 
-      current_property.get_description()
+      current_property.set_description()
 
       optional_input = input('optional t/f ')
       current_property.optional = False
@@ -119,7 +122,7 @@ def get_parent(hpp_file, cpp_file):
 def get_lines_of_constructor(prototype_name, cpp_file):
   beginning = 0
   for i in range(len(cpp_file)):
-    if prototype_name + class_suffix + '::' + prototype_name + class_suffix + '(const PropertyTree& input)' in cpp_file[i]:
+    if prototype_name + class_suffix + '::' + prototype_name + class_suffix + '(const PropertyTree& input' in cpp_file[i]:
       beginning = i
       break
   
@@ -134,25 +137,26 @@ def get_lines_of_constructor(prototype_name, cpp_file):
 
 class Property:
   def __init__(self, type, property_arguments):
-    self.name = self.get_property_name(property_arguments)
+    self.header_level = 3
+    self.set_name(property_arguments)
     self.type, description_addition = self.sanitize_type(type)
-    self.optional = self.is_optional(property_arguments)
-    self.default = self.get_default(property_arguments)
+    self.set_optional(property_arguments)
+    self.set_default(property_arguments)
     self.description = []
     if description_addition:
       self.description.append(description_addition)
 
 
-  @staticmethod
-  def get_property_name(property_arguments):
+  def set_name(self, property_arguments):
     property_name = re.search('"\w+"', property_arguments)
     if property_name:
-      #if "pictures" in property_name.group(): # Hack for wall
-      #  property_name = re.search('"\w+"', property[property_name.end():])
+      if "pictures" in property_name.group(): # Hack for wall
+        property_name = re.search('"\w+"', property_arguments[property_name.end():])
+        self.header_level = 4
       property_name = property_name.group().replace('"', '')
     else:
       property_name = property_arguments
-    return property_name
+    self.name = property_name
 
 
   @staticmethod
@@ -182,28 +186,29 @@ class Property:
     return wiki_type, description_addition
 
   
-  def is_optional(self, property_arguments):
+  def set_optional(self, property_arguments):
     optional = False
     if ('default' in property_arguments or 'optional' in property_arguments or 'Default' in property_arguments or 'Optional' in property_arguments) or (re.search('input, "\w+"', property_arguments) and self.type != 'Sound'):
       optional = True
-    return optional
+    self.optional = optional
 
 
-  def get_default(self, property_arguments):
+  def set_default(self, property_arguments):
     if self.optional and 'getDefault' in property_arguments:
       default = re.search(',([^\),]+)\)+$', property_arguments)
       if default:
-        return default.group(1).strip()
-    return ''
+        self.default = default.group(1).strip()
+    self.default = ''
 
-  def get_description(self):
+  def set_description(self):
     desc_input = input('description ')
     if desc_input:
       self.description.insert(0, desc_input)
 
 
   def __str__(self):
-    ret = f'=== {self.name} ===\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
+    header = '=' * self.header_level
+    ret = f'{header} {self.name} {header}\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
     if self.default:
       ret += f'\n\'\'\'Default\'\'\': {self.default}\n'
     if self.description:
