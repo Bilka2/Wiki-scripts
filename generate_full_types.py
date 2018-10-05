@@ -38,12 +38,12 @@ def main(prototype_name):
     if ': super(input)' in line:
       continue
 
-    name_matcher = '^\s\s,\s\w+'
+    name_matcher = '^\s\s,\s\w+|^\s\s:\s\w+'
     name = re.search(name_matcher, line)
     if not name:
       continue
     else:
-      name = name.group().replace(',', '').strip()
+      name = re.sub('^\s*,\s+|^\s*:\s+', '', name.group())
     property_arguments = re.sub(name_matcher + '\(', '', line)
 
     if name in name_to_type:
@@ -79,7 +79,7 @@ def main(prototype_name):
         continue
       current_property.name = property_name
       current_property.type = input('type ')
-      current_property.type = input('default ')
+      current_property.default = input('default ')
 
       current_property.set_description()
 
@@ -98,7 +98,7 @@ def main(prototype_name):
 
 def get_name_to_type_mapping(hpp_file):
   name_to_type = {}
-  type_matcher = '^\s\s\S+?(<.*>)*\s'
+  type_matcher = '^\s+\S+?(<.*>)*\s'
   for line in hpp_file:
     type = re.search(type_matcher, line)
     if not type:
@@ -151,9 +151,9 @@ class Property:
   def set_name(self, property_arguments):
     property_name = re.search('"\w+"', property_arguments)
     if property_name:
-      if "pictures" in property_name.group(): # Hack for wall
-        property_name = re.search('"\w+"', property_arguments[property_name.end():])
-        self.header_level = 4
+      #if "pictures" in property_name.group(): # Hack for wall
+      #  property_name = re.search('"\w+"', property_arguments[property_name.end():])
+      #  self.header_level = 4
       property_name = property_name.group().replace('"', '')
     else:
       property_name = property_arguments
@@ -164,7 +164,7 @@ class Property:
   def sanitize_type(type):
     description_addition = ''
     wiki_type = type.replace('*', '').replace('&', '').replace('_t', '')
-    if wiki_type == 'std:string':
+    if wiki_type == 'std::string':
       wiki_type = 'string'
     elif wiki_type == 'RenderLayer::Enum':
       wiki_type = 'RenderLayer'
@@ -199,6 +199,7 @@ class Property:
       default = re.search(',([^\),]+)\)+$', property_arguments)
       if default:
         self.default = default.group(1).strip()
+        return
     self.default = ''
 
   def set_description(self):
@@ -209,7 +210,7 @@ class Property:
 
   def __str__(self):
     if args.short_output:
-      return f'* {self.name} - [[Types/{self.type}]]'
+      return f'* {self.name} - [[Types/{self.type}]]' + (' - Optional' if self.optional else ' - Mandatory') # Sentence above the list is: Table with the following mandatory members: 
     else:
       header = '=' * self.header_level
       ret = f'{header} {self.name} {header}\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
