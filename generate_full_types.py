@@ -6,6 +6,7 @@ class_suffix = 'Prototype'
 parser = argparse.ArgumentParser()
 parser.add_argument('--not-prototype', action='store_true')
 parser.add_argument('--file-name', help='Used to specify a file name if it differs from the prototype name')
+parser.add_argument('--short-output', action='store_true')
 parser.add_argument('--path-to-source', default='C:\\Users\\Erik\\Documents\\GitHub\\Factorio\\')
 parser.add_argument('--path-to-prototype', default='src\\Entity\\')
 args = parser.parse_args()
@@ -207,14 +208,17 @@ class Property:
 
 
   def __str__(self):
-    header = '=' * self.header_level
-    ret = f'{header} {self.name} {header}\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
-    if self.default:
-      ret += f'\n\'\'\'Default\'\'\': {self.default}\n'
-    if self.description:
-      ret += '\n' + ' '.join(self.description) + '\n'
-    return ret
-
+    if args.short_output:
+      return f'* {self.name} - [[Types/{self.type}]]'
+    else:
+      header = '=' * self.header_level
+      ret = f'{header} {self.name} {header}\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
+      if self.default:
+        ret += f'\n\'\'\'Default\'\'\': {self.default}\n'
+      if self.description:
+        ret += '\n' + ' '.join(self.description) + '\n'
+      return ret
+      
 
 def convert_to_string(parent, mandatory_properties, optional_properties):
   out = '== Basics ==\n'
