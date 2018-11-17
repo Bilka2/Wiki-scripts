@@ -23,28 +23,29 @@ def main(prototype_name):
     hpp_file = list(f)
 
   name_to_type = get_name_to_type_mapping(hpp_file)
-  
+
   with open(path_to_source + path_to_prototype + file_name + class_suffix + '.cpp', 'r', encoding="utf8") as f:
     cpp_file = list(f)
-  
+
   parent = get_parent(hpp_file, cpp_file)
-  
+
   mandatory_properties = []
-  optional_properties = []  
-  beginning, end = get_lines_of_constructor(prototype_name, cpp_file)
-  
+  optional_properties = []
+  beginning, end = get_lines_of_constructor(prototype_name, cpp_file) # The lines in the file that are part of the constructor
+
+  # Parsing all the line of the constructor to find and parse all the properties
   for i in range(beginning, end):
     line = cpp_file[i]
     if ': super(input)' in line:
       continue
 
-    name_matcher = '^\s\s,\s\w+|^\s\s:\s\w+'
+    name_matcher = '^\s\s(,|:)\s\w+' # "  , propertyName" or "  : propertyName"
     name = re.search(name_matcher, line)
     if not name:
       continue
     else:
-      name = re.sub('^\s*,\s+|^\s*:\s+', '', name.group())
-    property_arguments = re.sub(name_matcher + '\(', '', line)
+      name = re.sub('^\s*(,|:)\s+', '', name.group()) # Remove the whitespace and "," or ":" in front of the propertyName
+    property_arguments = re.sub(name_matcher + '\(', '', line) # Arguments of the constructor of the property
 
     if name in name_to_type:
       type = name_to_type[name]
@@ -53,29 +54,29 @@ def main(prototype_name):
       continue
 
     print('--- in files ---')
-    print(type + ' ' + name)
+    print(type + ' ' + name) # Internal name and class
     print(property_arguments)
-    
-    current_property = Property(type, property_arguments)
+
+    current_property = Property(type, property_arguments) # Most of the parsing happens here - see Property.__init__
 
     print('----- best guess -----')
-    print(current_property.name)
-    print(current_property.type)
+    print(current_property.name) # Lua name
+    print(current_property.type) # Wiki type
     if current_property.default:
       print('Default: ' + current_property.default)
     print('optional' if current_property.optional else 'mandatory')
     correct = input('nothing if guess is correct, anything else if incorrect: ')
-    
-    if correct == '':
+
+    if correct == '': # Everything is correct
       current_property.set_description()
 
       if current_property.optional:
         optional_properties.append(str(current_property)) #is this str() needed?
       else:
         mandatory_properties.append(str(current_property))
-    else:
+    else: # Our parsing is wrong, get everything from the user
       property_name = input('property name ')
-      if not property_name:
+      if not property_name: # Allows to skip this property by not giving a name
         continue
       current_property.name = property_name
       current_property.type = input('type ')
@@ -89,13 +90,14 @@ def main(prototype_name):
         current_property.optional = True
 
       if current_property.optional:
-        optional_properties.append(str(current_property)) #is this str() needed?
+        optional_properties.append(str(current_property))
       else:
         mandatory_properties.append(str(current_property))
-  
+
   return convert_to_string(parent, mandatory_properties, optional_properties)
 
 
+# Map the internal property names to their classes
 def get_name_to_type_mapping(hpp_file):
   name_to_type = {}
   type_matcher = '^\s+\S+?(<.*>)*\s'
@@ -113,10 +115,11 @@ def get_name_to_type_mapping(hpp_file):
   return name_to_type
 
 
+# Prototype class that this class inherits from
 def get_parent(hpp_file, cpp_file):
   parent = ''
   if ': super(input)' in ''.join(cpp_file) and 'using super = ' in ''.join(hpp_file):
-    parent = re.search('  using super = (\w+);', ''.join(hpp_file)).group(1).replace('Prototype', '')
+    parent = re.search('  using super = (\S+);', ''.join(hpp_file)).group(1).replace('Prototype', '')
   return parent
 
 
@@ -126,13 +129,13 @@ def get_lines_of_constructor(prototype_name, cpp_file):
     if prototype_name + class_suffix + '::' + prototype_name + class_suffix + '(const PropertyTree& input' in cpp_file[i]:
       beginning = i
       break
-  
+
   end = len(cpp_file)
   for i in range(beginning, len(cpp_file)):
     if '{' in cpp_file[i]:
       end = i
       break
-      
+
   return beginning, end
 
 
@@ -148,6 +151,7 @@ class Property:
       self.description.append(description_addition)
 
 
+  # Set the name used when loading from lua, snake_case
   def set_name(self, property_arguments):
     property_name = re.search('"\w+"', property_arguments)
     if property_name:
@@ -160,6 +164,7 @@ class Property:
     self.name = property_name
 
 
+  # The types on the wiki are slightly different from the classes in the code, so we convert to the wiki types
   @staticmethod
   def sanitize_type(type):
     description_addition = ''
@@ -176,7 +181,7 @@ class Property:
       wiki_type = 'FluidBox'
     elif wiki_type == 'ElectricEnergySourcePrototype':
       wiki_type = 'EnergySource'
-      description_addition = 'Must be an electric energy source.'
+      description_addition = 'Must be an electric energy source.' # We must note this distinction in the property description
     elif wiki_type == 'BurnerPrototype':
       wiki_type = 'EnergySource'
       description_addition = 'Must be a burner energy source.'
@@ -186,7 +191,7 @@ class Property:
       wiki_type = 'string'
     return wiki_type, description_addition
 
-  
+
   def set_optional(self, property_arguments):
     optional = False
     if ('default' in property_arguments or 'optional' in property_arguments or 'Default' in property_arguments or 'Optional' in property_arguments) or (re.search('input, "\w+"', property_arguments) and self.type != 'Sound'):
@@ -202,6 +207,7 @@ class Property:
         return
     self.default = ''
 
+
   def set_description(self):
     desc_input = input('description ')
     if desc_input:
@@ -210,7 +216,7 @@ class Property:
 
   def __str__(self):
     if args.short_output:
-      return f'* {self.name} - [[Types/{self.type}]]' + (' - Optional' if self.optional else ' - Mandatory') # Sentence above the list is: Table with the following mandatory members: 
+      return f'* {self.name} - [[Types/{self.type}]]' + (' - Optional' if self.optional else ' - Mandatory') # Sentence above the list is: Table with the following mandatory members:
     else:
       header = '=' * self.header_level
       ret = f'{header} {self.name} {header}\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
@@ -219,8 +225,9 @@ class Property:
       if self.description:
         ret += '\n' + ' '.join(self.description) + '\n'
       return ret
-      
 
+
+# Convert all the properties to the wiki page string, include info about parent class
 def convert_to_string(parent, mandatory_properties, optional_properties):
   out = '== Basics ==\n'
   if parent:
@@ -229,9 +236,10 @@ def convert_to_string(parent, mandatory_properties, optional_properties):
   out += '== Mandatory properties =='
   if parent:
     out += f'\nThis prototype inherits all the properties from [[Prototype/{parent}]].'
-  out += '\n\n'
-  out += '\n'.join(mandatory_properties)
-  
+  out += '\n'
+  if len(mandatory_properties) > 0:
+    out += '\n' + '\n'.join(mandatory_properties)
+
   if len(optional_properties) != 0:
     out += '\n== Optional properties ==\n\n' + '\n'.join(optional_properties)
   return out
