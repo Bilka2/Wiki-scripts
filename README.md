@@ -35,13 +35,15 @@ redirects.py - Generates a list of redirects, including how many pages link to t
 
 wanted_pages.py - Generates a list of wanted pages (red links), including how many pages link to them and for wanted language pages some info about the English page. Puts the list on a page.
 
-generate_type.py - Easily format a property for a prototype page.
-
 generate_full_types.py - Read the Factorio source files to semi-automatically generate the documentation for a given prototype.
 
-check_if_all_prototypes_are_on_page.py - Check if all the prototype types listed in a file are also present on a wiki page.
+misc_scripts.py - Misc scripts that are not not used regularly
+ * used_as_ammo_by_in_infobox() - Set the "used as ammo by" property in an infobox.
+ * infobox_category_change() - Change category in infoboxes in a list of pages.
+ * make_type() - Easily format a property for a prototype page.
+ * check_if_all_prototypes_are_on_page() - Check if all the prototype types listed in a file are also present on a wiki page.
+ * prototype_types_on_individual_pages() - Use prototype-types.json to put the prototype type on each prototype page.
 
-infobox-category-change.py - Change category in infoboxes in a list of pages.
 
 Dependencies:
 
