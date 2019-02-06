@@ -142,3 +142,14 @@ def get_categorymembers(session, api_url, cmtitle, cmlimit = '400'):
     'cmprop' : 'title'
   })
   return categorymembers.json()['query']['categorymembers']
+
+  
+def get_user_groups(session, api_url):
+  user_groups = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'meta': 'userinfo',
+    'uiprop': 'groups'
+  })
+  return user_groups.json()['query']['userinfo']['groups']
