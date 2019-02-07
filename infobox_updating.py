@@ -10,44 +10,20 @@ Classes for properties:
     Each property must have a get_data_string method which returns the data as a string that can be parsed by Template:Infobox when placed behind a property name.
    
   IconWithCaption:
-    desc: Abstract container for the information required to generate the wikitext or infobox syntax for an icon.
-    members:
-      file_name - string - the file name, like a technology or item, can also be "Time". Does not have "File:" prefix or ".png" suffix.
-      caption - float or string - the amount or levels - displayed as extra info on the icon
-    json_representation:
-      list:
-        at index 0 - string - represents: file_name
-        at index 1 - number or string - represents: caption
-    
-  IconString:
-    desc: A string that represents the infobox syntax for an icon. Has the form "name, caption". Caption is optional, if it does not exist ", " will also not be present in the string. Note: Caption may not be parsable as a number.
-    members:
-      icon - string - the string.
-    json_representation: 
-      string - represents: icon
+    desc: Abstract container for the information required to generate the wikitext or infobox syntax for an icon. Mandatory file name, optional caption
 
 Classes for infoboxes:
   get_all_properties(self):
     Every infobox class must have this property. It returns a list of all members of the class, excluding "name"
-
-  Tech:
-    desc: All(?) information that can be found in technology infoboxes is part in this class. It can be parsed from "wiki-technologies-x.xx.xx.json" files. Note: Bonuses unlocked by technologies are not shown in infoboxes.
-    members:
-      name - string - the wiki name of the technology
-      cost - list of IconWithCaption
-      cost-multiplier - int
-      expensive-cost-multiplier - int
-      allows - list of IconStrings - the technologies that are unlocked by this technology
-      effects - list of IconStrings - the recipes that are unlocked by this technology
-      required-technologies - list of IconStrings - the technologies that are must be researched before this technology can be researched
 '''
 
 import re
 import requests
 import json
 import os.path
-from util import get_edit_token, get_page, edit_page
+from util import get_edit_token, get_page_safe, edit_page
 
+no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
 current_version = "0.16.51"
 api_url = 'https://testing-wiki.factorio.com/api.php'
 re_start_of_infobox = re.compile('{{infobox', re.I)
@@ -67,9 +43,9 @@ class Technology:
     self.cost_multiplier = Number('cost-multiplier', data['cost-multiplier'])
     self.expensive_cost_multiplier = Number('expensive-cost-multiplier', data['expensive-cost-multiplier'])
     self.cost = IconWithCaptionList('cost', data['cost'])
-    self.allows = get_IconWithCaptionList_from_IconStringList('allows', get_list(data, 'allows'))
-    self.effects = get_IconWithCaptionList_from_IconStringList('effects', get_list(data, 'effects'))
-    self.required_technologies =  get_IconWithCaptionList_from_IconStringList('required-technologies', get_list(data, 'required-technologies'))
+    self.allows = IconWithCaptionList_from_list_of_strings('allows', get_optional_list(data, 'allows')) # the technologies that are unlocked by this technology
+    self.effects = IconWithCaptionList_from_list_of_strings('effects', get_optional_list(data, 'effects')) # the recipes that are unlocked by this technology
+    self.required_technologies =  IconWithCaptionList_from_list_of_strings('required-technologies', get_optional_list(data, 'required-technologies')) #the technologies that are must be researched before this technology can be researched
     # HACK
     if self.name == 'Mining productivity (research)':
       self.allows.list[0].caption = '2-&infin;'
@@ -104,7 +80,7 @@ class IconWithCaptionList(InfoboxProperty):
 class IconWithCaption:
   def __init__(self, data):
     self.file_name = data[0]
-    self.caption = data[1]
+    self.caption = data[1] if len(data) == 2 else ""
     
   def __str__(self):
     if self.caption:
@@ -113,17 +89,11 @@ class IconWithCaption:
       return f'{self.file_name}'
 
 
-def get_IconWithCaptionList_from_IconStringList(name, list):
-  new_list = []
-  for string in list:
-    icon = string.split(', ')
-    if len(icon) == 1:
-      icon.append("")
-    new_list.append(icon)
-  return IconWithCaptionList(name, new_list)
+def IconWithCaptionList_from_list_of_strings(name, list):
+  return IconWithCaptionList(name, [string.split(', ') for string in list])
 
 
-def get_list(dict, key):
+def get_optional_list(dict, key):
   return dict[key] if key in dict else []
 
 
@@ -140,9 +110,14 @@ def update_infobox(file_name, klass):
   edit_token = get_edit_token(session, api_url)
   
   for name, data in file.items():
+    if name in no_infobox:
+      continue
     infobox_data = klass(name, data)
     page_name = 'Infobox:' + infobox_data.name
-    page = get_page(session, api_url, page_name)
+    page = get_page_safe(session, api_url, page_name)
+    if not page: # TODO
+      print(f'Page for {infobox_data.name} does not exit')
+      continue
     new_page = page
     summary = ''
     
@@ -150,8 +125,8 @@ def update_infobox(file_name, klass):
       new_page, summary = update_property(property, new_page, summary)
       
     if page != new_page:
-      # print(new_page + '      ' + summary)
-      print(edit_page(session, api_url, edit_token, page_name, new_page, summary).text)
+      print(new_page + '      ' + summary)
+      # print(edit_page(session, api_url, edit_token, page_name, new_page, summary).text)
     else:
       print(f'{infobox_data.name} was not changed.')
 

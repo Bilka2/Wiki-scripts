@@ -52,6 +52,23 @@ def get_page(session, api_url, title):
   return content
 
 
+def get_page_safe(session, api_url, title):
+  page_info = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'titles': title,
+    'prop': 'revisions',
+    'rvprop': 'content'
+  })
+  page = page_info.json()['query']['pages']
+  if 'revisions' in list(page.values())[0]:
+    revisions = list(page.values())[0]['revisions'][0]
+    content = list(revisions.values())[2]
+    return content
+  return ''
+
+
 def edit_page(session, api_url, edit_token, title, text, summary):
   edit_response = session.post(api_url, data={
     'format': 'json',
