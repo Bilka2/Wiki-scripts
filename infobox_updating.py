@@ -75,21 +75,25 @@ class Number:
     return str(self.number)
 
     
-def update_entity_health():  
-  with open(os.path.dirname(os.path.abspath(__file__)) + '/data/' + current_version + '/wiki-entities-health-' + current_version + '.json', 'r') as f:
+def update_infoboxes():
+  update_infobox('entities-health', Entity)
+  
+    
+def update_infobox(file_name, klass):
+  with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{current_version}/wiki-{file_name}-{current_version}.json', 'r') as f:
     file = json.load(f)
     
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
   
   for name, data in file.items():
-    entity = Entity(name, data)
+    infobox_data = klass(name, data)
     page_name = 'Infobox:' + name    
     page = get_page(session, api_url, page_name)
     new_page = page
     summary = ''
     
-    for property in entity.get_all_properties():     
+    for property in infobox_data.get_all_properties():     
       new_page, summary = update_property(property, new_page, summary)
       
     if page != new_page:
@@ -116,4 +120,4 @@ def update_property(property, page, summary):
   return page, summary
     
 if __name__ == '__main__':
-  update_entity_health()
+  update_infoboxes()
