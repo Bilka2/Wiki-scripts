@@ -54,6 +54,17 @@ class Technology:
     return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies]
 
 
+class Item:
+  def __init__(self, name, data):
+    self.name = name
+    self.consumers = IconWithCaptionList_from_list_of_strings('consumers', get_optional_list(data, 'consumers'))
+    self.stack_size = Number('stack-size', data['stack-size'])
+    self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', get_optional_list(data, 'required-technologies'))
+    
+  def get_all_properties(self):
+    return [self.consumers, self.stack_size, self.req_tech]
+    
+
 class InfoboxProperty:
   def __str__(self):
     return f'|{self.name} = {self.get_data_string()}'
@@ -99,7 +110,8 @@ def get_optional_list(dict, key):
 
 def update_infoboxes():
   #update_infobox('entities-health', Entity)
-  update_infobox('technologies', Technology)
+  #update_infobox('technologies', Technology)
+  update_infobox('items', Item)
   
     
 def update_infobox(file_name, klass):
