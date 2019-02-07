@@ -28,7 +28,7 @@ current_version = "0.16.51"
 api_url = 'https://testing-wiki.factorio.com/api.php'
 re_start_of_infobox = re.compile('{{infobox', re.I)
 
-class Entity:
+class EntityInfobox:
   def __init__(self, name, data):
     self.name = name
     self.health = Number('health', data['health'])
@@ -37,7 +37,7 @@ class Entity:
     return [self.health]
     
     
-class Technology:    
+class TechnologyInfobox:    
   def __init__(self, name, data):
     self.name = name + ' (research)'
     self.cost_multiplier = Number('cost-multiplier', data['cost-multiplier'])
@@ -54,7 +54,7 @@ class Technology:
     return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies]
 
 
-class Item:
+class ItemInfobox:
   def __init__(self, name, data):
     self.name = name
     self.consumers = IconWithCaptionList_from_list_of_strings('consumers', get_optional_list(data, 'consumers'))
@@ -65,12 +65,39 @@ class Item:
     return [self.consumers, self.stack_size, self.req_tech]
     
 
-class InfoboxProperty:
+class RecipeInfobox:
+  def __init__(self, name, data):
+    self.name = name
+    self.recipe = Recipe('recipe', data['recipe'], get_optional_list(data, 'recipe-output'))
+    self.total_raw = Recipe('total-raw', data['total-raw'], [])
+    self.expensive_recipe = Recipe('expensive-recipe', data['expensive-recipe'], get_optional_list(data, 'expensive-recipe-output'))
+    self.expensive_total_raw = Recipe('expensive-total-raw', data['expensive-total-raw'], [])
+    self.remove_duplicate_recipes()
+  
+  def remove_duplicate_recipes(self):
+    if self.expensive_total_raw == self.expensive_recipe:
+      self.expensive_total_raw.clear()
+      print(f'{self.name}: Removed expensive-total-raw because it was a duplicate of expensive-recipe.')
+    elif self.expensive_total_raw == self.total_raw:
+      self.expensive_total_raw.clear()
+      print(f'{self.name}: Removed expensive-total-raw because it was a duplicate of total-raw.')
+    if self.expensive_recipe == self.recipe:
+      self.expensive_recipe.clear()
+      print(f'{self.name}: Removed expensive-recipe because it was a duplicate of recipe.')
+    if self.total_raw == self.recipe:
+      self.total_raw.clear()
+      print(f'{self.name}: Removed total-raw because it was a duplicate of recipe.')
+  
+  def get_all_properties(self):
+    return [self.recipe, self.total_raw, self.expensive_recipe, self.total_raw, self.expensive_total_raw]
+  
+
+class Property:
   def __str__(self):
     return f'|{self.name} = {self.get_data_string()}'
 
 
-class Number(InfoboxProperty):
+class Number(Property):
   def __init__(self, name, number):
     self.name = name
     self.number = number
@@ -79,11 +106,35 @@ class Number(InfoboxProperty):
     return str(self.number)
 
 
-class IconWithCaptionList(InfoboxProperty):
+class Recipe(Property):
+  def __init__(self, name, ingredients, products):
+    self.name = name
+    self.ingredients = [IconWithCaption(item) for item in ingredients]
+    self.products = [IconWithCaption(item) for item in products]
+    
+  def get_data_string(self):
+    ret = ' + '.join([str(icon) for icon in self.ingredients])
+    if self.products:
+      ret += ' = ' + ' + '.join([str(icon) for icon in self.products])
+    return ret
+    
+  def __eq__(self, other): # Ignores name
+    if self.ingredients != other.ingredients:
+      return False
+    if (not self.products) or (not other.products): # Only compare products if both have them
+      return True
+    return self.products == other.products
+    
+  def clear(self):
+    self.ingredients.clear()
+    self.products.clear()
+
+
+class IconWithCaptionList(Property):
   def __init__(self, name, data):
     self.name = name
     self.list = [IconWithCaption(icon) for icon in data]
-    
+  
   def get_data_string(self):
     return ' + '.join([str(icon) for icon in self.list])
 
@@ -98,6 +149,9 @@ class IconWithCaption:
       return f'{self.file_name}, {self.caption}'
     else:
       return f'{self.file_name}'
+  
+  def __eq__(self, other):
+    return self.file_name == other.file_name and self.caption == other.caption
 
 
 def IconWithCaptionList_from_list_of_strings(name, list):
@@ -109,9 +163,10 @@ def get_optional_list(dict, key):
 
 
 def update_infoboxes():
-  #update_infobox('entities-health', Entity)
-  #update_infobox('technologies', Technology)
-  update_infobox('items', Item)
+  #update_infobox('entities-health', EntityInfobox)
+  #update_infobox('technologies', TechnologyInfobox)
+  #update_infobox('items', ItemInfobox)
+  update_infobox('recipes', RecipeInfobox)
   
     
 def update_infobox(file_name, klass):
