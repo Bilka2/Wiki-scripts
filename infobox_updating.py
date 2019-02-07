@@ -28,13 +28,15 @@ current_version = "0.16.51"
 api_url = 'https://testing-wiki.factorio.com/api.php'
 re_start_of_infobox = re.compile('{{infobox', re.I)
 
+
 class EntityInfobox:
   def __init__(self, name, data):
     self.name = name
-    self.health = Number('health', data['health'])
+    self.health = Number('health', get_optional_number(data, 'health'))
+    self.map_color = MapColor('map-color', get_optional_string(data, 'map-color'))
     
   def get_all_properties(self):
-    return [self.health]
+    return [self.health, self.map_color]
     
     
 class TechnologyInfobox:    
@@ -106,6 +108,18 @@ class Number(Property):
     return str(self.number)
 
 
+class MapColor(Property):
+  def __init__(self, name, data):
+    self.name = name
+    self.color = self.convert_to_chart_color(data) if data else data
+    
+  @staticmethod  
+  def convert_to_chart_color(color): # convert from rgb888 to rgb565 to rgb888 (chart uses rgb565)
+    return format((int(color, 16) & 0xF8FAF8), '06x')
+
+  def get_data_string(self):
+    return self.color
+
 class Recipe(Property):
   def __init__(self, name, ingredients, products):
     self.name = name
@@ -162,11 +176,19 @@ def get_optional_list(dict, key):
   return dict[key] if key in dict else []
 
 
+def get_optional_string(dict, key):
+  return dict[key] if key in dict else ""
+
+
+def get_optional_number(dict, key):
+  return dict[key] if key in dict else 0
+
+
 def update_infoboxes():
-  #update_infobox('entities-health', EntityInfobox)
+  update_infobox('entities', EntityInfobox)
   #update_infobox('technologies', TechnologyInfobox)
   #update_infobox('items', ItemInfobox)
-  update_infobox('recipes', RecipeInfobox)
+  #update_infobox('recipes', RecipeInfobox)
   
     
 def update_infobox(file_name, klass):
@@ -204,7 +226,7 @@ def update_property(property, page, summary):
     if not property.get_data_string(): # our property is empty and should be removed from the page
       page = page[:on_page.start()] + on_page.group(3) + page[on_page.end():]
       summary += 'Removed ' + property.name + '. '
-    elif on_page.group(2) == property.get_data_string(): #our page contains exactly what we want
+    elif on_page.group(2) == property.get_data_string(): # our page contains exactly what we want
       return page, summary
     else: # replace data that is on the page
       page = page[:on_page.start()] + str(property) + page[on_page.start() + len(on_page.group(1)):]
