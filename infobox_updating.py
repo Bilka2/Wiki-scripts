@@ -221,9 +221,9 @@ def update_infobox(file_name, klass):
 
 
 def update_property(property, page, summary):
-  on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*(.+))\n*(\||}})', page)
+  on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*([^\|}\n]+))\n*(\||}})', page)
   if on_page:
-    if not property.get_data_string(): # our property is empty and should be removed from the page
+    if (not property.get_data_string()) or property.get_data_string() == '0': # our property is empty and should be removed from the page
       page = page[:on_page.start()] + on_page.group(3) + page[on_page.end():]
       summary += 'Removed ' + property.name + '. '
     elif on_page.group(2) == property.get_data_string(): # our page contains exactly what we want
@@ -231,7 +231,7 @@ def update_property(property, page, summary):
     else: # replace data that is on the page
       page = page[:on_page.start()] + str(property) + page[on_page.start() + len(on_page.group(1)):]
       summary += 'Updated ' + property.name + f' to {current_version}. '
-  elif property.get_data_string(): # add data to page (if there is any to add)
+  elif property.get_data_string() and property.get_data_string() != '0': # add data to page (if there is any to add)
     page = re.sub(re_start_of_infobox, r'\g<0>\n' + str(property), page)
     summary += 'Added ' + property.name + '. '
   
