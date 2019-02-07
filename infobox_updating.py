@@ -11,18 +11,16 @@ Classes for properties:
    
   IconWithCaption:
     desc: Abstract container for the information required to generate the wikitext or infobox syntax for an icon.
-    to_do: Make this class support uint and string captions.
     members:
-      name - string - the file name, like a technology or item, can also be "Time". Does not have "File:" prefix or ".png" suffix.
-      caption - float - the amount or level - displayed as extra info on the icon
+      file_name - string - the file name, like a technology or item, can also be "Time". Does not have "File:" prefix or ".png" suffix.
+      caption - float or string - the amount or levels - displayed as extra info on the icon
     json_representation:
       list:
-        at index 0 - string - represents: name
-        at index 1 - number - represents: caption
+        at index 0 - string - represents: file_name
+        at index 1 - number or string - represents: caption
     
   IconString:
     desc: A string that represents the infobox syntax for an icon. Has the form "name, caption". Caption is optional, if it does not exist ", " will also not be present in the string. Note: Caption may not be parsable as a number.
-    to_do: Should have a function to be converted into a IconWithCaption when that supports uints and strings as captions.
     members:
       icon - string - the string.
     json_representation: 
@@ -35,7 +33,7 @@ Classes for infoboxes:
   Tech:
     desc: All(?) information that can be found in technology infoboxes is part in this class. It can be parsed from "wiki-technologies-x.xx.xx.json" files. Note: Bonuses unlocked by technologies are not shown in infoboxes.
     members:
-      name - string - the wiki name of the technology  without " (research)" suffix
+      name - string - the wiki name of the technology
       cost - list of IconWithCaption
       cost-multiplier - int
       expensive-cost-multiplier - int
@@ -63,20 +61,75 @@ class Entity:
     return [self.health]
     
     
-class Number:
+class Technology:    
+  def __init__(self, name, data):
+    self.name = name + ' (research)'
+    self.cost_multiplier = Number('cost-multiplier', data['cost-multiplier'])
+    self.expensive_cost_multiplier = Number('expensive-cost-multiplier', data['expensive-cost-multiplier'])
+    self.cost = IconWithCaptionList('cost', data['cost'])
+    self.allows = get_IconWithCaptionList_from_IconStringList('allows', get_list(data, 'allows'))
+    self.effects = get_IconWithCaptionList_from_IconStringList('effects', get_list(data, 'effects'))
+    self.required_technologies =  get_IconWithCaptionList_from_IconStringList('required-technologies', get_list(data, 'required-technologies'))
+    # HACK
+    if self.name == 'Mining productivity (research)':
+      self.allows.list[0].caption = '2-&infin;'
+  
+  def get_all_properties(self):
+    return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies]
+
+
+class InfoboxProperty:
+  def __str__(self):
+    return f'|{self.name} = {self.get_data_string()}'
+
+
+class Number(InfoboxProperty):
   def __init__(self, name, number):
     self.name = name
     self.number = number
-  
-  def __str__(self):
-    return f'|{self.name} = {self.number}'
     
   def get_data_string(self):
     return str(self.number)
 
+
+class IconWithCaptionList(InfoboxProperty):
+  def __init__(self, name, data):
+    self.name = name
+    self.list = [IconWithCaption(icon) for icon in data]
     
+  def get_data_string(self):
+    return ' + '.join([str(icon) for icon in self.list])
+
+
+class IconWithCaption:
+  def __init__(self, data):
+    self.file_name = data[0]
+    self.caption = data[1]
+    
+  def __str__(self):
+    if self.caption:
+      return f'{self.file_name}, {self.caption}'
+    else:
+      return f'{self.file_name}'
+
+
+def get_IconWithCaptionList_from_IconStringList(name, list):
+  new_list = []
+  for string in list:
+    icon = string.split(', ')
+    if len(icon) == 1:
+      icon.append("")
+    new_list.append(icon)
+  return IconWithCaptionList(name, new_list)
+
+
+def get_list(dict, key):
+  return dict[key] if key in dict else []
+
+
 def update_infoboxes():
-  update_infobox('entities-health', Entity)
+  #update_infobox('entities-health', Entity)
+  update_infobox('technologies', Technology)
   
     
 def update_infobox(file_name, klass):
@@ -88,7 +141,7 @@ def update_infobox(file_name, klass):
   
   for name, data in file.items():
     infobox_data = klass(name, data)
-    page_name = 'Infobox:' + name    
+    page_name = 'Infobox:' + infobox_data.name
     page = get_page(session, api_url, page_name)
     new_page = page
     summary = ''
@@ -97,9 +150,10 @@ def update_infobox(file_name, klass):
       new_page, summary = update_property(property, new_page, summary)
       
     if page != new_page:
+      # print(new_page + '      ' + summary)
       print(edit_page(session, api_url, edit_token, page_name, new_page, summary).text)
     else:
-      print(f'{name} was not changed.')
+      print(f'{infobox_data.name} was not changed.')
 
 
 def update_property(property, page, summary):
