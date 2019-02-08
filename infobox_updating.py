@@ -17,11 +17,12 @@ Classes for infoboxes:
     Every infobox class must have this property. It returns a list of all members of the class, excluding "name"
 '''
 
-import re
-import requests
 import json
 import os.path
-from util import get_edit_token, get_page_safe, edit_page
+import re
+import requests
+from enum import Enum
+from util import get_edit_token, get_page_safe, edit_page, DictUtil
 
 no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
 current_version = "0.16.51"
@@ -29,11 +30,18 @@ api_url = 'https://testing-wiki.factorio.com/api.php'
 re_start_of_infobox = re.compile('{{infobox', re.I)
 
 
+class InfoboxType(Enum):
+  Entity = 1
+  Technology = 2
+  Item = 3
+  Recipe = 4
+
+
 class EntityInfobox:
   def __init__(self, name, data):
     self.name = name
-    self.health = Number('health', get_optional_number(data, 'health'))
-    self.map_color = MapColor('map-color', get_optional_string(data, 'map-color'))
+    self.health = Number('health', DictUtil.get_optional_number(data, 'health'))
+    self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
     
   def get_all_properties(self):
     return [self.health, self.map_color]
@@ -45,23 +53,27 @@ class TechnologyInfobox:
     self.cost_multiplier = Number('cost-multiplier', data['cost-multiplier'])
     self.expensive_cost_multiplier = Number('expensive-cost-multiplier', data['expensive-cost-multiplier'])
     self.cost = IconWithCaptionList('cost', data['cost'])
-    self.allows = IconWithCaptionList_from_list_of_strings('allows', get_optional_list(data, 'allows')) # the technologies that are unlocked by this technology
-    self.effects = IconWithCaptionList_from_list_of_strings('effects', get_optional_list(data, 'effects')) # the recipes that are unlocked by this technology
-    self.required_technologies =  IconWithCaptionList_from_list_of_strings('required-technologies', get_optional_list(data, 'required-technologies')) #the technologies that are must be researched before this technology can be researched
+    self.allows = IconWithCaptionList_from_list_of_strings('allows', DictUtil.get_optional_list(data, 'allows')) # the technologies that are unlocked by this technology
+    self.effects = IconWithCaptionList_from_list_of_strings('effects', DictUtil.get_optional_list(data, 'effects')) # the recipes that are unlocked by this technology
+    self.required_technologies =  IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies')) #the technologies that are must be researched before this technology can be researched
+    self.internal_name = String('internal-name', data['internal-name'])
+    self.prototype_type = String('prototype-type', 'technology')
+    self.category = String('category', "Technology")
+    
     # HACK
     if self.name == 'Mining productivity (research)':
       self.allows.list[0].caption = '2-&infin;'
   
   def get_all_properties(self):
-    return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies]
+    return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category]
 
 
 class ItemInfobox:
   def __init__(self, name, data):
     self.name = name
-    self.consumers = IconWithCaptionList_from_list_of_strings('consumers', get_optional_list(data, 'consumers'))
+    self.consumers = IconWithCaptionList_from_list_of_strings('consumers', DictUtil.get_optional_list(data, 'consumers'))
     self.stack_size = Number('stack-size', data['stack-size'])
-    self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', get_optional_list(data, 'required-technologies'))
+    self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies'))
     
   def get_all_properties(self):
     return [self.consumers, self.stack_size, self.req_tech]
@@ -70,9 +82,9 @@ class ItemInfobox:
 class RecipeInfobox:
   def __init__(self, name, data):
     self.name = name
-    self.recipe = Recipe('recipe', data['recipe'], get_optional_list(data, 'recipe-output'))
+    self.recipe = Recipe('recipe', data['recipe'], DictUtil.get_optional_list(data, 'recipe-output'))
     self.total_raw = Recipe('total-raw', data['total-raw'], [])
-    self.expensive_recipe = Recipe('expensive-recipe', data['expensive-recipe'], get_optional_list(data, 'expensive-recipe-output'))
+    self.expensive_recipe = Recipe('expensive-recipe', data['expensive-recipe'], DictUtil.get_optional_list(data, 'expensive-recipe-output'))
     self.expensive_total_raw = Recipe('expensive-total-raw', data['expensive-total-raw'], [])
     self.remove_duplicate_recipes()
   
@@ -106,6 +118,15 @@ class Number(Property):
     
   def get_data_string(self):
     return str(self.number)
+
+
+class String(Property):
+  def __init__(self, name, string):
+    self.name = name
+    self.string = string
+    
+  def get_data_string(self):
+    return self.string
 
 
 class MapColor(Property):
@@ -172,26 +193,24 @@ def IconWithCaptionList_from_list_of_strings(name, list):
   return IconWithCaptionList(name, [string.split(', ') for string in list])
 
 
-def get_optional_list(dict, key):
-  return dict[key] if key in dict else []
-
-
-def get_optional_string(dict, key):
-  return dict[key] if key in dict else ""
-
-
-def get_optional_number(dict, key):
-  return dict[key] if key in dict else 0
-
-
-def update_infoboxes():
-  update_infobox('entities', EntityInfobox)
-  #update_infobox('technologies', TechnologyInfobox)
-  #update_infobox('items', ItemInfobox)
-  #update_infobox('recipes', RecipeInfobox)
+def update_infoboxes(infoboxes, testing=True, version = ""):
+  if not testing:
+    api_url = 'https://wiki.factorio.com/api.php'
+  if version:
+    current_version = version
+  
+  print('Updating the following infoboxes: ' + str(infoboxes))
+  if InfoboxType.Entity in infoboxes:
+    update_infobox('entities', EntityInfobox, testing)
+  if InfoboxType.Technology in infoboxes:
+    update_infobox('technologies', TechnologyInfobox, testing)
+  if InfoboxType.Item in infoboxes:
+    update_infobox('items', ItemInfobox, testing)
+  if InfoboxType.Recipe in infoboxes:
+    update_infobox('recipes', RecipeInfobox, testing)
   
     
-def update_infobox(file_name, klass):
+def update_infobox(file_name, klass, testing):
   with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{current_version}/wiki-{file_name}-{current_version}.json', 'r') as f:
     file = json.load(f)
     
@@ -214,8 +233,10 @@ def update_infobox(file_name, klass):
       new_page, summary = update_property(property, new_page, summary)
       
     if page != new_page:
-      print(new_page + '      ' + summary)
-      # print(edit_page(session, api_url, edit_token, page_name, new_page, summary).text)
+      if testing:
+        print(new_page + '      ' + summary)
+      else:
+        print(edit_page(session, api_url, edit_token, page_name, new_page, summary).text)
     else:
       print(f'{infobox_data.name} was not changed.')
 
@@ -238,4 +259,4 @@ def update_property(property, page, summary):
   return page, summary
     
 if __name__ == '__main__':
-  update_infoboxes()
+  update_infoboxes([InfoboxType.Technology])

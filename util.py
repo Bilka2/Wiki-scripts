@@ -1,7 +1,7 @@
-import requests
-import json
 import base64
+import json
 import os.path
+import requests
 
 with open(os.path.dirname(__file__) + '/bot-credentials.json', 'r') as f:
   credentials = json.load(f)
@@ -170,3 +170,17 @@ def get_user_groups(session, api_url):
     'uiprop': 'groups'
   })
   return user_groups.json()['query']['userinfo']['groups']
+
+
+class DictUtil:
+  @staticmethod
+  def get_optional_list(dict, key):
+    return dict[key] if key in dict else []
+  
+  @staticmethod
+  def get_optional_string(dict, key):
+    return dict[key] if key in dict else ""
+  
+  @staticmethod
+  def get_optional_number(dict, key):
+    return dict[key] if key in dict else 0
