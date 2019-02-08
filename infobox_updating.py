@@ -35,6 +35,17 @@ class InfoboxType(Enum):
   Technology = 2
   Item = 3
   Recipe = 4
+  Prototype = 5
+
+
+class PrototypeInfobox:
+  def __init__(self, name, data):
+    self.name = name
+    self.internal_name = String('internal-name', data['internal-name'])
+    self.prototype_type = String('prototype-type', data['prototype-type'])
+    
+  def get_all_properties(self):
+    return [self.internal_name, self.prototype_type]
 
 
 class EntityInfobox:
@@ -208,6 +219,8 @@ def update_infoboxes(infoboxes, testing=True, version = ""):
     update_infobox('items', ItemInfobox, testing)
   if InfoboxType.Recipe in infoboxes:
     update_infobox('recipes', RecipeInfobox, testing)
+  if InfoboxType.Prototype in infoboxes:
+    update_infobox('types', PrototypeInfobox, testing)
   
     
 def update_infobox(file_name, klass, testing):
@@ -259,4 +272,4 @@ def update_property(property, page, summary):
   return page, summary
     
 if __name__ == '__main__':
-  update_infoboxes([InfoboxType.Technology])
+  update_infoboxes([InfoboxType.Prototype])
