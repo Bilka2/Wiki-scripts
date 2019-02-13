@@ -24,11 +24,6 @@ import requests
 from enum import Enum
 from util import get_edit_token, get_page_safe, edit_page, DictUtil
 
-no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
-current_version = "0.16.51"
-api_url = 'https://testing-wiki.factorio.com/api.php'
-re_start_of_infobox = re.compile('{{infobox', re.I)
-
 
 class InfoboxType(Enum):
   Entity = 1
@@ -48,7 +43,7 @@ class PrototypeInfobox:
     return [self.internal_name, self.prototype_type]
 
 
-class EntityInfobox:
+class EntityInfobox: # also does tile colors
   def __init__(self, name, data):
     self.name = name
     self.health = Number('health', DictUtil.get_optional_number(data, 'health'))
@@ -204,72 +199,81 @@ def IconWithCaptionList_from_list_of_strings(name, list):
   return IconWithCaptionList(name, [string.split(', ') for string in list])
 
 
-def update_infoboxes(infoboxes, testing=True, version = ""):
-  if not testing:
-    api_url = 'https://wiki.factorio.com/api.php'
-  if version:
-    current_version = version
+class InfoboxUpdate:
+  no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
+  re_start_of_infobox = re.compile('{{infobox', re.I)
+
+  def __init__(self, infoboxes, api_url, version, testing):
+    self.api_url = api_url
+    self.version = version
+    self.testing = testing
+    self.infoboxes = infoboxes
+    
+    self.update_infoboxes()
+
   
-  print('Updating the following infoboxes: ' + str(infoboxes))
-  if InfoboxType.Entity in infoboxes:
-    update_infobox('entities', EntityInfobox, testing)
-  if InfoboxType.Technology in infoboxes:
-    update_infobox('technologies', TechnologyInfobox, testing)
-  if InfoboxType.Item in infoboxes:
-    update_infobox('items', ItemInfobox, testing)
-  if InfoboxType.Recipe in infoboxes:
-    update_infobox('recipes', RecipeInfobox, testing)
-  if InfoboxType.Prototype in infoboxes:
-    update_infobox('types', PrototypeInfobox, testing)
+  def update_infoboxes(self):
+    print('Updating the following infoboxes: ' + str(self.infoboxes))
+    if InfoboxType.Entity in self.infoboxes:
+      self.update_infobox('entities', EntityInfobox)
+    if InfoboxType.Technology in self.infoboxes:
+      self.update_infobox('technologies', TechnologyInfobox)
+    if InfoboxType.Item in self.infoboxes:
+      self.update_infobox('items', ItemInfobox)
+    if InfoboxType.Recipe in self.infoboxes:
+      self.update_infobox('recipes', RecipeInfobox)
+    if InfoboxType.Prototype in self.infoboxes:
+      self.update_infobox('types', PrototypeInfobox)
   
     
-def update_infobox(file_name, klass, testing):
-  with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{current_version}/wiki-{file_name}-{current_version}.json', 'r') as f:
-    file = json.load(f)
-    
-  session = requests.Session()
-  edit_token = get_edit_token(session, api_url)
-  
-  for name, data in file.items():
-    if name in no_infobox:
-      continue
-    infobox_data = klass(name, data)
-    page_name = 'Infobox:' + infobox_data.name
-    page = get_page_safe(session, api_url, page_name)
-    if not page: # TODO
-      print(f'Page for {infobox_data.name} does not exit')
-      continue
-    new_page = page
-    summary = ''
-    
-    for property in infobox_data.get_all_properties():     
-      new_page, summary = update_property(property, new_page, summary)
+  def update_infobox(self, file_name, klass):    
+    with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}/wiki-{file_name}-{self.version}.json', 'r') as f:
+      file = json.load(f)
       
-    if page != new_page:
-      if testing:
-        print(new_page + '      ' + summary)
+    session = requests.Session()
+    edit_token = get_edit_token(session, self.api_url)
+    
+    for name, data in file.items():
+      if name in self.no_infobox:
+        continue
+      infobox_data = klass(name, data)
+      page_name = 'Infobox:' + infobox_data.name
+      page = get_page_safe(session, self.api_url, page_name)
+      if not page: # TODO
+        print(f'Page for {infobox_data.name} does not exit')
+        continue
+      new_page = page
+      summary = ''
+      
+      for property in infobox_data.get_all_properties():     
+        new_page, summary = self.update_property(property, new_page, summary)
+        
+      if page != new_page:
+        if self.testing:
+          print(new_page + '      ' + summary)
+        else:
+          print(edit_page(session, self.api_url, edit_token, page_name, new_page, summary).text)
       else:
-        print(edit_page(session, api_url, edit_token, page_name, new_page, summary).text)
-    else:
-      print(f'{infobox_data.name} was not changed.')
+        print(f'{infobox_data.name} was not changed.')
 
 
-def update_property(property, page, summary):
-  on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*([^\|}\n]+))\n*(\||}})', page)
-  if on_page:
-    if (not property.get_data_string()) or property.get_data_string() == '0': # our property is empty and should be removed from the page
-      page = page[:on_page.start()] + on_page.group(3) + page[on_page.end():]
-      summary += 'Removed ' + property.name + '. '
-    elif on_page.group(2) == property.get_data_string(): # our page contains exactly what we want
-      return page, summary
-    else: # replace data that is on the page
-      page = page[:on_page.start()] + str(property) + page[on_page.start() + len(on_page.group(1)):]
-      summary += 'Updated ' + property.name + f' to {current_version}. '
-  elif property.get_data_string() and property.get_data_string() != '0': # add data to page (if there is any to add)
-    page = re.sub(re_start_of_infobox, r'\g<0>\n' + str(property), page)
-    summary += 'Added ' + property.name + '. '
-  
-  return page, summary
+  def update_property(self, property, page, summary):
+    on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*([^\|}\n]+))\n*(\||}})', page)
+    if on_page:
+      if (not property.get_data_string()) or property.get_data_string() == '0': # our property is empty and should be removed from the page
+        page = page[:on_page.start()] + on_page.group(3) + page[on_page.end():]
+        summary += 'Removed ' + property.name + '. '
+      elif on_page.group(2) == property.get_data_string(): # our page contains exactly what we want
+        return page, summary
+      else: # replace data that is on the page
+        page = page[:on_page.start()] + str(property) + page[on_page.start() + len(on_page.group(1)):]
+        summary += 'Updated ' + property.name + f' to {self.version}. '
+    elif property.get_data_string() and property.get_data_string() != '0': # add data to page (if there is any to add)
+      page = re.sub(self.re_start_of_infobox, r'\g<0>\n' + str(property), page)
+      summary += 'Added ' + property.name + '. '
+    
+    return page, summary
     
 if __name__ == '__main__':
-  update_infoboxes([InfoboxType.Prototype])
+  InfoboxUpdate([InfoboxType.Entity], 'https://testing-wiki.factorio.com/api.php', '0.16.51', True)
+  #InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '0.16.51', False)
