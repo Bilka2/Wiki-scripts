@@ -1,7 +1,7 @@
-import requests
-import json
 import base64
+import json
 import os.path
+import requests
 
 with open(os.path.dirname(__file__) + '/bot-credentials.json', 'r') as f:
   credentials = json.load(f)
@@ -50,6 +50,23 @@ def get_page(session, api_url, title):
   revisions = list(page.values())[0]['revisions'][0]
   content = list(revisions.values())[2]
   return content
+
+
+def get_page_safe(session, api_url, title):
+  page_info = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'titles': title,
+    'prop': 'revisions',
+    'rvprop': 'content'
+  })
+  page = page_info.json()['query']['pages']
+  if 'revisions' in list(page.values())[0]:
+    revisions = list(page.values())[0]['revisions'][0]
+    content = list(revisions.values())[2]
+    return content
+  return ''
 
 
 def edit_page(session, api_url, edit_token, title, text, summary):
@@ -142,3 +159,28 @@ def get_categorymembers(session, api_url, cmtitle, cmlimit = '400'):
     'cmprop' : 'title'
   })
   return categorymembers.json()['query']['categorymembers']
+
+  
+def get_user_groups(session, api_url):
+  user_groups = session.get(api_url, params={
+    'format': 'json',
+    'action': 'query',
+    'assert': 'user',
+    'meta': 'userinfo',
+    'uiprop': 'groups'
+  })
+  return user_groups.json()['query']['userinfo']['groups']
+
+
+class DictUtil:
+  @staticmethod
+  def get_optional_list(dict, key):
+    return dict[key] if key in dict else []
+  
+  @staticmethod
+  def get_optional_string(dict, key):
+    return dict[key] if key in dict else ""
+  
+  @staticmethod
+  def get_optional_number(dict, key):
+    return dict[key] if key in dict else 0
