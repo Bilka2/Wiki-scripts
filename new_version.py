@@ -19,8 +19,10 @@ def main(forum_post_number, version):
   if version in version_nav_page:
     return f'Version {version} already found on "{version_nav_page_name}". Aborting.'
   
-  #TODO: FIX THIS FOR WHEN THERE IS NO EXPERIMENTAL
-  new_latest_version_page = re.sub(r'({{Translation\|Latest experimental version}}: \[https:\/\/forums\.factorio\.com\/)\d+ \d\.\d+\.\d+', rf'\g<1>{forum_post_number} {version}', latest_version_page)
+  if 'None' not in latest_version_page:
+    new_latest_version_page = re.sub(r'({{Translation\|Latest experimental version}}: \[https:\/\/forums\.factorio\.com\/)\d+ \d\.\d+\.\d+', rf'\g<1>{forum_post_number} {version}', latest_version_page)
+  else:
+    new_latest_version_page = re.sub(r'({{Translation\|Latest experimental version}}: ){{Translation\|None}}', rf'\g<1>[https://forums.factorio.com/{forum_post_number} {version}]', latest_version_page)
   new_version_nav_page = re.sub(r'(}}\n)(}}\n<noinclude>{{Documentation}}<\/noinclude>)', rf'\1* {{{{TransLink|Version history/{version[:5]}0#{version}|{version}}}}}\n\2', version_nav_page) #assumes 2 digit major version
   
   edit_response_latest_version_page = edit_page(session, api_url, edit_token, latest_version_page_name, new_latest_version_page, f'{version}')
