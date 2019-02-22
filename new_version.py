@@ -32,4 +32,4 @@ def main(forum_post_number, version):
 
 
 if __name__ == '__main__':
-  print(main('12345', '0.16.99'))
+  #print(main('12345', '0.16.99'))
