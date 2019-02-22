@@ -47,10 +47,11 @@ class EntityInfobox: # also does tile colors
   def __init__(self, name, data):
     self.name = name
     self.health = Number('health', DictUtil.get_optional_number(data, 'health'))
+    self.mining_time = Number('mining-time', DictUtil.get_optional_number(data, 'mining-time'))
     self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
     
   def get_all_properties(self):
-    return [self.health, self.map_color]
+    return [self.health, self.map_color, self.mining_time]
     
     
 class TechnologyInfobox:    
@@ -275,5 +276,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity], 'https://testing-wiki.factorio.com/api.php', '0.16.51', True)
+  #InfoboxUpdate([InfoboxType.Entity], 'https://testing-wiki.factorio.com/api.php', '0.16.51', True)
   #InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '0.16.51', False)
