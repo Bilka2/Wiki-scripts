@@ -1,8 +1,12 @@
 import re
+import requests
+from util import get_edit_token, get_page, edit_page # needed: move page, prepend edit, create page
+# import the infobox updating
 
 def update(testing=True):
-  # archive pages + files
-  # move pages + files
+  # move that one really special page - need to update the infobox on the page too
+  # archive pages + files = prepend edit {{archive}} onto them
+  # move pages + files - leave redirects - maybe also do infoboxes?
   # upload files
   # infobox update
   # what about the version history itself??
