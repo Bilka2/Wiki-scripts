@@ -241,7 +241,7 @@ class InfoboxUpdate:
       page_name = 'Infobox:' + infobox_data.name
       page = get_page_safe(session, self.api_url, page_name)
       if not page: # TODO
-        print(f'Page for {infobox_data.name} does not exit')
+        print(f'Page for {infobox_data.name} does not exist.')
         continue
       new_page = page
       summary = ''
