@@ -172,6 +172,20 @@ def get_user_groups(session, api_url):
   return user_groups.json()['query']['userinfo']['groups']
 
 
+def upload_file(session, api_url, edit_token, filename, file, text):
+  response = session.post(api_url, files = {'file': (filename, file)}, data={
+    'format': 'json',
+    'action': 'upload',
+    'assert': 'user',
+    'text': text,
+    'filename': filename,
+    'text': text,
+    'token': edit_token,
+    'ignorewarnings': True
+  })
+  return response
+
+
 class DictUtil:
   @staticmethod
   def get_optional_list(dict, key):
