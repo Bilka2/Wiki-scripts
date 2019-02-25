@@ -240,9 +240,9 @@ class InfoboxUpdate:
       infobox_data = klass(name, data)
       page_name = 'Infobox:' + infobox_data.name
       page = get_page_safe(session, self.api_url, page_name)
-      if not page: # TODO
-        print(f'Page for {infobox_data.name} does not exist.')
-        continue
+      if not page:
+        print(f'Page for Infobox:{infobox_data.name} does not exist. Creating....')
+        page = '{{Infobox\n}}<noinclude>[[Category:Infobox page]]</noinclude>'
       new_page = page
       summary = ''
       
@@ -278,3 +278,4 @@ class InfoboxUpdate:
 if __name__ == '__main__':
   #InfoboxUpdate([InfoboxType.Entity], 'https://testing-wiki.factorio.com/api.php', '0.16.51', True)
   #InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '0.16.51', False)
+  #InfoboxUpdate([InfoboxType.Technology], 'https://wiki.factorio.com/api.php', '0.17.0', True)

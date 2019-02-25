@@ -46,6 +46,11 @@ def update(testing=True):
   
   
   #create pages
+  with open('C:\\Users\\Win 10\\Documents\\Wiki-data\\new_pages.json') as f:
+    create_page_data = json.load(f)
+  
+  for name, page in create_page_data.items():
+    edit_page(session, api_url, edit_token, name, page, 'Added in 0.17')
   
   
   # infobox update
