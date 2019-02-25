@@ -178,12 +178,30 @@ def upload_file(session, api_url, edit_token, filename, file, text):
     'action': 'upload',
     'assert': 'user',
     'text': text,
-    'filename': filename,
+    'filename': filename, # no File: prefix
     'text': text,
     'token': edit_token,
     'ignorewarnings': True
   })
   return response
+
+
+def move_page(session, api_url, edit_token, frm, to, summary, redirect = True):
+  data = {
+    'format': 'json',
+    'action': 'move',
+    'assert': 'user',
+    'from': frm,
+    'to': to,
+    'reason': summary,
+    'token': edit_token,
+    'movetalk': True,
+    'ignorewarnings': True
+  }
+  if not redirect:
+    data['noredirect'] = True
+
+  return session.post(api_url, data=data)
 
 
 class DictUtil:

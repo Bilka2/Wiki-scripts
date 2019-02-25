@@ -4,7 +4,7 @@ import json
 import os.path
 import re
 import requests
-from util import get_edit_token, get_page, edit_page, upload_file
+from util import get_edit_token, get_page, edit_page, upload_file, move_page
 api_url = 'https://wiki.factorio.com/api.php'
 
 
@@ -105,6 +105,13 @@ def upload_file_test():
   print(upload_file(session, 'https://testing-wiki.factorio.com/api.php', edit_token, 'Test.png', file, '{{Game image}}').text)
 
 
+def move_page_test():
+  session = requests.Session()
+  edit_token = get_edit_token(session, 'https://testing-wiki.factorio.com/api.php')
+  
+  print(move_page(session, 'https://testing-wiki.factorio.com/api.php', edit_token, 'User:Bilka/Sandbox1', 'User:Bilka/Sandbox', 'This is a test', False).text)
+
+
 if __name__ == '__main__':
   # used_as_ammo_by_in_infobox(["Flamethrower turret"], "Light oil")
   
@@ -117,5 +124,6 @@ if __name__ == '__main__':
   # prototype_types_on_individual_pages()
   
   # upload_file_test()
+  # move_page_test()
   
   # print(convert_data_raw('0.16.51'))
