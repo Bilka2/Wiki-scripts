@@ -69,18 +69,22 @@ def get_page_safe(session, api_url, title):
   return ''
 
 
-def edit_page(session, api_url, edit_token, title, text, summary):
-  edit_response = session.post(api_url, data={
+def edit_page(session, api_url, edit_token, title, text, summary, prepend = False): # can also create pages
+  data={
     'format': 'json',
     'action': 'edit',
     'assert': 'user',
-    'text': text,
     'summary': summary,
     'title': title,
     'bot': True,
     'token': edit_token,
-  })
-  return edit_response
+  }
+  if prepend:
+    data['prependtext'] = text
+  else:
+    data['text'] = text
+  
+  return session.post(api_url, data=data)
 
 
 def get_allpages(session, api_url, aplimit = '5000', apfilterredir = 'all', apnamespace = '0'):

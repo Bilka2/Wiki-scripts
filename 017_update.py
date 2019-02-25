@@ -1,6 +1,6 @@
 import re
 import requests
-from util import get_edit_token, get_page, edit_page, upload_file, move_page # needed: prepend edit, create page
+from util import get_edit_token, get_page, edit_page, upload_file, move_page
 # import the infobox updating
 
 def update(testing=True):

@@ -95,7 +95,8 @@ def convert_data_raw(version):
     out += '</div>\n'
 
   return out
-  
+
+
 def upload_file_test():
   session = requests.Session()
   edit_token = get_edit_token(session, 'https://testing-wiki.factorio.com/api.php')
@@ -112,6 +113,13 @@ def move_page_test():
   print(move_page(session, 'https://testing-wiki.factorio.com/api.php', edit_token, 'User:Bilka/Sandbox1', 'User:Bilka/Sandbox', 'This is a test', False).text)
 
 
+def create_page_test():
+  session = requests.Session()
+  edit_token = get_edit_token(session, 'https://testing-wiki.factorio.com/api.php')
+  
+  print(edit_page(session, 'https://testing-wiki.factorio.com/api.php', edit_token, 'User:Bilka/Sandbox1', 'This is a test. Foo bar', 'test').text)
+
+
 if __name__ == '__main__':
   # used_as_ammo_by_in_infobox(["Flamethrower turret"], "Light oil")
   
@@ -125,5 +133,6 @@ if __name__ == '__main__':
   
   # upload_file_test()
   # move_page_test()
+  create_page_test()
   
   # print(convert_data_raw('0.16.51'))
