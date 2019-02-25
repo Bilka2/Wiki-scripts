@@ -1,11 +1,10 @@
+import calendar
 import requests
-import re #regex
+import re
 import feedparser
 import time
 from util import get_edit_token, get_page, edit_page
-import calendar
 
-api_url = 'https://wiki.factorio.com/api.php'
 page_name = 'News'
 
 
@@ -28,7 +27,7 @@ def turn_page_into_sections(content, depth):
   return sections
 
 
-def main():
+def main(api_url = 'https://wiki.factorio.com/api.php'):
   feed = feedparser.parse('https://www.factorio.com/blog/rss')
   title = feed.entries[0].title.replace(re.search('Friday Facts #\d+ - ', feed.entries[0].title).group(), '') #without {Friday Facts #241 - } etc
   number = re.search('#\d+', feed.entries[0].title).group().replace('#', '') #string
@@ -91,6 +90,5 @@ def main():
   return edit_response.text
 
 
-#wont execute if file is imported instead of run
 if __name__ == '__main__':
   print (main())
