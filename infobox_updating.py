@@ -276,5 +276,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  #InfoboxUpdate([InfoboxType.Entity], 'https://testing-wiki.factorio.com/api.php', '0.16.51', True)
+  InfoboxUpdate([InfoboxType.Entity], 'https://testing-wiki.factorio.com/api.php', '0.16.51', True)
   #InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '0.16.51', False)

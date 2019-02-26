@@ -34,4 +34,4 @@ def main(forum_post_number, version, api_url = 'https://wiki.factorio.com/api.ph
 
 
 if __name__ == '__main__':
-  # print(main('12345', '0.16.99', 'https://testing-wiki.factorio.com/api.php', False))
+  print(main('12345', '0.16.99', 'https://testing-wiki.factorio.com/api.php', False))
