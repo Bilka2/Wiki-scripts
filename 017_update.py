@@ -19,14 +19,14 @@ def update(testing=True):
     if 'Infobox' not in title:
       page = '{{archive}}' + page
     
-    edit_page(session, api_url, edit_token, title, page, 'Archived wood (removed in 0.17)')
+    print(edit_page(session, api_url, edit_token, title, page, 'Archived wood (removed in 0.17)').text)
     
-    move_page(session, api_url, edit_token, title, title.replace('Wood', 'Wood (archived)'), 'Archived wood (removed in 0.17)', False) # no redirect
+    print(move_page(session, api_url, edit_token, title, title.replace('Wood', 'Wood (archived)'), 'Archived wood (removed in 0.17)', False).text) # no redirect
   
   
   # archive pages + files = prepend edit {{archive}} onto them
   for title in moves_and_more_data['archive']:
-    edit_page(session, api_url, edit_token, title, '{{archive}}', 'Archived page (removed in 0.17)', True) # prepend edit 
+    print(edit_page(session, api_url, edit_token, title, '{{archive}}', 'Archived page (removed in 0.17)', True).text) # prepend edit 
   
   
   # move pages + files - leave redirects - also do infoboxes on the pages
@@ -37,20 +37,23 @@ def update(testing=True):
       to_title_no_lang_suffix = re.search('([^/]+)(\/\S+)?', move_data['to']).group(1)
       page = page.replace('{{:Infobox:' + from_title_no_lang_suffix + '}}', '{{:Infobox:' + to_title_no_lang_suffix + '}}')
       
-      edit_page(session, api_url, edit_token, move_data['from'], page, 'Renamed in 0.17')
+      print(edit_page(session, api_url, edit_token, move_data['from'], page, 'Renamed in 0.17').text)
       
-    move_page(session, api_url, edit_token, move_data['from'], move_data['to'], 'Renamed in 0.17')
+    print(move_page(session, api_url, edit_token, move_data['from'], move_data['to'], 'Renamed in 0.17').text)
   
   
   # upload files
+  for filename in moves_and_more_data['upload']:
+    file = open('C:\\Users\\Win 10\\Documents\\Wiki-data\\icons\\', 'rb')
   
+    print(upload_file(session, api_url, edit_token, filename, file, '{{Game image}}').text)
   
   #create pages
   with open('C:\\Users\\Win 10\\Documents\\Wiki-data\\new_pages.json') as f:
     create_page_data = json.load(f)
   
   for name, page in create_page_data.items():
-    edit_page(session, api_url, edit_token, name, page, 'Added in 0.17')
+    print(edit_page(session, api_url, edit_token, name, page, 'Added in 0.17').text)
   
   
   # infobox update
