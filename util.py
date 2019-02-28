@@ -69,18 +69,22 @@ def get_page_safe(session, api_url, title):
   return ''
 
 
-def edit_page(session, api_url, edit_token, title, text, summary):
-  edit_response = session.post(api_url, data={
+def edit_page(session, api_url, edit_token, title, text, summary, prepend = False): # can also create pages
+  data={
     'format': 'json',
     'action': 'edit',
     'assert': 'user',
-    'text': text,
     'summary': summary,
     'title': title,
     'bot': True,
     'token': edit_token,
-  })
-  return edit_response
+  }
+  if prepend:
+    data['prependtext'] = text
+  else:
+    data['text'] = text
+  
+  return session.post(api_url, data=data)
 
 
 def get_allpages(session, api_url, aplimit = '5000', apfilterredir = 'all', apnamespace = '0'):
@@ -170,6 +174,38 @@ def get_user_groups(session, api_url):
     'uiprop': 'groups'
   })
   return user_groups.json()['query']['userinfo']['groups']
+
+
+def upload_file(session, api_url, edit_token, filename, file, text):
+  response = session.post(api_url, files = {'file': (filename, file)}, data={
+    'format': 'json',
+    'action': 'upload',
+    'assert': 'user',
+    'text': text,
+    'filename': filename, # no File: prefix
+    'text': text,
+    'token': edit_token,
+    'ignorewarnings': True
+  })
+  return response
+
+
+def move_page(session, api_url, edit_token, frm, to, summary, redirect = True):
+  data = {
+    'format': 'json',
+    'action': 'move',
+    'assert': 'user',
+    'from': frm,
+    'to': to,
+    'reason': summary,
+    'token': edit_token,
+    'movetalk': True,
+    'ignorewarnings': True
+  }
+  if not redirect:
+    data['noredirect'] = True
+
+  return session.post(api_url, data=data)
 
 
 class DictUtil:
