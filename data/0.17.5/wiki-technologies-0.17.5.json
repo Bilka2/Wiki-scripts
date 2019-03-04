@@ -1639,6 +1639,7 @@
     "cost-multiplier": 200,
     "expensive-cost-multiplier": 800,
     "required-technologies": [
+      "Military science pack",
       "Power armor",
       "Utility science pack"
     ],
@@ -2307,9 +2308,11 @@
       "Energy shield equipment",
       "Energy weapons damage",
       "Flamethrower",
+      "Portable fusion reactor",
       "Landmines",
       "Laser turrets",
-      "Military 3, 3"
+      "Military 3, 3",
+      "Rocketry"
     ],
     "effects": ["Military science pack"]
   },
@@ -3129,6 +3132,7 @@
     "expensive-cost-multiplier": 480,
     "required-technologies": [
       "Explosives",
+      "Military science pack",
       "Rocket fuel"
     ],
     "allows": [
@@ -3429,7 +3433,7 @@
       "Gates",
       "Military science pack"
     ],
-    "effects": ["Stone wall"]
+    "effects": ["Wall"]
   },
   "Stronger explosives": {
     "internal-name": "stronger-explosives-1",
@@ -3474,7 +3478,8 @@
     "allows": [
       "Advanced electronics 2, 2",
       "Battery",
-      "Explosives"
+      "Explosives",
+      "Uranium processing"
     ],
     "effects": [
       "Sulfur",
@@ -3624,7 +3629,8 @@
     "expensive-cost-multiplier": 800,
     "required-technologies": [
       "Chemical science pack",
-      "Concrete"
+      "Concrete",
+      "Sulfur processing"
     ],
     "allows": [
       "Kovarex enrichment process",
