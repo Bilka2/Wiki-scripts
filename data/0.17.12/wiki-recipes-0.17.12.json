@@ -760,8 +760,8 @@
         10
       ],
       [
-        "Iron plate",
-        20
+        "Steel plate",
+        5
       ]
     ],
     "expensive-total-raw": [
@@ -775,7 +775,11 @@
       ],
       [
         "Iron plate",
-        105
+        85
+      ],
+      [
+        "Steel plate",
+        5
       ]
     ]
   },
@@ -841,11 +845,15 @@
       ],
       [
         "Iron plate",
-        330
+        290
       ],
       [
         "Plastic bar",
         80
+      ],
+      [
+        "Steel plate",
+        10
       ]
     ]
   },

@@ -465,7 +465,7 @@
   },
   "Landfill": {
     "internal-name": "landfill",
-    "prototype-type": "item"
+    "prototype-type": "tile"
   },
   "Laser turret": {
     "internal-name": "laser-turret",

@@ -2332,10 +2332,10 @@
         1
       ]
     ],
-    "cost-multiplier": 100,
-    "expensive-cost-multiplier": 400,
+    "cost-multiplier": 250,
+    "expensive-cost-multiplier": 1000,
     "required-technologies": ["Advanced electronics"],
-    "allows": ["Mining productivity, 2-5"]
+    "allows": ["Mining productivity, 2-4"]
   },
   "Modular armor": {
     "internal-name": "modular-armor",

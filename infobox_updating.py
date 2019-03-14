@@ -49,9 +49,10 @@ class EntityInfobox: # also does tile colors
     self.health = Number('health', DictUtil.get_optional_number(data, 'health'))
     self.mining_time = Number('mining-time', DictUtil.get_optional_number(data, 'mining-time'))
     self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
+    self.pollution = NumberWithUnit('pollution', DictUtil.get_optional_number(data, 'pollution'), '{{Translation|/s}}')
     
   def get_all_properties(self):
-    return [self.health, self.map_color, self.mining_time]
+    return [self.health, self.map_color, self.mining_time, self.pollution]
     
     
 class TechnologyInfobox:    
@@ -116,6 +117,9 @@ class RecipeInfobox:
 class Property:
   def __str__(self):
     return f'|{self.name} = {self.get_data_string()}'
+    
+  def is_empty(self):
+    return True
 
 
 class Number(Property):
@@ -125,6 +129,21 @@ class Number(Property):
     
   def get_data_string(self):
     return str(self.number)
+    
+  def is_empty(self):
+    return not self.number
+
+
+class NumberWithUnit(Number):
+  def __init__(self, name, number, unit):
+    super().__init__(name, number)
+    self.unit = unit
+    
+  def get_data_string(self):
+    return str(super().get_data_string() + self.unit)
+    
+  def is_empty(self):
+    return super().is_empty()
 
 
 class String(Property):
@@ -134,6 +153,9 @@ class String(Property):
     
   def get_data_string(self):
     return self.string
+  
+  def is_empty(self):
+    return not self.string
 
 
 class MapColor(Property):
@@ -147,6 +169,9 @@ class MapColor(Property):
 
   def get_data_string(self):
     return self.color
+    
+  def is_empty(self):
+    return not self.color
 
 class Recipe(Property):
   def __init__(self, name, ingredients, products):
@@ -170,6 +195,9 @@ class Recipe(Property):
   def clear(self):
     self.ingredients.clear()
     self.products.clear()
+    
+  def is_empty(self):
+    return not self.ingredients and not self.products
 
 
 class IconWithCaptionList(Property):
@@ -179,6 +207,9 @@ class IconWithCaptionList(Property):
   
   def get_data_string(self):
     return ' + '.join([str(icon) for icon in self.list])
+    
+  def is_empty(self):
+    return not self.list
 
 
 class IconWithCaption:
@@ -194,6 +225,9 @@ class IconWithCaption:
   
   def __eq__(self, other):
     return self.file_name == other.file_name and self.caption == other.caption
+    
+  def is_empty(self):
+    return not self.file_name
 
 
 def IconWithCaptionList_from_list_of_strings(name, list):
@@ -261,7 +295,7 @@ class InfoboxUpdate:
   def update_property(self, property, page, summary):
     on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*([^\|}\n]+))\n*(\||}})', page)
     if on_page:
-      if (not property.get_data_string()) or property.get_data_string() == '0': # our property is empty and should be removed from the page
+      if property.is_empty(): # our property is empty and should be removed from the page
         page = page[:on_page.start()] + on_page.group(3) + page[on_page.end():]
         summary += 'Removed ' + property.name + '. '
       elif on_page.group(2) == property.get_data_string(): # our page contains exactly what we want
@@ -269,11 +303,11 @@ class InfoboxUpdate:
       else: # replace data that is on the page
         page = page[:on_page.start()] + str(property) + page[on_page.start() + len(on_page.group(1)):]
         summary += 'Updated ' + property.name + f' to {self.version}. '
-    elif property.get_data_string() and property.get_data_string() != '0': # add data to page (if there is any to add)
+    elif not property.is_empty(): # add data to page (if there is any to add)
       page = re.sub(self.re_start_of_infobox, r'\g<0>\n' + str(property), page)
       summary += 'Added ' + property.name + '. '
     
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.5', False)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.12', False)

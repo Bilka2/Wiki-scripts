@@ -21,17 +21,20 @@
   "Assembling machine 1": {
     "map-color": "006191",
     "health": 300,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 4
   },
   "Assembling machine 2": {
     "map-color": "006191",
     "health": 350,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 3
   },
   "Assembling machine 3": {
     "map-color": "006191",
     "health": 400,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 2
   },
   "Beacon": {
     "map-color": "006191",
@@ -46,7 +49,8 @@
   "Boiler": {
     "map-color": "006191",
     "health": 200,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 30
   },
   "Burner inserter": {
     "map-color": "006191",
@@ -56,7 +60,8 @@
   "Burner mining drill": {
     "map-color": "006191",
     "health": 150,
-    "mining-time": 0.3
+    "mining-time": 0.3,
+    "pollution": 12
   },
   "Car": {
     "health": 450,
@@ -69,12 +74,14 @@
   "Centrifuge": {
     "map-color": "006191",
     "health": 350,
-    "mining-time": 0.1
+    "mining-time": 0.1,
+    "pollution": 4
   },
   "Chemical plant": {
     "map-color": "006191",
     "health": 300,
-    "mining-time": 0.1
+    "mining-time": 0.1,
+    "pollution": 4
   },
   "Coal": {
     "map-color": "000000",
@@ -105,12 +112,14 @@
   "Electric furnace": {
     "map-color": "006191",
     "health": 350,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 1
   },
   "Electric mining drill": {
     "map-color": "006191",
     "health": 300,
-    "mining-time": 0.3
+    "mining-time": 0.3,
+    "pollution": 10
   },
   "Express splitter": {
     "map-color": "ffd100",
@@ -265,7 +274,8 @@
   "Oil refinery": {
     "map-color": "006191",
     "health": 350,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 6
   },
   "Pipe": {
     "map-color": "006191",
@@ -295,7 +305,8 @@
   "Pumpjack": {
     "map-color": "006191",
     "health": 200,
-    "mining-time": 0.5
+    "mining-time": 0.5,
+    "pollution": 10
   },
   "Radar": {
     "map-color": "006191",
@@ -370,7 +381,8 @@
   "Steel furnace": {
     "map-color": "006191",
     "health": 300,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 1
   },
   "Stone": {
     "map-color": "b09c6d",
@@ -379,7 +391,8 @@
   "Stone furnace": {
     "map-color": "006191",
     "health": 200,
-    "mining-time": 0.2
+    "mining-time": 0.2,
+    "pollution": 2
   },
   "Wall": {
     "map-color": "bfccbf",
@@ -426,6 +439,7 @@
   },
   "Concrete": {"map-color": "646464"},
   "Hazard concrete": {"map-color": "808000"},
+  "Landfill": {"map-color": "35341b"},
   "Refined concrete": {"map-color": "646464"},
   "Refined hazard concrete": {"map-color": "808000"},
   "Stone brick": {"map-color": "323232"},
