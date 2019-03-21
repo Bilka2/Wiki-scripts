@@ -50,9 +50,10 @@ class EntityInfobox: # also does tile colors
     self.mining_time = Number('mining-time', DictUtil.get_optional_number(data, 'mining-time'))
     self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
     self.pollution = NumberWithUnit('pollution', DictUtil.get_optional_number(data, 'pollution'), '{{Translation|/s}}')
+    self.resistances = Resistances('resistance', DictUtil.get_optional_dict(data, 'resistances'))
     
   def get_all_properties(self):
-    return [self.health, self.map_color, self.mining_time, self.pollution]
+    return [self.health, self.map_color, self.mining_time, self.pollution, self.resistances]
     
     
 class TechnologyInfobox:    
@@ -172,6 +173,23 @@ class MapColor(Property):
     
   def is_empty(self):
     return not self.color
+
+
+class Resistances(Property):
+  def __init__(self, name, resistances):
+    self.name = name
+    self.resistances = resistances
+    
+  def get_data_string(self):
+    ret = []
+    for type in sorted(self.resistances.keys()):
+      resist = self.resistances[type]
+      ret.append('{{Translation|' + type.capitalize() + '}}: ' + str(resist['decrease']) + '/' + str(resist['percent']) + '%')
+    return '<br>'.join(ret)
+    
+  def is_empty(self):
+    return not self.resistances
+
 
 class Recipe(Property):
   def __init__(self, name, ingredients, products):
@@ -293,7 +311,7 @@ class InfoboxUpdate:
 
 
   def update_property(self, property, page, summary):
-    on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*([^\|}\n]+))\n*(\||}})', page)
+    on_page = re.search(r'(\|\s*' + property.name + r'\s*=\s*([^\n]+))\n*(\||}})', page)
     if on_page:
       if property.is_empty(): # our property is empty and should be removed from the page
         page = page[:on_page.start()] + on_page.group(3) + page[on_page.end():]
@@ -310,4 +328,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.12', False)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.17', False)
+  #InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '0.17.17', True)

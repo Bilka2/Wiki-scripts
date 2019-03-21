@@ -220,3 +220,7 @@ class DictUtil:
   @staticmethod
   def get_optional_number(dict, key):
     return dict[key] if key in dict else 0
+    
+  @staticmethod
+  def get_optional_dict(dict, key):
+    return dict[key] if key in dict else {}
