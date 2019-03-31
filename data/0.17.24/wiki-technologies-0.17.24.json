@@ -1094,7 +1094,7 @@
     "effects": ["Efficiency module 3"]
   },
   "Electric energy accumulators": {
-    "internal-name": "electric-energy-accumulators-1",
+    "internal-name": "electric-energy-accumulators",
     "cost": [
       [
         "Time",

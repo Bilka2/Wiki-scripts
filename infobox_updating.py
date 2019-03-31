@@ -95,7 +95,9 @@ class RecipeInfobox:
     self.total_raw = Recipe('total-raw', data['total-raw'], [])
     self.expensive_recipe = Recipe('expensive-recipe', data['expensive-recipe'], DictUtil.get_optional_list(data, 'expensive-recipe-output'))
     self.expensive_total_raw = Recipe('expensive-total-raw', data['expensive-total-raw'], [])
+    self.producers = IconWithCaptionList_from_list_of_strings('producers', data['producers'])
     self.remove_duplicate_recipes()
+    self.cleanup_producers()
   
   def remove_duplicate_recipes(self):
     if self.expensive_total_raw == self.expensive_recipe:
@@ -109,10 +111,25 @@ class RecipeInfobox:
       print(f'{self.name}: Removed expensive-recipe because it was a duplicate of recipe.')
     if self.total_raw == self.recipe:
       self.total_raw.clear()
-      print(f'{self.name}: Removed total-raw because it was a duplicate of recipe.')
+      print(f'{self.name}: Removed total-raw because it was a duplicate of recipe.') 
+  
+  def cleanup_producers(self):
+    if IconWithCaption(['Assembling machine 1']) in self.producers and IconWithCaption(['Assembling machine 2']) in self.producers and IconWithCaption(['Assembling machine 3']) in self.producers:
+      self.producers.remove(IconWithCaption(['Assembling machine 1']))
+      self.producers.remove(IconWithCaption(['Assembling machine 2']))
+      self.producers.remove(IconWithCaption(['Assembling machine 3']))
+      self.producers.add(IconWithCaption(['Assembling machine']))
+      
+    if IconWithCaption(['Electric furnace']) in self.producers and IconWithCaption(['Steel furnace']) in self.producers and IconWithCaption(['Stone furnace']) in self.producers:
+      self.producers.remove(IconWithCaption(['Electric furnace']))
+      self.producers.remove(IconWithCaption(['Steel furnace']))
+      self.producers.remove(IconWithCaption(['Stone furnace']))
+      self.producers.add(IconWithCaption(['Furnace']))
+    
+    self.producers.sort()
   
   def get_all_properties(self):
-    return [self.recipe, self.total_raw, self.expensive_recipe, self.total_raw, self.expensive_total_raw]
+    return [self.recipe, self.total_raw, self.expensive_recipe, self.total_raw, self.expensive_total_raw, self.producers]
   
 
 class Property:
@@ -225,7 +242,19 @@ class IconWithCaptionList(Property):
   
   def get_data_string(self):
     return ' + '.join([str(icon) for icon in self.list])
+  
+  def sort(self):
+    self.list.sort()
     
+  def remove(self, IconWithCaption):
+    self.list.remove(IconWithCaption)
+    
+  def add(self, IconWithCaption):
+    self.list.append(IconWithCaption)
+  
+  def __contains__(self, IconWithCaption):
+    return IconWithCaption in self.list
+  
   def is_empty(self):
     return not self.list
 
@@ -243,6 +272,12 @@ class IconWithCaption:
   
   def __eq__(self, other):
     return self.file_name == other.file_name and self.caption == other.caption
+    
+  def __lt__(self, other):
+    if self.file_name != other.file_name:
+      return self.file_name < other.file_name
+    
+    return self.caption < other.caption
     
   def is_empty(self):
     return not self.file_name
@@ -328,5 +363,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.17', False)
-  #InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '0.17.17', True)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.24', False)
+  #InfoboxUpdate([InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '0.17.24', True)

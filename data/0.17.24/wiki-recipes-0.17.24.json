@@ -55,6 +55,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Advanced circuit": {
@@ -129,6 +135,12 @@
         "Plastic bar",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Advanced oil processing": {
@@ -215,7 +227,8 @@
         "Water",
         50
       ]
-    ]
+    ],
+    "producers": ["Oil refinery"]
   },
   "Arithmetic combinator": {
     "recipe": [
@@ -273,6 +286,12 @@
         "Iron plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Artillery shell": {
@@ -363,6 +382,12 @@
         "Steel plate",
         16
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Artillery targeting remote": {
@@ -429,6 +454,12 @@
         "Processing unit",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Artillery turret": {
@@ -527,6 +558,12 @@
         "Steel plate",
         60
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Artillery wagon": {
@@ -633,6 +670,12 @@
         "Steel plate",
         40
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Assembling machine 1": {
@@ -699,6 +742,12 @@
         "Iron plate",
         35
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Assembling machine 2": {
@@ -781,6 +830,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Assembling machine 3": {
@@ -855,6 +910,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Atomic bomb": {
@@ -953,6 +1014,12 @@
         "Uranium-235",
         30
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Automation science pack": {
@@ -1011,6 +1078,12 @@
         "Iron plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Basic oil processing": {
@@ -1081,7 +1154,8 @@
         "Crude oil",
         100
       ]
-    ]
+    ],
+    "producers": ["Oil refinery"]
   },
   "Battery": {
     "recipe": [
@@ -1155,7 +1229,8 @@
         "Sulfuric acid",
         40
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Personal battery": {
     "recipe": [
@@ -1213,6 +1288,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Personal battery MK2": {
@@ -1303,6 +1384,12 @@
         "Steel plate",
         110
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Beacon": {
@@ -1393,6 +1480,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Belt immunity equipment": {
@@ -1467,6 +1560,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Big electric pole": {
@@ -1541,6 +1640,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Boiler": {
@@ -1599,6 +1704,12 @@
         "Stone",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Burner inserter": {
@@ -1649,6 +1760,12 @@
         "Iron plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Burner mining drill": {
@@ -1715,6 +1832,12 @@
         "Stone",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Cannon shell": {
@@ -1789,6 +1912,12 @@
         "Steel plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Car": {
@@ -1863,6 +1992,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Cargo wagon": {
@@ -1929,6 +2064,12 @@
         "Steel plate",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Centrifuge": {
@@ -2027,6 +2168,12 @@
         "Steel plate",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Chemical plant": {
@@ -2109,6 +2256,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Chemical science pack": {
@@ -2207,6 +2360,12 @@
         "Solid fuel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Cliff explosives": {
@@ -2289,6 +2448,12 @@
         "Iron plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Cluster grenade": {
@@ -2371,6 +2536,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Coal liquefaction": {
@@ -2473,7 +2644,8 @@
         "Steam",
         50
       ]
-    ]
+    ],
+    "producers": ["Oil refinery"]
   },
   "Combat shotgun": {
     "recipe": [
@@ -2563,6 +2735,12 @@
         "Wood",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Concrete": {
@@ -2645,6 +2823,10 @@
         "Water",
         100
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Constant combinator": {
@@ -2703,6 +2885,12 @@
         "Iron plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Construction robot": {
@@ -2785,6 +2973,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Copper cable": {
@@ -2835,6 +3029,12 @@
         "Copper plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Copper plate": {
@@ -2877,6 +3077,11 @@
         "Copper ore",
         1
       ]
+    ],
+    "producers": [
+      "Electric furnace",
+      "Steel furnace",
+      "Stone furnace"
     ]
   },
   "Decider combinator": {
@@ -2935,6 +3140,12 @@
         "Iron plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Defender capsule": {
@@ -3025,6 +3236,12 @@
         "Steel plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Destroyer capsule": {
@@ -3115,6 +3332,12 @@
         "Steel plate",
         32
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Discharge defense": {
@@ -3205,6 +3428,12 @@
         "Steel plate",
         220
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Discharge defense remote": {
@@ -3255,6 +3484,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Distractor capsule": {
@@ -3345,6 +3580,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Efficiency module": {
@@ -3411,6 +3652,12 @@
         "Plastic bar",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Efficiency module 2": {
@@ -3493,6 +3740,12 @@
         "Processing unit",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Efficiency module 3": {
@@ -3575,6 +3828,12 @@
         "Processing unit",
         30
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Electric engine unit": {
@@ -3657,6 +3916,10 @@
         "Lubricant",
         15
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Electric furnace": {
@@ -3747,6 +4010,12 @@
         "Stone brick",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Electric mining drill": {
@@ -3813,6 +4082,12 @@
         "Iron plate",
         70
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Electronic circuit": {
@@ -3871,6 +4146,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Empty barrel": {
@@ -3913,6 +4194,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Empty crude oil barrel": {
@@ -3975,6 +4262,10 @@
         "Crude oil barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Empty heavy oil barrel": {
@@ -4037,6 +4328,10 @@
         "Heavy oil barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Empty light oil barrel": {
@@ -4099,6 +4394,10 @@
         "Light oil barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Empty lubricant barrel": {
@@ -4161,6 +4460,10 @@
         "Lubricant barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Empty petroleum gas barrel": {
@@ -4223,6 +4526,10 @@
         "Petroleum gas barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Empty sulfuric acid barrel": {
@@ -4285,6 +4592,10 @@
         "Sulfuric acid barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Empty water barrel": {
@@ -4347,6 +4658,10 @@
         "Water barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Energy shield": {
@@ -4421,6 +4736,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Energy shield MK2": {
@@ -4511,6 +4832,12 @@
         "Steel plate",
         110
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Engine unit": {
@@ -4577,6 +4904,11 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Exoskeleton": {
@@ -4651,6 +4983,12 @@
         "Steel plate",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Explosive cannon shell": {
@@ -4725,6 +5063,12 @@
         "Steel plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Explosive rocket": {
@@ -4791,6 +5135,12 @@
         "Iron plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Explosive uranium cannon shell": {
@@ -4865,6 +5215,12 @@
         "Uranium-238",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Explosives": {
@@ -4947,7 +5303,8 @@
         "Water",
         10
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Express splitter": {
     "recipe": [
@@ -5037,6 +5394,10 @@
         "Plastic bar",
         40
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Express transport belt": {
@@ -5103,6 +5464,10 @@
         "Lubricant",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Express underground belt": {
@@ -5177,6 +5542,10 @@
         "Lubricant",
         40
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fast inserter": {
@@ -5243,6 +5612,12 @@
         "Iron plate",
         13
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Fast splitter": {
@@ -5309,6 +5684,12 @@
         "Iron plate",
         85
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Fast transport belt": {
@@ -5359,6 +5740,12 @@
         "Iron plate",
         22.5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Fast underground belt": {
@@ -5417,6 +5804,12 @@
         "Iron plate",
         182.5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Fill crude oil barrel": {
@@ -5475,6 +5868,10 @@
         "Empty barrel",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fill heavy oil barrel": {
@@ -5533,6 +5930,10 @@
         "Heavy oil",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fill light oil barrel": {
@@ -5591,6 +5992,10 @@
         "Light oil",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fill lubricant barrel": {
@@ -5649,6 +6054,10 @@
         "Lubricant",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fill petroleum gas barrel": {
@@ -5707,6 +6116,10 @@
         "Petroleum gas",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fill sulfuric acid barrel": {
@@ -5765,6 +6178,10 @@
         "Sulfuric acid",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Fill water barrel": {
@@ -5823,6 +6240,10 @@
         "Water",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Filter inserter": {
@@ -5881,6 +6302,12 @@
         "Iron plate",
         21
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Firearm magazine": {
@@ -5923,6 +6350,12 @@
         "Iron plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Flamethrower": {
@@ -5981,6 +6414,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Flamethrower ammo": {
@@ -6055,7 +6494,8 @@
         "Steel plate",
         5
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Flamethrower turret": {
     "recipe": [
@@ -6137,6 +6577,12 @@
         "Steel plate",
         30
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Fluid wagon": {
@@ -6211,6 +6657,12 @@
         "Steel plate",
         21
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Flying robot frame": {
@@ -6309,6 +6761,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Portable fusion reactor": {
@@ -6383,6 +6841,12 @@
         "Steel plate",
         100
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Gate": {
@@ -6465,6 +6929,12 @@
         "Stone brick",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Green wire": {
@@ -6523,6 +6993,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Grenade": {
@@ -6581,6 +7057,12 @@
         "Iron plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Gun turret": {
@@ -6647,6 +7129,12 @@
         "Iron plate",
         60
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Hazard concrete": {
@@ -6697,6 +7185,12 @@
         "Concrete",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Heat exchanger": {
@@ -6771,6 +7265,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Heat pipe": {
@@ -6829,6 +7329,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Heavy armor": {
@@ -6887,6 +7393,12 @@
         "Steel plate",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Heavy oil cracking": {
@@ -6953,7 +7465,8 @@
         "Water",
         30
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Inserter": {
     "recipe": [
@@ -7019,6 +7532,12 @@
         "Iron plate",
         7
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Iron chest": {
@@ -7061,6 +7580,12 @@
         "Iron plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Iron gear wheel": {
@@ -7103,6 +7628,12 @@
         "Iron plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Iron plate": {
@@ -7145,6 +7676,11 @@
         "Iron ore",
         1
       ]
+    ],
+    "producers": [
+      "Electric furnace",
+      "Steel furnace",
+      "Stone furnace"
     ]
   },
   "Iron stick": {
@@ -7195,6 +7731,12 @@
         "Iron plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Kovarex enrichment process": {
@@ -7273,7 +7815,8 @@
         "Uranium-238",
         5
       ]
-    ]
+    ],
+    "producers": ["Centrifuge"]
   },
   "Lab": {
     "recipe": [
@@ -7339,6 +7882,12 @@
         "Iron plate",
         70
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Land mine": {
@@ -7405,6 +7954,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Landfill": {
@@ -7447,6 +8002,12 @@
         "Stone",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Laser turret": {
@@ -7529,6 +8090,12 @@
         "Steel plate",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Light armor": {
@@ -7571,6 +8138,12 @@
         "Iron plate",
         40
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Light oil cracking": {
@@ -7637,7 +8210,8 @@
         "Water",
         30
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Locomotive": {
     "recipe": [
@@ -7719,6 +8293,12 @@
         "Steel plate",
         30
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Active provider chest": {
@@ -7801,6 +8381,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Buffer chest": {
@@ -7883,6 +8469,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Passive provider chest": {
@@ -7965,6 +8557,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Requester chest": {
@@ -8047,6 +8645,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Storage chest": {
@@ -8129,6 +8733,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Logistic robot": {
@@ -8219,6 +8829,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Logistic science pack": {
@@ -8277,6 +8893,12 @@
         "Iron plate",
         9.5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Long handed inserter": {
@@ -8343,6 +8965,12 @@
         "Iron plate",
         12
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Low density structure": {
@@ -8417,6 +9045,12 @@
         "Steel plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Lubricant": {
@@ -8467,7 +9101,8 @@
         "Heavy oil",
         10
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Medium electric pole": {
     "recipe": [
@@ -8541,6 +9176,12 @@
         "Steel plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Military science pack": {
@@ -8639,6 +9280,12 @@
         "Stone brick",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Modular armor": {
@@ -8713,6 +9360,12 @@
         "Steel plate",
         50
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Nightvision": {
@@ -8787,6 +9440,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Nuclear fuel": {
@@ -8845,7 +9504,8 @@
         "Uranium-235",
         1
       ]
-    ]
+    ],
+    "producers": ["Centrifuge"]
   },
   "Nuclear fuel reprocessing": {
     "recipe": [
@@ -8895,7 +9555,8 @@
         "Used up uranium fuel cell",
         5
       ]
-    ]
+    ],
+    "producers": ["Centrifuge"]
   },
   "Nuclear reactor": {
     "recipe": [
@@ -8993,6 +9654,12 @@
         "Steel plate",
         500
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Offshore pump": {
@@ -9059,6 +9726,12 @@
         "Iron plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Oil refinery": {
@@ -9157,6 +9830,12 @@
         "Stone brick",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Personal laser defense": {
@@ -9255,6 +9934,12 @@
         "Steel plate",
         110
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Personal roboport": {
@@ -9353,6 +10038,12 @@
         "Steel plate",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Personal roboport MK2": {
@@ -9451,6 +10142,12 @@
         "Steel plate",
         140
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Piercing rounds magazine": {
@@ -9525,6 +10222,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Piercing shotgun shells": {
@@ -9599,6 +10302,12 @@
         "Steel plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Pipe": {
@@ -9641,6 +10350,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Pipe to ground": {
@@ -9699,6 +10414,12 @@
         "Iron plate",
         25
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Pistol": {
@@ -9757,6 +10478,12 @@
         "Iron plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Plastic bar": {
@@ -9823,7 +10550,8 @@
         "Petroleum gas",
         20
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Poison capsule": {
     "recipe": [
@@ -9905,6 +10633,12 @@
         "Steel plate",
         3
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Power armor": {
@@ -9979,6 +10713,12 @@
         "Steel plate",
         40
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Power armor MK2": {
@@ -10093,6 +10833,12 @@
         "Steel plate",
         60
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Power switch": {
@@ -10159,6 +10905,12 @@
         "Iron plate",
         9
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Processing unit": {
@@ -10241,6 +10993,10 @@
         "Sulfuric acid",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Production science pack": {
@@ -10347,6 +11103,12 @@
         "Stone brick",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Productivity module": {
@@ -10413,6 +11175,12 @@
         "Plastic bar",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Productivity module 2": {
@@ -10495,6 +11263,12 @@
         "Processing unit",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Productivity module 3": {
@@ -10577,6 +11351,12 @@
         "Processing unit",
         30
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Programmable speaker": {
@@ -10651,6 +11431,12 @@
         "Iron plate",
         13
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Pump": {
@@ -10725,6 +11511,12 @@
         "Steel plate",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Pumpjack": {
@@ -10807,6 +11599,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Radar": {
@@ -10873,6 +11671,12 @@
         "Iron plate",
         40
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rail": {
@@ -10955,6 +11759,12 @@
         "Stone",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rail chain signal": {
@@ -11013,6 +11823,12 @@
         "Iron plate",
         7
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rail signal": {
@@ -11071,6 +11887,12 @@
         "Iron plate",
         7
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Red wire": {
@@ -11129,6 +11951,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Refined concrete": {
@@ -11227,6 +12055,10 @@
         "Water",
         100
       ]
+    ],
+    "producers": [
+      "Assembling machine 2",
+      "Assembling machine 3"
     ]
   },
   "Refined hazard concrete": {
@@ -11277,6 +12109,12 @@
         "Refined concrete",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Repair pack": {
@@ -11335,6 +12173,12 @@
         "Iron plate",
         12
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Roboport": {
@@ -11417,6 +12261,12 @@
         "Steel plate",
         45
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rocket": {
@@ -11491,6 +12341,12 @@
         "Iron plate",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rocket control unit": {
@@ -11565,6 +12421,12 @@
         "Processing unit",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rocket fuel": {
@@ -11607,6 +12469,12 @@
         "Solid fuel",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rocket launcher": {
@@ -11673,6 +12541,12 @@
         "Iron plate",
         35
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Rocket part": {
@@ -11771,7 +12645,8 @@
         "Steel plate",
         20
       ]
-    ]
+    ],
+    "producers": ["Rocket silo"]
   },
   "Rocket silo": {
     "recipe": [
@@ -11877,6 +12752,12 @@
         "Steel plate",
         1000
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Satellite": {
@@ -12007,6 +12888,12 @@
         "Steel plate",
         700
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Shotgun": {
@@ -12089,6 +12976,12 @@
         "Wood",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Shotgun shells": {
@@ -12147,6 +13040,12 @@
         "Iron plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Slowdown capsule": {
@@ -12229,6 +13128,12 @@
         "Steel plate",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Small electric pole": {
@@ -12295,6 +13200,12 @@
         "Wood",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Lamp": {
@@ -12361,6 +13272,12 @@
         "Iron plate",
         3
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Solar panel": {
@@ -12435,6 +13352,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Portable solar panel": {
@@ -12517,6 +13440,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Solid fuel from heavy oil": {
@@ -12559,7 +13488,8 @@
         "Heavy oil",
         20
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Solid fuel from light oil": {
     "recipe": [
@@ -12601,7 +13531,8 @@
         "Light oil",
         10
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Solid fuel from petroleum gas": {
     "recipe": [
@@ -12643,7 +13574,8 @@
         "Petroleum gas",
         20
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Speed module": {
     "recipe": [
@@ -12709,6 +13641,12 @@
         "Plastic bar",
         20
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Speed module 2": {
@@ -12791,6 +13729,12 @@
         "Processing unit",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Speed module 3": {
@@ -12873,6 +13817,12 @@
         "Processing unit",
         30
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Splitter": {
@@ -12939,6 +13889,12 @@
         "Iron plate",
         25
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Stack filter inserter": {
@@ -13005,6 +13961,12 @@
         "Plastic bar",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Stack inserter": {
@@ -13087,6 +14049,12 @@
         "Plastic bar",
         4
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Steam engine": {
@@ -13145,6 +14113,12 @@
         "Iron plate",
         100
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Steam turbine": {
@@ -13211,6 +14185,12 @@
         "Iron plate",
         240
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Steel chest": {
@@ -13253,6 +14233,12 @@
         "Steel plate",
         8
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Steel furnace": {
@@ -13311,6 +14297,12 @@
         "Stone brick",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Steel plate": {
@@ -13353,6 +14345,11 @@
         "Iron plate",
         10
       ]
+    ],
+    "producers": [
+      "Electric furnace",
+      "Steel furnace",
+      "Stone furnace"
     ]
   },
   "Stone brick": {
@@ -13395,6 +14392,11 @@
         "Stone",
         2
       ]
+    ],
+    "producers": [
+      "Electric furnace",
+      "Steel furnace",
+      "Stone furnace"
     ]
   },
   "Stone furnace": {
@@ -13437,6 +14439,12 @@
         "Stone",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Wall": {
@@ -13479,6 +14487,12 @@
         "Stone brick",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Storage tank": {
@@ -13537,6 +14551,12 @@
         "Steel plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Submachine gun": {
@@ -13603,6 +14623,12 @@
         "Iron plate",
         90
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Substation": {
@@ -13685,6 +14711,12 @@
         "Steel plate",
         10
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Sulfur": {
@@ -13751,7 +14783,8 @@
         "Water",
         30
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Sulfuric acid": {
     "recipe": [
@@ -13833,7 +14866,8 @@
         "Water",
         100
       ]
-    ]
+    ],
+    "producers": ["Chemical plant"]
   },
   "Tank": {
     "recipe": [
@@ -13931,6 +14965,12 @@
         "Steel plate",
         100
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Train stop": {
@@ -14013,6 +15053,12 @@
         "Steel plate",
         3
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Transport belt": {
@@ -14071,6 +15117,12 @@
         "Iron plate",
         5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Underground belt": {
@@ -14129,6 +15181,12 @@
         "Iron plate",
         22.5
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Uranium cannon shell": {
@@ -14203,6 +15261,12 @@
         "Uranium-238",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Uranium fuel cell": {
@@ -14285,6 +15349,12 @@
         "Uranium-238",
         19
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Uranium processing": {
@@ -14347,7 +15417,8 @@
         "Uranium ore",
         10
       ]
-    ]
+    ],
+    "producers": ["Centrifuge"]
   },
   "Uranium rounds magazine": {
     "recipe": [
@@ -14421,6 +15492,12 @@
         "Uranium-238",
         1
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Utility science pack": {
@@ -14535,6 +15612,12 @@
         "Steel plate",
         7
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   },
   "Wooden chest": {
@@ -14577,6 +15660,12 @@
         "Wood",
         2
       ]
+    ],
+    "producers": [
+      "Assembling machine 1",
+      "Assembling machine 2",
+      "Assembling machine 3",
+      "Player"
     ]
   }
 }
