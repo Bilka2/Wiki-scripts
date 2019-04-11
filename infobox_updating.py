@@ -49,7 +49,7 @@ class EntityInfobox: # also does tile colors
     self.health = Number('health', DictUtil.get_optional_number(data, 'health'))
     self.mining_time = Number('mining-time', DictUtil.get_optional_number(data, 'mining-time'))
     self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
-    self.pollution = NumberWithUnit('pollution', DictUtil.get_optional_number(data, 'pollution'), '{{Translation|/s}}')
+    self.pollution = NumberWithUnit('pollution', DictUtil.get_optional_number(data, 'pollution'), '{{Translation|/m}}')
     self.resistances = Resistances('resistance', DictUtil.get_optional_dict(data, 'resistances'))
     
   def get_all_properties(self):
