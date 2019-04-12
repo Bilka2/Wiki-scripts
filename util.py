@@ -211,16 +211,16 @@ def move_page(session, api_url, edit_token, frm, to, summary, redirect = True):
 class DictUtil:
   @staticmethod
   def get_optional_list(dict, key):
-    return dict[key] if key in dict else []
+    return dict.get(key, [])
   
   @staticmethod
   def get_optional_string(dict, key):
-    return dict[key] if key in dict else ""
+    return dict.get(key, "")
   
   @staticmethod
   def get_optional_number(dict, key):
-    return dict[key] if key in dict else 0
+    return dict.get(key, 0)
     
   @staticmethod
   def get_optional_dict(dict, key):
-    return dict[key] if key in dict else {}
+    return dict.get(key, {})
