@@ -1315,7 +1315,7 @@
       "Laser",
       "Military science pack"
     ],
-    "allows": ["Energy weapons damage, 2-7"]
+    "allows": ["Energy weapons damage, 2-&infin;"]
   },
   "Engine": {
     "internal-name": "engine",
@@ -1606,7 +1606,7 @@
     "cost-multiplier": 200,
     "expensive-cost-multiplier": 800,
     "required-technologies": ["Combat robotics"],
-    "allows": ["Follower robot count, 2-7"]
+    "allows": ["Follower robot count, 2-&infin;"]
   },
   "Portable fusion reactor": {
     "internal-name": "fusion-reactor-equipment",
@@ -2335,7 +2335,7 @@
     "cost-multiplier": 250,
     "expensive-cost-multiplier": 1000,
     "required-technologies": ["Advanced electronics"],
-    "allows": ["Mining productivity, 2-4"]
+    "allows": ["Mining productivity, 2-&infin;"]
   },
   "Modular armor": {
     "internal-name": "modular-armor",
@@ -2641,7 +2641,7 @@
     "cost-multiplier": 100,
     "expensive-cost-multiplier": 400,
     "required-technologies": ["Military"],
-    "allows": ["Physical projectile damage, 2-7"]
+    "allows": ["Physical projectile damage, 2-&infin;"]
   },
   "Plastics": {
     "internal-name": "plastics",
@@ -2948,7 +2948,7 @@
     "cost-multiplier": 100,
     "expensive-cost-multiplier": 400,
     "required-technologies": ["Flamethrower"],
-    "allows": ["Refined flammables, 2-7"]
+    "allows": ["Refined flammables, 2-&infin;"]
   },
   "Lab research speed": {
     "internal-name": "research-speed-1",
@@ -3454,7 +3454,7 @@
     "cost-multiplier": 100,
     "expensive-cost-multiplier": 400,
     "required-technologies": ["Military 2, 2"],
-    "allows": ["Stronger explosives, 2-7"]
+    "allows": ["Stronger explosives, 2-&infin;"]
   },
   "Sulfur processing": {
     "internal-name": "sulfur-processing",
@@ -3722,7 +3722,7 @@
       "Chemical science pack",
       "Robotics"
     ],
-    "allows": ["Worker robot speed, 2-6"]
+    "allows": ["Worker robot speed, 2-&infin;"]
   },
   "Worker robot cargo size": {
     "internal-name": "worker-robots-storage-1",

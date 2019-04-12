@@ -68,10 +68,6 @@ class TechnologyInfobox:
     self.internal_name = String('internal-name', data['internal-name'])
     self.prototype_type = String('prototype-type', 'technology')
     self.category = String('category', "Technology")
-    
-    # HACK
-    if self.name == 'Mining productivity (research)':
-      self.allows.list[0].caption = '2-&infin;'
   
   def get_all_properties(self):
     return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category]
@@ -363,5 +359,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.29', False)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.30', False)
   #InfoboxUpdate([InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '0.17.24', True)
