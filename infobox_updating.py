@@ -121,6 +121,10 @@ class RecipeInfobox:
       self.producers.remove(IconWithCaption(['Steel furnace']))
       self.producers.remove(IconWithCaption(['Stone furnace']))
       self.producers.add(IconWithCaption(['Furnace']))
+      
+    if IconWithCaption(['Character']) in self.producers:
+      self.producers.remove(IconWithCaption(['Character']))
+      self.producers.add(IconWithCaption(['Player']))
     
     self.producers.sort()
   
@@ -359,5 +363,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.30', False)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '0.17.35', False)
   #InfoboxUpdate([InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '0.17.24', True)

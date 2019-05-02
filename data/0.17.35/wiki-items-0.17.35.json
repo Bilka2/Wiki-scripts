@@ -791,7 +791,7 @@
   },
   "Personal roboport MK2": {
     "stack-size": 20,
-    "required-technologies": ["Personal roboport 2"]
+    "required-technologies": ["Personal roboport MK2"]
   },
   "Petroleum gas barrel": {
     "consumers": ["Empty petroleum gas barrel"],
@@ -853,7 +853,7 @@
   },
   "Power armor MK2": {
     "stack-size": 1,
-    "required-technologies": ["Power armor 2"]
+    "required-technologies": ["Power armor MK2"]
   },
   "Power switch": {
     "stack-size": 50,

@@ -60,7 +60,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Advanced circuit": {
@@ -140,7 +140,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Advanced oil processing": {
@@ -291,7 +291,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Artillery shell": {
@@ -387,7 +387,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Artillery targeting remote": {
@@ -459,7 +459,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Artillery turret": {
@@ -563,7 +563,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Artillery wagon": {
@@ -675,7 +675,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Assembling machine 1": {
@@ -747,7 +747,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Assembling machine 2": {
@@ -835,7 +835,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Assembling machine 3": {
@@ -915,7 +915,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Atomic bomb": {
@@ -1019,7 +1019,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Automation science pack": {
@@ -1083,7 +1083,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Basic oil processing": {
@@ -1293,7 +1293,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Personal battery MK2": {
@@ -1389,7 +1389,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Beacon": {
@@ -1485,7 +1485,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Belt immunity equipment": {
@@ -1565,7 +1565,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Big electric pole": {
@@ -1645,7 +1645,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Boiler": {
@@ -1709,7 +1709,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Burner inserter": {
@@ -1765,7 +1765,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Burner mining drill": {
@@ -1837,7 +1837,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Cannon shell": {
@@ -1917,7 +1917,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Car": {
@@ -1997,7 +1997,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Cargo wagon": {
@@ -2069,7 +2069,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Centrifuge": {
@@ -2173,7 +2173,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Chemical plant": {
@@ -2261,7 +2261,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Chemical science pack": {
@@ -2365,7 +2365,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Cliff explosives": {
@@ -2453,7 +2453,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Cluster grenade": {
@@ -2541,7 +2541,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Coal liquefaction": {
@@ -2740,7 +2740,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Concrete": {
@@ -2890,7 +2890,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Construction robot": {
@@ -2978,7 +2978,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Copper cable": {
@@ -3034,7 +3034,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Copper plate": {
@@ -3145,7 +3145,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Defender capsule": {
@@ -3241,7 +3241,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Destroyer capsule": {
@@ -3337,7 +3337,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Discharge defense": {
@@ -3433,7 +3433,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Discharge defense remote": {
@@ -3489,7 +3489,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Distractor capsule": {
@@ -3585,7 +3585,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Efficiency module": {
@@ -3657,7 +3657,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Efficiency module 2": {
@@ -3745,7 +3745,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Efficiency module 3": {
@@ -3833,7 +3833,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Electric engine unit": {
@@ -4015,7 +4015,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Electric mining drill": {
@@ -4087,7 +4087,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Electronic circuit": {
@@ -4151,7 +4151,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Empty barrel": {
@@ -4199,7 +4199,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Empty crude oil barrel": {
@@ -4741,7 +4741,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Energy shield MK2": {
@@ -4837,7 +4837,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Engine unit": {
@@ -4988,7 +4988,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Explosive cannon shell": {
@@ -5068,7 +5068,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Explosive rocket": {
@@ -5140,7 +5140,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Explosive uranium cannon shell": {
@@ -5220,7 +5220,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Explosives": {
@@ -5617,7 +5617,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Fast splitter": {
@@ -5689,7 +5689,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Fast transport belt": {
@@ -5745,7 +5745,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Fast underground belt": {
@@ -5809,7 +5809,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Fill crude oil barrel": {
@@ -6307,7 +6307,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Firearm magazine": {
@@ -6355,7 +6355,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Flamethrower": {
@@ -6419,7 +6419,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Flamethrower ammo": {
@@ -6582,7 +6582,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Fluid wagon": {
@@ -6662,7 +6662,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Flying robot frame": {
@@ -6766,7 +6766,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Portable fusion reactor": {
@@ -6846,7 +6846,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Gate": {
@@ -6934,7 +6934,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Green wire": {
@@ -6998,7 +6998,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Grenade": {
@@ -7062,7 +7062,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Gun turret": {
@@ -7134,7 +7134,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Hazard concrete": {
@@ -7190,7 +7190,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Heat exchanger": {
@@ -7270,7 +7270,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Heat pipe": {
@@ -7334,7 +7334,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Heavy armor": {
@@ -7398,7 +7398,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Heavy oil cracking": {
@@ -7537,7 +7537,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Iron chest": {
@@ -7585,7 +7585,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Iron gear wheel": {
@@ -7633,7 +7633,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Iron plate": {
@@ -7736,7 +7736,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Kovarex enrichment process": {
@@ -7887,7 +7887,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Land mine": {
@@ -7959,7 +7959,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Landfill": {
@@ -8007,7 +8007,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Laser turret": {
@@ -8095,7 +8095,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Light armor": {
@@ -8143,7 +8143,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Light oil cracking": {
@@ -8298,7 +8298,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Active provider chest": {
@@ -8386,7 +8386,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Buffer chest": {
@@ -8474,7 +8474,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Passive provider chest": {
@@ -8562,7 +8562,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Requester chest": {
@@ -8650,7 +8650,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Storage chest": {
@@ -8738,7 +8738,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Logistic robot": {
@@ -8834,7 +8834,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Logistic science pack": {
@@ -8898,7 +8898,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Long handed inserter": {
@@ -8970,7 +8970,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Low density structure": {
@@ -9050,7 +9050,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Lubricant": {
@@ -9181,7 +9181,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Military science pack": {
@@ -9285,7 +9285,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Modular armor": {
@@ -9365,7 +9365,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Nightvision": {
@@ -9445,7 +9445,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Nuclear fuel": {
@@ -9659,7 +9659,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Offshore pump": {
@@ -9731,7 +9731,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Oil refinery": {
@@ -9835,7 +9835,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Personal laser defense": {
@@ -9939,7 +9939,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Personal roboport": {
@@ -10043,7 +10043,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Personal roboport MK2": {
@@ -10147,7 +10147,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Piercing rounds magazine": {
@@ -10227,7 +10227,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Piercing shotgun shells": {
@@ -10307,7 +10307,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Pipe": {
@@ -10355,7 +10355,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Pipe to ground": {
@@ -10419,7 +10419,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Pistol": {
@@ -10483,7 +10483,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Plastic bar": {
@@ -10638,7 +10638,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Power armor": {
@@ -10718,7 +10718,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Power armor MK2": {
@@ -10838,7 +10838,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Power switch": {
@@ -10910,7 +10910,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Processing unit": {
@@ -11108,7 +11108,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Productivity module": {
@@ -11180,7 +11180,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Productivity module 2": {
@@ -11268,7 +11268,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Productivity module 3": {
@@ -11356,7 +11356,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Programmable speaker": {
@@ -11436,7 +11436,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Pump": {
@@ -11516,7 +11516,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Pumpjack": {
@@ -11604,7 +11604,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Radar": {
@@ -11676,7 +11676,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rail": {
@@ -11764,7 +11764,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rail chain signal": {
@@ -11828,7 +11828,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rail signal": {
@@ -11892,7 +11892,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Red wire": {
@@ -11956,7 +11956,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Refined concrete": {
@@ -12114,7 +12114,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Repair pack": {
@@ -12178,7 +12178,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Roboport": {
@@ -12266,7 +12266,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rocket": {
@@ -12346,7 +12346,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rocket control unit": {
@@ -12426,7 +12426,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rocket fuel": {
@@ -12474,7 +12474,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rocket launcher": {
@@ -12546,7 +12546,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Rocket part": {
@@ -12757,7 +12757,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Satellite": {
@@ -12893,7 +12893,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Shotgun": {
@@ -12981,7 +12981,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Shotgun shells": {
@@ -13045,7 +13045,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Slowdown capsule": {
@@ -13133,7 +13133,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Small electric pole": {
@@ -13205,7 +13205,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Lamp": {
@@ -13277,7 +13277,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Solar panel": {
@@ -13357,7 +13357,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Portable solar panel": {
@@ -13445,7 +13445,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Solid fuel from heavy oil": {
@@ -13646,7 +13646,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Speed module 2": {
@@ -13734,7 +13734,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Speed module 3": {
@@ -13822,7 +13822,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Splitter": {
@@ -13894,7 +13894,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Stack filter inserter": {
@@ -13966,7 +13966,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Stack inserter": {
@@ -14054,7 +14054,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Steam engine": {
@@ -14118,7 +14118,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Steam turbine": {
@@ -14190,7 +14190,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Steel chest": {
@@ -14238,7 +14238,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Steel furnace": {
@@ -14302,7 +14302,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Steel plate": {
@@ -14444,7 +14444,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Wall": {
@@ -14492,7 +14492,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Storage tank": {
@@ -14556,7 +14556,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Submachine gun": {
@@ -14628,7 +14628,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Substation": {
@@ -14716,7 +14716,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Sulfur": {
@@ -14970,7 +14970,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Train stop": {
@@ -15058,7 +15058,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Transport belt": {
@@ -15122,7 +15122,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Underground belt": {
@@ -15186,7 +15186,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Uranium cannon shell": {
@@ -15266,7 +15266,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Uranium fuel cell": {
@@ -15354,7 +15354,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Uranium processing": {
@@ -15497,7 +15497,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Utility science pack": {
@@ -15617,7 +15617,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   },
   "Wooden chest": {
@@ -15665,7 +15665,7 @@
       "Assembling machine 1",
       "Assembling machine 2",
       "Assembling machine 3",
-      "Player"
+      "Character"
     ]
   }
 }

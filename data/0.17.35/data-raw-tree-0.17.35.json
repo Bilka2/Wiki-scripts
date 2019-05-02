@@ -144,6 +144,7 @@
     "tank"
   ],
   "cargo-wagon": ["cargo-wagon"],
+  "character": ["character"],
   "character-corpse": ["character-corpse"],
   "cliff": ["cliff"],
   "combat-robot": [
@@ -852,7 +853,6 @@
   ],
   "pipe": ["pipe"],
   "pipe-to-ground": ["pipe-to-ground"],
-  "player": ["player"],
   "player-damaged-achievement": [
     "golem",
     "watch-your-step"
@@ -1385,7 +1385,7 @@
     "passive-defense",
     "personal-laser-defense-equipment",
     "personal-roboport-equipment",
-    "personal-roboport-equipment-2",
+    "personal-roboport-mk2-equipment",
     "physical-projectile-damage-1",
     "physical-projectile-damage-2",
     "physical-projectile-damage-3",
@@ -1395,7 +1395,7 @@
     "physical-projectile-damage-7",
     "plastics",
     "power-armor",
-    "power-armor-2",
+    "power-armor-mk2",
     "production-science-pack",
     "productivity-module",
     "productivity-module-2",

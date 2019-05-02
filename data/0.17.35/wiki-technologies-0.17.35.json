@@ -1057,7 +1057,7 @@
     ],
     "allows": [
       "Efficiency module 3, 3",
-      "Power armor 2, 2"
+      "Power armor MK2"
     ],
     "effects": ["Efficiency module 2"]
   },
@@ -2273,7 +2273,7 @@
       "Artillery",
       "Atomic bomb",
       "Combat robotics 3, 3",
-      "Power armor 2, 2",
+      "Power armor MK2",
       "Uranium ammo"
     ],
     "effects": [
@@ -2591,11 +2591,11 @@
       "Construction robotics",
       "Portable solar panel"
     ],
-    "allows": ["Personal roboport 2, 2"],
+    "allows": ["Personal roboport MK2"],
     "effects": ["Personal roboport"]
   },
-  "Personal roboport 2": {
-    "internal-name": "personal-roboport-equipment-2",
+  "Personal roboport MK2": {
+    "internal-name": "personal-roboport-mk2-equipment",
     "cost": [
       [
         "Time",
@@ -2698,12 +2698,12 @@
       "Energy shield MK2 equipment",
       "Portable fusion reactor",
       "Personal laser defense",
-      "Power armor 2, 2"
+      "Power armor MK2"
     ],
     "effects": ["Power armor"]
   },
-  "Power armor 2": {
-    "internal-name": "power-armor-2",
+  "Power armor MK2": {
+    "internal-name": "power-armor-mk2",
     "cost": [
       [
         "Time",
@@ -3303,7 +3303,7 @@
       "Speed module"
     ],
     "allows": [
-      "Power armor 2, 2",
+      "Power armor MK2",
       "Speed module 3, 3"
     ],
     "effects": ["Speed module 2"]
@@ -3674,7 +3674,7 @@
       "Portable fusion reactor",
       "Logistic system",
       "Military 4, 4",
-      "Personal roboport 2, 2",
+      "Personal roboport MK2",
       "Rocket control unit"
     ],
     "effects": ["Utility science pack"]
