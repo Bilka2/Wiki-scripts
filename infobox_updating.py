@@ -322,9 +322,9 @@ class InfoboxUpdate:
     edit_token = get_edit_token(session, self.api_url)
     
     for name, data in file.items():
-      if name in self.no_infobox:
-        continue
       infobox_data = klass(name, data)
+      if infobox_data.name in self.no_infobox: #this is after the class instantiation to make sure we append (research) to things like techs and similar
+        continue
       page_name = 'Infobox:' + infobox_data.name
       page = get_page_safe(session, self.api_url, page_name)
       if not page:
