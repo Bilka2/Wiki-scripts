@@ -3155,8 +3155,8 @@
         8
       ],
       [
-        "Flying robot frame",
-        1
+        "Electronic circuit",
+        3
       ],
       [
         "Iron gear wheel",
@@ -3164,33 +3164,25 @@
       ],
       [
         "Piercing rounds magazine",
-        1
+        3
       ]
     ],
     "total-raw": [
       [
         "Time",
-        37.25
-      ],
-      [
-        "Battery",
-        2
+        25.25
       ],
       [
         "Copper plate",
-        9.5
-      ],
-      [
-        "Electric engine unit",
-        1
+        19.5
       ],
       [
         "Iron plate",
-        13
+        21
       ],
       [
         "Steel plate",
-        2
+        3
       ]
     ],
     "expensive-recipe": [
@@ -3199,8 +3191,8 @@
         8
       ],
       [
-        "Flying robot frame",
-        1
+        "Electronic circuit",
+        3
       ],
       [
         "Iron gear wheel",
@@ -3208,33 +3200,25 @@
       ],
       [
         "Piercing rounds magazine",
-        1
+        3
       ]
     ],
     "expensive-total-raw": [
       [
         "Time",
-        42.5
-      ],
-      [
-        "Battery",
-        2
+        30.5
       ],
       [
         "Copper plate",
-        20
-      ],
-      [
-        "Electric engine unit",
-        1
+        30
       ],
       [
         "Iron plate",
-        22
+        30
       ],
       [
         "Steel plate",
-        2
+        3
       ]
     ],
     "producers": [
@@ -3262,23 +3246,15 @@
     "total-raw": [
       [
         "Time",
-        853.75
-      ],
-      [
-        "Battery",
-        32
+        661.75
       ],
       [
         "Copper plate",
-        244.5
-      ],
-      [
-        "Electric engine unit",
-        16
+        404.5
       ],
       [
         "Iron plate",
-        247
+        375
       ],
       [
         "Plastic bar",
@@ -3286,7 +3262,7 @@
       ],
       [
         "Steel plate",
-        32
+        48
       ]
     ],
     "expensive-recipe": [
@@ -3306,23 +3282,15 @@
     "expensive-total-raw": [
       [
         "Time",
-        1023
-      ],
-      [
-        "Battery",
-        32
+        831
       ],
       [
         "Copper plate",
-        583
-      ],
-      [
-        "Electric engine unit",
-        16
+        743
       ],
       [
         "Iron plate",
-        430
+        558
       ],
       [
         "Plastic bar",
@@ -3330,7 +3298,7 @@
       ],
       [
         "Steel plate",
-        32
+        48
       ]
     ],
     "producers": [
@@ -3510,23 +3478,15 @@
     "total-raw": [
       [
         "Time",
-        192.5
-      ],
-      [
-        "Battery",
-        8
+        144.5
       ],
       [
         "Copper plate",
-        53
-      ],
-      [
-        "Electric engine unit",
-        4
+        93
       ],
       [
         "Iron plate",
-        58
+        90
       ],
       [
         "Plastic bar",
@@ -3534,7 +3494,7 @@
       ],
       [
         "Steel plate",
-        8
+        12
       ]
     ],
     "expensive-recipe": [
@@ -3554,23 +3514,15 @@
     "expensive-total-raw": [
       [
         "Time",
-        227
-      ],
-      [
-        "Battery",
-        8
+        179
       ],
       [
         "Copper plate",
-        122
-      ],
-      [
-        "Electric engine unit",
-        4
+        162
       ],
       [
         "Iron plate",
-        100
+        132
       ],
       [
         "Plastic bar",
@@ -3578,7 +3530,7 @@
       ],
       [
         "Steel plate",
-        8
+        12
       ]
     ],
     "producers": [

@@ -792,12 +792,9 @@
         1
       ]
     ],
-    "cost-multiplier": 150,
-    "expensive-cost-multiplier": 600,
-    "required-technologies": [
-      "Military science pack",
-      "Robotics"
-    ],
+    "cost-multiplier": 100,
+    "expensive-cost-multiplier": 400,
+    "required-technologies": ["Military science pack"],
     "allows": [
       "Combat robotics 2, 2",
       "Follower robot count"
@@ -2994,7 +2991,6 @@
       "Electric engine"
     ],
     "allows": [
-      "Combat robotics",
       "Construction robotics",
       "Logistic robotics",
       "Utility science pack",

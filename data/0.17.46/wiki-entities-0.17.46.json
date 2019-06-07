@@ -387,6 +387,10 @@
         "percent": 100,
         "decrease": 0
       },
+      "acid": {
+        "percent": 80,
+        "decrease": 0
+      },
       "laser": {
         "percent": 70,
         "decrease": 0
@@ -928,7 +932,7 @@
         "decrease": 15
       },
       "acid": {
-        "percent": 50,
+        "percent": 70,
         "decrease": 0
       }
     }

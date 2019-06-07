@@ -313,6 +313,7 @@
       "Constant combinator",
       "Construction robot",
       "Decider combinator",
+      "Defender capsule",
       "Discharge defense remote",
       "Efficiency module",
       "Electric engine unit",
@@ -492,7 +493,6 @@
   "Flying robot frame": {
     "consumers": [
       "Construction robot",
-      "Defender capsule",
       "Logistic robot",
       "Utility science pack"
     ],
