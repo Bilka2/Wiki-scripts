@@ -785,8 +785,10 @@
     "enemy-base-radius",
     "enemy_base_probability",
     "moisture",
+    "regular-resource-patch-set-count",
     "rings",
     "starting-lake-noise-amplitude",
+    "starting-resource-patch-set-count",
     "starting_area_weight",
     "temperature",
     "tier",
@@ -959,7 +961,6 @@
   ],
   "pump": ["pump"],
   "radar": ["radar"],
-  "rail-category": ["regular"],
   "rail-chain-signal": ["rail-chain-signal"],
   "rail-planner": ["rail"],
   "rail-remnants": [
