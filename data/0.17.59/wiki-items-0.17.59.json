@@ -669,7 +669,7 @@
   "Lab": {"stack-size": 10},
   "Land mine": {
     "stack-size": 100,
-    "required-technologies": ["Landmines"]
+    "required-technologies": ["Land mines"]
   },
   "Landfill": {
     "stack-size": 100,

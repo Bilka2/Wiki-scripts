@@ -1112,6 +1112,7 @@
       "Battery",
       "Electric energy distribution 1, 1"
     ],
+    "allows": ["Space science pack"],
     "effects": ["Accumulator"]
   },
   "Electric energy distribution 1": {
@@ -1425,7 +1426,7 @@
     "required-technologies": ["Sulfur processing"],
     "allows": [
       "Cliff explosives",
-      "Landmines",
+      "Land mines",
       "Military 4, 4",
       "Rocketry",
       "Tanks"
@@ -1745,7 +1746,7 @@
       "Nuclear fuel"
     ]
   },
-  "Landmines": {
+  "Land mines": {
     "internal-name": "land-mine",
     "cost": [
       [
@@ -2306,7 +2307,7 @@
       "Energy weapons damage",
       "Flamethrower",
       "Portable fusion reactor",
-      "Landmines",
+      "Land mines",
       "Laser turrets",
       "Military 3, 3",
       "Rocketry"
@@ -3164,7 +3165,10 @@
       "Optics",
       "Steel processing"
     ],
-    "allows": ["Portable solar panel"],
+    "allows": [
+      "Portable solar panel",
+      "Space science pack"
+    ],
     "effects": ["Solar panel"]
   },
   "Portable solar panel": {
@@ -3231,7 +3235,11 @@
     ],
     "cost-multiplier": 2000,
     "expensive-cost-multiplier": 8000,
-    "required-technologies": ["Rocket silo"],
+    "required-technologies": [
+      "Electric energy accumulators",
+      "Rocket silo",
+      "Solar energy"
+    ],
     "allows": [
       "Artillery shell range",
       "Artillery shell shooting speed",

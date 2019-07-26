@@ -725,6 +725,7 @@
   ],
   "locomotive": ["locomotive"],
   "logistic-container": [
+    "compi-logistics-chest",
     "logistic-chest-active-provider",
     "logistic-chest-buffer",
     "logistic-chest-passive-provider",
@@ -1213,7 +1214,10 @@
     "basic-fluid",
     "basic-solid"
   ],
-  "roboport": ["roboport"],
+  "roboport": [
+    "compi-roboport",
+    "roboport"
+  ],
   "roboport-equipment": [
     "personal-roboport-equipment",
     "personal-roboport-mk2-equipment"

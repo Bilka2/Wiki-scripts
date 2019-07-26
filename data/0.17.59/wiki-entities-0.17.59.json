@@ -1,6 +1,6 @@
 {
   "Accumulator": {
-    "map-color": "6b6b6b",
+    "map-color": "7a7a7a",
     "health": 150,
     "mining-time": 0.1
   },
@@ -266,7 +266,7 @@
     }}
   },
   "Express underground belt": {
-    "map-color": "8f7500",
+    "map-color": "705c00",
     "health": 170,
     "mining-time": 0.1,
     "resistances": {
@@ -308,7 +308,7 @@
     }}
   },
   "Fast underground belt": {
-    "map-color": "8f7500",
+    "map-color": "705c00",
     "health": 160,
     "mining-time": 0.1,
     "resistances": {
@@ -867,7 +867,7 @@
     }
   },
   "Wall": {
-    "map-color": "bfccbf",
+    "map-color": "ccd9cc",
     "health": 350,
     "mining-time": 0.2,
     "resistances": {
@@ -951,7 +951,7 @@
     }}
   },
   "Underground belt": {
-    "map-color": "8f7500",
+    "map-color": "705c00",
     "health": 150,
     "mining-time": 0.1,
     "resistances": {
