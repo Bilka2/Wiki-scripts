@@ -20,8 +20,6 @@
     "required-technologies": ["Plastics"],
     "allows": [
       "Chemical science pack",
-      "Construction robotics",
-      "Logistic robotics",
       "Mining productivity",
       "Modular armor",
       "Modules",
@@ -147,11 +145,17 @@
     "cost-multiplier": 75,
     "expensive-cost-multiplier": 300,
     "required-technologies": ["Chemical science pack"],
-    "allows": ["Coal liquefaction"],
+    "allows": [
+      "Coal liquefaction",
+      "Lubricant",
+      "Rocket fuel"
+    ],
     "effects": [
       "Advanced oil processing",
       "Heavy oil cracking",
-      "Light oil cracking"
+      "Light oil cracking",
+      "Solid fuel from heavy oil",
+      "Solid fuel from light oil"
     ]
   },
   "Artillery": {
@@ -343,10 +347,7 @@
     ],
     "cost-multiplier": 150,
     "expensive-cost-multiplier": 600,
-    "required-technologies": [
-      "Character logistic trash slots 2, 2",
-      "Chemical science pack"
-    ]
+    "required-technologies": ["Character logistic trash slots 2, 2"]
   },
   "Automated rail transportation": {
     "internal-name": "automated-rail-transportation",
@@ -621,10 +622,14 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
-    "cost-multiplier": 100,
-    "expensive-cost-multiplier": 400,
+    "cost-multiplier": 50,
+    "expensive-cost-multiplier": 200,
     "required-technologies": ["Logistic robotics"],
     "allows": ["Character logistic slots, 2-6"]
   },
@@ -642,10 +647,14 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
-    "cost-multiplier": 100,
-    "expensive-cost-multiplier": 400,
+    "cost-multiplier": 30,
+    "expensive-cost-multiplier": 120,
     "required-technologies": ["Logistic robotics"],
     "allows": ["Character logistic trash slots, 2-5"]
   },
@@ -667,20 +676,20 @@
     ],
     "cost-multiplier": 75,
     "expensive-cost-multiplier": 300,
-    "required-technologies": ["Advanced electronics"],
+    "required-technologies": [
+      "Advanced electronics",
+      "Sulfur processing"
+    ],
     "allows": [
       "Advanced electronics 2, 2",
       "Advanced material processing 2, 2",
       "Advanced oil processing",
-      "Auto character logistic trash slots",
       "Braking force",
       "Electric energy distribution 2, 2",
+      "Laser",
       "Low density structure",
       "Military 3, 3",
-      "Personal roboport",
-      "Uranium processing",
-      "Worker robot speed",
-      "Worker robot cargo size"
+      "Uranium processing"
     ],
     "effects": ["Chemical science pack"]
   },
@@ -919,14 +928,15 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
     "cost-multiplier": 100,
     "expensive-cost-multiplier": 400,
-    "required-technologies": [
-      "Advanced electronics",
-      "Robotics"
-    ],
+    "required-technologies": ["Robotics"],
     "allows": ["Personal roboport"],
     "effects": [
       "Construction robot",
@@ -1189,10 +1199,14 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
-    "cost-multiplier": 100,
-    "expensive-cost-multiplier": 400,
+    "cost-multiplier": 50,
+    "expensive-cost-multiplier": 200,
     "required-technologies": ["Lubricant"],
     "allows": [
       "Exoskeleton equipment",
@@ -1304,6 +1318,10 @@
       ],
       [
         "Military science pack",
+        1
+      ],
+      [
+        "Chemical science pack",
         1
       ]
     ],
@@ -1508,7 +1526,8 @@
     "required-technologies": ["Oil processing"],
     "allows": [
       "Flamethrower",
-      "Rocket fuel"
+      "Rocket fuel",
+      "Rocketry"
     ]
   },
   "Fluid handling": {
@@ -1809,12 +1828,17 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
-    "cost-multiplier": 150,
-    "expensive-cost-multiplier": 600,
+    "cost-multiplier": 100,
+    "expensive-cost-multiplier": 400,
     "required-technologies": [
       "Battery",
+      "Chemical science pack",
       "Optics"
     ],
     "allows": [
@@ -1839,6 +1863,10 @@
       ],
       [
         "Military science pack",
+        1
+      ],
+      [
+        "Chemical science pack",
         1
       ]
     ],
@@ -1865,10 +1893,14 @@
       [
         "Military science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
-    "cost-multiplier": 200,
-    "expensive-cost-multiplier": 800,
+    "cost-multiplier": 150,
+    "expensive-cost-multiplier": 600,
     "required-technologies": [
       "Laser",
       "Military science pack",
@@ -1895,14 +1927,15 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
     "cost-multiplier": 150,
     "expensive-cost-multiplier": 600,
-    "required-technologies": [
-      "Advanced electronics",
-      "Robotics"
-    ],
+    "required-technologies": ["Robotics"],
     "allows": [
       "Character logistic slots",
       "Character logistic trash slots",
@@ -2116,11 +2149,15 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
     "cost-multiplier": 50,
     "expensive-cost-multiplier": 200,
-    "required-technologies": ["Oil processing"],
+    "required-technologies": ["Advanced oil processing"],
     "allows": [
       "Electric engine",
       "Logistics 3, 3"
@@ -2493,7 +2530,6 @@
     "required-technologies": ["Fluid handling"],
     "allows": [
       "Flammables",
-      "Lubricant",
       "Plastics",
       "Sulfur processing"
     ],
@@ -2502,8 +2538,6 @@
       "Chemical plant",
       "Oil refinery",
       "Pumpjack",
-      "Solid fuel from heavy oil",
-      "Solid fuel from light oil",
       "Solid fuel from petroleum gas"
     ]
   },
@@ -2585,7 +2619,6 @@
     "cost-multiplier": 50,
     "expensive-cost-multiplier": 200,
     "required-technologies": [
-      "Chemical science pack",
       "Construction robotics",
       "Portable solar panel"
     ],
@@ -2983,10 +3016,14 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
-    "cost-multiplier": 150,
-    "expensive-cost-multiplier": 600,
+    "cost-multiplier": 75,
+    "expensive-cost-multiplier": 300,
     "required-technologies": [
       "Battery",
       "Electric engine"
@@ -3050,15 +3087,21 @@
       [
         "Logistic science pack",
         1
+      ],
+      [
+        "Chemical science pack",
+        1
       ]
     ],
     "cost-multiplier": 300,
     "expensive-cost-multiplier": 1200,
-    "required-technologies": ["Flammables"],
+    "required-technologies": [
+      "Advanced oil processing",
+      "Flammables"
+    ],
     "allows": [
       "Kovarex enrichment process",
-      "Rocket silo",
-      "Rocketry"
+      "Rocket silo"
     ],
     "effects": ["Rocket fuel"]
   },
@@ -3129,8 +3172,8 @@
     "expensive-cost-multiplier": 480,
     "required-technologies": [
       "Explosives",
-      "Military science pack",
-      "Rocket fuel"
+      "Flammables",
+      "Military science pack"
     ],
     "allows": [
       "Atomic bomb",
@@ -3482,6 +3525,7 @@
     "allows": [
       "Advanced electronics 2, 2",
       "Battery",
+      "Chemical science pack",
       "Explosives",
       "Uranium processing"
     ],
@@ -3722,10 +3766,7 @@
     ],
     "cost-multiplier": 50,
     "expensive-cost-multiplier": 200,
-    "required-technologies": [
-      "Chemical science pack",
-      "Robotics"
-    ],
+    "required-technologies": ["Robotics"],
     "allows": ["Worker robot speed, 2-&infin;"]
   },
   "Worker robot cargo size": {
@@ -3750,10 +3791,7 @@
     ],
     "cost-multiplier": 200,
     "expensive-cost-multiplier": 800,
-    "required-technologies": [
-      "Chemical science pack",
-      "Robotics"
-    ],
+    "required-technologies": ["Robotics"],
     "allows": ["Worker robot cargo size, 2-3"]
   }
 }

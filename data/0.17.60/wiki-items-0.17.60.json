@@ -1030,12 +1030,12 @@
     "required-technologies": ["Portable solar panel"]
   },
   "Solid fuel": {
-    "consumers": [
-      "Chemical science pack",
-      "Rocket fuel"
-    ],
+    "consumers": ["Rocket fuel"],
     "stack-size": 50,
-    "required-technologies": ["Oil processing"]
+    "required-technologies": [
+      "Advanced oil processing",
+      "Oil processing"
+    ]
   },
   "Space science pack": {"stack-size": 2000},
   "Speed module": {
@@ -1208,6 +1208,7 @@
   },
   "Sulfur": {
     "consumers": [
+      "Chemical science pack",
       "Explosives",
       "Sulfuric acid"
     ],

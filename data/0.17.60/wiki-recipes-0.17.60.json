@@ -161,7 +161,7 @@
     "recipe-output": [
       [
         "Heavy oil",
-        10
+        25
       ],
       [
         "Light oil",
@@ -203,7 +203,7 @@
     "expensive-recipe-output": [
       [
         "Heavy oil",
-        10
+        25
       ],
       [
         "Light oil",
@@ -1097,20 +1097,10 @@
         100
       ]
     ],
-    "recipe-output": [
-      [
-        "Heavy oil",
-        30
-      ],
-      [
-        "Light oil",
-        30
-      ],
-      [
-        "Petroleum gas",
-        40
-      ]
-    ],
+    "recipe-output": [[
+      "Petroleum gas",
+      45
+    ]],
     "total-raw": [
       [
         "Time",
@@ -1131,20 +1121,10 @@
         100
       ]
     ],
-    "expensive-recipe-output": [
-      [
-        "Heavy oil",
-        30
-      ],
-      [
-        "Light oil",
-        30
-      ],
-      [
-        "Petroleum gas",
-        40
-      ]
-    ],
+    "expensive-recipe-output": [[
+      "Petroleum gas",
+      45
+    ]],
     "expensive-total-raw": [
       [
         "Time",
@@ -2279,7 +2259,7 @@
         2
       ],
       [
-        "Solid fuel",
+        "Sulfur",
         1
       ]
     ],
@@ -2309,7 +2289,7 @@
         6
       ],
       [
-        "Solid fuel",
+        "Sulfur",
         1
       ]
     ],
@@ -2327,7 +2307,7 @@
         2
       ],
       [
-        "Solid fuel",
+        "Sulfur",
         1
       ]
     ],
@@ -2357,7 +2337,7 @@
         12
       ],
       [
-        "Solid fuel",
+        "Sulfur",
         1
       ]
     ],
@@ -6381,12 +6361,8 @@
         6
       ],
       [
-        "Heavy oil",
-        50
-      ],
-      [
-        "Light oil",
-        50
+        "Crude oil",
+        100
       ],
       [
         "Steel plate",
@@ -6399,12 +6375,8 @@
         6
       ],
       [
-        "Heavy oil",
-        50
-      ],
-      [
-        "Light oil",
-        50
+        "Crude oil",
+        100
       ],
       [
         "Steel plate",
@@ -6417,12 +6389,8 @@
         6
       ],
       [
-        "Heavy oil",
-        50
-      ],
-      [
-        "Light oil",
-        50
+        "Crude oil",
+        100
       ],
       [
         "Steel plate",
@@ -6435,12 +6403,8 @@
         6
       ],
       [
-        "Heavy oil",
-        50
-      ],
-      [
-        "Light oil",
-        50
+        "Crude oil",
+        100
       ],
       [
         "Steel plate",
@@ -9418,11 +9382,11 @@
     "total-raw": [
       [
         "Time",
-        120
+        90
       ],
       [
-        "Solid fuel",
-        10
+        "Rocket fuel",
+        1
       ],
       [
         "Uranium-235",
@@ -9446,11 +9410,11 @@
     "expensive-total-raw": [
       [
         "Time",
-        120
+        90
       ],
       [
-        "Solid fuel",
-        10
+        "Rocket fuel",
+        1
       ],
       [
         "Uranium-235",
@@ -12388,6 +12352,10 @@
         30
       ],
       [
+        "Light oil",
+        10
+      ],
+      [
         "Solid fuel",
         10
       ]
@@ -12396,6 +12364,10 @@
       [
         "Time",
         30
+      ],
+      [
+        "Light oil",
+        10
       ],
       [
         "Solid fuel",
@@ -12408,6 +12380,10 @@
         30
       ],
       [
+        "Light oil",
+        10
+      ],
+      [
         "Solid fuel",
         10
       ]
@@ -12418,15 +12394,17 @@
         30
       ],
       [
+        "Light oil",
+        10
+      ],
+      [
         "Solid fuel",
         10
       ]
     ],
     "producers": [
-      "Assembling machine 1",
       "Assembling machine 2",
-      "Assembling machine 3",
-      "Character"
+      "Assembling machine 3"
     ]
   },
   "Rocket launcher": {
@@ -12523,7 +12501,7 @@
     "total-raw": [
       [
         "Time",
-        1490.5
+        1190.5
       ],
       [
         "Copper plate",
@@ -12542,8 +12520,8 @@
         10
       ],
       [
-        "Solid fuel",
-        100
+        "Rocket fuel",
+        10
       ],
       [
         "Steel plate",
@@ -12571,7 +12549,7 @@
     "expensive-total-raw": [
       [
         "Time",
-        1728
+        1428
       ],
       [
         "Copper plate",
@@ -12590,8 +12568,8 @@
         10
       ],
       [
-        "Solid fuel",
-        100
+        "Rocket fuel",
+        10
       ],
       [
         "Steel plate",
@@ -12746,7 +12724,7 @@
     "total-raw": [
       [
         "Time",
-        7426.25
+        5926.25
       ],
       [
         "Battery",
@@ -12769,8 +12747,8 @@
         100
       ],
       [
-        "Solid fuel",
-        500
+        "Rocket fuel",
+        50
       ],
       [
         "Steel plate",
@@ -12810,7 +12788,7 @@
     "expensive-total-raw": [
       [
         "Time",
-        9332.5
+        7832.5
       ],
       [
         "Battery",
@@ -12833,8 +12811,8 @@
         100
       ],
       [
-        "Solid fuel",
-        500
+        "Rocket fuel",
+        50
       ],
       [
         "Steel plate",
