@@ -49,10 +49,7 @@
     ],
     "cost-multiplier": 300,
     "expensive-cost-multiplier": 1200,
-    "required-technologies": [
-      "Chemical science pack",
-      "Sulfur processing"
-    ],
+    "required-technologies": ["Chemical science pack"],
     "allows": [
       "Effect transmission",
       "Efficiency module 2, 2",
@@ -838,6 +835,7 @@
     "expensive-cost-multiplier": 800,
     "required-technologies": [
       "Combat robotics",
+      "Laser",
       "Military 3, 3"
     ],
     "allows": ["Combat robotics 3, 3"],
@@ -1842,6 +1840,7 @@
       "Optics"
     ],
     "allows": [
+      "Combat robotics 2, 2",
       "Energy weapons damage",
       "Laser turrets"
     ]
@@ -3523,11 +3522,9 @@
     "expensive-cost-multiplier": 600,
     "required-technologies": ["Oil processing"],
     "allows": [
-      "Advanced electronics 2, 2",
       "Battery",
       "Chemical science pack",
-      "Explosives",
-      "Uranium processing"
+      "Explosives"
     ],
     "effects": [
       "Sulfur",
@@ -3677,8 +3674,7 @@
     "expensive-cost-multiplier": 800,
     "required-technologies": [
       "Chemical science pack",
-      "Concrete",
-      "Sulfur processing"
+      "Concrete"
     ],
     "allows": [
       "Kovarex enrichment process",
