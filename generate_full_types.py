@@ -141,7 +141,6 @@ def get_lines_of_constructor(prototype_name, cpp_file):
 
 class Property:
   def __init__(self, type, property_arguments):
-    self.header_level = 3
     self.set_name(property_arguments)
     self.type, description_addition = self.sanitize_type(type)
     self.set_optional(property_arguments)
@@ -155,9 +154,6 @@ class Property:
   def set_name(self, property_arguments):
     property_name = re.search('"\w+"', property_arguments)
     if property_name:
-      #if "pictures" in property_name.group(): # Hack for wall
-      #  property_name = re.search('"\w+"', property_arguments[property_name.end():])
-      #  self.header_level = 4
       property_name = property_name.group().replace('"', '')
     else:
       property_name = property_arguments
@@ -216,23 +212,25 @@ class Property:
 
   def __str__(self):
     if args.short_output:
-      return f'* {self.name} - [[Types/{self.type}]]' + (' - Optional' if self.optional else ' - Mandatory') # Sentence above the list is: Table with the following mandatory members:
+      return f'* {self.name} - [[Types/{self.type}|{self.type}]]' + (' - Optional' if self.optional else ' - Mandatory') # Sentence above the list is: Table with the following mandatory members:
     else:
-      header = '=' * self.header_level
-      ret = f'{header} {self.name} {header}\n\'\'\'Type\'\'\': [[Types/{self.type}]]\n'
+      ret = '{{Prototype property|' + self.name + '|[[Types/' + self.type + '|' + self.type + ']]'
       if self.default:
-        ret += f'\n\'\'\'Default\'\'\': {self.default}\n'
+        ret += '|' + self.default
+      ret += '}}\n'
       if self.description:
-        ret += '\n' + ' '.join(self.description) + '\n'
+        ret += ' '.join(self.description) + '\n'
       return ret
 
 
 # Convert all the properties to the wiki page string, include info about parent class
 def convert_to_string(parent, mandatory_properties, optional_properties):
-  out = '== Basics ==\n'
+  out = '{{Prototype parent'
+  lua_type_name = 'unknown' # TODO Bilka
   if parent:
-    out += 'Extends [[Prototype/{}]].\n'.format(parent)
-  out += '\n'
+    out += '|Prototype/{}'.format(parent)
+  out += '}}\n\n'
+  out += '{{Prototype TOC|' + lua_type_name + '}}\n\n'
   out += '== Mandatory properties =='
   if parent:
     out += f'\nThis prototype inherits all the properties from [[Prototype/{parent}]].'

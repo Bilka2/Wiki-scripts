@@ -37,10 +37,12 @@ def make_type():
   type = input('type ')
   default = input('default ')
   
-  out = '=== ' + name + ' ===\n\'\'\'Type\'\'\': [[Types/' + type + ']]\n'
+  out = '{{Prototype property|' + name + '|[[Types/' + type + '|' + type + ']]'
   
   if default:
-    out += '\n\'\'\'Default\'\'\': ' + default + '\n'
+    out += '|' + default
+    
+  out += '}}'
   
   print(out)
 
@@ -58,6 +60,7 @@ def check_if_all_prototypes_are_on_page():
       print(line.strip())
 
 
+# Warning: Uses old prototype page format. TODO: Update, if needed
 def prototype_types_on_individual_pages():
   with open('prototype-types.json', 'r') as f:
     pageToTypeMapping = json.load(f)
@@ -88,7 +91,7 @@ def convert_data_raw(version):
   
   for type, names in dataRawJson.items():
     assert names
-    out += f'== {type} ==\n'
+    out += '== {{Prototype page|' + type + '}} ==\n'
     out += '<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">\n'
     for name in names:
       out += f'* {name}\n'
@@ -135,4 +138,4 @@ if __name__ == '__main__':
   # move_page_test()
   # create_page_test()
   
-  print(convert_data_raw('0.17.52'))
+  print(convert_data_raw('0.17.62'))
