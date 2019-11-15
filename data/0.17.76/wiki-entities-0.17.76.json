@@ -976,7 +976,7 @@
   },
   "Concrete": {"map-color": "646464"},
   "Hazard concrete": {"map-color": "808000"},
-  "Landfill": {"map-color": "35341b"},
+  "Landfill": {"map-color": "362e25"},
   "Refined concrete": {"map-color": "646464"},
   "Refined hazard concrete": {"map-color": "808000"},
   "Stone brick": {"map-color": "323232"},
