@@ -9,6 +9,9 @@ username = credentials['username']
 password = base64.b64decode(credentials['password']).decode('utf-8')
 
 
+def normalize_pagename(pagename):
+  return pagename.replace(' ', '_')
+
 def get_edit_token(session, api_url):
   login_token = session.get(api_url, params={
     'format': 'json',
@@ -177,7 +180,7 @@ def get_user_groups(session, api_url):
 
 
 def upload_file(session, api_url, edit_token, filename, file, text):
-  response = session.post(api_url, files = {'file': (filename, file)}, data={
+  data = {
     'format': 'json',
     'action': 'upload',
     'assert': 'user',
@@ -186,7 +189,30 @@ def upload_file(session, api_url, edit_token, filename, file, text):
     'text': text,
     'token': edit_token,
     'ignorewarnings': True
-  })
+  }
+    
+  response = session.post(api_url, files = {'file': (filename, file)}, data=data)
+  return response
+
+
+def update_file(session, api_url, edit_token, filename, file):
+  data = {
+    'format': 'json',
+    'action': 'upload',
+    'assert': 'user',
+    'filename': filename, # no File: prefix
+    'token': edit_token
+  }
+  response = session.post(api_url, files = {'file': (filename, file)}, data=data)
+  # file already exists and there are no other errors - the expected response
+  if response.json()['upload']['result'] == 'Warning' and ('exists' in response.json()['upload']['warnings']) and response.json()['upload']['warnings']['exists'] == normalize_pagename(filename) and len(response.json()['upload']['warnings']) == 1:
+    data['ignorewarnings'] = True
+    data['filekey'] = response.json()['upload']['filekey']
+    response = session.post(api_url, data=data)
+  elif response.json()['upload']['result'] == 'Warning':
+    print('Could not upload file ' + filename)
+    print(response.json()['upload']['warnings'])
+    
   return response
 
 

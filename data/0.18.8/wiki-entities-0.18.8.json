@@ -93,7 +93,7 @@
     }}
   },
   "Beacon": {
-    "map-color": "006191",
+    "map-color": "074468",
     "health": 200,
     "mining-time": 0.2
   },
@@ -422,7 +422,7 @@
     }
   },
   "Heat pipe": {
-    "map-color": "006191",
+    "map-color": "3a82ac",
     "health": 200,
     "mining-time": 0.1,
     "resistances": {
@@ -636,7 +636,7 @@
     "pollution": 6
   },
   "Pipe": {
-    "map-color": "006191",
+    "map-color": "4582a5",
     "health": 100,
     "mining-time": 0.1,
     "resistances": {
@@ -651,7 +651,7 @@
     }
   },
   "Pipe to ground": {
-    "map-color": "006191",
+    "map-color": "196796",
     "health": 150,
     "mining-time": 0.1,
     "resistances": {
@@ -676,7 +676,7 @@
     "mining-time": 0.1
   },
   "Pump": {
-    "map-color": "006191",
+    "map-color": "6d9ab5",
     "health": 180,
     "mining-time": 0.2,
     "resistances": {
@@ -722,7 +722,7 @@
     "mining-time": 0.1
   },
   "Roboport": {
-    "map-color": "006191",
+    "map-color": "d3cf88",
     "health": 500,
     "mining-time": 0.1,
     "resistances": {
@@ -794,7 +794,7 @@
     }}
   },
   "Steam engine": {
-    "map-color": "006191",
+    "map-color": "007fa0",
     "health": 400,
     "mining-time": 0.3,
     "resistances": {
@@ -809,7 +809,7 @@
     }
   },
   "Steam turbine": {
-    "map-color": "006191",
+    "map-color": "007fa0",
     "health": 300,
     "mining-time": 0.3,
     "resistances": {"fire": {
@@ -898,7 +898,7 @@
     }
   },
   "Storage tank": {
-    "map-color": "006191",
+    "map-color": "83a6bc",
     "health": 500,
     "mining-time": 0.5
   },
@@ -974,11 +974,11 @@
     "health": 100,
     "mining-time": 0.1
   },
-  "Concrete": {"map-color": "646464"},
-  "Hazard concrete": {"map-color": "808000"},
-  "Landfill": {"map-color": "362e25"},
-  "Refined concrete": {"map-color": "646464"},
-  "Refined hazard concrete": {"map-color": "808000"},
-  "Stone brick": {"map-color": "323232"},
+  "Concrete": {"map-color": "3f3d3b"},
+  "Hazard concrete": {"map-color": "b08e27"},
+  "Landfill": {"map-color": "39271a"},
+  "Refined concrete": {"map-color": "31302d"},
+  "Refined hazard concrete": {"map-color": "745e1a"},
+  "Stone brick": {"map-color": "56524a"},
   "Water": {"map-color": "33535f"}
 }
