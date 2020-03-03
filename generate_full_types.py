@@ -175,13 +175,13 @@ class Property:
       wiki_type = 'Energy'
     elif wiki_type == 'FluidBoxPrototype':
       wiki_type = 'FluidBox'
-    elif wiki_type == 'ElectricEnergySourcePrototype':
+    elif wiki_type == 'ElectricEnergySourcePrototype' or wiki_type == 'std::unique_ptr<ElectricEnergySourcePrototype>':
       wiki_type = 'EnergySource'
       description_addition = 'Must be an electric energy source.' # We must note this distinction in the property description
-    elif wiki_type == 'BurnerPrototype':
+    elif wiki_type == 'BurnerPrototype' or wiki_type == 'std::unique_ptr<BurnerPrototype>':
       wiki_type = 'EnergySource'
       description_addition = 'Must be a burner energy source.'
-    elif wiki_type == 'EnergySourcePrototype':
+    elif wiki_type == 'EnergySourcePrototype' or wiki_type == 'std::unique_ptr<EnergySourcePrototype>':
       wiki_type = 'EnergySource'
     elif 'IDConnector<' in type:
       wiki_type = 'string'
@@ -217,6 +217,8 @@ class Property:
       ret = '{{Prototype property|' + self.name + '|[[Types/' + self.type + '|' + self.type + ']]'
       if self.default:
         ret += '|' + self.default
+      if self.optional:
+        ret += '|optional=true'
       ret += '}}\n'
       if self.description:
         ret += ' '.join(self.description) + '\n'

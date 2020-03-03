@@ -20,7 +20,7 @@ def used_as_ammo_by_in_infobox(used_by, page):
   print(edit_page(session, api_url, edit_token, page, new_page_data, "Added \"Usable Ammunition For\" to infobox").text)
 
 
-def infobox_categoy_change(pages, category): # regexr.com/3trgo
+def infobox_category_change(pages, category): # regexr.com/3trgo
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
   for page in pages:
@@ -58,29 +58,6 @@ def check_if_all_prototypes_are_on_page():
   for line in data:
     if not ('\'\'\'' + line.strip() + '\'\'\'' in content):
       print(line.strip())
-
-
-# Warning: Uses old prototype page format. TODO: Update, if needed
-def prototype_types_on_individual_pages():
-  with open('prototype-types.json', 'r') as f:
-    pageToTypeMapping = json.load(f)
-
-  session = requests.Session()
-  edit_token = get_edit_token(session, api_url)
-  for page, type in pageToTypeMapping.items():
-    try:
-      pageData = get_page(session, api_url, page)
-      if "Basics" in pageData or "basics" in pageData:
-        replacement = r"\1Prototype type: '''" + type + "'''\n\n"
-        if type == "<abstract>":
-          replacement = r"\1This type is abstract and cannot be created directly.\n\n"
-        pattern = re.compile(r"(==\s*Basics\s*==\n)", re.IGNORECASE)
-        pageData = re.sub(pattern, replacement, pageData)
-        print(edit_page(session, api_url, edit_token, page, pageData, "Added prototype type to page").text)
-      else: 
-        print(page + " Does not have basics on page")
-    except:
-      print(page + " Something went wrong")
 
 
 def convert_data_raw(version):
@@ -140,14 +117,12 @@ def update_icons():
 if __name__ == '__main__':
   # used_as_ammo_by_in_infobox(["Flamethrower turret"], "Light oil")
   
-  # infobox_categoy_change(["Infobox:Artillery shell", "Infobox:Artillery targeting remote", "Infobox:Artillery turret", "Infobox:Atomic bomb", "Infobox:Battery MK1", "Infobox:Battery MK2", "Infobox:Cannon shell", "Infobox:Cluster grenade", "Infobox:Combat shotgun", "Infobox:Defender capsule", "Infobox:Destroyer capsule", "Infobox:Discharge defense", "Infobox:Discharge defense remote", "Infobox:Distractor capsule", "Infobox:Energy shield", "Infobox:Energy shield MK2", "Infobox:Exoskeleton", "Infobox:Explosive cannon shell", "Infobox:Explosive rocket", "Infobox:Explosive uranium cannon shell", "Infobox:Firearm magazine", "Infobox:Flamethrower", "Infobox:Flamethrower ammo", "Infobox:Flamethrower turret", "Infobox:Gate", "Infobox:Grenade", "Infobox:Gun turret", "Infobox:Heavy armor", "Infobox:Land mine", "Infobox:Laser turret", "Infobox:Light armor", "Infobox:Modular armor", "Infobox:Nightvision", "Infobox:Personal laser defense", "Infobox:Personal roboport", "Infobox:Personal roboport MK2", "Infobox:Piercing rounds magazine", "Infobox:Piercing shotgun shells", "Infobox:Pistol", "Infobox:Poison capsule", "Infobox:Portable fusion reactor", "Infobox:Portable solar panel", "Infobox:Power armor", "Infobox:Power armor MK2", "Infobox:Radar", "Infobox:Rocket", "Infobox:Rocket launcher", "Infobox:Rocket silo", "Infobox:Shotgun", "Infobox:Shotgun shells", "Infobox:Slowdown capsule", "Infobox:Stone wall", "Infobox:Submachine gun", "Infobox:Uranium cannon shell", "Infobox:Uranium rounds magazine"], "Combat")
+  # infobox_category_change(["Infobox:Artillery shell", "Infobox:Artillery targeting remote", "Infobox:Artillery turret", "Infobox:Atomic bomb", "Infobox:Battery MK1", "Infobox:Battery MK2", "Infobox:Cannon shell", "Infobox:Cluster grenade", "Infobox:Combat shotgun", "Infobox:Defender capsule", "Infobox:Destroyer capsule", "Infobox:Discharge defense", "Infobox:Discharge defense remote", "Infobox:Distractor capsule", "Infobox:Energy shield", "Infobox:Energy shield MK2", "Infobox:Exoskeleton", "Infobox:Explosive cannon shell", "Infobox:Explosive rocket", "Infobox:Explosive uranium cannon shell", "Infobox:Firearm magazine", "Infobox:Flamethrower", "Infobox:Flamethrower ammo", "Infobox:Flamethrower turret", "Infobox:Gate", "Infobox:Grenade", "Infobox:Gun turret", "Infobox:Heavy armor", "Infobox:Land mine", "Infobox:Laser turret", "Infobox:Light armor", "Infobox:Modular armor", "Infobox:Nightvision", "Infobox:Personal laser defense", "Infobox:Personal roboport", "Infobox:Personal roboport MK2", "Infobox:Piercing rounds magazine", "Infobox:Piercing shotgun shells", "Infobox:Pistol", "Infobox:Poison capsule", "Infobox:Portable fusion reactor", "Infobox:Portable solar panel", "Infobox:Power armor", "Infobox:Power armor MK2", "Infobox:Radar", "Infobox:Rocket", "Infobox:Rocket launcher", "Infobox:Rocket silo", "Infobox:Shotgun", "Infobox:Shotgun shells", "Infobox:Slowdown capsule", "Infobox:Stone wall", "Infobox:Submachine gun", "Infobox:Uranium cannon shell", "Infobox:Uranium rounds magazine"], "Combat")
   
   # make_type()
   
   # check_if_all_prototypes_are_on_page()
-  
-  # prototype_types_on_individual_pages()
-  
+    
   # upload_file_test()
   # move_page_test()
   # create_page_test()
