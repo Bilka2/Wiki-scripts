@@ -108,7 +108,8 @@ def get_name_to_type_mapping(hpp_file):
     else:
       type = type.group().strip()
     names = re.sub(type_matcher, '', line).replace(';', '').strip()
-    names = re.sub('=.*$', '', names).strip()
+    names = re.sub('=.*$', '', names).strip() # no defaults
+    names = re.sub('//.*$', '', names).strip() # no comments
     name_list = re.split(',\s', names)
     for name in name_list:
       name_to_type[name] = type
@@ -169,11 +170,15 @@ class Property:
       wiki_type = 'string'
     elif wiki_type == 'RenderLayer::Enum':
       wiki_type = 'RenderLayer'
+    elif wiki_type == 'CollisionMask::Type':
+      wiki_type = 'CollisionMask'
     elif wiki_type == 'Vector':
       wiki_type = 'vector'
     elif wiki_type == 'ElectricEnergy':
       wiki_type = 'Energy'
-    elif wiki_type == 'FluidBoxPrototype':
+    elif wiki_type == 'SimpleBoundingBox':
+      wiki_type = 'BoundingBox'
+    elif wiki_type == 'FluidBoxPrototype' or wiki_type == 'std::unique_ptr<FluidBoxPrototype>':
       wiki_type = 'FluidBox'
     elif wiki_type == 'ElectricEnergySourcePrototype' or wiki_type == 'std::unique_ptr<ElectricEnergySourcePrototype>':
       wiki_type = 'EnergySource'
