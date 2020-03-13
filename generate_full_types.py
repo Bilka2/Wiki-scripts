@@ -178,6 +178,8 @@ class Property:
       wiki_type = 'Energy'
     elif wiki_type == 'SimpleBoundingBox':
       wiki_type = 'BoundingBox'
+    elif wiki_type == 'std::unique_ptr<Sound>':
+      wiki_type = "Sound"
     elif wiki_type == 'FluidBoxPrototype' or wiki_type == 'std::unique_ptr<FluidBoxPrototype>':
       wiki_type = 'FluidBox'
     elif wiki_type == 'ElectricEnergySourcePrototype' or wiki_type == 'std::unique_ptr<ElectricEnergySourcePrototype>':
