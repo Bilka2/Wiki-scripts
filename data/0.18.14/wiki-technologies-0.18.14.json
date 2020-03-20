@@ -322,30 +322,6 @@
     ],
     "effects": ["Atomic bomb"]
   },
-  "Auto character logistic trash slots": {
-    "internal-name": "auto-character-logistic-trash-slots",
-    "cost": [
-      [
-        "Time",
-        30
-      ],
-      [
-        "Automation science pack",
-        1
-      ],
-      [
-        "Logistic science pack",
-        1
-      ],
-      [
-        "Chemical science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 150,
-    "expensive-cost-multiplier": 600,
-    "required-technologies": ["Character logistic trash slots 2, 2"]
-  },
   "Automated rail transportation": {
     "internal-name": "automated-rail-transportation",
     "cost": [
@@ -604,56 +580,6 @@
       "Railway"
     ],
     "allows": ["Braking force, 2-7"]
-  },
-  "Character logistic slots": {
-    "internal-name": "character-logistic-slots-1",
-    "cost": [
-      [
-        "Time",
-        30
-      ],
-      [
-        "Automation science pack",
-        1
-      ],
-      [
-        "Logistic science pack",
-        1
-      ],
-      [
-        "Chemical science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 50,
-    "expensive-cost-multiplier": 200,
-    "required-technologies": ["Logistic robotics"],
-    "allows": ["Character logistic slots, 2-6"]
-  },
-  "Character logistic trash slots": {
-    "internal-name": "character-logistic-trash-slots-1",
-    "cost": [
-      [
-        "Time",
-        30
-      ],
-      [
-        "Automation science pack",
-        1
-      ],
-      [
-        "Logistic science pack",
-        1
-      ],
-      [
-        "Chemical science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 30,
-    "expensive-cost-multiplier": 120,
-    "required-technologies": ["Logistic robotics"],
-    "allows": ["Character logistic trash slots, 2-5"]
   },
   "Chemical science pack": {
     "internal-name": "chemical-science-pack",
@@ -1932,14 +1858,10 @@
         1
       ]
     ],
-    "cost-multiplier": 150,
-    "expensive-cost-multiplier": 600,
+    "cost-multiplier": 250,
+    "expensive-cost-multiplier": 1000,
     "required-technologies": ["Robotics"],
-    "allows": [
-      "Character logistic slots",
-      "Character logistic trash slots",
-      "Logistic system"
-    ],
+    "allows": ["Logistic system"],
     "effects": [
       "Passive provider chest",
       "Storage chest",

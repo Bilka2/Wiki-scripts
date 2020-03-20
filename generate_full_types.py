@@ -174,6 +174,8 @@ class Property:
       wiki_type = 'CollisionMask'
     elif wiki_type == 'Vector':
       wiki_type = 'vector'
+    elif wiki_type == 'Vector2f':
+      wiki_type = "vector" #technically this vector is different (~2f has 2 floats instead of doubles) but we dont care for now
     elif wiki_type == 'ElectricEnergy':
       wiki_type = 'Energy'
     elif wiki_type == 'SimpleBoundingBox':

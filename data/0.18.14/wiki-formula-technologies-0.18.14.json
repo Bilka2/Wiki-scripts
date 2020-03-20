@@ -10,21 +10,6 @@
     "| {{Icontech|Braking force (research)|6}} Braking force 6 || {{Icon|Time|45}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Production science pack|1}} {{Icon|Utility science pack|1}} <big>X 550<\/big> || 15% || 85%",
     "| {{Icontech|Braking force (research)|7}} Braking force 7 || {{Icon|Time|60}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Production science pack|1}} {{Icon|Utility science pack|1}} <big>X 650<\/big> || 15% || 100%"
   ],
-  "Character logistic slots": [
-    "| {{Icontech|Character logistic slots (research)|1}} Character logistic slots 1 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} <big>X 50<\/big> || +6 slots || +6 slots",
-    "| {{Icontech|Character logistic slots (research)|2}} Character logistic slots 2 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} <big>X 75<\/big> || +6 slots || +12 slots",
-    "| {{Icontech|Character logistic slots (research)|3}} Character logistic slots 3 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} <big>X 150<\/big> || +6 slots || +18 slots",
-    "| {{Icontech|Character logistic slots (research)|4}} Character logistic slots 4 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Utility science pack|1}} <big>X 150<\/big> || +6 slots || +24 slots",
-    "| {{Icontech|Character logistic slots (research)|5}} Character logistic slots 5 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Utility science pack|1}} <big>X 500<\/big> || +6 slots || +30 slots",
-    "| {{Icontech|Character logistic slots (research)|6}} Character logistic slots 6 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Production science pack|1}} {{Icon|Utility science pack|1}} <big>X 1000<\/big> || +6 slots || +36 slots"
-  ],
-  "Character logistic trash slots": [
-    "| {{Icontech|Character logistic trash slots (research)|1}} Character logistic trash slots 1 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} <big>X 30<\/big> || +6 slots || +6 slots",
-    "| {{Icontech|Character logistic trash slots (research)|2}} Character logistic trash slots 2 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} <big>X 100<\/big> || +6 slots || +12 slots",
-    "| {{Icontech|Character logistic trash slots (research)|3}} Character logistic trash slots 3 || {{Icon|Time|60}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Utility science pack|1}} <big>X 100<\/big> || +6 slots || +18 slots",
-    "| {{Icontech|Character logistic trash slots (research)|4}} Character logistic trash slots 4 || {{Icon|Time|60}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Utility science pack|1}} <big>X 200<\/big> || +6 slots || +24 slots",
-    "| {{Icontech|Character logistic trash slots (research)|5}} Character logistic trash slots 5 || {{Icon|Time|60}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Chemical science pack|1}} {{Icon|Production science pack|1}} {{Icon|Utility science pack|1}} <big>X 500<\/big> || +6 slots || +30 slots"
-  ],
   "Energy weapons damage": [
     "| {{Icontech|Energy weapons damage (research)|1}} Energy weapons damage 1 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Military science pack|1}} {{Icon|Chemical science pack|1}} <big>X 100<\/big> || 20% || 20%",
     "| {{Icontech|Energy weapons damage (research)|2}} Energy weapons damage 2 || {{Icon|Time|30}} {{Icon|Automation science pack|1}} {{Icon|Logistic science pack|1}} {{Icon|Military science pack|1}} {{Icon|Chemical science pack|1}} <big>X 200<\/big> || 20% || 40%",
