@@ -67,10 +67,7 @@
     "rocket",
     "shotgun-shell"
   ],
-  "ammo-turret": [
-    "cutscene-gun-turret",
-    "gun-turret"
-  ],
+  "ammo-turret": ["gun-turret"],
   "arithmetic-combinator": ["arithmetic-combinator"],
   "armor": [
     "heavy-armor",
@@ -1754,13 +1751,7 @@
   "particle-source": [
     "blood-fountain",
     "blood-fountain-big",
-    "blood-fountain-death-behemoth-worm",
-    "blood-fountain-death-big-worm",
-    "blood-fountain-death-medium-worm",
-    "blood-fountain-death-small-worm",
-    "blood-fountain-death-spawner",
-    "blood-fountain-hit-spray",
-    "train-spark-fountain"
+    "blood-fountain-hit-spray"
   ],
   "pipe": ["pipe"],
   "pipe-to-ground": ["pipe-to-ground"],
@@ -2293,7 +2284,6 @@
     "productivity-module",
     "productivity-module-2",
     "productivity-module-3",
-    "radar",
     "rail-signals",
     "railway",
     "refined-flammables-1",
