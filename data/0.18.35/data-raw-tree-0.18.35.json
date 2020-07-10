@@ -247,6 +247,7 @@
     "passive-provider-chest-remnants",
     "pipe-remnants",
     "pipe-to-ground-remnants",
+    "power-switch-remnants",
     "programmable-speaker-remnants",
     "pump-remnants",
     "pumpjack-remnants",
@@ -317,32 +318,6 @@
   "deconstruct-with-robots-achievement": ["automated-cleanup"],
   "deconstructible-tile-proxy": ["deconstructible-tile-proxy"],
   "deconstruction-item": ["deconstruction-planner"],
-  "decorative": [
-    "big-ship-wreck-grass",
-    "brown-asterisk",
-    "brown-cane-cluster",
-    "brown-cane-single",
-    "brown-carpet-grass",
-    "brown-coral-mini",
-    "brown-fluff",
-    "brown-fluff-dry",
-    "brown-hairy-grass",
-    "garballo",
-    "garballo-mini-dry",
-    "green-asterisk",
-    "green-bush-mini",
-    "green-carpet-grass",
-    "green-coral-mini",
-    "green-hairy-grass",
-    "green-pita",
-    "green-pita-mini",
-    "green-small-grass",
-    "orange-coral-mini",
-    "red-asterisk",
-    "root-A",
-    "root-B",
-    "small-ship-wreck-grass"
-  ],
   "deliver-by-robots-achievement": [
     "delivery-service",
     "you-have-got-a-package"
@@ -2128,7 +2103,8 @@
     "tooltip-category-train",
     "tooltip-category-turret",
     "tooltip-category-vehicle",
-    "tooltip-category-vehicle-weapons"
+    "tooltip-category-vehicle-weapons",
+    "warning-white"
   ],
   "sticker": [
     "acid-sticker-behemoth",
