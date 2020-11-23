@@ -140,6 +140,8 @@ if __name__ == '__main__':
   # move_page_test()
   # create_page_test()
   
-  print(update_tech_icons())
+  print(convert_data_raw('1.1.0'))
+  
+  # update_tech_icons()
   
   # update_icons()
