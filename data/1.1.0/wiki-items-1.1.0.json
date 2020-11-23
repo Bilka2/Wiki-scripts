@@ -124,7 +124,7 @@
   "Cannon shell": {
     "consumers": ["Uranium cannon shell"],
     "stack-size": 200,
-    "required-technologies": ["Tanks"]
+    "required-technologies": ["Tank"]
   },
   "Car": {
     "stack-size": 1,
@@ -249,11 +249,11 @@
   "Defender capsule": {
     "consumers": ["Distractor capsule"],
     "stack-size": 100,
-    "required-technologies": ["Combat robotics"]
+    "required-technologies": ["Defender"]
   },
   "Destroyer capsule": {
     "stack-size": 100,
-    "required-technologies": ["Combat robotics 3"]
+    "required-technologies": ["Destroyer"]
   },
   "Discharge defense": {
     "stack-size": 20,
@@ -266,7 +266,7 @@
   "Distractor capsule": {
     "consumers": ["Destroyer capsule"],
     "stack-size": 100,
-    "required-technologies": ["Combat robotics 2"]
+    "required-technologies": ["Distractor"]
   },
   "Efficiency module": {
     "consumers": ["Efficiency module 2"],
@@ -408,7 +408,7 @@
       "Explosive uranium cannon shell"
     ],
     "stack-size": 200,
-    "required-technologies": ["Tanks"]
+    "required-technologies": ["Tank"]
   },
   "Explosive rocket": {
     "stack-size": 200,
@@ -508,7 +508,7 @@
   },
   "Gate": {
     "stack-size": 50,
-    "required-technologies": ["Gates"]
+    "required-technologies": ["Gate"]
   },
   "Green wire": {
     "stack-size": 200,
@@ -525,7 +525,7 @@
   },
   "Gun turret": {
     "stack-size": 50,
-    "required-technologies": ["Turrets"]
+    "required-technologies": ["Gun turret"]
   },
   "Hazard concrete": {
     "stack-size": 100,
@@ -684,7 +684,7 @@
       "Personal laser defense"
     ],
     "stack-size": 50,
-    "required-technologies": ["Laser turrets"]
+    "required-technologies": ["Laser turret"]
   },
   "Light armor": {"stack-size": 1},
   "Light oil barrel": {
@@ -1211,7 +1211,7 @@
       "Military science pack"
     ],
     "stack-size": 100,
-    "required-technologies": ["Stone walls"]
+    "required-technologies": ["Stone wall"]
   },
   "Storage tank": {
     "consumers": ["Fluid wagon"],
@@ -1242,7 +1242,7 @@
   },
   "Tank": {
     "stack-size": 1,
-    "required-technologies": ["Tanks"]
+    "required-technologies": ["Tank"]
   },
   "Train stop": {
     "stack-size": 10,

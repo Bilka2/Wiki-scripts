@@ -187,7 +187,7 @@
     "expensive-cost-multiplier": 8000,
     "required-technologies": [
       "Military 4, 4",
-      "Tanks"
+      "Tank"
     ],
     "allows": [
       "Artillery shell range",
@@ -448,7 +448,7 @@
       "Engine",
       "Logistics 2, 2"
     ],
-    "allows": ["Tanks"],
+    "allows": ["Tank"],
     "effects": ["Car"]
   },
   "Battery": {
@@ -704,107 +704,6 @@
     ],
     "effects": ["Coal liquefaction"]
   },
-  "Combat robotics": {
-    "internal-name": "combat-robotics",
-    "cost": [
-      [
-        "Time",
-        30
-      ],
-      [
-        "Automation science pack",
-        1
-      ],
-      [
-        "Logistic science pack",
-        1
-      ],
-      [
-        "Military science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 100,
-    "expensive-cost-multiplier": 400,
-    "required-technologies": ["Military science pack"],
-    "allows": [
-      "Combat robotics 2, 2",
-      "Follower robot count"
-    ],
-    "effects": ["Defender capsule"]
-  },
-  "Combat robotics 2": {
-    "internal-name": "combat-robotics-2",
-    "cost": [
-      [
-        "Time",
-        30
-      ],
-      [
-        "Automation science pack",
-        1
-      ],
-      [
-        "Logistic science pack",
-        1
-      ],
-      [
-        "Military science pack",
-        1
-      ],
-      [
-        "Chemical science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 200,
-    "expensive-cost-multiplier": 800,
-    "required-technologies": [
-      "Combat robotics",
-      "Laser",
-      "Military 3, 3"
-    ],
-    "allows": ["Combat robotics 3, 3"],
-    "effects": ["Distractor capsule"]
-  },
-  "Combat robotics 3": {
-    "internal-name": "combat-robotics-3",
-    "cost": [
-      [
-        "Time",
-        30
-      ],
-      [
-        "Automation science pack",
-        1
-      ],
-      [
-        "Logistic science pack",
-        1
-      ],
-      [
-        "Military science pack",
-        1
-      ],
-      [
-        "Chemical science pack",
-        1
-      ],
-      [
-        "Utility science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 300,
-    "expensive-cost-multiplier": 1200,
-    "required-technologies": [
-      "Combat robotics 2, 2",
-      "Military 4, 4",
-      "Speed module"
-    ],
-    "allows": ["Follower robot count"],
-    "effects": ["Destroyer capsule"]
-  },
   "Concrete": {
     "internal-name": "concrete",
     "cost": [
@@ -869,6 +768,73 @@
       "Roboport"
     ]
   },
+  "Defender": {
+    "internal-name": "defender",
+    "cost": [
+      [
+        "Time",
+        30
+      ],
+      [
+        "Automation science pack",
+        1
+      ],
+      [
+        "Logistic science pack",
+        1
+      ],
+      [
+        "Military science pack",
+        1
+      ]
+    ],
+    "cost-multiplier": 100,
+    "expensive-cost-multiplier": 400,
+    "required-technologies": ["Military science pack"],
+    "allows": [
+      "Distractor",
+      "Follower robot count"
+    ],
+    "effects": ["Defender capsule"]
+  },
+  "Destroyer": {
+    "internal-name": "destroyer",
+    "cost": [
+      [
+        "Time",
+        30
+      ],
+      [
+        "Automation science pack",
+        1
+      ],
+      [
+        "Logistic science pack",
+        1
+      ],
+      [
+        "Military science pack",
+        1
+      ],
+      [
+        "Chemical science pack",
+        1
+      ],
+      [
+        "Utility science pack",
+        1
+      ]
+    ],
+    "cost-multiplier": 300,
+    "expensive-cost-multiplier": 1200,
+    "required-technologies": [
+      "Distractor",
+      "Military 4, 4",
+      "Speed module"
+    ],
+    "allows": ["Follower robot count"],
+    "effects": ["Destroyer capsule"]
+  },
   "Discharge defense": {
     "internal-name": "discharge-defense-equipment",
     "cost": [
@@ -896,7 +862,7 @@
     "cost-multiplier": 100,
     "expensive-cost-multiplier": 400,
     "required-technologies": [
-      "Laser turrets",
+      "Laser turret",
       "Military 3, 3",
       "Power armor",
       "Portable solar panel"
@@ -905,6 +871,40 @@
       "Discharge defense",
       "Discharge defense remote"
     ]
+  },
+  "Distractor": {
+    "internal-name": "distractor",
+    "cost": [
+      [
+        "Time",
+        30
+      ],
+      [
+        "Automation science pack",
+        1
+      ],
+      [
+        "Logistic science pack",
+        1
+      ],
+      [
+        "Military science pack",
+        1
+      ],
+      [
+        "Chemical science pack",
+        1
+      ]
+    ],
+    "cost-multiplier": 200,
+    "expensive-cost-multiplier": 800,
+    "required-technologies": [
+      "Defender",
+      "Laser",
+      "Military 3, 3"
+    ],
+    "allows": ["Destroyer"],
+    "effects": ["Distractor capsule"]
   },
   "Effect transmission": {
     "internal-name": "effect-transmission",
@@ -1373,7 +1373,7 @@
       "Land mines",
       "Military 4, 4",
       "Rocketry",
-      "Tanks"
+      "Tank"
     ],
     "effects": ["Explosives"]
   },
@@ -1548,7 +1548,7 @@
     ],
     "cost-multiplier": 200,
     "expensive-cost-multiplier": 800,
-    "required-technologies": ["Combat robotics"],
+    "required-technologies": ["Defender"],
     "allows": ["Follower robot count, 2-&infin;"]
   },
   "Portable fusion reactor": {
@@ -1589,8 +1589,8 @@
     "allows": ["Spidertron"],
     "effects": ["Portable fusion reactor"]
   },
-  "Gates": {
-    "internal-name": "gates",
+  "Gate": {
+    "internal-name": "gate",
     "cost": [
       [
         "Time",
@@ -1609,9 +1609,25 @@
     "expensive-cost-multiplier": 400,
     "required-technologies": [
       "Military 2, 2",
-      "Stone walls"
+      "Stone wall"
     ],
     "effects": ["Gate"]
+  },
+  "Gun turret": {
+    "internal-name": "gun-turret",
+    "cost": [
+      [
+        "Time",
+        10
+      ],
+      [
+        "Automation science pack",
+        1
+      ]
+    ],
+    "cost-multiplier": 10,
+    "expensive-cost-multiplier": 40,
+    "effects": ["Gun turret"]
   },
   "Heavy armor": {
     "internal-name": "heavy-armor",
@@ -1769,13 +1785,14 @@
       "Optics"
     ],
     "allows": [
-      "Combat robotics 2, 2",
+      "Distractor",
       "Energy weapons damage",
-      "Laser turrets"
+      "Laser shooting speed",
+      "Laser turret"
     ]
   },
-  "Laser turret shooting speed": {
-    "internal-name": "laser-turret-speed-1",
+  "Laser shooting speed": {
+    "internal-name": "laser-shooting-speed-1",
     "cost": [
       [
         "Time",
@@ -1800,11 +1817,11 @@
     ],
     "cost-multiplier": 50,
     "expensive-cost-multiplier": 200,
-    "required-technologies": ["Laser turrets"],
-    "allows": ["Laser turret shooting speed, 2-7"]
+    "required-technologies": ["Laser"],
+    "allows": ["Laser shooting speed, 2-7"]
   },
-  "Laser turrets": {
-    "internal-name": "laser-turrets",
+  "Laser turret": {
+    "internal-name": "laser-turret",
     "cost": [
       [
         "Time",
@@ -1831,12 +1848,10 @@
     "expensive-cost-multiplier": 600,
     "required-technologies": [
       "Laser",
-      "Military science pack",
-      "Turrets"
+      "Military science pack"
     ],
     "allows": [
       "Discharge defense",
-      "Laser turret shooting speed",
       "Personal laser defense"
     ],
     "effects": ["Laser turret"]
@@ -2139,7 +2154,7 @@
     ],
     "allows": [
       "Cliff explosives",
-      "Gates",
+      "Gate",
       "Military science pack",
       "Stronger explosives"
     ],
@@ -2179,13 +2194,13 @@
       "Military science pack"
     ],
     "allows": [
-      "Combat robotics 2, 2",
       "Discharge defense",
+      "Distractor",
       "Energy shield MK2 equipment",
       "Explosive rocketry",
       "Military 4, 4",
       "Personal laser defense",
-      "Tanks"
+      "Tank"
     ],
     "effects": [
       "Combat shotgun",
@@ -2231,7 +2246,7 @@
     "allows": [
       "Artillery",
       "Atomic bomb",
-      "Combat robotics 3, 3",
+      "Destroyer",
       "Power armor MK2",
       "Spidertron",
       "Uranium ammo"
@@ -2261,16 +2276,16 @@
     "expensive-cost-multiplier": 120,
     "required-technologies": [
       "Military 2, 2",
-      "Stone walls"
+      "Stone wall"
     ],
     "allows": [
-      "Combat robotics",
+      "Defender",
       "Energy shield equipment",
       "Energy weapons damage",
       "Flamethrower",
       "Portable fusion reactor",
       "Land mines",
-      "Laser turrets",
+      "Laser turret",
       "Military 3, 3",
       "Rocketry"
     ],
@@ -2513,7 +2528,7 @@
     "cost-multiplier": 100,
     "expensive-cost-multiplier": 400,
     "required-technologies": [
-      "Laser turrets",
+      "Laser turret",
       "Low density structure",
       "Military 3, 3",
       "Power armor",
@@ -3244,7 +3259,7 @@
     "required-technologies": ["Modules"],
     "allows": [
       "Automation 3, 3",
-      "Combat robotics 3, 3",
+      "Destroyer",
       "Rocket control unit",
       "Speed module 2, 2"
     ],
@@ -3436,8 +3451,8 @@
       "Steel plate"
     ]
   },
-  "Stone walls": {
-    "internal-name": "stone-walls",
+  "Stone wall": {
+    "internal-name": "stone-wall",
     "cost": [
       [
         "Time",
@@ -3451,7 +3466,7 @@
     "cost-multiplier": 10,
     "expensive-cost-multiplier": 40,
     "allows": [
-      "Gates",
+      "Gate",
       "Military science pack"
     ],
     "effects": ["Wall"]
@@ -3506,8 +3521,8 @@
       "Sulfuric acid"
     ]
   },
-  "Tanks": {
-    "internal-name": "tanks",
+  "Tank": {
+    "internal-name": "tank",
     "cost": [
       [
         "Time",
@@ -3567,23 +3582,6 @@
     "expensive-cost-multiplier": 400,
     "required-technologies": ["Logistic science pack"]
   },
-  "Turrets": {
-    "internal-name": "turrets",
-    "cost": [
-      [
-        "Time",
-        10
-      ],
-      [
-        "Automation science pack",
-        1
-      ]
-    ],
-    "cost-multiplier": 10,
-    "expensive-cost-multiplier": 40,
-    "allows": ["Laser turrets"],
-    "effects": ["Gun turret"]
-  },
   "Uranium ammo": {
     "internal-name": "uranium-ammo",
     "cost": [
@@ -3616,7 +3614,7 @@
     "expensive-cost-multiplier": 4000,
     "required-technologies": [
       "Military 4, 4",
-      "Tanks",
+      "Tank",
       "Uranium processing"
     ],
     "effects": [
