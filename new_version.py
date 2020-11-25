@@ -24,7 +24,7 @@ def main(forum_post_number, version, api_url = 'https://wiki.factorio.com/api.ph
   else:
     new_latest_version_page = re.sub(r'({{Translation\|Latest experimental version}}: ){{Translation\|None}}', rf'\g<1>[https://forums.factorio.com/{forum_post_number} {version}]', latest_version_page)
   if version_nav:
-    new_version_nav_page = re.sub(r'(}}\n)(}}\n<noinclude>{{Documentation}}<\/noinclude>)', rf'\1* {{{{TransLink|Version history/{version[:5]}0#{version}|{version}}}}}\n\2', version_nav_page) #assumes 2 digit major version
+    new_version_nav_page = re.sub(r'(}}\n)(}}\n<noinclude>{{Documentation}}<\/noinclude>)', rf'\1* {{{{TransLink|Version history/{version[:version.rfind(".")+1]}0#{version}|{version}}}}}\n\2', version_nav_page)
   
   edit_response_latest_version_page = edit_page(session, api_url, edit_token, latest_version_page_name, new_latest_version_page, f'{version}')
   if version_nav:
