@@ -357,7 +357,7 @@
       ]
     ],
     "cost-multiplier": 10,
-    "expensive-cost-multiplier": 40,
+    "expensive-cost-multiplier": 10,
     "allows": ["Electronics"],
     "effects": [
       "Assembling machine 1",
