@@ -361,7 +361,7 @@
     "allows": ["Electronics"],
     "effects": [
       "Assembling machine 1",
-      "Long handed inserter"
+      "Long-handed inserter"
     ]
   },
   "Automation 2": {
@@ -1817,7 +1817,10 @@
     ],
     "cost-multiplier": 50,
     "expensive-cost-multiplier": 200,
-    "required-technologies": ["Laser"],
+    "required-technologies": [
+      "Laser",
+      "Military science pack"
+    ],
     "allows": ["Laser shooting speed, 2-7"]
   },
   "Laser turret": {
@@ -2285,6 +2288,7 @@
       "Flamethrower",
       "Portable fusion reactor",
       "Land mines",
+      "Laser shooting speed",
       "Laser turret",
       "Military 3, 3",
       "Rocketry"

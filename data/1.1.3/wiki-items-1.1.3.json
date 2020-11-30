@@ -552,7 +552,7 @@
     "consumers": [
       "Fast inserter",
       "Logistic science pack",
-      "Long handed inserter"
+      "Long-handed inserter"
     ],
     "stack-size": 50
   },
@@ -585,7 +585,7 @@
       "Gun turret",
       "Inserter",
       "Lab",
-      "Long handed inserter",
+      "Long-handed inserter",
       "Offshore pump",
       "Oil refinery",
       "Personal roboport",
@@ -631,7 +631,7 @@
       "Iron gear wheel",
       "Iron stick",
       "Light armor",
-      "Long handed inserter",
+      "Long-handed inserter",
       "Pipe",
       "Pipe to ground",
       "Pistol",
@@ -730,7 +730,7 @@
     "stack-size": 200,
     "required-technologies": ["Logistic science pack"]
   },
-  "Long handed inserter": {
+  "Long-handed inserter": {
     "stack-size": 50,
     "required-technologies": ["Automation"]
   },

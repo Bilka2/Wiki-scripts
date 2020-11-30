@@ -635,7 +635,7 @@
       "decrease": 0
     }}
   },
-  "Long handed inserter": {
+  "Long-handed inserter": {
     "map-color": "006191",
     "health": 160,
     "mining-time": 0.1,
