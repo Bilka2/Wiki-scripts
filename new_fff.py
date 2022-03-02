@@ -29,6 +29,8 @@ def turn_page_into_sections(content, depth):
 
 def main(api_url = 'https://wiki.factorio.com/api.php'):
   feed = feedparser.parse('https://www.factorio.com/blog/rss')
+  if not ('Friday Facts' in feed.entries[0].title):
+    return 'Latest blog post is not FFF. Aborting.'
   title = feed.entries[0].title.replace(re.search('Friday Facts #\d+ - ', feed.entries[0].title).group(), '') #without {Friday Facts #241 - } etc
   number = re.search('#\d+', feed.entries[0].title).group().replace('#', '') #string
   release_time = time.strftime("%b %d", feed.entries[0].updated_parsed) #string
