@@ -14,7 +14,7 @@ def month_abbr_to_month_name(month):
 
 def turn_page_into_sections(content, depth):
   header_edge = '=' * depth
-  separator = '([^=]{0}[^=]+?{0}[^=])'.format(header_edge)
+  separator = f'([^=]{header_edge}[^=]+?{header_edge}[^=])'
   page_split_into_sections = re.split(separator, content)
   
   sections = []
@@ -33,8 +33,8 @@ def main(api_url = 'https://wiki.factorio.com/api.php'):
     return 'Latest blog post is not FFF. Aborting.'
   title = feed.entries[0].title.replace(re.search('Friday Facts #\d+ - ', feed.entries[0].title).group(), '') #without {Friday Facts #241 - } etc
   number = re.search('#\d+', feed.entries[0].title).group().replace('#', '') #string
-  release_time = time.strftime("%b %d", feed.entries[0].updated_parsed) #string
-  news_line = '* {0} FFF #{1}: [https://www.factorio.com/blog/post/fff-{1} {2}]\n'.format(release_time, number, title) #line that ends up on page
+  release_time = time.strftime("%b %d %Y", feed.entries[0].updated_parsed) #string
+  news_line = f'* {release_time} - FFF #{number}: [https://www.factorio.com/blog/post/fff-{number} {title}]\n' #line that ends up on page
 
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
