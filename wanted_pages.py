@@ -13,7 +13,7 @@ class WantedPage:
   stubs = []
   archived = []
   disambigs = []
-  valid_lang_suffixes = ['cs', 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-br', 'ru', 'sv', 'uk', 'zh', 'tr', 'ko', 'ms', 'da', 'hu', 'vi', 'pt-pt']
+  valid_lang_suffixes = ['cs', 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-br', 'ru', 'sv', 'uk', 'zh', 'tr', 'ko', 'ms', 'da', 'hu', 'vi', 'pt-pt', 'zh-tw']
   enPageCache = defaultdict(str)
   #possible_locations = ['template', 'file', 'other'].extend(self.valid_lang_suffixes)
   
@@ -125,4 +125,3 @@ def main(testing):
   
 if __name__ == '__main__':
   print('\n'.join(main(testing = False)))
-  
