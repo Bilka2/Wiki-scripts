@@ -2,7 +2,7 @@
 
 Scripts used on the [factorio wiki.](https://wiki.factorio.com)
 
-The javascript files in this repo:
+## The javascript files in this repo
 
 Common.js - Scripts used for more than one module of wiki scripts; [location on the wiki.](https://wiki.factorio.com/MediaWiki:Common.js)
 
@@ -12,7 +12,7 @@ Bot_common.js - All scripts that can only be used by User:BilkaBot because they 
 
 Other js files: Misc scripts that are not not used regularly
 
-Python files in this repo:
+## Python files in this repo
 
 util.py - Utility functions, such as logging in. Needs the bot-credentials.json file. Format of that file:
 
@@ -25,7 +25,15 @@ util.py - Utility functions, such as logging in. Needs the bot-credentials.json 
 
 https://www.base64encode.org/ can be used to encode the password.
 
-analytics.py - Put the top pages pulled from google analytics onto the wiki. Needs analytics.csv.
+analytics.py - Put the top pages pulled from google analytics onto the wiki. Needs analytics.csv and totals_analytics.csv.
+
+get_analytics.py - Get the analytics from Matomo and save them in analytics.csv and totals_analytics.csv. Needs the matomo-credentials.json file. Format of that file:
+
+```json
+{
+  "token": "<the matomo api token>"
+}
+```
 
 new_fff.py - Get the latest FFF and put it on a page if it isn't already on there.
 
