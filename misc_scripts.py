@@ -140,7 +140,7 @@ def dump_pages(pages):
 
 
 def prototype_migration_links():
-  with open(os.path.dirname(os.path.abspath(__file__)) + f'/prototype_doc_migration/link_mapping.json', 'r') as f:
+  with open(os.path.dirname(os.path.abspath(__file__)) + '/prototype_doc_migration/link_mapping.json', 'r') as f:
     link_mapping = json.load(f)
   
   page_text_template = "'''The prototype docs have moved to a new website with an improved format.''' This documentation page can now be found here: [link_placeholder link_placeholder]\n\nThis wiki page is no longer updated and '''will be removed at some point in the future''', so please update your browser bookmarks or other links that sent you here. If you'd like to contribute to the new docs, you can leave your feedback [https://forums.factorio.com/viewforum.php?f=233 on the forums].\n\n\n\n"
@@ -172,11 +172,11 @@ if __name__ == '__main__':
   # move_page_test()
   # create_page_test()
   
-  #print(convert_data_raw('1.1.65'))
+  print(convert_data_raw('1.1.65'))
   
   # update_tech_icons()
   # update_icons()
   
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
   
-  prototype_migration_links()
+  # prototype_migration_links()
