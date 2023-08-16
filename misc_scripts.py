@@ -4,7 +4,7 @@ import json
 import os
 import re
 import requests
-from util import get_edit_token, get_page, edit_page, upload_file, move_page, update_file
+from util import get_edit_token, get_page, edit_page, upload_file, move_page, update_file, protect_page
 api_url = 'https://wiki.factorio.com/api.php'
 
 
@@ -102,7 +102,7 @@ def create_page_test():
 
 def update_icons():
   session = requests.Session()
-  edit_token = get_edit_token(session, 'https://wiki.factorio.com/api.php')
+  edit_token = get_edit_token(session, api_url)
 
   directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/')
 
@@ -111,11 +111,11 @@ def update_icons():
     if not filename.endswith(".png"):
       continue
     image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/' + filename, 'rb')
-    print(filename + ' upload: ' + update_file(session, 'https://wiki.factorio.com/api.php', edit_token, filename, image).json()['upload']['result'])
+    print(filename + ' upload: ' + update_file(session, api_url, edit_token, filename, image).json()['upload']['result'])
     
 def update_tech_icons():
   session = requests.Session()
-  edit_token = get_edit_token(session, 'https://wiki.factorio.com/api.php')
+  edit_token = get_edit_token(session, api_url)
 
   directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/technology/')
 
@@ -124,12 +124,12 @@ def update_tech_icons():
     if not filename.endswith(".png"):
       continue
     image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/technology/' + filename, 'rb')
-    print(filename + ' upload: ' + update_file(session, 'https://wiki.factorio.com/api.php', edit_token, filename[:-4] + ' (research).png', image).json()['upload']['result'])
+    print(filename + ' upload: ' + update_file(session, api_url, edit_token, filename[:-4] + ' (research).png', image).json()['upload']['result'])
 
 
 def dump_pages(pages):
   session = requests.Session()
-  edit_token = get_edit_token(session, 'https://wiki.factorio.com/api.php')
+  edit_token = get_edit_token(session, api_url)
 
   content = ''
   for page in pages:
@@ -137,7 +137,27 @@ def dump_pages(pages):
    
   with open('out.txt', 'w', encoding="utf-8") as f:
     f.write(content)
+
+
+def prototype_migration_links():
+  with open(os.path.dirname(os.path.abspath(__file__)) + f'/prototype_doc_migration/link_mapping.json', 'r') as f:
+    link_mapping = json.load(f)
   
+  page_text_template = "'''The prototype docs have moved to a new website with an improved format.''' This documentation page can now be found here: [link_placeholder link_placeholder]\n\nThis wiki page is no longer updated and '''will be removed at some point in the future''', so please update your browser bookmarks or other links that sent you here. If you'd like to contribute to the new docs, you can leave your feedback [https://forums.factorio.com/viewforum.php?f=233 on the forums].\n\n\n\n"
+  
+  session = requests.Session()
+  edit_token = get_edit_token(session, api_url)
+  
+  for section in ['types', 'prototypes']:
+    for old, new in link_mapping[section].items():
+      if not isinstance(new, str):
+        print(f'Not editing page {old} because no new link exists.')
+        continue
+      page_text = page_text_template.replace('link_placeholder', new)
+      page_name = old.removeprefix('https://wiki.factorio.com/')
+      print(edit_page(session, api_url, edit_token, page_name, page_text, 'Migrated prototype doc to separate website', True).text)
+      print(protect_page(session, api_url, edit_token, page_name, 'Migrated prototype doc to separate website').text)
+
 
 if __name__ == '__main__':
   # used_as_ammo_by_in_infobox(["Flamethrower turret"], "Light oil")
@@ -155,6 +175,8 @@ if __name__ == '__main__':
   #print(convert_data_raw('1.1.65'))
   
   # update_tech_icons()
-  update_icons()
+  # update_icons()
   
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
+  
+  prototype_migration_links()

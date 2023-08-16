@@ -232,6 +232,21 @@ def move_page(session, api_url, edit_token, frm, to, summary, redirect = True):
     data['noredirect'] = True
 
   return session.post(api_url, data=data)
+  
+  
+def protect_page(session, api_url, edit_token, title, summary):
+  data = {
+    'format': 'json',
+    'action': 'protect',
+    'assert': 'user',
+    'title': title,
+    'protections': 'edit=sysop|move=sysop',
+    'reason': summary,
+    'expiry': 'infinite',
+    'token': edit_token
+  }
+
+  return session.post(api_url, data=data)
 
 
 class DictUtil:
