@@ -23,7 +23,12 @@ util.py - Utility functions, such as logging in. Needs the bot-credentials.json 
 }
 ```
 
-https://www.base64encode.org/ can be used to encode the password.
+Encoding the password:
+
+```py
+import base64
+print(base64.b64encode('<password>'.encode('utf8')).decode('utf8'))
+```
 
 analytics.py - Put the top pages pulled from google analytics onto the wiki. Needs analytics.csv and totals_analytics.csv.
 
