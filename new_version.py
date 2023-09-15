@@ -24,7 +24,7 @@ def main(forum_post_number, version, api_url = 'https://wiki.factorio.com/api.ph
   else:
     new_latest_version_page = re.sub(r'({{Translation\|Latest experimental version}}: ){{Translation\|None}}', rf'\g<1>[https://forums.factorio.com/{forum_post_number} {version}]', latest_version_page)
   if version_nav:
-    new_version_nav_page = re.sub(r'(}}\n)(}}\n<noinclude>{{Documentation}}<\/noinclude>)', rf'\1* {{{{TransLink|Version history/{version[:version.rfind(".")+1]}0#{version}|{version}}}}}\n\2', version_nav_page)
+    new_version_nav_page = re.sub(r'(}}\n)(}}\n<noinclude>\n{{Documentation}}\n\[\[Category:Navbox templates\]\]\n<\/noinclude>)', rf'\1* {{{{TransLink|Version history/{version[:version.rfind(".")+1]}0#{version}|{version}}}}}\n\2', version_nav_page)
   
   edit_response_latest_version_page = edit_page(session, api_url, edit_token, latest_version_page_name, new_latest_version_page, f'{version}')
   if version_nav:
@@ -34,4 +34,4 @@ def main(forum_post_number, version, api_url = 'https://wiki.factorio.com/api.ph
 
 
 if __name__ == '__main__':
-  print(main('12345', '0.16.99', 'https://testing-wiki.factorio.com/api.php', False))
+  print(main('108687', '1.1.91', 'https://wiki.factorio.com/api.php', True))
