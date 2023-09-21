@@ -159,6 +159,23 @@ def prototype_migration_links():
       print(protect_page(session, api_url, edit_token, page_name, 'Migrated prototype doc to separate website').text)
 
 
+def prototype_migration_link_styling(): # ran after prototype_migration_links()
+  with open(os.path.dirname(os.path.abspath(__file__)) + '/prototype_doc_migration/link_mapping.json', 'r') as f:
+    link_mapping = json.load(f)
+  
+  session = requests.Session()
+  edit_token = get_edit_token(session, api_url)
+  
+  for section in ['types', 'prototypes']:
+    for wiki_page in link_mapping[section]:
+      page_name = wiki_page.removeprefix('https://wiki.factorio.com/')
+      page_data = get_page(session, api_url, page_name)
+      page_data = page_data.replace("'''The prototype docs", "<div class=\"stub\"><p>'''The prototype docs")
+      page_data = page_data.replace('This wiki page', '</p><p>This wiki page')
+      page_data = page_data.replace('on the forums].', 'on the forums].</p></div>')
+      print(edit_page(session, api_url, edit_token, page_name, page_data, 'Updated styling of prototype doc migration note').text)
+
+
 if __name__ == '__main__':
   # used_as_ammo_by_in_infobox(["Flamethrower turret"], "Light oil")
   
@@ -179,4 +196,4 @@ if __name__ == '__main__':
   
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
   
-  # prototype_migration_links()
+  # prototype_migration_link_styling()
