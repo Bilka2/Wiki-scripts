@@ -11,7 +11,7 @@ var languages = [
 	{suffix:"ru", name:"Russian"},
 	{suffix:"sv", name:"Swedish"},
 	{suffix:"uk", name:"Ukrainian"},
-	{suffix:"zh", name:"Chinese"},
+	{suffix:"zh", name:"Chinese Simplified"},
 	{suffix:"tr", name:"Turkish"},
 	{suffix:"ko", name:"Korean"},
 	{suffix:"ms", name:"Malay"},
