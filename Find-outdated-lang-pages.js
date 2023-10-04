@@ -16,7 +16,10 @@ var languages = [
 	{suffix:"ko", name:"Korean"},
 	{suffix:"ms", name:"Malay"},
 	{suffix:"da", name:"Danish"},
-	{suffix:"hu", name:"Hungarian"}
+	{suffix:"hu", name:"Hungarian"},
+	{suffix:"vi", name:"Vietnamese"},
+	{suffix:"pt-pt", name:"Portuguese"},
+	{suffix:"zh-tw", name:"Chinese Traditional"}
 ];
 
 function main(languages) {
