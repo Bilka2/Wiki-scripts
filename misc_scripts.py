@@ -4,7 +4,7 @@ import json
 import os
 import re
 import requests
-from util import get_edit_token, get_page, edit_page, upload_file, move_page, update_file, protect_page
+from util import get_edit_token, get_page, edit_page, upload_file, move_page, update_file, protect_page, get_categorymembers
 api_url = 'https://wiki.factorio.com/api.php'
 
 
@@ -176,6 +176,24 @@ def prototype_migration_link_styling(): # ran after prototype_migration_links()
       print(edit_page(session, api_url, edit_token, page_name, page_data, 'Updated styling of prototype doc migration note').text)
 
 
+def move_archived_pages_to_namespace(): # https://forums.factorio.com/viewtopic.php?p=597811#p597811
+  session = requests.Session()
+  edit_token = get_edit_token(session, api_url)
+  valid_lang_suffixes = ['', '/cs', '/de', '/es', '/fr', '/it', '/ja', '/nl', '/pl', '/pt-br', '/ru', '/sv', '/uk', '/zh', '/tr', '/ko', '/ms', '/da', '/hu', '/vi', '/pt-pt', '/zh-tw']
+  category_name = 'Category:Archived'
+
+  archived_pages = [page['title']
+          for suffix in valid_lang_suffixes
+            for page in get_categorymembers(session, api_url, f'{category_name}{suffix}')
+              if page['ns'] == 0] # No files or infoboxes
+
+  for title in archived_pages:
+    # There is 'Wood (archived)' and its translated versions. I decided against removing the '(archived)' because the namespace doesnt show in the infobox title.
+    # So wood and wood (archived) would have been named exactly the same in infobox (and displaytitle). That just seems confusing. So don't do that.
+    move_target = f'Archive:{title}' # .replace(' (archived)', '')
+    print(move_page(session, api_url, edit_token, title, move_target, 'Move archived pages to separate namespace').text)
+
+
 if __name__ == '__main__':
   # used_as_ammo_by_in_infobox(["Flamethrower turret"], "Light oil")
   
@@ -189,7 +207,7 @@ if __name__ == '__main__':
   # move_page_test()
   # create_page_test()
   
-  print(convert_data_raw('1.1.91'))
+  # print(convert_data_raw('1.1.91'))
   
   # update_tech_icons()
   # update_icons()
@@ -197,3 +215,5 @@ if __name__ == '__main__':
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
   
   # prototype_migration_link_styling()
+
+  move_archived_pages_to_namespace()
