@@ -104,26 +104,26 @@ def update_icons():
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
 
-  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/')
+  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/')
 
   for file in os.listdir(directory):
     filename = os.fsdecode(file)
     if not filename.endswith(".png"):
       continue
-    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/' + filename, 'rb')
+    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/' + filename, 'rb')
     print(filename + ' upload: ' + update_file(session, api_url, edit_token, filename, image).json()['upload']['result'])
     
 def update_tech_icons():
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
 
-  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/technology/')
+  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/technology/')
 
   for file in os.listdir(directory):
     filename = os.fsdecode(file)
     if not filename.endswith(".png"):
       continue
-    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/technology/' + filename, 'rb')
+    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/technology/' + filename, 'rb')
     print(filename + ' upload: ' + update_file(session, api_url, edit_token, filename[:-4] + ' (research).png', image).json()['upload']['result'])
 
 
@@ -138,6 +138,15 @@ def dump_pages(pages):
   with open('out.txt', 'w', encoding="utf-8") as f:
     f.write(content)
 
+
+def categorize_images(images):
+  session = requests.Session()
+  edit_token = get_edit_token(session, api_url)  
+
+  for page_name in images:
+    page_text = "{{Game image}}"
+    print(edit_page(session, api_url, edit_token, page_name, page_text, "Categorized as game image", True).text)
+  
 
 def prototype_migration_links():
   with open(os.path.dirname(os.path.abspath(__file__)) + '/prototype_doc_migration/link_mapping.json', 'r') as f:
@@ -212,8 +221,10 @@ if __name__ == '__main__':
   # update_tech_icons()
   # update_icons()
   
+  categorize_images(["File:Automation_science_pack_(research).png","File:Steam_power_(research).png","File:Repair_pack_(research).png","File:Radar_(research).png","File:Promethium_science_pack_(research).png","File:Foundry_(research).png","File:Electric_mining_drill_(research).png"])
+  
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
   
   # prototype_migration_link_styling()
 
-  move_archived_pages_to_namespace()
+  #move_archived_pages_to_namespace()
