@@ -104,26 +104,26 @@ def update_icons():
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
 
-  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/')
+  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/')
 
   for file in os.listdir(directory):
     filename = os.fsdecode(file)
     if not filename.endswith(".png"):
       continue
-    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/' + filename, 'rb')
+    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/' + filename, 'rb')
     print(filename + ' upload: ' + update_file(session, api_url, edit_token, filename, image).json()['upload']['result'])
     
 def update_tech_icons():
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
 
-  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/technology/')
+  directory = os.fsencode(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/technology/')
 
   for file in os.listdir(directory):
     filename = os.fsdecode(file)
     if not filename.endswith(".png"):
       continue
-    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons-temp/technology/' + filename, 'rb')
+    image = open(os.path.dirname(os.path.abspath(__file__)) + '/data/icons/technology/' + filename, 'rb')
     print(filename + ' upload: ' + update_file(session, api_url, edit_token, filename[:-4] + ' (research).png', image).json()['upload']['result'])
 
 
@@ -219,9 +219,9 @@ if __name__ == '__main__':
   # print(convert_data_raw('1.1.91'))
   
   # update_tech_icons()
-  # update_icons()
+  update_icons()
   
-  categorize_images(["File:Automation_science_pack_(research).png","File:Steam_power_(research).png","File:Repair_pack_(research).png","File:Radar_(research).png","File:Promethium_science_pack_(research).png","File:Foundry_(research).png","File:Electric_mining_drill_(research).png"])
+  #categorize_images(["File:Automation_science_pack_(research).png","File:Steam_power_(research).png","File:Repair_pack_(research).png","File:Radar_(research).png","File:Promethium_science_pack_(research).png","File:Foundry_(research).png","File:Electric_mining_drill_(research).png"])
   
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
   
