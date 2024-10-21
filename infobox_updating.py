@@ -59,18 +59,18 @@ class EntityInfobox: # also does tile colors
 class TechnologyInfobox:    
   def __init__(self, name, data):
     self.name = name + ' (research)'
-    self.cost_multiplier = Number('cost-multiplier', data['cost-multiplier'])
-    self.expensive_cost_multiplier = Number('expensive-cost-multiplier', data['expensive-cost-multiplier'])
-    self.cost = IconWithCaptionList('cost', data['cost'])
+    self.cost_multiplier = Number('cost-multiplier', DictUtil.get_optional_number(data, 'cost-multiplier'))
+    self.cost = IconWithCaptionList('cost', DictUtil.get_optional_list(data, 'cost'))
     self.allows = IconWithCaptionList_from_list_of_strings('allows', DictUtil.get_optional_list(data, 'allows')) # the technologies that are unlocked by this technology
     self.effects = IconWithCaptionList_from_list_of_strings('effects', DictUtil.get_optional_list(data, 'effects')) # the recipes that are unlocked by this technology
     self.required_technologies =  IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies')) #the technologies that are must be researched before this technology can be researched
     self.internal_name = String('internal-name', data['internal-name'])
     self.prototype_type = String('prototype-type', 'technology')
     self.category = String('category', "Technology")
+    self.expensive_cost_multiplier = Number('expensive-cost-multiplier', 0) # to remove from existing infoboxes
   
   def get_all_properties(self):
-    return [self.cost_multiplier, self.expensive_cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category]
+    return [self.cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category, self.expensive_cost_multiplier]
 
 
 class ItemInfobox:
@@ -89,22 +89,13 @@ class RecipeInfobox:
     self.name = name
     self.recipe = Recipe('recipe', data['recipe'], DictUtil.get_optional_list(data, 'recipe-output'))
     self.total_raw = Recipe('total-raw', data['total-raw'], [])
-    self.expensive_recipe = Recipe('expensive-recipe', data['expensive-recipe'], DictUtil.get_optional_list(data, 'expensive-recipe-output'))
-    self.expensive_total_raw = Recipe('expensive-total-raw', data['expensive-total-raw'], [])
     self.producers = IconWithCaptionList_from_list_of_strings('producers', data['producers'])
     self.remove_duplicate_recipes()
     self.cleanup_producers()
+    self.expensive_total_raw = Recipe('expensive-recipe', [], []) # to remove from existing infoboxes
+    self.expensive_recipe = Recipe('expensive-total-raw', [], []) # to remove from existing infoboxes
   
   def remove_duplicate_recipes(self):
-    if self.expensive_total_raw == self.expensive_recipe:
-      self.expensive_total_raw.clear()
-      print(f'{self.name}: Removed expensive-total-raw because it was a duplicate of expensive-recipe.')
-    elif self.expensive_total_raw == self.total_raw:
-      self.expensive_total_raw.clear()
-      print(f'{self.name}: Removed expensive-total-raw because it was a duplicate of total-raw.')
-    if self.expensive_recipe == self.recipe:
-      self.expensive_recipe.clear()
-      print(f'{self.name}: Removed expensive-recipe because it was a duplicate of recipe.')
     if self.total_raw == self.recipe:
       self.total_raw.clear()
       print(f'{self.name}: Removed total-raw because it was a duplicate of recipe.') 
@@ -129,7 +120,7 @@ class RecipeInfobox:
     self.producers.sort()
   
   def get_all_properties(self):
-    return [self.recipe, self.total_raw, self.expensive_recipe, self.total_raw, self.expensive_total_raw, self.producers]
+    return [self.recipe, self.total_raw, self.producers, self.expensive_recipe, self.expensive_total_raw]
   
 
 class Property:
@@ -288,7 +279,7 @@ def IconWithCaptionList_from_list_of_strings(name, list):
 
 
 class InfoboxUpdate:
-  no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Empty barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fill crude oil barrel", "Fill heavy oil barrel", "Fill light oil barrel", "Fill lubricant barrel", "Fill petroleum gas barrel", "Fill sulfuric acid barrel", "Fill water barrel"]
+  no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fluoroketone (cold) barrel", "Fluoroketone (hot) barrel", "Empty fluoroketone (cold) barrel", "Empty fluoroketone (hot) barrel"]
   re_start_of_infobox = re.compile('{{infobox', re.I)
 
   def __init__(self, infoboxes, api_url, version, testing):
@@ -364,4 +355,4 @@ class InfoboxUpdate:
     
 if __name__ == '__main__':
   #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '1.1.3', False)
-  InfoboxUpdate([InfoboxType.Technology], 'https://wiki.factorio.com/api.php', '1.1.91', True)
+  InfoboxUpdate([InfoboxType.Technology, InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.7', True)
