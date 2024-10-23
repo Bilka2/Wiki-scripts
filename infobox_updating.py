@@ -354,5 +354,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '1.1.3', False)
-  InfoboxUpdate([InfoboxType.Technology, InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.7', True)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.7', False)
+  #InfoboxUpdate([InfoboxType.Technology, InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.7', True)
