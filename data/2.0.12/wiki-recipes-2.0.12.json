@@ -5479,34 +5479,8 @@
     ]
   },
   "Pistol": {
-    "recipe": [
-      [
-        "Time",
-        5
-      ],
-      [
-        "Copper plate",
-        5
-      ],
-      [
-        "Iron plate",
-        5
-      ]
-    ],
-    "total-raw": [
-      [
-        "Time",
-        5
-      ],
-      [
-        "Copper plate",
-        5
-      ],
-      [
-        "Iron plate",
-        5
-      ]
-    ],
+    "recipe": [],
+    "total-raw": [],
     "producers": [
       "Assembling machine 1",
       "Assembling machine 2",

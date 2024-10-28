@@ -414,6 +414,11 @@
   },
   "Automation science pack": {
     "internal-name": "automation-science-pack",
+    "trigger-type": "craft-item",
+    "trigger-object": [
+      "Lab",
+      1
+    ],
     "required-technologies": [
       "Electronics",
       "Steam power"
@@ -1174,6 +1179,11 @@
   },
   "Electronics": {
     "internal-name": "electronics",
+    "trigger-type": "craft-item",
+    "trigger-object": [
+      "Copper plate",
+      10
+    ],
     "allows": ["Automation science pack"],
     "effects": [
       "Copper cable",
@@ -2479,6 +2489,11 @@
   },
   "Oil processing": {
     "internal-name": "oil-processing",
+    "trigger-type": "mine-entity",
+    "trigger-object": [
+      "Crude oil",
+      1
+    ],
     "required-technologies": ["Oil gathering"],
     "allows": [
       "Flammables",
@@ -3182,6 +3197,11 @@
   },
   "Space science pack": {
     "internal-name": "space-science-pack",
+    "trigger-type": "send-item-to-orbit",
+    "trigger-object": [
+      "Satellite",
+      1
+    ],
     "required-technologies": ["Rocket silo"],
     "allows": [
       "Artillery shell range",
@@ -3328,6 +3348,11 @@
   },
   "Steam power": {
     "internal-name": "steam-power",
+    "trigger-type": "craft-item",
+    "trigger-object": [
+      "Iron plate",
+      50
+    ],
     "allows": ["Automation science pack"],
     "effects": [
       "Boiler",
@@ -3339,6 +3364,11 @@
   },
   "Steel axe": {
     "internal-name": "steel-axe",
+    "trigger-type": "craft-item",
+    "trigger-object": [
+      "Steel plate",
+      50
+    ],
     "required-technologies": ["Steel processing"]
   },
   "Steel processing": {
@@ -3566,6 +3596,11 @@
   },
   "Uranium processing": {
     "internal-name": "uranium-processing",
+    "trigger-type": "mine-entity",
+    "trigger-object": [
+      "Uranium ore",
+      1
+    ],
     "required-technologies": ["Uranium mining"],
     "allows": [
       "Kovarex enrichment process",
