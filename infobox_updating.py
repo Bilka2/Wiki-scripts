@@ -18,6 +18,7 @@ Classes for infoboxes:
 '''
 
 import json
+import numbers
 import os.path
 import re
 import requests
@@ -61,6 +62,7 @@ class TechnologyInfobox:
     self.name = name + ' (research)'
     self.cost_multiplier = Number('cost-multiplier', DictUtil.get_optional_number(data, 'cost-multiplier'))
     self.cost = IconWithCaptionList('cost', DictUtil.get_optional_list(data, 'cost'))
+    self.trigger = TechnologyTrigger('technology-trigger', DictUtil.get_optional_string(data, 'trigger-type'), DictUtil.get_optional_list(data, 'trigger-object'))
     self.allows = IconWithCaptionList_from_list_of_strings('allows', DictUtil.get_optional_list(data, 'allows')) # the technologies that are unlocked by this technology
     self.effects = IconWithCaptionList_from_list_of_strings('effects', DictUtil.get_optional_list(data, 'effects')) # the recipes that are unlocked by this technology
     self.required_technologies =  IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies')) #the technologies that are must be researched before this technology can be researched
@@ -70,7 +72,7 @@ class TechnologyInfobox:
     self.expensive_cost_multiplier = Number('expensive-cost-multiplier', 0) # to remove from existing infoboxes
   
   def get_all_properties(self):
-    return [self.cost_multiplier, self.cost, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category, self.expensive_cost_multiplier]
+    return [self.cost_multiplier, self.cost, self.trigger, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category, self.expensive_cost_multiplier]
 
 
 class ItemInfobox:
@@ -226,6 +228,22 @@ class Recipe(Property):
     return not self.ingredients and not self.products
 
 
+class TechnologyTrigger(Property):
+  def __init__(self, name, trigger_type, trigger_object):    
+    self.name = name
+    self.trigger_type = trigger_type
+    self.trigger_object = IconWithCaption(trigger_object) if trigger_object else trigger_object
+    
+  def get_data_string(self):
+    ret = self.trigger_type
+    if not self.trigger_object.is_empty():
+      ret = ret + ": " + str(self.trigger_object)
+    return ret
+    
+  def is_empty(self):
+    return not self.trigger_type
+
+
 class IconWithCaptionList(Property):
   def __init__(self, name, data):
     self.name = name
@@ -354,5 +372,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.7', False)
-  #InfoboxUpdate([InfoboxType.Technology, InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.7', True)
+  #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.12', False)
+  InfoboxUpdate([InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.12', True)
