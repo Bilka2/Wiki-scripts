@@ -185,6 +185,21 @@ def prototype_migration_link_styling(): # ran after prototype_migration_links()
       print(edit_page(session, api_url, edit_token, page_name, page_data, 'Updated styling of prototype doc migration note').text)
 
 
+def prototype_migration_remove_old_content(): # ran after prototype_migration_link_styling()
+  with open(os.path.dirname(os.path.abspath(__file__)) + '/prototype_doc_migration/link_mapping.json', 'r') as f:
+    link_mapping = json.load(f)
+  
+  session = requests.Session()
+  edit_token = get_edit_token(session, api_url)
+  
+  for section in ['types', 'prototypes']:
+    for wiki_page in link_mapping[section]:
+      page_name = wiki_page.removeprefix('https://wiki.factorio.com/')
+      page_data = get_page(session, api_url, page_name)
+      page_data = page_data[:page_data.find("on the forums].</p></div>\n\n\n\n") + 26]
+      print(edit_page(session, api_url, edit_token, page_name, page_data, 'Removed old prototype docs').text)
+
+
 def move_archived_pages_to_namespace(): # https://forums.factorio.com/viewtopic.php?p=597811#p597811
   session = requests.Session()
   edit_token = get_edit_token(session, api_url)
@@ -372,15 +387,15 @@ if __name__ == '__main__':
   # move_page_test()
   # create_page_test()
   
-  # print(convert_data_raw('1.1.91'))
+  print(convert_data_raw('2.0.10'))
   
   # update_tech_icons()
   # update_icons()
   
-  categorize_images(["File:Yumako_(research).png", "File:Uranium_mining_(research).png", "File:Turbo_transport_belt_(research).png", "File:Tungsten_steel_(research).png", "File:Tungsten_carbide_(research).png", "File:Tree_seeding_(research).png", "File:Transport_belt_capacity_(research).png", "File:Toolbelt_equipment_(research).png", "File:Tesla_weapons_(research).png", "File:Steel_plate_productivity_(research).png", "File:Space_platform_(research).png", "File:Space_platform_thruster_(research).png", "File:Scrap_recycling_productivity_(research).png", "File:Rocket_turret_(research).png", "File:Rocket_part_productivity_(research).png", "File:Rocket_fuel_productivity_(research).png", "File:Research_productivity_(research).png", "File:Recycling_(research).png", "File:Railgun_(research).png", "File:Railgun_shooting_speed_(research).png", "File:Railgun_damage_(research).png", "File:Rail_support_foundations_(research).png", "File:Quantum_processor_(research).png", "File:Quality_module_(research).png", "File:Quality_module_3_(research).png", "File:Quality_module_2_(research).png", "File:Processing_unit_(research).png", "File:Processing_unit_productivity_(research).png", "File:Portable_fission_reactor_(research).png", "File:Plastic_bar_productivity_(research).png", "File:Planet_discovery_Vulcanus_(research).png", "File:Planet_discovery_Gleba_(research).png", "File:Planet_discovery_Fulgora_(research).png", "File:Planet_discovery_Aquilo_(research).png", "File:Personal_battery_MK3_(research).png", "File:Overgrowth_soil_(research).png", "File:Metallurgic_science_pack_(research).png", "File:Mech_armor_(research).png", "File:Low_density_structure_productivity_(research).png", "File:Lithium_processing_(research).png", "File:Lightning_collector_(research).png", "File:Legendary_quality_(research).png", "File:Jellynut_(research).png", "File:Holmium_processing_(research).png", "File:Heating_tower_(research).png", "File:Health_(research).png", "File:Fusion_reactor_(research).png", "File:Foundation_(research).png", "File:Fish_breeding_(research).png", "File:Epic_quality_(research).png", "File:Elevated_rail_(research).png", "File:Electromagnetic_science_pack_(research).png", "File:Electromagnetic_plant_(research).png", "File:Electric_weapons_damage_(research).png", "File:Cryogenic_science_pack_(research).png", "File:Cryogenic_plant_(research).png", "File:Carbon_fiber_(research).png", "File:Captivity_(research).png", "File:Captive_biter_spawner_(research).png", "File:Calcite_processing_(research).png", "File:Biter_egg_handling_(research).png", "File:Biolab_(research).png", "File:Bioflux_(research).png", "File:Bioflux_processing_(research).png", "File:Biochamber_(research).png", "File:Big_mining_drill_(research).png", "File:Bacteria_cultivation_(research).png", "File:Asteroid_reprocessing_(research).png", "File:Asteroid_productivity_(research).png", "File:Artillery_shell_damage_(research).png", "File:Artificial_soil_(research).png", "File:Agriculture_(research).png", "File:Agricultural_science_pack_(research).png", "File:Advanced_combinators_(research).png", "File:Advanced_circuit_(research).png", "File:Advanced_asteroid_processing_(research).png"])
+  # categorize_images(["File:Yumako_(research).png", "File:Uranium_mining_(research).png", "File:Turbo_transport_belt_(research).png", "File:Tungsten_steel_(research).png", "File:Tungsten_carbide_(research).png", "File:Tree_seeding_(research).png", "File:Transport_belt_capacity_(research).png", "File:Toolbelt_equipment_(research).png", "File:Tesla_weapons_(research).png", "File:Steel_plate_productivity_(research).png", "File:Space_platform_(research).png", "File:Space_platform_thruster_(research).png", "File:Scrap_recycling_productivity_(research).png", "File:Rocket_turret_(research).png", "File:Rocket_part_productivity_(research).png", "File:Rocket_fuel_productivity_(research).png", "File:Research_productivity_(research).png", "File:Recycling_(research).png", "File:Railgun_(research).png", "File:Railgun_shooting_speed_(research).png", "File:Railgun_damage_(research).png", "File:Rail_support_foundations_(research).png", "File:Quantum_processor_(research).png", "File:Quality_module_(research).png", "File:Quality_module_3_(research).png", "File:Quality_module_2_(research).png", "File:Processing_unit_(research).png", "File:Processing_unit_productivity_(research).png", "File:Portable_fission_reactor_(research).png", "File:Plastic_bar_productivity_(research).png", "File:Planet_discovery_Vulcanus_(research).png", "File:Planet_discovery_Gleba_(research).png", "File:Planet_discovery_Fulgora_(research).png", "File:Planet_discovery_Aquilo_(research).png", "File:Personal_battery_MK3_(research).png", "File:Overgrowth_soil_(research).png", "File:Metallurgic_science_pack_(research).png", "File:Mech_armor_(research).png", "File:Low_density_structure_productivity_(research).png", "File:Lithium_processing_(research).png", "File:Lightning_collector_(research).png", "File:Legendary_quality_(research).png", "File:Jellynut_(research).png", "File:Holmium_processing_(research).png", "File:Heating_tower_(research).png", "File:Health_(research).png", "File:Fusion_reactor_(research).png", "File:Foundation_(research).png", "File:Fish_breeding_(research).png", "File:Epic_quality_(research).png", "File:Elevated_rail_(research).png", "File:Electromagnetic_science_pack_(research).png", "File:Electromagnetic_plant_(research).png", "File:Electric_weapons_damage_(research).png", "File:Cryogenic_science_pack_(research).png", "File:Cryogenic_plant_(research).png", "File:Carbon_fiber_(research).png", "File:Captivity_(research).png", "File:Captive_biter_spawner_(research).png", "File:Calcite_processing_(research).png", "File:Biter_egg_handling_(research).png", "File:Biolab_(research).png", "File:Bioflux_(research).png", "File:Bioflux_processing_(research).png", "File:Biochamber_(research).png", "File:Big_mining_drill_(research).png", "File:Bacteria_cultivation_(research).png", "File:Asteroid_reprocessing_(research).png", "File:Asteroid_productivity_(research).png", "File:Artillery_shell_damage_(research).png", "File:Artificial_soil_(research).png", "File:Agriculture_(research).png", "File:Agricultural_science_pack_(research).png", "File:Advanced_combinators_(research).png", "File:Advanced_circuit_(research).png", "File:Advanced_asteroid_processing_(research).png"])
   
   # dump_pages(['Types/ActivateEquipmentCapsuleAction', 'Types/ActivityBarStyleSpecification', 'Types/AmmoDamageModifierPrototype'])
   
-  # prototype_migration_link_styling()
+  # prototype_migration_remove_old_content()
 
   #move_archived_pages_to_namespace()
