@@ -275,7 +275,10 @@ class IconWithCaption:
     
   def __str__(self):
     if self.caption:
-      return f'{self.file_name}, {self.caption}'
+      if isinstance(self.caption, numbers.Number):
+        return f'{self.file_name}, {self.caption:.6g}'
+      else:
+        return f'{self.file_name}, {self.caption}'
     else:
       return f'{self.file_name}'
   
