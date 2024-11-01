@@ -18,6 +18,7 @@ Classes for infoboxes:
 '''
 
 import json
+import math
 import numbers
 import os.path
 import re
@@ -47,7 +48,7 @@ class PrototypeInfobox:
 class EntityInfobox: # also does tile colors
   def __init__(self, name, data):
     self.name = name
-    self.health = Number('health', DictUtil.get_optional_number(data, 'health'))
+    self.health = NumberWithQuality('health', DictUtil.get_optional_number(data, 'health'), 0.3)
     self.mining_time = Number('mining-time', DictUtil.get_optional_number(data, 'mining-time'))
     self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
     self.pollution = NumberWithUnit('pollution', DictUtil.get_optional_number(data, 'pollution'), '{{Translation|/m}}')
@@ -152,6 +153,21 @@ class NumberWithUnit(Number):
     
   def get_data_string(self):
     return str(super().get_data_string() + self.unit)
+    
+  def is_empty(self):
+    return super().is_empty()
+
+
+class NumberWithQuality(Number):
+  def __init__(self, name, number, multiplier):
+    super().__init__(name, number)
+    self.multiplier = multiplier
+    
+  def number_for_quality(self, level):
+    return math.floor(self.number * (1 + self.multiplier * level))
+    
+  def get_data_string(self):
+    return f'{{{{Quality|{self.number}|{self.number_for_quality(1)}|{self.number_for_quality(2)}|{self.number_for_quality(3)}|{self.number_for_quality(5)}}}}}'
     
   def is_empty(self):
     return super().is_empty()
@@ -376,4 +392,4 @@ class InfoboxUpdate:
     
 if __name__ == '__main__':
   #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.12', False)
-  InfoboxUpdate([InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.12', True)
+  InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '2.0.12', True)

@@ -201,7 +201,7 @@
   "Cargo landing pad": {
     "map-color": "67b2eb",
     "health": 1000,
-    "mining-time": 0.2
+    "mining-time": 1
   },
   "Cargo wagon": {
     "health": 600,
