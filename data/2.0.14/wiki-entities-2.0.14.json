@@ -796,6 +796,11 @@
       }
     }
   },
+  "Selector combinator": {
+    "map-color": "006191",
+    "health": 150,
+    "mining-time": 0.1
+  },
   "Small electric pole": {
     "map-color": "006191",
     "health": 100,

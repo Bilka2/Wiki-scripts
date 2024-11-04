@@ -709,7 +709,7 @@
   },
   "Selector combinator": {
     "internal-name": "selector-combinator",
-    "prototype-type": "item"
+    "prototype-type": "selector-combinator"
   },
   "Shotgun": {
     "internal-name": "shotgun",
