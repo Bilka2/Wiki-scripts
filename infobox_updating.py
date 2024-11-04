@@ -82,6 +82,7 @@ class ItemInfobox:
     self.consumers = IconWithCaptionList_from_list_of_strings('consumers', DictUtil.get_optional_list(data, 'consumers'))
     self.stack_size = Number('stack-size', data['stack-size'])
     self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies'))
+    # when adding spoil ticks remember that spoil time is in minutes on the wiki - or maybe not because someone asked for that to be removed. in that case, include the unit here
     
   def get_all_properties(self):
     return [self.consumers, self.stack_size, self.req_tech]
@@ -163,11 +164,11 @@ class NumberWithQuality(Number):
     super().__init__(name, number)
     self.multiplier = multiplier
     
-  def number_for_quality(self, level):
+  def value_for_level(self, level):
     return math.floor(self.number * (1 + self.multiplier * level))
     
   def get_data_string(self):
-    return f'{{{{Quality|{self.number}|{self.number_for_quality(1)}|{self.number_for_quality(2)}|{self.number_for_quality(3)}|{self.number_for_quality(5)}}}}}'
+    return f'{{{{Quality|{self.number}|{self.value_for_level(1)}|{self.value_for_level(2)}|{self.value_for_level(3)}|{self.value_for_level(5)}}}}}'
     
   def is_empty(self):
     return super().is_empty()
@@ -317,6 +318,10 @@ def IconWithCaptionList_from_list_of_strings(name, list):
 
 class InfoboxUpdate:
   no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fluoroketone (cold) barrel", "Fluoroketone (hot) barrel", "Empty fluoroketone (cold) barrel", "Empty fluoroketone (hot) barrel"]
+  no_infobox += ["Casting copper", "Casting copper cable", "Casting iron", "Casting iron gear wheel", "Casting iron stick", "Casting low density structure", "Casting pipe", "Casting pipe to ground", "Casting steel", "Concrete from molten iron", "Nutrients from bioflux", "Nutrients from biter egg", "Nutrients from fish", "Nutrients from spoilage", "Nutrients from yumako mash", "Simple coal liquefaction", "Solid fuel from ammonia", "Scrap recycling"] # Space age exclusions that I'm sure about
+  no_infobox += ["Iron bacteria cultivation", "Copper bacteria cultivation", "Steam condensation", "Ice melting", "Acid neutralisation", "Rocket fuel from jelly", "Ammonia rocket fuel", "Burnt spoilage", "Biolubricant", "Bioplastic", "Biosulfur"] # Space age exclusions that I'm not sure about
+  no_infobox += ["Molten iron from lava", "Molten copper from lava", "Fluoroketone", "Cooling hot fluoroketone", "Ammoniacal solution separation"] # These recipes should ideally just be in the fluid infoboxes (Molten iron, Molten copper, Fluoroketone (hot), Fluoroketone (cold), Ammonia)
+  no_infobox += ["Advanced carbonic asteroid crushing", "Advanced metallic asteroid crushing", "Advanced oxide asteroid crushing", "Advanced thruster fuel", "Advanced thruster oxidizer", "Carbonic asteroid crushing", "Carbonic asteroid reprocessing", "Metallic asteroid crushing", "Metallic asteroid reprocessing", "Oxide asteroid crushing", "Oxide asteroid reprocessing"] # Space age exclusions that I'm ????? about
   re_start_of_infobox = re.compile('{{infobox', re.I)
 
   def __init__(self, infoboxes, api_url, version, testing):
@@ -343,7 +348,7 @@ class InfoboxUpdate:
   
     
   def update_infobox(self, file_name, klass):    
-    with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}/wiki-{file_name}-{self.version}.json', 'r') as f:
+    with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}-space-age/wiki-{file_name}-{self.version}.json', 'r') as f:
       file = json.load(f)
       
     session = requests.Session()
@@ -392,4 +397,4 @@ class InfoboxUpdate:
     
 if __name__ == '__main__':
   #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.12', False)
-  InfoboxUpdate([InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '2.0.12', True)
+  InfoboxUpdate([InfoboxType.Prototype, InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '2.0.14', True)
