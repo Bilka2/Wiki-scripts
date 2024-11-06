@@ -347,35 +347,41 @@ class InfoboxUpdate:
       self.update_infobox('types', PrototypeInfobox)
   
     
-  def update_infobox(self, file_name, klass):    
-    with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}-space-age/wiki-{file_name}-{self.version}.json', 'r') as f:
-      file = json.load(f)
+  def update_infobox(self, file_name, klass):
+    with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}/wiki-{file_name}-{self.version}.json', 'r') as f:
+      vanilla_json = json.load(f)
+    #with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}-space-age/wiki-{file_name}-{self.version}.json', 'r') as f:
+    #  space_age_json = json.load(f)
       
     session = requests.Session()
     edit_token = get_edit_token(session, self.api_url)
     
-    for name, data in file.items():
-      infobox_data = klass(name, data)
-      if infobox_data.name in self.no_infobox: #this is after the class instantiation to make sure we append (research) to things like techs and similar
-        continue
-      page_name = 'Infobox:' + infobox_data.name
-      page = get_page_safe(session, self.api_url, page_name)
-      if not page:
-        print(f'Page for Infobox:{infobox_data.name} does not exist. Creating....')
-        page = '{{Infobox\n}}<noinclude>[[Category:Infobox page]]</noinclude>'
-      new_page = page
-      summary = ''
-      
-      for property in infobox_data.get_all_properties():     
-        new_page, summary = self.update_property(property, new_page, summary)
+    for name, data in vanilla_json.items():
+      self.update_infobox_data(klass, name, data, session, edit_token)
         
-      if page != new_page:
-        if self.testing:
-          print(new_page + '      ' + summary)
-        else:
-          print(edit_page(session, self.api_url, edit_token, page_name, new_page, summary).text)
+  def update_infobox_data(self, klass, name, data, session, edit_token):
+    infobox_data = klass(name, data)
+    if infobox_data.name in self.no_infobox: #this is after the class instantiation to make sure we append (research) to things like techs and similar
+      return
+    page_name = 'Infobox:' + infobox_data.name
+    page = get_page_safe(session, self.api_url, page_name)
+    if not page:
+      print(f'Page for Infobox:{infobox_data.name} does not exist. Creating....')
+      page = '{{Infobox\n}}<noinclude>[[Category:Infobox page]]</noinclude>'
+    new_page = page
+    summary = ''
+    
+    for property in infobox_data.get_all_properties():     
+      new_page, summary = self.update_property(property, new_page, summary)
+      
+    if page != new_page:
+      if self.testing:
+        print(new_page + '      ' + summary)
       else:
-        print(f'{infobox_data.name} was not changed.')
+        print(edit_page(session, self.api_url, edit_token, page_name, new_page, summary).text)
+    else:
+      print(f'{infobox_data.name} was not changed.')
+  
 
 
   def update_property(self, property, page, summary):
@@ -396,5 +402,5 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.12', False)
-  InfoboxUpdate([InfoboxType.Prototype, InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '2.0.14', True)
+  InfoboxUpdate([InfoboxType.Item, InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.14', True)
+  #InfoboxUpdate([InfoboxType.Prototype, InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '2.0.14', True)
