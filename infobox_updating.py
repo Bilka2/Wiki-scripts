@@ -36,18 +36,31 @@ class InfoboxType(Enum):
 
 
 class PrototypeInfobox:
-  def __init__(self, name, data):
+  def __init__(self, name, vanilla_data, space_age_data):
     self.name = name
+    # this covers everything besides techs, so use this one to mark space-age only
+    if vanilla_data and space_age_data:
+      self.space_age = String('space-age', '') # since it's in both, this should not be set
+    elif space_age_data: # space age only
+      self.space_age = String('space-age', 'yes')    
+    elif vanilla_data: # vanilla only
+      self.space_age = String('space-age', 'no')
+    
+    # these dont actually get changed by the mods so just pick one of the datas that is available
+    data = vanilla_data or space_age_data
     self.internal_name = String('internal-name', data['internal-name'])
     self.prototype_type = String('prototype-type', data['prototype-type'])
-    
+  
   def get_all_properties(self):
-    return [self.internal_name, self.prototype_type]
+    return [self.internal_name, self.prototype_type, self.space_age]
 
 
 class EntityInfobox: # also does tile colors
-  def __init__(self, name, data):
+  def __init__(self, name, vanilla_data, space_age_data):
     self.name = name
+    # these dont actually get changed by the mods so just pick one of the datas that is available
+    data = vanilla_data or space_age_data
+      
     self.health = NumberWithQuality('health', DictUtil.get_optional_number(data, 'health'), 0.3)
     self.mining_time = Number('mining-time', DictUtil.get_optional_number(data, 'mining-time'))
     self.map_color = MapColor('map-color', DictUtil.get_optional_string(data, 'map-color'))
@@ -59,7 +72,7 @@ class EntityInfobox: # also does tile colors
     
     
 class TechnologyInfobox:    
-  def __init__(self, name, data):
+  def __init__(self, name, data): # TODO space-age + changed
     self.name = name + ' (research)'
     self.cost_multiplier = Number('cost-multiplier', DictUtil.get_optional_number(data, 'cost-multiplier'))
     self.cost = IconWithCaptionList('cost', DictUtil.get_optional_list(data, 'cost'))
@@ -77,19 +90,61 @@ class TechnologyInfobox:
 
 
 class ItemInfobox:
-  def __init__(self, name, data):
+  def __init__(self, name, vanilla_data, space_age_data):
     self.name = name
-    self.consumers = IconWithCaptionList_from_list_of_strings('consumers', DictUtil.get_optional_list(data, 'consumers'))
+    data = {}
+    if vanilla_data and space_age_data:
+      if vanilla_data['stack-size'] != space_age_data['stack-size']:
+        self.changed_by_space_age_mod = String('changed-by-space-age-mod', 'yes')
+        self.stack_size = Number('stack-size', vanilla_data['stack-size'])
+        self.space_age_stack_size = Number('space-age-stack-size', space_age_data['stack-size'])
+      else:
+        self.stack_size = Number('stack-size', vanilla_data['stack-size'])
+      
+      if DictUtil.get_optional_list(vanilla_data, 'consumers') != DictUtil.get_optional_list(space_age_data, 'consumers'):
+        # TODO confused yelling
+        # self.changed_by_space_age_mod = String('changed-by-space-age-mod', 'yes')
+        self.consumers = IconWithCaptionList_from_list_of_strings('consumers', DictUtil.get_optional_list(vanilla_data, 'consumers'))
+        # self.space_age_consumers = IconWithCaptionList_from_list_of_strings('space-age-consumers', DictUtil.get_optional_list(space_age_data, 'consumers'))
+      else:
+        self.consumers = IconWithCaptionList_from_list_of_strings('consumers', DictUtil.get_optional_list(vanilla_data, 'consumers'))
+      
+      if hasattr(self, 'changed_by_space_age_mod'):
+        # to remove the properties from the infobox if the property is set but not actually different
+        if not hasattr(self, 'space_age_stack_size'):
+          self.space_age_stack_size = Number('space-age-stack-size', 0)
+        if not hasattr(self, 'space_age_consumers'):
+          self.space_age_consumers = IconWithCaptionList_from_list_of_strings('consumers', [])
+      
+      # TODO handle space age required technologies
+      self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(vanilla_data, 'required-technologies'))
+      return
+    
+    data = vanilla_data or space_age_data    
+    
     self.stack_size = Number('stack-size', data['stack-size'])
-    self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies'))
+    # TODO fix the broken consumers
+    if not name in ['Scrap']:
+      self.consumers = IconWithCaptionList_from_list_of_strings('consumers', DictUtil.get_optional_list(data, 'consumers'))
+    else:
+      self.consumers = IconWithCaptionList_from_list_of_strings('consumers', [])
+      
+    # TODO fix the broken required technologies
+    if not name in ['Spoilage', 'Metallic asteroid chunk', 'Carbonic asteroid chunk', 'Oxide asteroid chunk', 'Nutrients', 'Jellynut seed', 'Yumako seed', 'Iron bacteria', 'Copper bacteria', 'Ice', 'Carbon', 'Calcite']:
+      self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies'))
     # when adding spoil ticks remember that spoil time is in minutes on the wiki - or maybe not because someone asked for that to be removed. in that case, include the unit here
     
   def get_all_properties(self):
-    return [self.consumers, self.stack_size, self.req_tech]
+    if hasattr(self, 'changed_by_space_age_mod'):
+      return [self.consumers, self.stack_size, self.req_tech, self.changed_by_space_age_mod, self.space_age_stack_size, self.space_age_consumers]
+    elif hasattr(self, 'req_tech'): # TODO fix the broken required technologies and remove this elif 
+      return [self.consumers, self.stack_size, self.req_tech]
+    else:
+      return [self.consumers, self.stack_size]
     
 
 class RecipeInfobox:
-  def __init__(self, name, data):
+  def __init__(self, name, data): # TODO changed
     self.name = name
     self.recipe = Recipe('recipe', data['recipe'], DictUtil.get_optional_list(data, 'recipe-output'))
     self.total_raw = Recipe('total-raw', data['total-raw'], [])
@@ -320,7 +375,7 @@ class InfoboxUpdate:
   no_infobox = ["Basic oil processing", "Advanced oil processing", "Coal liquefaction", "Barrel", "Heavy oil cracking", "Light oil cracking", "Solid fuel from heavy oil", "Solid fuel from light oil", "Solid fuel from petroleum gas", "Water barrel", "Crude oil barrel", "Heavy oil barrel", "Sulfuric acid barrel", "Light oil barrel", "Petroleum gas barrel", "Lubricant barrel", "Empty crude oil barrel", "Empty heavy oil barrel", "Empty light oil barrel", "Empty lubricant barrel", "Empty petroleum gas barrel", "Empty sulfuric acid barrel", "Empty water barrel", "Fluoroketone (cold) barrel", "Fluoroketone (hot) barrel", "Empty fluoroketone (cold) barrel", "Empty fluoroketone (hot) barrel"]
   no_infobox += ["Casting copper", "Casting copper cable", "Casting iron", "Casting iron gear wheel", "Casting iron stick", "Casting low density structure", "Casting pipe", "Casting pipe to ground", "Casting steel", "Concrete from molten iron", "Nutrients from bioflux", "Nutrients from biter egg", "Nutrients from fish", "Nutrients from spoilage", "Nutrients from yumako mash", "Simple coal liquefaction", "Solid fuel from ammonia", "Scrap recycling"] # Space age exclusions that I'm sure about
   no_infobox += ["Iron bacteria cultivation", "Copper bacteria cultivation", "Steam condensation", "Ice melting", "Acid neutralisation", "Rocket fuel from jelly", "Ammonia rocket fuel", "Burnt spoilage", "Biolubricant", "Bioplastic", "Biosulfur"] # Space age exclusions that I'm not sure about
-  no_infobox += ["Molten iron from lava", "Molten copper from lava", "Fluoroketone", "Cooling hot fluoroketone", "Ammoniacal solution separation"] # These recipes should ideally just be in the fluid infoboxes (Molten iron, Molten copper, Fluoroketone (hot), Fluoroketone (cold), Ammonia)
+  no_infobox += ["Molten iron from lava", "Molten copper from lava", "Cooling hot fluoroketone", "Ammoniacal solution separation"] # These recipes should ideally just be in the fluid infoboxes (Molten iron, Molten copper, Fluoroketone (cold), Ammonia)
   no_infobox += ["Advanced carbonic asteroid crushing", "Advanced metallic asteroid crushing", "Advanced oxide asteroid crushing", "Advanced thruster fuel", "Advanced thruster oxidizer", "Carbonic asteroid crushing", "Carbonic asteroid reprocessing", "Metallic asteroid crushing", "Metallic asteroid reprocessing", "Oxide asteroid crushing", "Oxide asteroid reprocessing"] # Space age exclusions that I'm ????? about
   re_start_of_infobox = re.compile('{{infobox', re.I)
 
@@ -350,17 +405,24 @@ class InfoboxUpdate:
   def update_infobox(self, file_name, klass):
     with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}/wiki-{file_name}-{self.version}.json', 'r') as f:
       vanilla_json = json.load(f)
-    #with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}-space-age/wiki-{file_name}-{self.version}.json', 'r') as f:
-    #  space_age_json = json.load(f)
-      
+    with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{self.version}-space-age/wiki-{file_name}-{self.version}.json', 'r') as f:
+      space_age_json = json.load(f)
+
     session = requests.Session()
     edit_token = get_edit_token(session, self.api_url)
-    
-    for name, data in vanilla_json.items():
-      self.update_infobox_data(klass, name, data, session, edit_token)
-        
-  def update_infobox_data(self, klass, name, data, session, edit_token):
-    infobox_data = klass(name, data)
+
+    for name, space_age_data in space_age_json.items():
+      if name not in vanilla_json:
+        self.update_infobox_data(klass, name, {}, space_age_data, session, edit_token)
+      else:
+        self.update_infobox_data(klass, name, vanilla_json[name], space_age_data, session, edit_token)
+
+    if 'Satellite' in vanilla_json:
+      self.update_infobox_data(klass, 'Satellite', vanilla_json['Satellite'], {}, session, edit_token)
+  
+  
+  def update_infobox_data(self, klass, name, vanilla_data, space_age_data, session, edit_token):
+    infobox_data = klass(name, vanilla_data, space_age_data)
     if infobox_data.name in self.no_infobox: #this is after the class instantiation to make sure we append (research) to things like techs and similar
       return
     page_name = 'Infobox:' + infobox_data.name
@@ -381,7 +443,6 @@ class InfoboxUpdate:
         print(edit_page(session, self.api_url, edit_token, page_name, new_page, summary).text)
     else:
       print(f'{infobox_data.name} was not changed.')
-  
 
 
   def update_property(self, property, page, summary):
@@ -402,5 +463,7 @@ class InfoboxUpdate:
     return page, summary
     
 if __name__ == '__main__':
-  InfoboxUpdate([InfoboxType.Item, InfoboxType.Recipe], 'https://wiki.factorio.com/api.php', '2.0.14', True)
-  #InfoboxUpdate([InfoboxType.Prototype, InfoboxType.Entity], 'https://wiki.factorio.com/api.php', '2.0.14', True)
+  #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.15', False)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Prototype, InfoboxType.Item], 'https://wiki.factorio.com/api.php', '2.0.15', False)
+  #InfoboxUpdate([InfoboxType.Prototype, InfoboxType.Entity, InfoboxType.Item], 'https://wiki.factorio.com/api.php', '2.0.15', True)
+  
