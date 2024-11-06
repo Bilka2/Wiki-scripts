@@ -641,7 +641,8 @@
   "Heating tower": {
     "map-color": "006191",
     "health": 500,
-    "mining-time": 0.5
+    "mining-time": 0.5,
+    "pollution": 100
   },
   "Inserter": {
     "map-color": "006191",

@@ -1093,7 +1093,7 @@
   },
   "Lithium": {
     "consumers": [
-      "Fluoroketone",
+      "Fluoroketone (hot)",
       "Lithium plate"
     ],
     "stack-size": 50,
@@ -1641,7 +1641,7 @@
   "Solid fuel": {
     "consumers": [
       "Ammonia rocket fuel",
-      "Fluoroketone",
+      "Fluoroketone (hot)",
       "Rocket fuel"
     ],
     "stack-size": 50,

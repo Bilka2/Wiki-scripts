@@ -599,9 +599,9 @@
     "internal-name": "fluorine",
     "prototype-type": "fluid"
   },
-  "Fluoroketone": {
-    "internal-name": "fluoroketone",
-    "prototype-type": "recipe"
+  "Fluoroketone (hot)": {
+    "internal-name": "fluoroketone-hot",
+    "prototype-type": "fluid"
   },
   "Fluoroketone (cold)": {
     "internal-name": "fluoroketone-cold",
@@ -614,10 +614,6 @@
   "Cooling hot fluoroketone": {
     "internal-name": "fluoroketone-cooling",
     "prototype-type": "recipe"
-  },
-  "Fluoroketone (hot)": {
-    "internal-name": "fluoroketone-hot",
-    "prototype-type": "fluid"
   },
   "Fluoroketone (hot) barrel": {
     "internal-name": "fluoroketone-hot-barrel",

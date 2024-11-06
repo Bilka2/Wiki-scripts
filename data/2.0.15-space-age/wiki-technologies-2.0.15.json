@@ -1416,7 +1416,7 @@
     "allows": ["Cryogenic science pack"],
     "effects": [
       "Cryogenic plant",
-      "Fluoroketone",
+      "Fluoroketone (hot)",
       "Cooling hot fluoroketone"
     ]
   },
