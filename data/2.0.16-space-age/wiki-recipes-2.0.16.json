@@ -96,15 +96,19 @@
     "total-raw": [
       [
         "Time",
-        1
+        14.25
       ],
       [
-        "Advanced circuit",
-        1
+        "Copper plate",
+        9.5
       ],
       [
-        "Electronic circuit",
-        3
+        "Iron plate",
+        5
+      ],
+      [
+        "Plastic bar",
+        2
       ],
       [
         "Steel plate",
@@ -177,14 +181,14 @@
     "total-raw": [
       [
         "Time",
-        6
+        9.5
       ],
       [
-        "Copper cable",
-        4
+        "Copper plate",
+        5
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         2
       ],
       [
@@ -462,10 +466,14 @@
     "total-raw": [
       [
         "Time",
-        10.5
+        14.25
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        4.5
+      ],
+      [
+        "Iron plate",
         3
       ],
       [
@@ -584,14 +592,14 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        8
       ],
       [
-        "Copper cable",
-        5
+        "Copper plate",
+        10
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         5
       ]
     ],
@@ -628,15 +636,15 @@
     "total-raw": [
       [
         "Time",
-        4.5
+        9.5
+      ],
+      [
+        "Biter egg",
+        2.5
       ],
       [
         "Jellynut seed",
         2
-      ],
-      [
-        "Nutrients",
-        50
       ],
       [
         "Stone",
@@ -676,11 +684,11 @@
     "total-raw": [
       [
         "Time",
-        4.5
+        9.5
       ],
       [
-        "Nutrients",
-        50
+        "Biter egg",
+        2.5
       ],
       [
         "Stone",
@@ -724,27 +732,23 @@
     "total-raw": [
       [
         "Time",
-        15.5
+        24.25
       ],
       [
         "Calcite",
         1
       ],
       [
-        "Electronic circuit",
-        5
+        "Copper plate",
+        7.5
       ],
       [
         "Explosives",
         8
       ],
       [
-        "Iron gear wheel",
-        5
-      ],
-      [
         "Iron plate",
-        10
+        25
       ],
       [
         "Tungsten plate",
@@ -784,11 +788,11 @@
     "total-raw": [
       [
         "Time",
-        40
+        60
       ],
       [
-        "Iron gear wheel",
-        40
+        "Iron plate",
+        80
       ],
       [
         "Processing unit",
@@ -840,15 +844,15 @@
     "total-raw": [
       [
         "Time",
-        4
+        24
       ],
       [
         "Engine unit",
         60
       ],
       [
-        "Iron gear wheel",
-        40
+        "Iron plate",
+        80
       ],
       [
         "Processing unit",
@@ -892,19 +896,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        6.75
       ],
       [
-        "Electronic circuit",
-        3
-      ],
-      [
-        "Iron gear wheel",
-        5
+        "Copper plate",
+        4.5
       ],
       [
         "Iron plate",
-        9
+        22
       ]
     ],
     "producers": [
@@ -940,19 +940,15 @@
     "total-raw": [
       [
         "Time",
-        1
+        13.5
       ],
       [
-        "Electronic circuit",
-        6
-      ],
-      [
-        "Iron gear wheel",
-        10
+        "Copper plate",
+        9
       ],
       [
         "Iron plate",
-        9
+        35
       ],
       [
         "Steel plate",
@@ -984,23 +980,19 @@
     "total-raw": [
       [
         "Time",
-        2.5
+        302.5
       ],
       [
-        "Electronic circuit",
-        12
-      ],
-      [
-        "Iron gear wheel",
-        20
+        "Copper plate",
+        148
       ],
       [
         "Iron plate",
-        18
+        130
       ],
       [
-        "Speed module",
-        4
+        "Plastic bar",
+        40
       ],
       [
         "Steel plate",
@@ -1036,19 +1028,27 @@
     "total-raw": [
       [
         "Time",
-        10
+        310
+      ],
+      [
+        "Copper plate",
+        400
       ],
       [
         "Electric engine unit",
         8
       ],
       [
-        "Low density structure",
-        20
+        "Plastic bar",
+        100
       ],
       [
         "Processing unit",
         5
+      ],
+      [
+        "Steel plate",
+        40
       ]
     ],
     "producers": [
@@ -1120,15 +1120,15 @@
     "total-raw": [
       [
         "Time",
-        5
+        5.5
       ],
       [
         "Copper plate",
         1
       ],
       [
-        "Iron gear wheel",
-        1
+        "Iron plate",
+        2
       ]
     ],
     "producers": [
@@ -1293,15 +1293,19 @@
     "total-raw": [
       [
         "Time",
-        110
+        185
       ],
       [
         "Battery",
         50
       ],
       [
-        "Low density structure",
-        5
+        "Copper plate",
+        100
+      ],
+      [
+        "Plastic bar",
+        25
       ],
       [
         "Processing unit",
@@ -1309,7 +1313,7 @@
       ],
       [
         "Steel plate",
-        100
+        110
       ]
     ],
     "producers": [
@@ -1337,15 +1341,19 @@
     "total-raw": [
       [
         "Time",
-        560
+        935
       ],
       [
         "Battery",
         250
       ],
       [
-        "Low density structure",
-        25
+        "Copper plate",
+        500
+      ],
+      [
+        "Plastic bar",
+        125
       ],
       [
         "Processing unit",
@@ -1353,7 +1361,7 @@
       ],
       [
         "Steel plate",
-        500
+        550
       ],
       [
         "Supercapacitor",
@@ -1393,19 +1401,19 @@
     "total-raw": [
       [
         "Time",
-        15
+        232.5
       ],
       [
-        "Advanced circuit",
-        20
+        "Copper plate",
+        135
       ],
       [
-        "Copper cable",
-        10
+        "Iron plate",
+        60
       ],
       [
-        "Electronic circuit",
-        20
+        "Plastic bar",
+        40
       ],
       [
         "Steel plate",
@@ -1438,11 +1446,19 @@
     "total-raw": [
       [
         "Time",
+        57.5
+      ],
+      [
+        "Copper plate",
+        25
+      ],
+      [
+        "Iron plate",
         10
       ],
       [
-        "Advanced circuit",
-        5
+        "Plastic bar",
+        10
       ],
       [
         "Steel plate",
@@ -1478,15 +1494,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        3.5
       ],
       [
-        "Copper cable",
+        "Copper plate",
+        2
+      ],
+      [
+        "Iron plate",
         4
-      ],
-      [
-        "Iron stick",
-        8
       ],
       [
         "Steel plate",
@@ -1531,31 +1547,27 @@
     "total-raw": [
       [
         "Time",
-        32
+        133.25
       ],
       [
-        "Advanced circuit",
-        10
+        "Copper plate",
+        54.5
       ],
       [
         "Electric engine unit",
         10
       ],
       [
-        "Electronic circuit",
-        3
-      ],
-      [
-        "Iron gear wheel",
-        5
-      ],
-      [
         "Iron plate",
-        10
+        43
       ],
       [
         "Molten iron",
         200
+      ],
+      [
+        "Plastic bar",
+        20
       ],
       [
         "Tungsten carbide",
@@ -1594,19 +1606,19 @@
     "total-raw": [
       [
         "Time",
-        20.5
+        27.25
       ],
       [
-        "Electronic circuit",
-        5
+        "Biter egg",
+        0.25
+      ],
+      [
+        "Copper plate",
+        7.5
       ],
       [
         "Iron plate",
-        20
-      ],
-      [
-        "Nutrients",
-        5
+        25
       ],
       [
         "Pentapod egg",
@@ -1689,7 +1701,7 @@
     "total-raw": [
       [
         "Time",
-        72
+        99
       ],
       [
         "Battery",
@@ -1704,16 +1716,16 @@
         10
       ],
       [
+        "Copper plate",
+        24
+      ],
+      [
         "Electric engine unit",
         2
       ],
       [
-        "Electronic circuit",
-        16
-      ],
-      [
-        "Iron gear wheel",
-        10
+        "Iron plate",
+        42
       ],
       [
         "Processing unit",
@@ -1726,10 +1738,6 @@
       [
         "Steel plate",
         6
-      ],
-      [
-        "Transport belt",
-        4
       ],
       [
         "Uranium-235",
@@ -1907,15 +1915,19 @@
     "total-raw": [
       [
         "Time",
-        1
+        14.25
       ],
       [
-        "Advanced circuit",
-        1
+        "Copper plate",
+        9.5
       ],
       [
-        "Electronic circuit",
-        3
+        "Iron plate",
+        5
+      ],
+      [
+        "Plastic bar",
+        2
       ],
       [
         "Steel plate",
@@ -1955,23 +1967,19 @@
     "total-raw": [
       [
         "Time",
-        1.5
+        41.5
       ],
       [
-        "Advanced circuit",
-        1
-      ],
-      [
-        "Electronic circuit",
-        18
-      ],
-      [
-        "Iron gear wheel",
-        16
+        "Copper plate",
+        32
       ],
       [
         "Iron plate",
-        3
+        55
+      ],
+      [
+        "Plastic bar",
+        2
       ]
     ],
     "producers": [
@@ -1999,15 +2007,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
-      ],
-      [
-        "Iron gear wheel",
         1
       ],
       [
         "Iron plate",
-        1
+        3
       ]
     ],
     "producers": [
@@ -2039,15 +2043,11 @@
     "total-raw": [
       [
         "Time",
-        2.5
-      ],
-      [
-        "Iron gear wheel",
-        3
+        4
       ],
       [
         "Iron plate",
-        3
+        9
       ],
       [
         "Stone",
@@ -2154,7 +2154,7 @@
     "total-raw": [
       [
         "Time",
-        40
+        43.75
       ],
       [
         "Battery",
@@ -2169,16 +2169,20 @@
         10
       ],
       [
+        "Copper plate",
+        4.5
+      ],
+      [
         "Electric engine unit",
         1
       ],
       [
-        "Electronic circuit",
-        3
-      ],
-      [
         "Fluoroketone (cold)",
         100
+      ],
+      [
+        "Iron plate",
+        3
       ],
       [
         "Processing unit",
@@ -2221,7 +2225,7 @@
     "total-raw": [
       [
         "Time",
-        30
+        33.75
       ],
       [
         "Battery",
@@ -2232,11 +2236,15 @@
         20
       ],
       [
+        "Copper plate",
+        4.5
+      ],
+      [
         "Electric engine unit",
         1
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         3
       ],
       [
@@ -2456,11 +2464,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        310
       ],
       [
-        "Low density structure",
-        20
+        "Copper plate",
+        400
+      ],
+      [
+        "Plastic bar",
+        100
       ],
       [
         "Processing unit",
@@ -2468,7 +2480,7 @@
       ],
       [
         "Steel plate",
-        20
+        60
       ]
     ],
     "producers": [
@@ -2544,15 +2556,11 @@
     "total-raw": [
       [
         "Time",
-        1
-      ],
-      [
-        "Iron gear wheel",
-        10
+        6
       ],
       [
         "Iron plate",
-        20
+        40
       ],
       [
         "Steel plate",
@@ -2843,19 +2851,23 @@
     "total-raw": [
       [
         "Time",
-        4
-      ],
-      [
-        "Advanced circuit",
-        100
+        1004
       ],
       [
         "Concrete",
         100
       ],
       [
-        "Iron gear wheel",
-        100
+        "Copper plate",
+        500
+      ],
+      [
+        "Iron plate",
+        400
+      ],
+      [
+        "Plastic bar",
+        200
       ],
       [
         "Steel plate",
@@ -2895,19 +2907,15 @@
     "total-raw": [
       [
         "Time",
+        16.25
+      ],
+      [
+        "Copper plate",
         7.5
       ],
       [
-        "Electronic circuit",
-        5
-      ],
-      [
-        "Iron gear wheel",
-        5
-      ],
-      [
         "Iron plate",
-        5
+        20
       ],
       [
         "Steel plate",
@@ -2947,15 +2955,23 @@
     "total-raw": [
       [
         "Time",
-        24
+        52.5
       ],
       [
-        "Advanced circuit",
-        3
+        "Copper plate",
+        15
       ],
       [
         "Engine unit",
         2
+      ],
+      [
+        "Iron plate",
+        6
+      ],
+      [
+        "Plastic bar",
+        6
       ],
       [
         "Sulfur",
@@ -2995,11 +3011,7 @@
     "total-raw": [
       [
         "Time",
-        16
-      ],
-      [
-        "Barrel",
-        1
+        17
       ],
       [
         "Calcite",
@@ -3016,6 +3028,10 @@
       [
         "Iron plate",
         5
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -3191,15 +3207,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        12.5
       ],
       [
         "Copper plate",
         10
       ],
       [
-        "Iron gear wheel",
-        5
+        "Iron plate",
+        10
       ],
       [
         "Steel plate",
@@ -3324,14 +3340,14 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        4.25
       ],
       [
-        "Copper cable",
-        5
+        "Copper plate",
+        5.5
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         2
       ]
     ],
@@ -3360,18 +3376,22 @@
     "total-raw": [
       [
         "Time",
-        20.5
+        26.75
       ],
       [
         "Battery",
         2
       ],
       [
+        "Copper plate",
+        7.5
+      ],
+      [
         "Electric engine unit",
         1
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         5
       ],
       [
@@ -3537,15 +3557,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Crude oil",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -3575,19 +3595,23 @@
     "total-raw": [
       [
         "Time",
-        10
+        310
+      ],
+      [
+        "Copper plate",
+        400
       ],
       [
         "Electric engine unit",
         10
       ],
       [
-        "Low density structure",
-        20
+        "Plastic bar",
+        100
       ],
       [
         "Steel plate",
-        10
+        50
       ]
     ],
     "producers": [
@@ -3715,14 +3739,14 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        8
       ],
       [
-        "Copper cable",
-        5
+        "Copper plate",
+        10
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         5
       ]
     ],
@@ -3755,23 +3779,15 @@
     "total-raw": [
       [
         "Time",
-        20
+        25.25
       ],
       [
         "Copper plate",
-        15
-      ],
-      [
-        "Electronic circuit",
-        3
-      ],
-      [
-        "Iron gear wheel",
-        3
+        19.5
       ],
       [
         "Iron plate",
-        12
+        21
       ],
       [
         "Steel plate",
@@ -3807,27 +3823,19 @@
     "total-raw": [
       [
         "Time",
-        395
-      ],
-      [
-        "Advanced circuit",
-        12
+        593
       ],
       [
         "Copper plate",
-        240
-      ],
-      [
-        "Electronic circuit",
-        48
-      ],
-      [
-        "Iron gear wheel",
-        48
+        372
       ],
       [
         "Iron plate",
-        192
+        360
+      ],
+      [
+        "Plastic bar",
+        24
       ],
       [
         "Processing unit",
@@ -3867,14 +3875,18 @@
     "total-raw": [
       [
         "Time",
-        210
+        460
       ],
       [
         "Battery",
         120
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        300
+      ],
+      [
+        "Iron plate",
         200
       ],
       [
@@ -3912,15 +3924,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        1.75
       ],
       [
-        "Electronic circuit",
-        1
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
-        1
+        2
       ]
     ],
     "producers": [
@@ -3948,27 +3960,19 @@
     "total-raw": [
       [
         "Time",
-        95
-      ],
-      [
-        "Advanced circuit",
-        3
+        144.5
       ],
       [
         "Copper plate",
-        60
-      ],
-      [
-        "Electronic circuit",
-        12
-      ],
-      [
-        "Iron gear wheel",
-        12
+        93
       ],
       [
         "Iron plate",
-        48
+        90
+      ],
+      [
+        "Plastic bar",
+        6
       ],
       [
         "Steel plate",
@@ -4000,15 +4004,19 @@
     "total-raw": [
       [
         "Time",
+        68.75
+      ],
+      [
+        "Copper plate",
+        32.5
+      ],
+      [
+        "Iron plate",
         15
       ],
       [
-        "Advanced circuit",
-        5
-      ],
-      [
-        "Electronic circuit",
-        5
+        "Plastic bar",
+        10
       ]
     ],
     "producers": [
@@ -4041,15 +4049,19 @@
     "total-raw": [
       [
         "Time",
-        30
+        352.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        155
       ],
       [
-        "Efficiency module",
-        4
+        "Iron plate",
+        70
+      ],
+      [
+        "Plastic bar",
+        50
       ],
       [
         "Processing unit",
@@ -4090,19 +4102,23 @@
     "total-raw": [
       [
         "Time",
-        60
+        1517.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        645
       ],
       [
-        "Efficiency module 2",
-        4
+        "Iron plate",
+        290
+      ],
+      [
+        "Plastic bar",
+        210
       ],
       [
         "Processing unit",
-        5
+        25
       ],
       [
         "Spoilage",
@@ -4139,15 +4155,19 @@
     "total-raw": [
       [
         "Time",
-        10
+        12.5
       ],
       [
-        "Electronic circuit",
-        2
+        "Copper plate",
+        3
       ],
       [
         "Engine unit",
         1
+      ],
+      [
+        "Iron plate",
+        2
       ],
       [
         "Lubricant",
@@ -4181,11 +4201,19 @@
     "total-raw": [
       [
         "Time",
-        5
+        52.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        25
+      ],
+      [
+        "Iron plate",
+        10
+      ],
+      [
+        "Plastic bar",
+        10
       ],
       [
         "Steel plate",
@@ -4225,19 +4253,15 @@
     "total-raw": [
       [
         "Time",
-        2
+        8.25
       ],
       [
-        "Electronic circuit",
-        3
-      ],
-      [
-        "Iron gear wheel",
-        5
+        "Copper plate",
+        4.5
       ],
       [
         "Iron plate",
-        10
+        23
       ]
     ],
     "producers": [
@@ -4367,11 +4391,11 @@
     "total-raw": [
       [
         "Time",
-        10
+        20
       ],
       [
-        "Accumulator",
-        1
+        "Battery",
+        5
       ],
       [
         "Electrolyte",
@@ -4380,6 +4404,10 @@
       [
         "Holmium solution",
         25
+      ],
+      [
+        "Iron plate",
+        2
       ],
       [
         "Supercapacitor",
@@ -4406,11 +4434,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        1.25
       ],
       [
-        "Copper cable",
-        3
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
@@ -4767,11 +4795,19 @@
     "total-raw": [
       [
         "Time",
+        57.5
+      ],
+      [
+        "Copper plate",
+        25
+      ],
+      [
+        "Iron plate",
         10
       ],
       [
-        "Advanced circuit",
-        5
+        "Plastic bar",
+        10
       ],
       [
         "Steel plate",
@@ -4807,15 +4843,19 @@
     "total-raw": [
       [
         "Time",
-        110
+        660
       ],
       [
-        "Advanced circuit",
-        50
+        "Copper plate",
+        350
       ],
       [
-        "Low density structure",
-        5
+        "Iron plate",
+        100
+      ],
+      [
+        "Plastic bar",
+        125
       ],
       [
         "Processing unit",
@@ -4823,7 +4863,7 @@
       ],
       [
         "Steel plate",
-        100
+        110
       ]
     ],
     "producers": [
@@ -4855,15 +4895,11 @@
     "total-raw": [
       [
         "Time",
-        11
-      ],
-      [
-        "Iron gear wheel",
-        1
+        11.5
       ],
       [
         "Iron plate",
-        2
+        4
       ],
       [
         "Steel plate",
@@ -5116,23 +5152,23 @@
     "total-raw": [
       [
         "Time",
-        2
+        130.75
       ],
       [
-        "Advanced circuit",
-        10
+        "Copper plate",
+        72.5
       ],
       [
-        "Fast splitter",
-        1
-      ],
-      [
-        "Iron gear wheel",
-        10
+        "Iron plate",
+        86
       ],
       [
         "Lubricant",
         80
+      ],
+      [
+        "Plastic bar",
+        20
       ]
     ],
     "producers": [
@@ -5163,15 +5199,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        9
       ],
       [
-        "Fast transport belt",
-        1
-      ],
-      [
-        "Iron gear wheel",
-        10
+        "Iron plate",
+        31.5
       ],
       [
         "Lubricant",
@@ -5210,15 +5242,11 @@
     "total-raw": [
       [
         "Time",
-        2
+        67.5
       ],
       [
-        "Fast underground belt",
-        2
-      ],
-      [
-        "Iron gear wheel",
-        80
+        "Iron plate",
+        257.5
       ],
       [
         "Lubricant",
@@ -5253,19 +5281,15 @@
     "total-raw": [
       [
         "Time",
-        1
+        5.25
       ],
       [
-        "Electronic circuit",
-        3
-      ],
-      [
-        "Iron gear wheel",
-        1
+        "Copper plate",
+        4.5
       ],
       [
         "Iron plate",
-        3
+        8
       ]
     ],
     "producers": [
@@ -5297,19 +5321,15 @@
     "total-raw": [
       [
         "Time",
-        2
+        28.75
       ],
       [
-        "Electronic circuit",
-        10
+        "Copper plate",
+        22.5
       ],
       [
-        "Iron gear wheel",
-        10
-      ],
-      [
-        "Splitter",
-        1
+        "Iron plate",
+        46
       ]
     ],
     "producers": [
@@ -5338,15 +5358,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        3.5
       ],
       [
-        "Iron gear wheel",
-        5
-      ],
-      [
-        "Transport belt",
-        1
+        "Iron plate",
+        11.5
       ]
     ],
     "producers": [
@@ -5379,15 +5395,11 @@
     "total-raw": [
       [
         "Time",
-        2
+        25.5
       ],
       [
-        "Iron gear wheel",
-        40
-      ],
-      [
-        "Underground belt",
-        2
+        "Iron plate",
+        97.5
       ]
     ],
     "producers": [
@@ -5452,11 +5464,11 @@
     "total-raw": [
       [
         "Time",
-        6
+        16
       ],
       [
-        "Nutrients",
-        100
+        "Biter egg",
+        5
       ],
       [
         "Raw fish",
@@ -5494,19 +5506,27 @@
     "total-raw": [
       [
         "Time",
-        14
+        764
+      ],
+      [
+        "Copper plate",
+        1000
       ],
       [
         "Iron plate",
         4
       ],
       [
-        "Low density structure",
-        50
+        "Plastic bar",
+        250
       ],
       [
         "Processing unit",
         200
+      ],
+      [
+        "Steel plate",
+        100
       ],
       [
         "Uranium-235",
@@ -5542,11 +5562,11 @@
     "total-raw": [
       [
         "Time",
-        10
+        15
       ],
       [
-        "Iron gear wheel",
-        10
+        "Iron plate",
+        20
       ],
       [
         "Steel plate",
@@ -5617,19 +5637,15 @@
     "total-raw": [
       [
         "Time",
-        25
+        32.5
       ],
       [
         "Engine unit",
         5
       ],
       [
-        "Iron gear wheel",
-        15
-      ],
-      [
         "Iron plate",
-        10
+        40
       ],
       [
         "Steel plate",
@@ -5669,15 +5685,11 @@
     "total-raw": [
       [
         "Time",
-        8.5
-      ],
-      [
-        "Iron gear wheel",
-        10
+        13.5
       ],
       [
         "Iron plate",
-        28
+        48
       ],
       [
         "Steel plate",
@@ -5760,15 +5772,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Fluoroketone (cold)",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -5821,15 +5833,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Fluoroketone (hot)",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -5863,18 +5875,22 @@
     "total-raw": [
       [
         "Time",
-        20
+        23.75
       ],
       [
         "Battery",
         2
       ],
       [
+        "Copper plate",
+        4.5
+      ],
+      [
         "Electric engine unit",
         1
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         3
       ],
       [
@@ -5977,10 +5993,14 @@
     "total-raw": [
       [
         "Time",
-        10
+        47.5
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        45
+      ],
+      [
+        "Iron plate",
         30
       ],
       [
@@ -6157,11 +6177,15 @@
     "total-raw": [
       [
         "Time",
-        44
+        794
       ],
       [
         "Carbon fiber",
         100
+      ],
+      [
+        "Copper plate",
+        1000
       ],
       [
         "Fusion power cell",
@@ -6172,8 +6196,8 @@
         4
       ],
       [
-        "Low density structure",
-        50
+        "Plastic bar",
+        250
       ],
       [
         "Processing unit",
@@ -6182,6 +6206,10 @@
       [
         "Quantum processor",
         250
+      ],
+      [
+        "Steel plate",
+        100
       ],
       [
         "Supercapacitor",
@@ -6229,10 +6257,14 @@
     "total-raw": [
       [
         "Time",
-        1
+        3.5
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        3
+      ],
+      [
+        "Iron plate",
         2
       ],
       [
@@ -6309,19 +6341,15 @@
     "total-raw": [
       [
         "Time",
-        8
+        13
       ],
       [
         "Copper plate",
         10
       ],
       [
-        "Iron gear wheel",
-        10
-      ],
-      [
         "Iron plate",
-        20
+        40
       ]
     ],
     "producers": [
@@ -6549,15 +6577,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Heavy oil",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -6756,19 +6784,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        2.25
       ],
       [
-        "Electronic circuit",
-        1
-      ],
-      [
-        "Iron gear wheel",
-        1
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
-        1
+        4
       ]
     ],
     "producers": [
@@ -7067,19 +7091,15 @@
     "total-raw": [
       [
         "Time",
-        2
+        21.5
       ],
       [
-        "Electronic circuit",
-        10
+        "Copper plate",
+        15
       ],
       [
-        "Iron gear wheel",
-        10
-      ],
-      [
-        "Transport belt",
-        4
+        "Iron plate",
+        36
       ]
     ],
     "producers": [
@@ -7179,14 +7199,18 @@
     "total-raw": [
       [
         "Time",
-        20
+        45
       ],
       [
         "Battery",
         12
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        30
+      ],
+      [
+        "Iron plate",
         20
       ],
       [
@@ -7247,15 +7271,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Light oil",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -7327,19 +7351,31 @@
     "total-raw": [
       [
         "Time",
+        23
+      ],
+      [
+        "Battery",
         5
       ],
       [
-        "Accumulator",
-        1
+        "Copper plate",
+        6
       ],
       [
         "Electrolyte",
         80
       ],
       [
-        "Lightning rod",
-        1
+        "Iron plate",
+        2
+      ],
+      [
+        "Steel plate",
+        8
+      ],
+      [
+        "Stone brick",
+        4
       ],
       [
         "Supercapacitor",
@@ -7370,11 +7406,11 @@
     "total-raw": [
       [
         "Time",
-        5
+        8
       ],
       [
-        "Copper cable",
-        12
+        "Copper plate",
+        6
       ],
       [
         "Steel plate",
@@ -7488,15 +7524,19 @@
     "total-raw": [
       [
         "Time",
-        4
+        16.5
       ],
       [
-        "Electronic circuit",
-        10
+        "Copper plate",
+        15
       ],
       [
         "Engine unit",
         20
+      ],
+      [
+        "Iron plate",
+        10
       ],
       [
         "Steel plate",
@@ -7528,23 +7568,27 @@
     "total-raw": [
       [
         "Time",
-        20.5
-      ],
-      [
-        "Advanced circuit",
-        2
+        43.25
       ],
       [
         "Battery",
         2
       ],
       [
+        "Copper plate",
+        14.5
+      ],
+      [
         "Electric engine unit",
         1
       ],
       [
-        "Electronic circuit",
-        3
+        "Iron plate",
+        7
+      ],
+      [
+        "Plastic bar",
+        4
       ],
       [
         "Steel plate",
@@ -7576,23 +7620,15 @@
     "total-raw": [
       [
         "Time",
-        6.5
+        8.75
       ],
       [
-        "Electronic circuit",
-        1
-      ],
-      [
-        "Iron gear wheel",
-        1
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
-        1
-      ],
-      [
-        "Transport belt",
-        1
+        5.5
       ]
     ],
     "producers": [
@@ -7624,19 +7660,15 @@
     "total-raw": [
       [
         "Time",
-        1
+        3.25
       ],
       [
-        "Electronic circuit",
-        1
-      ],
-      [
-        "Iron gear wheel",
-        2
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
-        2
+        7
       ]
     ],
     "producers": [
@@ -7735,15 +7767,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Lubricant",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -7781,11 +7813,11 @@
     "total-raw": [
       [
         "Time",
-        85
+        14285
       ],
       [
-        "Efficiency module",
-        100
+        "Copper plate",
+        7100
       ],
       [
         "Electric engine unit",
@@ -7796,16 +7828,20 @@
         200
       ],
       [
-        "Low density structure",
-        30
+        "Iron plate",
+        3000
+      ],
+      [
+        "Plastic bar",
+        2150
       ],
       [
         "Processing unit",
         160
       ],
       [
-        "Speed module",
-        100
+        "Steel plate",
+        60
       ],
       [
         "Supercapacitor",
@@ -7845,15 +7881,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
-      ],
-      [
-        "Copper cable",
         2
       ],
       [
-        "Iron stick",
-        4
+        "Copper plate",
+        1
+      ],
+      [
+        "Iron plate",
+        2
       ],
       [
         "Steel plate",
@@ -8051,11 +8087,19 @@
     "total-raw": [
       [
         "Time",
-        15
+        300
       ],
       [
-        "Advanced circuit",
-        30
+        "Copper plate",
+        150
+      ],
+      [
+        "Iron plate",
+        60
+      ],
+      [
+        "Plastic bar",
+        60
       ],
       [
         "Steel plate",
@@ -8239,11 +8283,19 @@
     "total-raw": [
       [
         "Time",
+        57.5
+      ],
+      [
+        "Copper plate",
+        25
+      ],
+      [
+        "Iron plate",
         10
       ],
       [
-        "Advanced circuit",
-        5
+        "Plastic bar",
+        10
       ],
       [
         "Steel plate",
@@ -8275,11 +8327,15 @@
     "total-raw": [
       [
         "Time",
-        90
+        105
       ],
       [
-        "Rocket fuel",
-        1
+        "Light oil",
+        10
+      ],
+      [
+        "Solid fuel",
+        10
       ],
       [
         "Uranium-235",
@@ -8341,11 +8397,7 @@
     "total-raw": [
       [
         "Time",
-        8
-      ],
-      [
-        "Advanced circuit",
-        500
+        4758
       ],
       [
         "Concrete",
@@ -8353,7 +8405,15 @@
       ],
       [
         "Copper plate",
-        500
+        3000
+      ],
+      [
+        "Iron plate",
+        1000
+      ],
+      [
+        "Plastic bar",
+        1000
       ],
       [
         "Steel plate",
@@ -8531,15 +8591,11 @@
     "total-raw": [
       [
         "Time",
-        2
-      ],
-      [
-        "Iron gear wheel",
-        2
+        3
       ],
       [
         "Iron plate",
-        3
+        7
       ]
     ],
     "producers": [
@@ -8579,19 +8635,15 @@
     "total-raw": [
       [
         "Time",
-        13
+        30.5
       ],
       [
-        "Electronic circuit",
-        10
-      ],
-      [
-        "Iron gear wheel",
-        10
+        "Copper plate",
+        15
       ],
       [
         "Iron plate",
-        10
+        40
       ],
       [
         "Steel plate",
@@ -8639,19 +8691,15 @@
     "total-raw": [
       [
         "Time",
-        10.9
+        11.9
       ],
       [
         "Biter egg",
-        10
+        10.5
       ],
       [
         "Jellynut seed",
         5.4
-      ],
-      [
-        "Nutrients",
-        10
       ],
       [
         "Spoilage",
@@ -8701,15 +8749,11 @@
     "total-raw": [
       [
         "Time",
-        10.9
+        11.9
       ],
       [
         "Biter egg",
-        10
-      ],
-      [
-        "Nutrients",
-        10
+        10.5
       ],
       [
         "Spoilage",
@@ -8825,15 +8869,19 @@
     "total-raw": [
       [
         "Time",
-        1
+        14.25
       ],
       [
-        "Advanced circuit",
-        1
+        "Copper plate",
+        9.5
       ],
       [
-        "Electronic circuit",
-        3
+        "Iron plate",
+        5
+      ],
+      [
+        "Plastic bar",
+        2
       ],
       [
         "Steel plate",
@@ -8873,11 +8921,11 @@
     "total-raw": [
       [
         "Time",
-        15
+        18
       ],
       [
-        "Nutrients",
-        30
+        "Biter egg",
+        1.5
       ],
       [
         "Pentapod egg",
@@ -8912,19 +8960,23 @@
     "total-raw": [
       [
         "Time",
-        110
+        310
       ],
       [
         "Battery",
         60
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        250
+      ],
+      [
+        "Iron plate",
         100
       ],
       [
-        "Low density structure",
-        5
+        "Plastic bar",
+        25
       ],
       [
         "Processing unit",
@@ -8932,7 +8984,7 @@
       ],
       [
         "Steel plate",
-        100
+        110
       ]
     ],
     "producers": [
@@ -8968,19 +9020,23 @@
     "total-raw": [
       [
         "Time",
-        10
-      ],
-      [
-        "Advanced circuit",
-        10
+        125
       ],
       [
         "Battery",
         45
       ],
       [
-        "Iron gear wheel",
-        40
+        "Copper plate",
+        50
+      ],
+      [
+        "Iron plate",
+        100
+      ],
+      [
+        "Plastic bar",
+        20
       ],
       [
         "Steel plate",
@@ -9016,19 +9072,23 @@
     "total-raw": [
       [
         "Time",
-        70
-      ],
-      [
-        "Advanced circuit",
-        50
+        645
       ],
       [
         "Battery",
         225
       ],
       [
-        "Iron gear wheel",
-        200
+        "Copper plate",
+        250
+      ],
+      [
+        "Iron plate",
+        500
+      ],
+      [
+        "Plastic bar",
+        100
       ],
       [
         "Processing unit",
@@ -9068,15 +9128,15 @@
     "total-raw": [
       [
         "Time",
-        0.2
-      ],
-      [
-        "Barrel",
-        1
+        1.2
       ],
       [
         "Petroleum gas",
         50
+      ],
+      [
+        "Steel plate",
+        1
       ]
     ],
     "producers": [
@@ -9306,14 +9366,18 @@
     "total-raw": [
       [
         "Time",
-        8
+        11.75
       ],
       [
         "Coal",
         10
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        4.5
+      ],
+      [
+        "Iron plate",
         3
       ],
       [
@@ -9402,27 +9466,31 @@
     "total-raw": [
       [
         "Time",
-        25
+        14225
       ],
       [
-        "Efficiency module",
-        100
+        "Copper plate",
+        7100
       ],
       [
         "Electric engine unit",
         40
       ],
       [
-        "Low density structure",
-        30
+        "Iron plate",
+        3000
+      ],
+      [
+        "Plastic bar",
+        2150
       ],
       [
         "Processing unit",
         60
       ],
       [
-        "Speed module",
-        100
+        "Steel plate",
+        60
       ]
     ],
     "producers": [
@@ -9454,19 +9522,15 @@
     "total-raw": [
       [
         "Time",
-        2
+        5.75
       ],
       [
-        "Copper cable",
-        5
-      ],
-      [
-        "Electronic circuit",
-        2
+        "Copper plate",
+        5.5
       ],
       [
         "Iron plate",
-        5
+        7
       ]
     ],
     "producers": [
@@ -9498,15 +9562,19 @@
     "total-raw": [
       [
         "Time",
-        10
+        54
       ],
       [
-        "Advanced circuit",
-        2
+        "Copper plate",
+        40
       ],
       [
-        "Electronic circuit",
-        20
+        "Iron plate",
+        24
+      ],
+      [
+        "Plastic bar",
+        4
       ],
       [
         "Sulfuric acid",
@@ -9545,19 +9613,19 @@
     "total-raw": [
       [
         "Time",
-        33.5
+        153.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        57.5
       ],
       [
-        "Iron stick",
-        15
+        "Iron plate",
+        32.5
       ],
       [
-        "Productivity module",
-        1
+        "Plastic bar",
+        20
       ],
       [
         "Steel plate",
@@ -9597,15 +9665,19 @@
     "total-raw": [
       [
         "Time",
+        68.75
+      ],
+      [
+        "Copper plate",
+        32.5
+      ],
+      [
+        "Iron plate",
         15
       ],
       [
-        "Advanced circuit",
-        5
-      ],
-      [
-        "Electronic circuit",
-        5
+        "Plastic bar",
+        10
       ]
     ],
     "producers": [
@@ -9638,19 +9710,23 @@
     "total-raw": [
       [
         "Time",
-        30
+        352.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        155
+      ],
+      [
+        "Iron plate",
+        70
+      ],
+      [
+        "Plastic bar",
+        50
       ],
       [
         "Processing unit",
         5
-      ],
-      [
-        "Productivity module",
-        4
       ]
     ],
     "producers": [
@@ -9687,23 +9763,27 @@
     "total-raw": [
       [
         "Time",
-        60
-      ],
-      [
-        "Advanced circuit",
-        5
+        1517.5
       ],
       [
         "Biter egg",
         1
       ],
       [
-        "Processing unit",
-        5
+        "Copper plate",
+        645
       ],
       [
-        "Productivity module 2",
-        4
+        "Iron plate",
+        290
+      ],
+      [
+        "Plastic bar",
+        210
+      ],
+      [
+        "Processing unit",
+        25
       ]
     ],
     "producers": [
@@ -9740,23 +9820,15 @@
     "total-raw": [
       [
         "Time",
-        2
+        9.25
       ],
       [
-        "Copper cable",
-        5
-      ],
-      [
-        "Electronic circuit",
-        4
+        "Copper plate",
+        8.5
       ],
       [
         "Iron plate",
-        3
-      ],
-      [
-        "Iron stick",
-        4
+        9
       ]
     ],
     "producers": [
@@ -9879,19 +9951,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        21.25
       ],
       [
-        "Electronic circuit",
-        5
-      ],
-      [
-        "Iron gear wheel",
-        10
+        "Copper plate",
+        7.5
       ],
       [
         "Iron plate",
-        10
+        35
       ],
       [
         "Steel plate",
@@ -9923,15 +9991,19 @@
     "total-raw": [
       [
         "Time",
+        68.75
+      ],
+      [
+        "Copper plate",
+        32.5
+      ],
+      [
+        "Iron plate",
         15
       ],
       [
-        "Advanced circuit",
-        5
-      ],
-      [
-        "Electronic circuit",
-        5
+        "Plastic bar",
+        10
       ]
     ],
     "producers": [
@@ -9964,19 +10036,23 @@
     "total-raw": [
       [
         "Time",
-        30
+        352.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        155
+      ],
+      [
+        "Iron plate",
+        70
+      ],
+      [
+        "Plastic bar",
+        50
       ],
       [
         "Processing unit",
         5
-      ],
-      [
-        "Quality module",
-        4
       ]
     ],
     "producers": [
@@ -10013,19 +10089,23 @@
     "total-raw": [
       [
         "Time",
-        60
+        1517.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        645
+      ],
+      [
+        "Iron plate",
+        290
+      ],
+      [
+        "Plastic bar",
+        210
       ],
       [
         "Processing unit",
-        5
-      ],
-      [
-        "Quality module 2",
-        4
+        25
       ],
       [
         "Superconductor",
@@ -10135,19 +10215,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        9.25
       ],
       [
-        "Electronic circuit",
-        5
-      ],
-      [
-        "Iron gear wheel",
-        5
+        "Copper plate",
+        7.5
       ],
       [
         "Iron plate",
-        10
+        25
       ]
     ],
     "producers": [
@@ -10183,11 +10259,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        0.75
       ],
       [
-        "Iron stick",
-        1
+        "Iron plate",
+        0.5
       ],
       [
         "Steel plate",
@@ -10223,15 +10299,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        1.75
       ],
       [
-        "Electronic circuit",
-        1
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
-        5
+        6
       ]
     ],
     "producers": [
@@ -10263,11 +10339,11 @@
     "total-raw": [
       [
         "Time",
-        2.5
+        3.5
       ],
       [
-        "Iron stick",
-        4
+        "Iron plate",
+        2
       ],
       [
         "Refined concrete",
@@ -10307,15 +10383,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        1.75
       ],
       [
-        "Electronic circuit",
-        1
+        "Copper plate",
+        1.5
       ],
       [
         "Iron plate",
-        5
+        6
       ]
     ],
     "producers": [
@@ -10430,11 +10506,11 @@
     "total-raw": [
       [
         "Time",
-        25
+        27.5
       ],
       [
-        "Copper cable",
-        10
+        "Copper plate",
+        5
       ],
       [
         "Explosives",
@@ -10533,15 +10609,15 @@
     "total-raw": [
       [
         "Time",
-        3
+        23
       ],
       [
         "Concrete",
         20
       ],
       [
-        "Iron gear wheel",
-        40
+        "Iron plate",
+        80
       ],
       [
         "Processing unit",
@@ -10589,15 +10665,15 @@
     "total-raw": [
       [
         "Time",
-        15
+        17
       ],
       [
         "Concrete",
         20
       ],
       [
-        "Iron stick",
-        8
+        "Iron plate",
+        4
       ],
       [
         "Steel plate",
@@ -10663,15 +10739,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        4
       ],
       [
-        "Electronic circuit",
-        2
+        "Copper plate",
+        3
       ],
       [
-        "Iron gear wheel",
-        2
+        "Iron plate",
+        6
       ]
     ],
     "producers": [
@@ -10703,15 +10779,19 @@
     "total-raw": [
       [
         "Time",
-        1
+        14.25
       ],
       [
-        "Advanced circuit",
-        1
+        "Copper plate",
+        9.5
       ],
       [
-        "Electronic circuit",
-        3
+        "Iron plate",
+        5
+      ],
+      [
+        "Plastic bar",
+        2
       ],
       [
         "Steel plate",
@@ -10747,15 +10827,19 @@
     "total-raw": [
       [
         "Time",
-        5
+        455
       ],
       [
-        "Advanced circuit",
-        45
+        "Copper plate",
+        225
       ],
       [
-        "Iron gear wheel",
-        45
+        "Iron plate",
+        180
+      ],
+      [
+        "Plastic bar",
+        90
       ],
       [
         "Steel plate",
@@ -10902,19 +10986,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        18.75
       ],
       [
-        "Electronic circuit",
-        5
-      ],
-      [
-        "Iron gear wheel",
-        5
+        "Copper plate",
+        7.5
       ],
       [
         "Iron plate",
-        5
+        20
       ]
     ],
     "producers": [
@@ -10946,19 +11026,31 @@
     "total-raw": [
       [
         "Time",
-        3
+        33
       ],
       [
-        "Low density structure",
-        1
+        "Copper plate",
+        20
+      ],
+      [
+        "Light oil",
+        10
+      ],
+      [
+        "Plastic bar",
+        5
       ],
       [
         "Processing unit",
         1
       ],
       [
-        "Rocket fuel",
-        1
+        "Solid fuel",
+        10
+      ],
+      [
+        "Steel plate",
+        2
       ]
     ],
     "producers": ["Rocket silo"]
@@ -11053,23 +11145,19 @@
     "total-raw": [
       [
         "Time",
-        50
+        95
       ],
       [
         "Carbon fiber",
         20
       ],
       [
-        "Electronic circuit",
-        20
-      ],
-      [
-        "Iron gear wheel",
-        40
+        "Copper plate",
+        30
       ],
       [
         "Iron plate",
-        20
+        120
       ],
       [
         "Processing unit",
@@ -11181,19 +11269,19 @@
     "total-raw": [
       [
         "Time",
-        3
+        59.5
       ],
       [
-        "Advanced circuit",
-        2
+        "Copper plate",
+        60
       ],
       [
-        "Copper cable",
-        25
+        "Iron plate",
+        29
       ],
       [
-        "Electronic circuit",
-        25
+        "Plastic bar",
+        4
       ]
     ],
     "producers": [
@@ -11229,19 +11317,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        12.5
       ],
       [
         "Copper plate",
         10
       ],
       [
-        "Iron gear wheel",
-        5
-      ],
-      [
         "Iron plate",
-        15
+        25
       ],
       [
         "Wood",
@@ -11356,14 +11440,18 @@
     "total-raw": [
       [
         "Time",
-        8
+        10.5
       ],
       [
         "Coal",
         5
       ],
       [
-        "Electronic circuit",
+        "Copper plate",
+        3
+      ],
+      [
+        "Iron plate",
         2
       ],
       [
@@ -11400,11 +11488,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        1
       ],
       [
-        "Copper cable",
-        2
+        "Copper plate",
+        1
       ],
       [
         "Wood",
@@ -11441,19 +11529,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        2.5
       ],
       [
-        "Copper cable",
+        "Copper plate",
         3
       ],
       [
-        "Electronic circuit",
-        1
-      ],
-      [
         "Iron plate",
-        1
+        2
       ]
     ],
     "producers": [
@@ -11485,14 +11569,14 @@
     "total-raw": [
       [
         "Time",
-        10
+        28.75
       ],
       [
         "Copper plate",
-        5
+        27.5
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         15
       ],
       [
@@ -11530,19 +11614,23 @@
     "total-raw": [
       [
         "Time",
-        10
+        57.75
       ],
       [
-        "Advanced circuit",
-        2
+        "Copper plate",
+        37.5
       ],
       [
-        "Solar panel",
-        1
+        "Iron plate",
+        19
+      ],
+      [
+        "Plastic bar",
+        4
       ],
       [
         "Steel plate",
-        5
+        10
       ]
     ],
     "producers": [
@@ -11673,11 +11761,11 @@
     "total-raw": [
       [
         "Time",
-        10
+        15
       ],
       [
-        "Copper cable",
-        20
+        "Copper plate",
+        10
       ],
       [
         "Steel plate",
@@ -11713,11 +11801,11 @@
     "total-raw": [
       [
         "Time",
-        660
+        960
       ],
       [
-        "Copper cable",
-        1200
+        "Copper plate",
+        600
       ],
       [
         "Processing unit",
@@ -11801,15 +11889,19 @@
     "total-raw": [
       [
         "Time",
+        68.75
+      ],
+      [
+        "Copper plate",
+        32.5
+      ],
+      [
+        "Iron plate",
         15
       ],
       [
-        "Advanced circuit",
-        5
-      ],
-      [
-        "Electronic circuit",
-        5
+        "Plastic bar",
+        10
       ]
     ],
     "producers": [
@@ -11842,19 +11934,23 @@
     "total-raw": [
       [
         "Time",
-        30
+        352.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        155
+      ],
+      [
+        "Iron plate",
+        70
+      ],
+      [
+        "Plastic bar",
+        50
       ],
       [
         "Processing unit",
         5
-      ],
-      [
-        "Speed module",
-        4
       ]
     ],
     "producers": [
@@ -11891,19 +11987,23 @@
     "total-raw": [
       [
         "Time",
-        60
+        1517.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        645
+      ],
+      [
+        "Iron plate",
+        290
+      ],
+      [
+        "Plastic bar",
+        210
       ],
       [
         "Processing unit",
-        5
-      ],
-      [
-        "Speed module 2",
-        4
+        25
       ],
       [
         "Tungsten carbide",
@@ -11948,31 +12048,27 @@
     "total-raw": [
       [
         "Time",
-        129
+        1691.5
       ],
       [
         "Carbon fiber",
         20
       ],
       [
+        "Copper plate",
+        2045
+      ],
+      [
         "Electric engine unit",
         120
       ],
       [
-        "Electronic circuit",
-        30
-      ],
-      [
-        "Iron gear wheel",
-        50
-      ],
-      [
         "Iron plate",
-        48
+        178
       ],
       [
-        "Low density structure",
-        100
+        "Plastic bar",
+        500
       ],
       [
         "Processing unit",
@@ -11984,7 +12080,7 @@
       ],
       [
         "Steel plate",
-        100
+        300
       ],
       [
         "Uranium-235",
@@ -12024,19 +12120,15 @@
     "total-raw": [
       [
         "Time",
-        1
+        9.25
       ],
       [
-        "Electronic circuit",
-        5
+        "Copper plate",
+        7.5
       ],
       [
         "Iron plate",
-        5
-      ],
-      [
-        "Transport belt",
-        4
+        16
       ]
     ],
     "producers": [
@@ -12073,31 +12165,27 @@
     "total-raw": [
       [
         "Time",
-        2
-      ],
-      [
-        "Advanced circuit",
-        1
+        42
       ],
       [
         "Carbon fiber",
         2
       ],
       [
-        "Electronic circuit",
-        18
-      ],
-      [
-        "Iron gear wheel",
-        16
+        "Copper plate",
+        32
       ],
       [
         "Iron plate",
-        3
+        55
       ],
       [
         "Jelly",
         10
+      ],
+      [
+        "Plastic bar",
+        2
       ],
       [
         "Processing unit",
@@ -12163,15 +12251,11 @@
     "total-raw": [
       [
         "Time",
-        3
-      ],
-      [
-        "Iron gear wheel",
-        8
+        7
       ],
       [
         "Iron plate",
-        15
+        31
       ]
     ],
     "producers": [
@@ -12203,19 +12287,15 @@
     "total-raw": [
       [
         "Time",
-        13
+        38
       ],
       [
         "Copper plate",
         50
       ],
       [
-        "Iron gear wheel",
-        50
-      ],
-      [
         "Iron plate",
-        20
+        120
       ]
     ],
     "producers": [
@@ -12421,15 +12501,19 @@
     "total-raw": [
       [
         "Time",
-        1
+        14.25
       ],
       [
-        "Advanced circuit",
-        1
+        "Copper plate",
+        9.5
       ],
       [
-        "Electronic circuit",
-        3
+        "Iron plate",
+        5
+      ],
+      [
+        "Plastic bar",
+        2
       ],
       [
         "Steel plate",
@@ -12501,19 +12585,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        15
       ],
       [
         "Copper plate",
         5
       ],
       [
-        "Iron gear wheel",
-        10
-      ],
-      [
         "Iron plate",
-        10
+        30
       ]
     ],
     "producers": [
@@ -12545,15 +12625,19 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        49.5
       ],
       [
-        "Advanced circuit",
-        5
+        "Copper plate",
+        28
       ],
       [
-        "Copper cable",
-        6
+        "Iron plate",
+        10
+      ],
+      [
+        "Plastic bar",
+        10
       ],
       [
         "Steel plate",
@@ -12670,10 +12754,10 @@
     "total-raw": [
       [
         "Time",
-        0.2
+        1.2
       ],
       [
-        "Barrel",
+        "Steel plate",
         1
       ],
       [
@@ -12716,23 +12800,27 @@
     "total-raw": [
       [
         "Time",
-        10
+        15
       ],
       [
         "Battery",
         1
       ],
       [
+        "Copper plate",
+        6
+      ],
+      [
         "Electrolyte",
         10
       ],
       [
-        "Electronic circuit",
-        4
-      ],
-      [
         "Holmium plate",
         2
+      ],
+      [
+        "Iron plate",
+        4
       ],
       [
         "Superconductor",
@@ -12818,19 +12906,23 @@
     "total-raw": [
       [
         "Time",
-        5
+        107.5
       ],
       [
-        "Advanced circuit",
-        10
+        "Copper plate",
+        50
       ],
       [
         "Engine unit",
         32
       ],
       [
-        "Iron gear wheel",
-        15
+        "Iron plate",
+        50
+      ],
+      [
+        "Plastic bar",
+        20
       ],
       [
         "Steel plate",
@@ -13117,15 +13209,23 @@
     "total-raw": [
       [
         "Time",
-        10
-      ],
-      [
-        "Advanced circuit",
-        3
+        38.5
       ],
       [
         "Carbon fiber",
         10
+      ],
+      [
+        "Copper plate",
+        15
+      ],
+      [
+        "Iron plate",
+        6
+      ],
+      [
+        "Plastic bar",
+        6
       ]
     ],
     "producers": [
@@ -13161,19 +13261,15 @@
     "total-raw": [
       [
         "Time",
-        0.5
+        8.25
       ],
       [
-        "Electronic circuit",
-        5
+        "Copper plate",
+        7.5
       ],
       [
         "Iron plate",
-        6
-      ],
-      [
-        "Iron stick",
-        6
+        14
       ],
       [
         "Steel plate",
@@ -13209,15 +13305,11 @@
     "total-raw": [
       [
         "Time",
-        0.5
-      ],
-      [
-        "Iron gear wheel",
         1
       ],
       [
         "Iron plate",
-        1
+        3
       ]
     ],
     "producers": [
@@ -13452,15 +13544,11 @@
     "total-raw": [
       [
         "Time",
-        1
+        3.5
       ],
       [
         "Iron plate",
-        10
-      ],
-      [
-        "Transport belt",
-        5
+        17.5
       ]
     ],
     "producers": [
@@ -13666,23 +13754,27 @@
     "total-raw": [
       [
         "Time",
-        41
+        89.75
       ],
       [
         "Battery",
         2
       ],
       [
+        "Copper plate",
+        64.5
+      ],
+      [
         "Electric engine unit",
         1
       ],
       [
-        "Electronic circuit",
+        "Iron plate",
         3
       ],
       [
-        "Low density structure",
-        3
+        "Plastic bar",
+        15
       ],
       [
         "Processing unit",
@@ -13690,7 +13782,7 @@
       ],
       [
         "Steel plate",
-        1
+        7
       ]
     ],
     "producers": [
@@ -13718,10 +13810,10 @@
     "total-raw": [
       [
         "Time",
-        0.2
+        1.2
       ],
       [
-        "Barrel",
+        "Steel plate",
         1
       ],
       [

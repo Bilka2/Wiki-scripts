@@ -54,10 +54,7 @@
       "Toolbelt equipment"
     ],
     "stack-size": 200,
-    "required-technologies": [
-      "Advanced circuit",
-      "Recycling"
-    ]
+    "required-technologies": ["Advanced circuit"]
   },
   "Agricultural science pack": {
     "stack-size": 200,
@@ -147,10 +144,7 @@
       "Supercapacitor"
     ],
     "stack-size": 200,
-    "required-technologies": [
-      "Battery",
-      "Recycling"
-    ]
+    "required-technologies": ["Battery"]
   },
   "Personal battery": {
     "consumers": ["Personal battery MK2"],
@@ -382,8 +376,7 @@
     "stack-size": 100,
     "required-technologies": [
       "Concrete",
-      "Foundry",
-      "Recycling"
+      "Foundry"
     ]
   },
   "Constant combinator": {
@@ -425,8 +418,7 @@
     "stack-size": 200,
     "required-technologies": [
       "Electronics",
-      "Foundry",
-      "Recycling"
+      "Foundry"
     ]
   },
   "Copper ore": {
@@ -862,7 +854,6 @@
     "required-technologies": [
       "Advanced asteroid processing",
       "Planet discovery Aquilo",
-      "Recycling",
       "Space platform"
     ]
   },
@@ -937,10 +928,7 @@
       "Transport belt"
     ],
     "stack-size": 100,
-    "required-technologies": [
-      "Foundry",
-      "Recycling"
-    ]
+    "required-technologies": ["Foundry"]
   },
   "Iron ore": {
     "consumers": [
@@ -1142,8 +1130,7 @@
     "stack-size": 50,
     "required-technologies": [
       "Foundry",
-      "Low density structure",
-      "Recycling"
+      "Low density structure"
     ]
   },
   "Lubricant barrel": {
@@ -1400,10 +1387,7 @@
       "Utility science pack"
     ],
     "stack-size": 100,
-    "required-technologies": [
-      "Processing unit",
-      "Recycling"
-    ]
+    "required-technologies": ["Processing unit"]
   },
   "Production science pack": {
     "stack-size": 200,
@@ -1648,8 +1632,7 @@
     "required-technologies": [
       "Advanced oil processing",
       "Oil processing",
-      "Planet discovery Aquilo",
-      "Recycling"
+      "Planet discovery Aquilo"
     ]
   },
   "Space platform foundation": {
@@ -1820,7 +1803,6 @@
     "stack-size": 100,
     "required-technologies": [
       "Foundry",
-      "Recycling",
       "Steel processing"
     ]
   },
@@ -1835,10 +1817,7 @@
       "Stone furnace"
     ],
     "stack-size": 50,
-    "required-technologies": [
-      "Foundry",
-      "Recycling"
-    ]
+    "required-technologies": ["Foundry"]
   },
   "Stone brick": {
     "consumers": [
