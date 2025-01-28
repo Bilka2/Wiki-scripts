@@ -87,8 +87,9 @@ def main(testing):
   
   wanted_pages = get_wantedpages(session, api_url, qpoffset = '0')
   wanted_pages.extend(get_wantedpages(session, api_url, qpoffset = '5000'))
+  wanted_pages.extend(get_wantedpages(session, api_url, qpoffset = '10000'))
   #TODO: Automatically check if this is needed:
-  #wanted_pages.extend(get_wantedpages(session, api_url, qpoffset = '10000'))
+  #wanted_pages.extend(get_wantedpages(session, api_url, qpoffset = '15000'))
   print('Converting wanted pages')
   
   WantedPage.stubs = [page['title'] for page in get_categorymembers(session, api_url, 'Category:Stubs')]
