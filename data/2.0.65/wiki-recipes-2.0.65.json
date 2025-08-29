@@ -1932,7 +1932,7 @@
       ],
       [
         "Copper plate",
-        19.5
+        7.5
       ],
       [
         "Iron plate",
@@ -1940,7 +1940,7 @@
       ],
       [
         "Steel plate",
-        3
+        1.5
       ]
     ],
     "producers": [
@@ -1972,7 +1972,7 @@
       ],
       [
         "Copper plate",
-        404.5
+        212.5
       ],
       [
         "Iron plate",
@@ -1984,7 +1984,7 @@
       ],
       [
         "Steel plate",
-        48
+        24
       ]
     ],
     "producers": [
@@ -2104,7 +2104,7 @@
       ],
       [
         "Copper plate",
-        93
+        45
       ],
       [
         "Iron plate",
@@ -2116,7 +2116,7 @@
       ],
       [
         "Steel plate",
-        12
+        6
       ]
     ],
     "producers": [
@@ -4764,7 +4764,7 @@
       ],
       [
         "Copper plate",
-        5
+        1
       ],
       [
         "Iron plate",
@@ -4772,7 +4772,7 @@
       ],
       [
         "Steel plate",
-        1
+        0.5
       ],
       [
         "Stone brick",
@@ -5330,33 +5330,37 @@
     "recipe": [
       [
         "Time",
-        3
+        6
       ],
       [
         "Copper plate",
-        5
+        2
       ],
       [
         "Firearm magazine",
-        1
+        2
       ],
       [
         "Steel plate",
         1
       ]
     ],
+    "recipe-output": [[
+      "Piercing rounds magazine",
+      2
+    ]],
     "total-raw": [
       [
         "Time",
-        4
+        8
       ],
       [
         "Copper plate",
-        5
+        2
       ],
       [
         "Iron plate",
-        4
+        8
       ],
       [
         "Steel plate",
@@ -8298,7 +8302,7 @@
       ],
       [
         "Copper plate",
-        5
+        1
       ],
       [
         "Iron plate",
@@ -8306,7 +8310,7 @@
       ],
       [
         "Steel plate",
-        1
+        0.5
       ],
       [
         "Uranium-238",

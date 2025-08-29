@@ -61,7 +61,7 @@ def check_if_all_prototypes_are_on_page():
 
 
 def convert_data_raw(version):
-  with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{version}/data-raw-tree-{version}.json', 'r') as f:
+  with open(os.path.dirname(os.path.abspath(__file__)) + f'/data/{version}-space-age/data-raw-tree-{version}.json', 'r') as f:
     dataRawJson = json.load(f)
   
   out = ''
@@ -387,7 +387,7 @@ if __name__ == '__main__':
   # move_page_test()
   # create_page_test()
   
-  print(convert_data_raw('2.0.10'))
+  print(convert_data_raw('2.0.65'))
   
   # update_tech_icons()
   # update_icons()

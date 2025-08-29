@@ -508,7 +508,7 @@
       ],
       [
         "Solid fuel",
-        3
+        10
       ],
       [
         "Water",
@@ -526,7 +526,7 @@
       ],
       [
         "Solid fuel",
-        3
+        10
       ],
       [
         "Water",
@@ -3783,7 +3783,7 @@
       ],
       [
         "Copper plate",
-        19.5
+        7.5
       ],
       [
         "Iron plate",
@@ -3791,7 +3791,7 @@
       ],
       [
         "Steel plate",
-        3
+        1.5
       ]
     ],
     "producers": [
@@ -3827,7 +3827,7 @@
       ],
       [
         "Copper plate",
-        372
+        180
       ],
       [
         "Iron plate",
@@ -3843,7 +3843,7 @@
       ],
       [
         "Steel plate",
-        52
+        28
       ]
     ],
     "producers": [
@@ -3964,7 +3964,7 @@
       ],
       [
         "Copper plate",
-        93
+        45
       ],
       [
         "Iron plate",
@@ -3976,7 +3976,7 @@
       ],
       [
         "Steel plate",
-        12
+        6
       ]
     ],
     "producers": [
@@ -8047,7 +8047,7 @@
       ],
       [
         "Copper plate",
-        5
+        1
       ],
       [
         "Iron plate",
@@ -8055,7 +8055,7 @@
       ],
       [
         "Steel plate",
-        1
+        0.5
       ],
       [
         "Stone brick",
@@ -9148,33 +9148,37 @@
     "recipe": [
       [
         "Time",
-        3
+        6
       ],
       [
         "Copper plate",
-        5
+        2
       ],
       [
         "Firearm magazine",
-        1
+        2
       ],
       [
         "Steel plate",
         1
       ]
     ],
+    "recipe-output": [[
+      "Piercing rounds magazine",
+      2
+    ]],
     "total-raw": [
       [
         "Time",
-        4
+        8
       ],
       [
         "Copper plate",
-        5
+        2
       ],
       [
         "Iron plate",
-        4
+        8
       ],
       [
         "Steel plate",
@@ -11644,29 +11648,29 @@
     "recipe": [
       [
         "Time",
-        1
+        0.5
       ],
       [
         "Ammonia",
-        50
+        15
       ],
       [
         "Crude oil",
-        20
+        6
       ]
     ],
     "total-raw": [
       [
         "Time",
-        1
+        0.5
       ],
       [
         "Ammonia",
-        50
+        15
       ],
       [
         "Crude oil",
-        20
+        6
       ]
     ],
     "producers": [
@@ -13706,7 +13710,7 @@
       ],
       [
         "Copper plate",
-        5
+        1
       ],
       [
         "Iron plate",
@@ -13714,7 +13718,7 @@
       ],
       [
         "Steel plate",
-        1
+        0.5
       ],
       [
         "Uranium-238",

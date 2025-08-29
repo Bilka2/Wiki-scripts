@@ -986,7 +986,7 @@
       "Captive biter spawner",
       "Overgrowth soil",
       "Productivity module 3, 3",
-      "Quantum processor"
+      "Promethium science pack"
     ]
   },
   "Braking force": {
@@ -4523,7 +4523,10 @@
       ]
     ],
     "cost-multiplier": 0,
-    "required-technologies": ["Fusion reactor"],
+    "required-technologies": [
+      "Biter egg handling",
+      "Fusion reactor"
+    ],
     "allows": ["Research productivity"],
     "effects": ["Promethium science pack"]
   },
@@ -4667,10 +4670,7 @@
       ]
     ],
     "cost-multiplier": 500,
-    "required-technologies": [
-      "Biter egg handling",
-      "Cryogenic science pack"
-    ],
+    "required-technologies": ["Cryogenic science pack"],
     "allows": [
       "Fusion reactor",
       "Railgun"
