@@ -72,7 +72,12 @@ class EntityInfobox: # also does tile colors
     
     
 class TechnologyInfobox:    
-  def __init__(self, name, data): # TODO space-age + changed
+  def __init__(self, name, vanilla_data, space_age_data): # TODO space-age + changed
+    # TODO space-age + changed
+    # TODO needs extra handling for quality/elevated rails mod without space age mod. Affected infoboxes:
+    # Infobox:Epic quality (research), Infobox:Elevated rail (research), 	Infobox:Legendary quality (research), Infobox:Quality module 2 (research), Infobox:Quality module 3 (research), Infobox:Recycling (research)
+    # TODO Also maybe a problem: Infobox:Foundry (research)
+    data = vanilla_data or space_age_data
     self.name = name + ' (research)'
     self.cost_multiplier = Number('cost-multiplier', DictUtil.get_optional_number(data, 'cost-multiplier'))
     self.cost = IconWithCaptionList('cost', DictUtil.get_optional_list(data, 'cost'))
@@ -89,6 +94,7 @@ class TechnologyInfobox:
     return [self.cost_multiplier, self.cost, self.trigger, self.allows, self.effects, self.required_technologies, self.internal_name, self.prototype_type, self.category, self.expensive_cost_multiplier]
 
 
+# TODO Infoboxes that incorrectly get required technologies removed: Infobox:Space platform hub, Infobox:Space science pack
 class ItemInfobox:
   def __init__(self, name, vanilla_data, space_age_data):
     self.name = name
@@ -113,8 +119,9 @@ class ItemInfobox:
         # to remove the properties from the infobox if the property is set but not actually different
         if not hasattr(self, 'space_age_stack_size'):
           self.space_age_stack_size = Number('space-age-stack-size', 0)
-        if not hasattr(self, 'space_age_consumers'):
-          self.space_age_consumers = IconWithCaptionList_from_list_of_strings('consumers', [])
+        # TODO confused yelling
+        # if not hasattr(self, 'space_age_consumers'):
+        #   self.space_age_consumers = IconWithCaptionList_from_list_of_strings('consumers', [])
       
       # TODO handle space age required technologies
       self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(vanilla_data, 'required-technologies'))
@@ -132,19 +139,23 @@ class ItemInfobox:
     # TODO fix the broken required technologies
     if not name in ['Spoilage', 'Metallic asteroid chunk', 'Carbonic asteroid chunk', 'Oxide asteroid chunk', 'Nutrients', 'Jellynut seed', 'Yumako seed', 'Iron bacteria', 'Copper bacteria', 'Ice', 'Carbon', 'Calcite']:
       self.req_tech = IconWithCaptionList_from_list_of_strings('required-technologies', DictUtil.get_optional_list(data, 'required-technologies'))
-    # when adding spoil ticks remember that spoil time is in minutes on the wiki - or maybe not because someone asked for that to be removed. in that case, include the unit here
+    # TODO when adding spoil ticks remember that spoil time is in minutes on the wiki - or maybe not because someone asked for that to be removed. in that case, include the unit here
     
   def get_all_properties(self):
     if hasattr(self, 'changed_by_space_age_mod'):
-      return [self.consumers, self.stack_size, self.req_tech, self.changed_by_space_age_mod, self.space_age_stack_size, self.space_age_consumers]
+      return [self.consumers, self.stack_size, self.req_tech, self.changed_by_space_age_mod, self.space_age_stack_size] # TODO , self.space_age_consumers
     elif hasattr(self, 'req_tech'): # TODO fix the broken required technologies and remove this elif 
       return [self.consumers, self.stack_size, self.req_tech]
     else:
       return [self.consumers, self.stack_size]
-    
 
+
+# TODO Infoboxes that are incorrectly changed: Infobox:Space science pack, Infobox:Quality module, Infobox:Quality module 2, Infobox:Quality module 3, Infobox:Biter egg
+# TODO Pistol hopefully not anymore
 class RecipeInfobox:
-  def __init__(self, name, data): # TODO changed
+  def __init__(self, name, vanilla_data, space_age_data): # TODO (space-age??) + changed
+    # TODO (space-age??) + changed
+    data = vanilla_data or space_age_data
     self.name = name
     self.recipe = Recipe('recipe', data['recipe'], DictUtil.get_optional_list(data, 'recipe-output'))
     self.total_raw = Recipe('total-raw', data['total-raw'], [])
@@ -220,7 +231,8 @@ class NumberWithQuality(Number):
     self.multiplier = multiplier
     
   def value_for_level(self, level):
-    return math.floor(self.number * (1 + self.multiplier * level))
+    raw = self.number * (1 + self.multiplier * level)
+    return math.floor(raw + 0.5)
     
   def get_data_string(self):
     return f'{{{{Quality|{self.number}|{self.value_for_level(1)}|{self.value_for_level(2)}|{self.value_for_level(3)}|{self.value_for_level(5)}}}}}'
@@ -308,7 +320,7 @@ class TechnologyTrigger(Property):
     
   def get_data_string(self):
     ret = self.trigger_type
-    if not self.trigger_object.is_empty():
+    if self.trigger_object and not self.trigger_object.is_empty():
       ret = ret + ": " + str(self.trigger_object)
     return ret
     
@@ -379,10 +391,11 @@ class InfoboxUpdate:
   no_infobox += ["Cooling hot fluoroketone", "Ammoniacal solution separation"] # These recipes should ideally just be in the fluid infoboxes (Fluoroketone (cold), Ammonia)
   # Wood processing recipe should go into Tree seed infobox
   no_infobox += ["Advanced carbonic asteroid crushing", "Advanced metallic asteroid crushing", "Advanced oxide asteroid crushing", "Carbonic asteroid crushing", "Carbonic asteroid reprocessing", "Metallic asteroid crushing", "Metallic asteroid reprocessing", "Oxide asteroid crushing", "Oxide asteroid reprocessing"] # Space age exclusions that I'm ????? about
-  # ???? https://wiki.factorio.com/index.php?title=Fish_breeding&redirect=no
   # should get infobox: "Ice melting"
   # should coal synthesis really get an infobox?
+  # ???? https://wiki.factorio.com/index.php?title=Fish_breeding&redirect=no
   # yumako mash and jellynut processing - on jelly/mash or in seed infoboxes? same question re redirects https://wiki.factorio.com/index.php?title=Jellynut_processing&redirect=no
+  # ???? https://wiki.factorio.com/Infobox:Wood_processing
   # where is flourine map color + mining time?? entity doesnt seem to end up in fluid infobox
   re_start_of_infobox = re.compile('{{infobox', re.I)
 
@@ -471,6 +484,6 @@ class InfoboxUpdate:
     
 if __name__ == '__main__':
   #InfoboxUpdate([InfoboxType.Entity, InfoboxType.Technology, InfoboxType.Item, InfoboxType.Recipe, InfoboxType.Prototype], 'https://wiki.factorio.com/api.php', '2.0.15', False)
-  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Prototype, InfoboxType.Item], 'https://wiki.factorio.com/api.php', '2.0.15', False)
+  InfoboxUpdate([InfoboxType.Entity, InfoboxType.Prototype, InfoboxType.Item], 'https://wiki.factorio.com/api.php', '2.0.66', False)
   #InfoboxUpdate([InfoboxType.Prototype, InfoboxType.Entity, InfoboxType.Item], 'https://wiki.factorio.com/api.php', '2.0.15', True)
   
