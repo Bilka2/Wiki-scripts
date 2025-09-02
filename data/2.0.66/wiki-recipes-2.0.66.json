@@ -5482,16 +5482,6 @@
       "Character"
     ]
   },
-  "Pistol": {
-    "recipe": [],
-    "total-raw": [],
-    "producers": [
-      "Assembling machine 1",
-      "Assembling machine 2",
-      "Assembling machine 3",
-      "Character"
-    ]
-  },
   "Plastic bar": {
     "recipe": [
       [

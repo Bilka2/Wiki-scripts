@@ -42,7 +42,7 @@
       "Utility science pack"
     ],
     "allows": [
-      "Asteroid productivity",
+      "Asteroid productivity, 1",
       "Planet discovery Aquilo"
     ],
     "effects": [
@@ -74,7 +74,7 @@
     "allows": [
       "Bulk inserter",
       "Chemical science pack",
-      "Mining productivity",
+      "Mining productivity, 1",
       "Modular armor",
       "Modules"
     ],
@@ -218,11 +218,11 @@
       "Carbon fiber",
       "Efficiency module 3, 3",
       "Epic quality",
-      "Health",
-      "Plastic bar productivity",
-      "Refined flammables",
-      "Rocket fuel productivity",
-      "Stronger explosives",
+      "Health, 1",
+      "Plastic bar productivity, 1",
+      "Refined flammables, 7",
+      "Rocket fuel productivity, 1",
+      "Stronger explosives, 7",
       "Tree seeding"
     ],
     "effects": ["Agricultural science pack"]
@@ -304,9 +304,9 @@
       "Radar"
     ],
     "allows": [
-      "Artillery shell damage",
-      "Artillery shell range",
-      "Artillery shell shooting speed"
+      "Artillery shell damage, 1",
+      "Artillery shell range, 1",
+      "Artillery shell shooting speed, 1"
     ],
     "effects": [
       "Artillery shell",
@@ -470,8 +470,9 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
-    "required-technologies": ["Advanced asteroid processing"]
+    "cost-multiplier": 1500,
+    "required-technologies": ["Advanced asteroid processing"],
+    "allows": ["Asteroid productivity, 2-&infin;"]
   },
   "Asteroid reprocessing": {
     "internal-name": "asteroid-reprocessing",
@@ -619,7 +620,7 @@
     "allows": [
       "Concrete",
       "Fluid handling",
-      "Lab research speed"
+      "Lab research speed, 1"
     ],
     "effects": ["Assembling machine 2"]
   },
@@ -1039,7 +1040,7 @@
       "Logistics 2, 2"
     ],
     "allows": [
-      "Inserter capacity bonus",
+      "Inserter capacity bonus, 1",
       "Stack inserter"
     ],
     "effects": ["Bulk inserter"]
@@ -1099,11 +1100,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -1226,21 +1227,21 @@
       "Advanced combinators",
       "Advanced material processing 2, 2",
       "Advanced oil processing",
-      "Braking force",
+      "Braking force, 1",
       "Electric energy distribution 2, 2",
-      "Follower robot count",
-      "Inserter capacity bonus",
+      "Follower robot count, 3",
+      "Inserter capacity bonus, 3",
       "Laser",
       "Low density structure",
       "Military 3, 3",
-      "Mining productivity",
-      "Physical projectile damage",
+      "Mining productivity, 2",
+      "Physical projectile damage, 5",
       "Processing unit",
-      "Refined flammables",
-      "Lab research speed",
-      "Stronger explosives",
+      "Refined flammables, 3",
+      "Lab research speed, 3",
+      "Stronger explosives, 3",
       "Uranium mining",
-      "Weapon shooting speed"
+      "Weapon shooting speed, 5"
     ],
     "effects": ["Chemical science pack"]
   },
@@ -1433,7 +1434,7 @@
       "Foundation",
       "Legendary quality",
       "Quantum processor",
-      "Rocket part productivity"
+      "Rocket part productivity, 1"
     ],
     "effects": ["Cryogenic science pack"]
   },
@@ -1461,7 +1462,7 @@
     "required-technologies": ["Military science pack"],
     "allows": [
       "Distractor",
-      "Follower robot count"
+      "Follower robot count, 1"
     ],
     "effects": ["Defender capsule"]
   },
@@ -1500,8 +1501,8 @@
       "Speed module"
     ],
     "allows": [
-      "Electric weapons damage",
-      "Follower robot count"
+      "Electric weapons damage, 1",
+      "Follower robot count, 4"
     ],
     "effects": ["Destroyer capsule"]
   },
@@ -1885,12 +1886,12 @@
       "Mech armor",
       "Personal roboport MK2",
       "Planet discovery Aquilo",
-      "Processing unit productivity",
+      "Processing unit productivity, 1",
       "Quality module 3, 3",
       "Rail support foundations",
-      "Scrap recycling productivity",
+      "Scrap recycling productivity, 1",
       "Tesla weapons",
-      "Worker robot speed"
+      "Worker robot speed, 7"
     ],
     "effects": ["Electromagnetic science pack"]
   },
@@ -2206,7 +2207,7 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 500,
     "required-technologies": ["Tree seeding"],
     "effects": [
       "Fish breeding",
@@ -2279,7 +2280,7 @@
       "Flammables",
       "Military science pack"
     ],
-    "allows": ["Refined flammables"],
+    "allows": ["Refined flammables, 1"],
     "effects": [
       "Flamethrower",
       "Flamethrower ammo",
@@ -2442,11 +2443,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -2454,7 +2455,7 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 2000,
     "required-technologies": ["Cryogenic science pack"],
     "effects": ["Foundation"]
   },
@@ -2524,11 +2525,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -2584,11 +2585,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -2662,12 +2663,13 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 100,
     "required-technologies": [
       "Agricultural science pack",
       "Military science pack",
       "Utility science pack"
-    ]
+    ],
+    "allows": ["Health, 2-&infin;"]
   },
   "Heating tower": {
     "internal-name": "heating-tower",
@@ -2885,9 +2887,9 @@
     ],
     "allows": [
       "Distractor",
-      "Laser shooting speed",
+      "Laser shooting speed, 1",
       "Laser turret",
-      "Laser weapons damage"
+      "Laser weapons damage, 1"
     ]
   },
   "Laser shooting speed": {
@@ -3023,11 +3025,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -3077,7 +3079,7 @@
     "internal-name": "lithium-processing",
     "trigger-type": "mine-entity",
     "trigger-object": [
-      "Lithium iceberg big",
+      "Big lithium ice formation",
       1
     ],
     "required-technologies": ["Planet discovery Aquilo"],
@@ -3140,10 +3142,10 @@
       "Landfill",
       "Logistics 2, 2",
       "Military 2, 2",
-      "Physical projectile damage",
+      "Physical projectile damage, 2",
       "Solar energy",
       "Toolbelt",
-      "Weapon shooting speed"
+      "Weapon shooting speed, 2"
     ],
     "effects": ["Logistic science pack"]
   },
@@ -3327,11 +3329,12 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 1500,
     "required-technologies": [
       "Metallurgic science pack",
       "Production science pack"
-    ]
+    ],
+    "allows": ["Low density structure productivity, 2-&infin;"]
   },
   "Lubricant": {
     "internal-name": "lubricant",
@@ -3417,7 +3420,7 @@
       "Asteroid reprocessing",
       "Cliff explosives",
       "Coal liquefaction",
-      "Low density structure productivity",
+      "Low density structure productivity, 1",
       "Rail support foundations",
       "Speed module 3, 3",
       "Turbo transport belt"
@@ -3441,8 +3444,8 @@
     "allows": [
       "Heavy armor",
       "Military 2, 2",
-      "Physical projectile damage",
-      "Weapon shooting speed"
+      "Physical projectile damage, 1",
+      "Weapon shooting speed, 1"
     ],
     "effects": [
       "Shotgun",
@@ -3475,7 +3478,7 @@
     "allows": [
       "Gate",
       "Military science pack",
-      "Stronger explosives"
+      "Stronger explosives, 1"
     ],
     "effects": [
       "Grenade",
@@ -3602,16 +3605,16 @@
       "Energy shield equipment",
       "Portable fission reactor",
       "Flamethrower",
-      "Health",
+      "Health, 1",
       "Land mines",
-      "Laser shooting speed",
+      "Laser shooting speed, 1",
       "Laser turret",
-      "Laser weapons damage",
+      "Laser weapons damage, 1",
       "Military 3, 3",
-      "Physical projectile damage",
+      "Physical projectile damage, 3",
       "Rocketry",
-      "Stronger explosives",
-      "Weapon shooting speed"
+      "Stronger explosives, 2",
+      "Weapon shooting speed, 3"
     ],
     "effects": ["Military science pack"]
   },
@@ -4014,11 +4017,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ]
     ],
@@ -4163,11 +4166,12 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 1500,
     "required-technologies": [
       "Agricultural science pack",
       "Production science pack"
-    ]
+    ],
+    "allows": ["Plastic bar productivity, 2-&infin;"]
   },
   "Plastics": {
     "internal-name": "plastics",
@@ -4324,11 +4328,12 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 1500,
     "required-technologies": [
       "Electromagnetic science pack",
       "Production science pack"
-    ]
+    ],
+    "allows": ["Processing unit productivity, 2-&infin;"]
   },
   "Production science pack": {
     "internal-name": "production-science-pack",
@@ -4360,26 +4365,26 @@
       "Advanced asteroid processing",
       "Automation 3, 3",
       "Biolab",
-      "Braking force",
+      "Braking force, 3",
       "Effect transmission",
       "Elevated rail",
-      "Follower robot count",
-      "Inserter capacity bonus",
+      "Follower robot count, 5",
+      "Inserter capacity bonus, 4",
       "Logistics 3, 3",
-      "Low density structure productivity",
-      "Mining productivity",
+      "Low density structure productivity, 1",
+      "Mining productivity, 3",
       "Nuclear fuel reprocessing",
       "Overgrowth soil",
-      "Plastic bar productivity",
-      "Processing unit productivity",
-      "Lab research speed",
-      "Rocket fuel productivity",
-      "Scrap recycling productivity",
+      "Plastic bar productivity, 1",
+      "Processing unit productivity, 1",
+      "Lab research speed, 5",
+      "Rocket fuel productivity, 1",
+      "Scrap recycling productivity, 1",
       "Spidertron",
       "Stack inserter",
-      "Steel plate productivity",
-      "Worker robot speed",
-      "Worker robot cargo size"
+      "Steel plate productivity, 1",
+      "Worker robot speed, 5",
+      "Worker robot cargo size, 2"
     ],
     "effects": ["Production science pack"]
   },
@@ -4510,11 +4515,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -4522,12 +4527,12 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 2000,
     "required-technologies": [
       "Biter egg handling",
       "Fusion reactor"
     ],
-    "allows": ["Research productivity"],
+    "allows": ["Research productivity, 1"],
     "effects": ["Promethium science pack"]
   },
   "Quality module": {
@@ -4657,11 +4662,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -4781,11 +4786,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -4796,8 +4801,8 @@
     "cost-multiplier": 2000,
     "required-technologies": ["Quantum processor"],
     "allows": [
-      "Railgun damage",
-      "Railgun shooting speed"
+      "Railgun damage, 1",
+      "Railgun shooting speed, 1"
     ],
     "effects": [
       "Railgun",
@@ -4916,7 +4921,7 @@
     ],
     "allows": [
       "Automated rail transportation",
-      "Braking force",
+      "Braking force, 1",
       "Fluid wagon",
       "Production science pack"
     ],
@@ -4931,7 +4936,7 @@
     "internal-name": "recycling",
     "trigger-type": "mine-entity",
     "trigger-object": [
-      "Fulgoran ruin vault",
+      "Fulgoran vault ruin",
       1
     ],
     "required-technologies": ["Planet discovery Fulgora"],
@@ -5021,11 +5026,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -5037,8 +5042,9 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
-    "required-technologies": ["Promethium science pack"]
+    "cost-multiplier": 1200,
+    "required-technologies": ["Promethium science pack"],
+    "allows": ["Research productivity, 2-&infin;"]
   },
   "Lab research speed": {
     "internal-name": "research-speed-1",
@@ -5089,8 +5095,8 @@
       "Construction robotics",
       "Logistic robotics",
       "Utility science pack",
-      "Worker robot speed",
-      "Worker robot cargo size"
+      "Worker robot speed, 1",
+      "Worker robot cargo size, 1"
     ],
     "effects": ["Flying robot frame"]
   },
@@ -5150,11 +5156,12 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 1500,
     "required-technologies": [
       "Agricultural science pack",
       "Production science pack"
-    ]
+    ],
+    "allows": ["Rocket fuel productivity, 2-&infin;"]
   },
   "Rocket part productivity": {
     "internal-name": "rocket-part-productivity",
@@ -5184,8 +5191,9 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
-    "required-technologies": ["Cryogenic science pack"]
+    "cost-multiplier": 3000,
+    "required-technologies": ["Cryogenic science pack"],
+    "allows": ["Rocket part productivity, 2-&infin;"]
   },
   "Rocket silo": {
     "internal-name": "rocket-silo",
@@ -5261,7 +5269,7 @@
     "required-technologies": [
       "Carbon fiber",
       "Rocketry",
-      "Stronger explosives 2, 2"
+      "Stronger explosives, 2"
     ],
     "allows": [
       "Planet discovery Aquilo",
@@ -5337,11 +5345,12 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 750,
     "required-technologies": [
       "Electromagnetic science pack",
       "Production science pack"
-    ]
+    ],
+    "allows": ["Scrap recycling productivity, 2-&infin;"]
   },
   "Solar energy": {
     "internal-name": "solar-energy",
@@ -5462,19 +5471,19 @@
     "required-technologies": ["Space platform"],
     "allows": [
       "Efficiency module 2, 2",
-      "Electric weapons damage",
-      "Follower robot count",
+      "Electric weapons damage, 2",
+      "Follower robot count, 5",
       "Kovarex enrichment process",
-      "Laser weapons damage",
+      "Laser weapons damage, 7",
       "Logistic system",
-      "Physical projectile damage",
+      "Physical projectile damage, 7",
       "Productivity module 2, 2",
       "Quality module 2, 2",
-      "Refined flammables",
+      "Refined flammables, 6",
       "Space platform thruster",
       "Speed module 2, 2",
-      "Stronger explosives",
-      "Worker robot speed"
+      "Stronger explosives, 5",
+      "Worker robot speed, 6"
     ],
     "effects": ["Space science pack"]
   },
@@ -5665,7 +5674,7 @@
       "Production science pack",
       "Utility science pack"
     ],
-    "allows": ["Transport belt capacity"],
+    "allows": ["Transport belt capacity, 1"],
     "effects": ["Stack inserter"]
   },
   "Steam power": {
@@ -5717,8 +5726,9 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
-    "required-technologies": ["Production science pack"]
+    "cost-multiplier": 1500,
+    "required-technologies": ["Production science pack"],
+    "allows": ["Steel plate productivity, 2-&infin;"]
   },
   "Steel processing": {
     "internal-name": "steel-processing",
@@ -5895,7 +5905,7 @@
       "Electromagnetic science pack",
       "Military 4, 4"
     ],
-    "allows": ["Electric weapons damage"],
+    "allows": ["Electric weapons damage, 3"],
     "effects": [
       "Tesla ammo",
       "Tesla turret",
@@ -6215,25 +6225,25 @@
       "Advanced asteroid processing",
       "Personal battery MK2",
       "Biolab",
-      "Braking force",
+      "Braking force, 6",
       "Epic quality",
       "Portable fission reactor",
-      "Health",
-      "Inserter capacity bonus",
-      "Laser shooting speed",
-      "Laser weapons damage",
+      "Health, 1",
+      "Inserter capacity bonus, 7",
+      "Laser shooting speed, 5",
+      "Laser weapons damage, 5",
       "Military 4, 4",
       "Overgrowth soil",
       "Personal roboport MK2",
-      "Physical projectile damage",
+      "Physical projectile damage, 6",
       "Rail support foundations",
-      "Refined flammables",
-      "Lab research speed",
+      "Refined flammables, 4",
+      "Lab research speed, 6",
       "Stack inserter",
-      "Stronger explosives",
-      "Weapon shooting speed",
-      "Worker robot speed",
-      "Worker robot cargo size"
+      "Stronger explosives, 4",
+      "Weapon shooting speed, 6",
+      "Worker robot speed, 3",
+      "Worker robot cargo size, 3"
     ],
     "effects": ["Utility science pack"]
   },

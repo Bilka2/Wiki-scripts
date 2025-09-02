@@ -1658,15 +1658,15 @@
     "total-raw": [
       [
         "Time",
-        6
+        16.5
       ],
       [
-        "Jelly",
-        12
+        "Jellynut",
+        3
       ],
       [
-        "Yumako mash",
-        15
+        "Yumako",
+        7.5
       ]
     ],
     "producers": ["Biochamber"]
@@ -1769,11 +1769,11 @@
     "total-raw": [
       [
         "Time",
-        3
+        18
       ],
       [
-        "Jelly",
-        60
+        "Jellynut",
+        15
       ]
     ],
     "producers": ["Biochamber"]
@@ -1800,15 +1800,15 @@
     "total-raw": [
       [
         "Time",
-        2
+        4
       ],
       [
         "Bioflux",
         1
       ],
       [
-        "Yumako mash",
-        4
+        "Yumako",
+        2
       ]
     ],
     "producers": ["Biochamber"]
@@ -2359,15 +2359,15 @@
     "total-raw": [
       [
         "Time",
-        5
+        10
       ],
       [
         "Carbon",
         1
       ],
       [
-        "Yumako mash",
-        10
+        "Yumako",
+        5
       ]
     ],
     "producers": ["Biochamber"]
@@ -3430,11 +3430,11 @@
     "total-raw": [
       [
         "Time",
-        1
+        2.5
       ],
       [
-        "Yumako mash",
-        3
+        "Yumako",
+        1.5
       ]
     ],
     "producers": [
@@ -3466,15 +3466,15 @@
     "total-raw": [
       [
         "Time",
-        4
+        29
       ],
       [
         "Bioflux",
         1
       ],
       [
-        "Copper bacteria",
-        1
+        "Yumako",
+        15
       ]
     ],
     "producers": ["Biochamber"]
@@ -6826,11 +6826,11 @@
     "total-raw": [
       [
         "Time",
-        1
+        2.5
       ],
       [
-        "Jelly",
-        6
+        "Jellynut",
+        1.5
       ]
     ],
     "producers": [
@@ -6862,15 +6862,15 @@
     "total-raw": [
       [
         "Time",
-        4
+        29
       ],
       [
         "Bioflux",
         1
       ],
       [
-        "Iron bacteria",
-        1
+        "Jellynut",
+        15
       ]
     ],
     "producers": ["Biochamber"]
@@ -8564,11 +8564,11 @@
     "total-raw": [
       [
         "Time",
-        4
+        6
       ],
       [
-        "Yumako mash",
-        4
+        "Yumako",
+        2
       ]
     ],
     "producers": ["Biochamber"]
@@ -9293,16 +9293,6 @@
         15
       ]
     ],
-    "producers": [
-      "Assembling machine 1",
-      "Assembling machine 2",
-      "Assembling machine 3",
-      "Character"
-    ]
-  },
-  "Pistol": {
-    "recipe": [],
-    "total-raw": [],
     "producers": [
       "Assembling machine 1",
       "Assembling machine 2",
@@ -10951,15 +10941,15 @@
     "total-raw": [
       [
         "Time",
-        10
+        17.5
       ],
       [
         "Bioflux",
         2
       ],
       [
-        "Jelly",
-        30
+        "Jellynut",
+        7.5
       ],
       [
         "Water",
@@ -12169,7 +12159,7 @@
     "total-raw": [
       [
         "Time",
-        42
+        44.5
       ],
       [
         "Carbon fiber",
@@ -12184,8 +12174,8 @@
         55
       ],
       [
-        "Jelly",
-        10
+        "Jellynut",
+        2.5
       ],
       [
         "Plastic bar",
