@@ -395,7 +395,7 @@ class InfoboxUpdate:
   # should coal synthesis really get an infobox?
   # ???? https://wiki.factorio.com/index.php?title=Fish_breeding&redirect=no
   # yumako mash and jellynut processing - on jelly/mash or in seed infoboxes? same question re redirects https://wiki.factorio.com/index.php?title=Jellynut_processing&redirect=no
-  # ???? https://wiki.factorio.com/Infobox:Wood_processing
+  # ???? https://wiki.factorio.com/Infobox:Wood_processing - should go into tree seed infobox
   # where is flourine map color + mining time?? entity doesnt seem to end up in fluid infobox
   re_start_of_infobox = re.compile('{{infobox', re.I)
 
