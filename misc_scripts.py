@@ -4,7 +4,7 @@ import json
 import os
 import re
 import requests
-from util import get_edit_token, get_page, edit_page, upload_file, move_page, update_file, protect_page, get_categorymembers
+from util import get_edit_token, get_page, edit_page, upload_file, move_page, update_file, get_categorymembers
 api_url = 'https://wiki.factorio.com/api.php'
 
 
@@ -137,43 +137,6 @@ def dump_pages(pages):
    
   with open('out.txt', 'w', encoding="utf-8") as f:
     f.write(content)
-
-
-def prototype_migration_links():
-  with open(os.path.dirname(os.path.abspath(__file__)) + '/prototype_doc_migration/link_mapping.json', 'r') as f:
-    link_mapping = json.load(f)
-  
-  page_text_template = "'''The prototype docs have moved to a new website with an improved format.''' This documentation page can now be found here: [link_placeholder link_placeholder]\n\nThis wiki page is no longer updated and '''will be removed at some point in the future''', so please update your browser bookmarks or other links that sent you here. If you'd like to contribute to the new docs, you can leave your feedback [https://forums.factorio.com/viewforum.php?f=233 on the forums].\n\n\n\n"
-  
-  session = requests.Session()
-  edit_token = get_edit_token(session, api_url)
-  
-  for section in ['types', 'prototypes']:
-    for old, new in link_mapping[section].items():
-      if not isinstance(new, str):
-        print(f'Not editing page {old} because no new link exists.')
-        continue
-      page_text = page_text_template.replace('link_placeholder', new)
-      page_name = old.removeprefix('https://wiki.factorio.com/')
-      print(edit_page(session, api_url, edit_token, page_name, page_text, 'Migrated prototype doc to separate website', True).text)
-      print(protect_page(session, api_url, edit_token, page_name, 'Migrated prototype doc to separate website').text)
-
-
-def prototype_migration_link_styling(): # ran after prototype_migration_links()
-  with open(os.path.dirname(os.path.abspath(__file__)) + '/prototype_doc_migration/link_mapping.json', 'r') as f:
-    link_mapping = json.load(f)
-  
-  session = requests.Session()
-  edit_token = get_edit_token(session, api_url)
-  
-  for section in ['types', 'prototypes']:
-    for wiki_page in link_mapping[section]:
-      page_name = wiki_page.removeprefix('https://wiki.factorio.com/')
-      page_data = get_page(session, api_url, page_name)
-      page_data = page_data.replace("'''The prototype docs", "<div class=\"stub\"><p>'''The prototype docs")
-      page_data = page_data.replace('This wiki page', '</p><p>This wiki page')
-      page_data = page_data.replace('on the forums].', 'on the forums].</p></div>')
-      print(edit_page(session, api_url, edit_token, page_name, page_data, 'Updated styling of prototype doc migration note').text)
 
 
 def move_archived_pages_to_namespace(): # https://forums.factorio.com/viewtopic.php?p=597811#p597811
